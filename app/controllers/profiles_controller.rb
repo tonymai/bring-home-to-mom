@@ -8,9 +8,14 @@ class ProfilesController < ApplicationController
   end
 
   def create
-    # render json: params
     @parent = Parent.find(params[:user_id])
     @child = @parent.children.new(profile_params)
+
+    # upload profile image if provided
+    Child::PF_IMAGE_INDEX.each do |pf_image_key|
+      @child.save_profile_image(params[:child][pf_image_key], pf_image_key) if params[:child][pf_image_key]
+    end
+
     if @child.save
       redirect_to user_path(@parent)
     else
@@ -34,11 +39,6 @@ class ProfilesController < ApplicationController
       :bio,
       :smoke,
       :linkedin_url,
-      :facebook_url,
-      :pf_image_1,
-      :pf_image_2,
-      :pf_image_3,
-      :pf_image_4,
-      :pf_image_5)
+      :facebook_url)
   end
 end

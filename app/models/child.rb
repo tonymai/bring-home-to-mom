@@ -1,4 +1,6 @@
 class Child < ActiveRecord::Base
+  PF_IMAGE_INDEX = [:pf_image_1, :pf_image_2, :pf_image_3, :pf_image_4, :pf_image_5]
+
   before_validation :set_main_profile_image
 
   belongs_to :parent
@@ -14,7 +16,27 @@ class Child < ActiveRecord::Base
   validates :first_name, :last_name, :city, :state, :phone, :gender, :sexual_preference, :birthdate, :bio, :main_profile_image, presence: true
   validates :phone, uniqueness: true
 
+
+
+
+
+  def save_profile_image(uploaded_io, pf_image_key)
+    make_dir_unless_exists(Rails.root.join('public','uploads', "#{self.parent.id}"))
+    make_dir_unless_exists(Rails.root.join('public','uploads', "#{self.parent.id}", "#{Child.last.id + 1}"))
+
+    self[pf_image_key] = "#{pf_image_key}.#{uploaded_io.content_type.split('/')[1]}"
+
+    File.open(Rails.root.join('public','uploads', "#{self.parent.id}", "#{Child.last.id + 1}", self[pf_image_key]), 'wb') do |file|
+      file.write(uploaded_io.read)
+    end
+  end
+
+
   private
+
+  def make_dir_unless_exists(dir_name)
+    Dir.mkdir(dir_name) unless File.directory?(dir_name)
+  end
 
   def set_main_profile_image
     case
