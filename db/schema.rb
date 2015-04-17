@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 20150416225825) do
     t.string   "pf_image_4"
     t.string   "pf_image_5"
     t.integer  "pf_image_default"
+    t.integer  "parent_id"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
   end
@@ -62,7 +63,7 @@ ActiveRecord::Schema.define(version: 20150416225825) do
 
   create_table "playdates", force: :cascade do |t|
     t.integer  "initiator_id"
-    t.integer  "acceptee_id"
+    t.integer  "recipient_id"
     t.string   "status",       default: "pending"
     t.string   "venue"
     t.string   "address"

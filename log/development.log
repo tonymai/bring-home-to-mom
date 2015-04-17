@@ -373,3 +373,266 @@ Started GET "/" for ::1 at 2015-04-16 16:49:01 -0700
 Processing by Rails::WelcomeController#index as HTML
   Rendered /Users/apprentice/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/railties-4.2.1/lib/rails/templates/rails/welcome/index.html.erb (1.7ms)
 Completed 200 OK in 20ms (Views: 7.2ms | ActiveRecord: 0.0ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to AddFieldsToParents (20150416225825)
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (14.3ms)[0m  ALTER TABLE "parents" DROP "last_name"
+  [1m[36m (0.4ms)[0m  [1mALTER TABLE "parents" DROP "first_name"[0m
+  [1m[35mSQL (0.5ms)[0m  DELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = $1  [["version", "20150416225825"]]
+  [1m[36m (0.8ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.4ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (2.5ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'children'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (1.8ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'parents'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+  [1m[36m (1.8ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'playdates'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to DeviseCreateParents (20150416225536)
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.7ms)[0m  DROP INDEX "index_parents_on_reset_password_token"
+  [1m[36m (0.3ms)[0m  [1mDROP INDEX "index_parents_on_email"[0m
+  [1m[35m (1.3ms)[0m  DROP TABLE "parents"
+  [1m[36mSQL (0.4ms)[0m  [1mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = $1[0m  [["version", "20150416225536"]]
+  [1m[35m (2.6ms)[0m  COMMIT
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (2.8ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'children'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+  [1m[36m (3.4ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'playdates'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[36m (5053.7ms)[0m  [1mDROP DATABASE IF EXISTS "bring_home_to_mom_development"[0m
+PG::ObjectInUse: ERROR:  database "bring_home_to_mom_development" is being accessed by other users
+DETAIL:  There is 1 other session using the database.
+: DROP DATABASE IF EXISTS "bring_home_to_mom_development"
+  [1m[35m (0.9ms)[0m  CREATE DATABASE "bring_home_to_mom_development" ENCODING = 'unicode'
+PG::DuplicateDatabase: ERROR:  database "bring_home_to_mom_development" already exists
+: CREATE DATABASE "bring_home_to_mom_development" ENCODING = 'unicode'
+  [1m[36mSQL (12.5ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (3.3ms)[0m  DROP TABLE "children" CASCADE
+  [1m[36m (5.4ms)[0m  [1mCREATE TABLE "children" ("id" serial primary key, "first_name" character varying, "last_name" character varying, "city" character varying, "state" character varying, "phone" character varying, "gender" character varying, "sexual_preference" character varying, "religion" character varying, "birthdate" date, "bio" character varying, "smoke" boolean, "linkedin_url" character varying, "facebook_url" character varying, "pf_image_1" character varying, "pf_image_2" character varying, "pf_image_3" character varying, "pf_image_4" character varying, "pf_image_5" character varying, "pf_image_default" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (2.0ms)[0m  DROP TABLE "playdates" CASCADE
+  [1m[36m (4.2ms)[0m  [1mCREATE TABLE "playdates" ("id" serial primary key, "initiator_id" integer, "acceptee_id" integer, "status" character varying DEFAULT 'pending', "venue" character varying, "address" character varying, "playdate_at" timestamp, "budget" integer, "note" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (0.7ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36m (157.2ms)[0m  [1mDROP DATABASE IF EXISTS "bring_home_to_mom_development"[0m
+  [1m[36m (314.1ms)[0m  [1mCREATE DATABASE "bring_home_to_mom_development" ENCODING = 'unicode'[0m
+  [1m[36m (8.6ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL) [0m
+  [1m[35m (1.7ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateChildren (20150416224620)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (3.9ms)[0m  [1mCREATE TABLE "children" ("id" serial primary key, "first_name" character varying, "last_name" character varying, "city" character varying, "state" character varying, "phone" character varying, "gender" character varying, "sexual_preference" character varying, "religion" character varying, "birthdate" date, "bio" character varying, "smoke" boolean, "linkedin_url" character varying, "facebook_url" character varying, "pf_image_1" character varying, "pf_image_2" character varying, "pf_image_3" character varying, "pf_image_4" character varying, "pf_image_5" character varying, "pf_image_default" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20150416224620"]]
+  [1m[36m (0.9ms)[0m  [1mCOMMIT[0m
+Migrating to CreatePlaydates (20150416224939)
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36m (3.3ms)[0m  [1mCREATE TABLE "playdates" ("id" serial primary key, "initiator_id" integer, "recipient_id" integer, "status" character varying DEFAULT 'pending', "venue" character varying, "address" character varying, "playdate_at" timestamp, "budget" integer, "note" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20150416224939"]]
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+Migrating to DeviseCreateParents (20150416225536)
+  [1m[35m (0.2ms)[0m  BEGIN
+DEPRECATION WARNING: `#timestamp` was called without specifying an option for `null`. In Rails 5, this behavior will change to `null: false`. You should manually specify `null: true` to prevent the behavior of your existing migrations from changing. (called from block in change at /Users/apprentice/Desktop/bring-home-to-mom/db/migrate/20150416225536_devise_create_parents.rb:34)
+  [1m[36m (3.2ms)[0m  [1mCREATE TABLE "parents" ("id" serial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" inet, "last_sign_in_ip" inet, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (1.0ms)[0m  CREATE UNIQUE INDEX  "index_parents_on_email" ON "parents"  ("email")
+  [1m[36m (0.9ms)[0m  [1mCREATE UNIQUE INDEX  "index_parents_on_reset_password_token" ON "parents"  ("reset_password_token")[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20150416225536"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+Migrating to AddFieldsToParents (20150416225825)
+  [1m[35m (0.4ms)[0m  BEGIN
+  [1m[36m (0.5ms)[0m  [1mALTER TABLE "parents" ADD "first_name" character varying[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "parents" ADD "last_name" character varying
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20150416225825"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (2.5ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'children'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+  [1m[36m (1.8ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'parents'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (1.8ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'playdates'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.3ms)[0m  ROLLBACK
+  [1m[36mParent Load (1.1ms)[0m  [1mSELECT  "parents".* FROM "parents"  ORDER BY "parents"."id" ASC LIMIT 1[0m
+  [1m[35mParent Load (0.5ms)[0m  SELECT  "parents".* FROM "parents"  ORDER BY "parents"."id" ASC LIMIT 1
+  [1m[36mParent Load (0.5ms)[0m  [1mSELECT "parents".* FROM "parents"[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35mParent Load (0.6ms)[0m  SELECT  "parents".* FROM "parents"  ORDER BY "parents"."id" ASC LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mParent Exists (1.1ms)[0m  SELECT  1 AS one FROM "parents" WHERE "parents"."email" = 'kevin@dbc.com' LIMIT 1
+  [1m[36mSQL (16.8ms)[0m  [1mINSERT INTO "parents" ("encrypted_password", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["encrypted_password", "$2a$10$tDlHwXpkAv/4W8ZcimpUTexrNz6dctuN1s2LXc1uqA9ukbTZhX1NC"], ["email", "kevin@dbc.com"], ["created_at", "2015-04-17 00:04:35.529905"], ["updated_at", "2015-04-17 00:04:35.529905"]]
+  [1m[35m (1.0ms)[0m  COMMIT
+PG::UndefinedColumn: ERROR:  column children.parent_id does not exist
+LINE 1: SELECT "children".* FROM "children" WHERE "children"."parent...
+                                                  ^
+: SELECT "children".* FROM "children" WHERE "children"."parent_id" = $1
+  [1m[36m (117.4ms)[0m  [1mDROP DATABASE IF EXISTS "bring_home_to_mom_development"[0m
+  [1m[36m (291.1ms)[0m  [1mCREATE DATABASE "bring_home_to_mom_development" ENCODING = 'unicode'[0m
+  [1m[36m (3.9ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL) [0m
+  [1m[35m (1.6ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateChildren (20150416224620)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (4.1ms)[0m  [1mCREATE TABLE "children" ("id" serial primary key, "first_name" character varying, "last_name" character varying, "city" character varying, "state" character varying, "phone" character varying, "gender" character varying, "sexual_preference" character varying, "religion" character varying, "birthdate" date, "bio" character varying, "smoke" boolean, "linkedin_url" character varying, "facebook_url" character varying, "pf_image_1" character varying, "pf_image_2" character varying, "pf_image_3" character varying, "pf_image_4" character varying, "pf_image_5" character varying, "pf_image_default" integer, "parent_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20150416224620"]]
+  [1m[36m (0.9ms)[0m  [1mCOMMIT[0m
+Migrating to CreatePlaydates (20150416224939)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (3.6ms)[0m  [1mCREATE TABLE "playdates" ("id" serial primary key, "initiator_id" integer, "recipient_id" integer, "status" character varying DEFAULT 'pending', "venue" character varying, "address" character varying, "playdate_at" timestamp, "budget" integer, "note" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20150416224939"]]
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+Migrating to DeviseCreateParents (20150416225536)
+  [1m[35m (0.2ms)[0m  BEGIN
+DEPRECATION WARNING: `#timestamp` was called without specifying an option for `null`. In Rails 5, this behavior will change to `null: false`. You should manually specify `null: true` to prevent the behavior of your existing migrations from changing. (called from block in change at /Users/apprentice/Desktop/bring-home-to-mom/db/migrate/20150416225536_devise_create_parents.rb:34)
+  [1m[36m (3.3ms)[0m  [1mCREATE TABLE "parents" ("id" serial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" inet, "last_sign_in_ip" inet, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (0.9ms)[0m  CREATE UNIQUE INDEX  "index_parents_on_email" ON "parents"  ("email")
+  [1m[36m (0.8ms)[0m  [1mCREATE UNIQUE INDEX  "index_parents_on_reset_password_token" ON "parents"  ("reset_password_token")[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20150416225536"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+Migrating to AddFieldsToParents (20150416225825)
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36m (0.5ms)[0m  [1mALTER TABLE "parents" ADD "first_name" character varying[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "parents" ADD "last_name" character varying
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20150416225825"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (2.4ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'children'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+  [1m[36m (1.8ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'parents'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (1.7ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'playdates'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mParent Exists (1.1ms)[0m  SELECT  1 AS one FROM "parents" WHERE "parents"."email" = 'kevin@dbc.com' LIMIT 1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "parents" ("encrypted_password", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["encrypted_password", "$2a$10$RliuByRZldRQ4zeeUq09pOwBnoSpaZR4Ax76v9EEghuJ8QWgLGdnu"], ["email", "kevin@dbc.com"], ["created_at", "2015-04-17 00:06:04.549625"], ["updated_at", "2015-04-17 00:06:04.549625"]]
+  [1m[35m (8.7ms)[0m  COMMIT
+  [1m[36mParent Load (36.6ms)[0m  [1mSELECT  "parents".* FROM "parents"  ORDER BY "parents"."id" ASC LIMIT 1[0m
+  [1m[35mChild Load (0.5ms)[0m  SELECT "children".* FROM "children" WHERE "children"."parent_id" = $1  [["parent_id", 1]]
+  [1m[36mParent Load (0.7ms)[0m  [1mSELECT  "parents".* FROM "parents"  ORDER BY "parents"."id" ASC LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "children" ("parent_id", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["parent_id", 1], ["created_at", "2015-04-17 00:06:26.263204"], ["updated_at", "2015-04-17 00:06:26.263204"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36mPlaydate Load (0.5ms)[0m  [1mSELECT "playdates".* FROM "playdates" WHERE "playdates"."initiator_id" = $1[0m  [["initiator_id", 1]]
+  [1m[35mPlaydate Load (0.3ms)[0m  SELECT "playdates".* FROM "playdates" WHERE "playdates"."recipient_id" = $1  [["recipient_id", 1]]
+  [1m[36mChild Load (0.7ms)[0m  [1mSELECT "children".* FROM "children" INNER JOIN "playdates" ON "children"."id" = "playdates"."recipient_id" WHERE "playdates"."initiator_id" = $1[0m  [["initiator_id", 1]]
+  [1m[35mChild Load (0.7ms)[0m  SELECT "children".* FROM "children" INNER JOIN "playdates" ON "children"."id" = "playdates"."initiator_id" WHERE "playdates"."recipient_id" = $1  [["recipient_id", 1]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "children" ("created_at", "updated_at") VALUES ($1, $2) RETURNING "id"  [["created_at", "2015-04-17 00:09:47.146477"], ["updated_at", "2015-04-17 00:09:47.146477"]]
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "playdates" ("initiator_id", "recipient_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["initiator_id", 1], ["recipient_id", 2], ["created_at", "2015-04-17 00:09:47.160610"], ["updated_at", "2015-04-17 00:09:47.160610"]]
+  [1m[35m (1.5ms)[0m  COMMIT
+  [1m[36mChild Load (0.6ms)[0m  [1mSELECT "children".* FROM "children"[0m
+  [1m[35mPlaydate Load (0.6ms)[0m  SELECT "playdates".* FROM "playdates"
