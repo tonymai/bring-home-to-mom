@@ -43,7 +43,7 @@ group :development, :test do
   gem 'faker'
   gem 'rspec-rails'
   gem 'dotenv-rails'
-
+  gem 'capybara'
 
 
 
