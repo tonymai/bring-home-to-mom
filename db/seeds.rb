@@ -32,6 +32,7 @@ end
       smoke: [true, false].sample,
       linkedin_url: Faker::Internet.url,
       facebook_url: Faker::Internet.url,
+      embarrassing_moment: Faker::Hacker.say_something_smart,
       pf_image_1: Faker::Avatar.image,
       pf_image_2: Faker::Avatar.image,
       pf_image_3: Faker::Avatar.image,

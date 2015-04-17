@@ -16,10 +16,6 @@ class Child < ActiveRecord::Base
   validates :first_name, :last_name, :city, :state, :phone, :gender, :sexual_preference, :birthdate, :bio, :main_profile_image, presence: true
   validates :phone, uniqueness: true
 
-
-
-
-
   def save_profile_image(uploaded_io, pf_image_key)
     make_dir_unless_exists(Rails.root.join('public','uploads', "#{self.parent.id}"))
     make_dir_unless_exists(Rails.root.join('public','uploads', "#{self.parent.id}", "#{Child.last.id + 1}"))

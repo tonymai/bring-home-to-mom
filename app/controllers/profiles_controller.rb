@@ -39,6 +39,7 @@ class ProfilesController < ApplicationController
       :bio,
       :smoke,
       :linkedin_url,
-      :facebook_url)
+      :facebook_url,
+      :embarrassing_moment)
   end
 end
