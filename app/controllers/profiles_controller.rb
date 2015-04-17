@@ -8,10 +8,11 @@ class ProfilesController < ApplicationController
   end
 
   def create
+    # render json: params
     @parent = Parent.find(params[:user_id])
     @child = @parent.children.new(profile_params)
     if @child.save
-      redirect_to user_path
+      redirect_to user_path(@parent)
     else
       render 'profiles/new'
     end
