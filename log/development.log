@@ -718,3 +718,783 @@ ORDER BY c.conname
   [1m[35m (251.4ms)[0m  COMMIT
   [1m[36mChild Load (0.7ms)[0m  [1mSELECT "children".* FROM "children" INNER JOIN "children_interests" ON "children"."id" = "children_interests"."child_id" WHERE "children_interests"."interest_id" = $1[0m  [["interest_id", 1]]
   [1m[35mChildrenInterest Load (0.3ms)[0m  SELECT "children_interests".* FROM "children_interests" WHERE "children_interests"."interest_id" = $1  [["interest_id", 1]]
+  [1m[36mInterest Load (0.6ms)[0m  [1mSELECT "interests".* FROM "interests"[0m
+  [1m[35mChild Load (0.9ms)[0m  SELECT  "children".* FROM "children"  ORDER BY "children"."id" ASC LIMIT 1
+  [1m[36mInterest Load (0.5ms)[0m  [1mSELECT "interests".* FROM "interests" INNER JOIN "children_interests" ON "interests"."id" = "children_interests"."interest_id" WHERE "children_interests"."child_id" = $1[0m  [["child_id", 1]]
+  [1m[35mChild Load (0.7ms)[0m  SELECT "children".* FROM "children"
+  [1m[36mChild Load (0.6ms)[0m  [1mSELECT  "children".* FROM "children"  ORDER BY "children"."id" ASC LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "interests" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "tennis"], ["created_at", "2015-04-17 00:22:54.053891"], ["updated_at", "2015-04-17 00:22:54.053891"]]
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["child_id", 1], ["interest_id", 2], ["created_at", "2015-04-17 00:22:54.066692"], ["updated_at", "2015-04-17 00:22:54.066692"]]
+  [1m[36m (1.3ms)[0m  [1mCOMMIT[0m
+  [1m[35mChild Load (0.6ms)[0m  SELECT  "children".* FROM "children"  ORDER BY "children"."id" ASC LIMIT 1
+  [1m[36mInterest Load (0.4ms)[0m  [1mSELECT "interests".* FROM "interests" INNER JOIN "children_interests" ON "interests"."id" = "children_interests"."interest_id" WHERE "children_interests"."child_id" = $1[0m  [["child_id", 1]]
+  [1m[35mInterest Load (0.5ms)[0m  SELECT  "interests".* FROM "interests"  ORDER BY "interests"."id" DESC LIMIT 1
+  [1m[36mChild Load (0.5ms)[0m  [1mSELECT "children".* FROM "children" INNER JOIN "children_interests" ON "children"."id" = "children_interests"."child_id" WHERE "children_interests"."interest_id" = $1[0m  [["interest_id", 2]]
+  [1m[35mChildrenInterest Load (0.5ms)[0m  SELECT "children_interests".* FROM "children_interests"
+  [1m[36mChild Load (0.7ms)[0m  [1mSELECT  "children".* FROM "children"  ORDER BY "children"."id" ASC LIMIT 1[0m
+  [1m[35mInterest Load (0.5ms)[0m  SELECT "interests".* FROM "interests" INNER JOIN "children_interests" ON "interests"."id" = "children_interests"."interest_id" WHERE "children_interests"."child_id" = $1  [["child_id", 1]]
+  [1m[36mChild Load (0.7ms)[0m  [1mSELECT  "children".* FROM "children"  ORDER BY "children"."id" ASC LIMIT 1[0m
+  [1m[35mChildrenInterest Load (0.4ms)[0m  SELECT  "children_interests".* FROM "children_interests" WHERE "children_interests"."child_id" = $1 AND "children_interests"."id" = $2 LIMIT 1  [["child_id", 1], ["id", 1]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  DELETE FROM "children_interests" WHERE "children_interests"."id" = $1  [["id", 1]]
+  [1m[36m (8.2ms)[0m  [1mCOMMIT[0m
+  [1m[35mInterest Load (0.4ms)[0m  SELECT "interests".* FROM "interests"
+  [1m[36mChildrenInterest Load (0.4ms)[0m  [1mSELECT "children_interests".* FROM "children_interests"[0m
+  [1m[36m (119.7ms)[0m  [1mDROP DATABASE IF EXISTS "bring_home_to_mom_development"[0m
+  [1m[36m (276.6ms)[0m  [1mCREATE DATABASE "bring_home_to_mom_development" ENCODING = 'unicode'[0m
+  [1m[36m (3.8ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL) [0m
+  [1m[35m (1.4ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateChildren (20150416224620)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (5.9ms)[0m  [1mCREATE TABLE "children" ("id" serial primary key, "first_name" character varying, "last_name" character varying, "city" character varying, "state" character varying, "phone" character varying, "gender" character varying, "sexual_preference" character varying, "religion" character varying, "birthdate" date, "bio" character varying, "smoke" boolean, "linkedin_url" character varying, "facebook_url" character varying, "pf_image_1" character varying, "pf_image_2" character varying, "pf_image_3" character varying, "pf_image_4" character varying, "pf_image_5" character varying, "pf_image_default" integer DEFAULT 1, "parent_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20150416224620"]]
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+Migrating to CreatePlaydates (20150416224939)
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36m (3.3ms)[0m  [1mCREATE TABLE "playdates" ("id" serial primary key, "initiator_id" integer, "recipient_id" integer, "status" character varying DEFAULT 'pending', "venue" character varying, "address" character varying, "playdate_at" timestamp, "budget" integer, "note" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20150416224939"]]
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+Migrating to DeviseCreateParents (20150416225536)
+  [1m[35m (0.2ms)[0m  BEGIN
+DEPRECATION WARNING: `#timestamp` was called without specifying an option for `null`. In Rails 5, this behavior will change to `null: false`. You should manually specify `null: true` to prevent the behavior of your existing migrations from changing. (called from block in change at /Users/apprentice/Desktop/bring-home-to-mom/db/migrate/20150416225536_devise_create_parents.rb:34)
+  [1m[36m (6.1ms)[0m  [1mCREATE TABLE "parents" ("id" serial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" inet, "last_sign_in_ip" inet, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (0.9ms)[0m  CREATE UNIQUE INDEX  "index_parents_on_email" ON "parents"  ("email")
+  [1m[36m (0.8ms)[0m  [1mCREATE UNIQUE INDEX  "index_parents_on_reset_password_token" ON "parents"  ("reset_password_token")[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20150416225536"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+Migrating to AddFieldsToParents (20150416225825)
+  [1m[35m (0.4ms)[0m  BEGIN
+  [1m[36m (0.5ms)[0m  [1mALTER TABLE "parents" ADD "first_name" character varying[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "parents" ADD "last_name" character varying
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20150416225825"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+Migrating to CreateInterests (20150417001352)
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (2.8ms)[0m  CREATE TABLE "interests" ("id" serial primary key, "name" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20150417001352"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+Migrating to CreateChildrenInterests (20150417001556)
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (1.9ms)[0m  CREATE TABLE "children_interests" ("id" serial primary key, "child_id" integer, "interest_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20150417001556"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (2.8ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'children'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+  [1m[36m (2.4ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'children_interests'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (2.0ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'interests'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+  [1m[36m (1.8ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'parents'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (1.8ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'playdates'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "interests" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "3D printing"], ["created_at", "2015-04-17 02:31:03.533752"], ["updated_at", "2015-04-17 02:31:03.533752"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "interests" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "Acting"], ["created_at", "2015-04-17 02:31:03.542713"], ["updated_at", "2015-04-17 02:31:03.542713"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "interests" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Baton twirling"], ["created_at", "2015-04-17 02:31:03.545319"], ["updated_at", "2015-04-17 02:31:03.545319"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "interests" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "Board games"], ["created_at", "2015-04-17 02:31:03.591877"], ["updated_at", "2015-04-17 02:31:03.591877"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "interests" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Calligraphy"], ["created_at", "2015-04-17 02:31:03.594109"], ["updated_at", "2015-04-17 02:31:03.594109"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "interests" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "Candle"], ["created_at", "2015-04-17 02:31:03.596320"], ["updated_at", "2015-04-17 02:31:03.596320"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "interests" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "making"], ["created_at", "2015-04-17 02:31:03.598598"], ["updated_at", "2015-04-17 02:31:03.598598"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "interests" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "Computer"], ["created_at", "2015-04-17 02:31:03.601055"], ["updated_at", "2015-04-17 02:31:03.601055"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "interests" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "programming"], ["created_at", "2015-04-17 02:31:03.603249"], ["updated_at", "2015-04-17 02:31:03.603249"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "interests" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "Cooking"], ["created_at", "2015-04-17 02:31:03.605287"], ["updated_at", "2015-04-17 02:31:03.605287"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "interests" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Coloring"], ["created_at", "2015-04-17 02:31:03.607342"], ["updated_at", "2015-04-17 02:31:03.607342"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "interests" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "Cosplaying"], ["created_at", "2015-04-17 02:31:03.609403"], ["updated_at", "2015-04-17 02:31:03.609403"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "interests" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Couponing"], ["created_at", "2015-04-17 02:31:03.611407"], ["updated_at", "2015-04-17 02:31:03.611407"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "interests" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "Creative writing"], ["created_at", "2015-04-17 02:31:03.613406"], ["updated_at", "2015-04-17 02:31:03.613406"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "interests" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Crocheting"], ["created_at", "2015-04-17 02:31:03.615405"], ["updated_at", "2015-04-17 02:31:03.615405"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "interests" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "Cryptography"], ["created_at", "2015-04-17 02:31:03.617465"], ["updated_at", "2015-04-17 02:31:03.617465"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "interests" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Dance"], ["created_at", "2015-04-17 02:31:03.619532"], ["updated_at", "2015-04-17 02:31:03.619532"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "interests" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "Digital arts"], ["created_at", "2015-04-17 02:31:03.622064"], ["updated_at", "2015-04-17 02:31:03.622064"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "interests" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Drama"], ["created_at", "2015-04-17 02:31:03.624877"], ["updated_at", "2015-04-17 02:31:03.624877"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "interests" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "Drawing"], ["created_at", "2015-04-17 02:31:03.626898"], ["updated_at", "2015-04-17 02:31:03.626898"]]
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "interests" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Do it yourself"], ["created_at", "2015-04-17 02:31:03.629127"], ["updated_at", "2015-04-17 02:31:03.629127"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "interests" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "Electronics"], ["created_at", "2015-04-17 02:31:03.631185"], ["updated_at", "2015-04-17 02:31:03.631185"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "interests" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Embroidery"], ["created_at", "2015-04-17 02:31:03.633160"], ["updated_at", "2015-04-17 02:31:03.633160"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "interests" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "Flower arranging"], ["created_at", "2015-04-17 02:31:03.635128"], ["updated_at", "2015-04-17 02:31:03.635128"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "interests" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Foreign language learning"], ["created_at", "2015-04-17 02:31:03.637108"], ["updated_at", "2015-04-17 02:31:03.637108"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "interests" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "Gaming"], ["created_at", "2015-04-17 02:31:03.639060"], ["updated_at", "2015-04-17 02:31:03.639060"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "interests" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Gambling"], ["created_at", "2015-04-17 02:31:03.641096"], ["updated_at", "2015-04-17 02:31:03.641096"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "interests" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "Genealogy"], ["created_at", "2015-04-17 02:31:03.643097"], ["updated_at", "2015-04-17 02:31:03.643097"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "interests" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Glassblowing"], ["created_at", "2015-04-17 02:31:03.645089"], ["updated_at", "2015-04-17 02:31:03.645089"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "interests" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "Homebrewing"], ["created_at", "2015-04-17 02:31:03.647056"], ["updated_at", "2015-04-17 02:31:03.647056"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "interests" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Ice"], ["created_at", "2015-04-17 02:31:03.649027"], ["updated_at", "2015-04-17 02:31:03.649027"]]
+  [1m[35m (0.8ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "interests" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "skating"], ["created_at", "2015-04-17 02:31:03.651485"], ["updated_at", "2015-04-17 02:31:03.651485"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "interests" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Jewelry"], ["created_at", "2015-04-17 02:31:03.653578"], ["updated_at", "2015-04-17 02:31:03.653578"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "interests" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "making"], ["created_at", "2015-04-17 02:31:03.655533"], ["updated_at", "2015-04-17 02:31:03.655533"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "interests" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Jigsaw"], ["created_at", "2015-04-17 02:31:03.657650"], ["updated_at", "2015-04-17 02:31:03.657650"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "interests" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "puzzles"], ["created_at", "2015-04-17 02:31:03.659642"], ["updated_at", "2015-04-17 02:31:03.659642"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "interests" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Juggling"], ["created_at", "2015-04-17 02:31:03.661610"], ["updated_at", "2015-04-17 02:31:03.661610"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "interests" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "Knapping"], ["created_at", "2015-04-17 02:31:03.663567"], ["updated_at", "2015-04-17 02:31:03.663567"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "interests" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Knitting"], ["created_at", "2015-04-17 02:31:03.665495"], ["updated_at", "2015-04-17 02:31:03.665495"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "interests" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "Kabaddi"], ["created_at", "2015-04-17 02:31:03.667515"], ["updated_at", "2015-04-17 02:31:03.667515"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "interests" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Knife"], ["created_at", "2015-04-17 02:31:03.670185"], ["updated_at", "2015-04-17 02:31:03.670185"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "interests" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "making"], ["created_at", "2015-04-17 02:31:03.672204"], ["updated_at", "2015-04-17 02:31:03.672204"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "interests" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Lacemaking"], ["created_at", "2015-04-17 02:31:03.674332"], ["updated_at", "2015-04-17 02:31:03.674332"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "interests" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "Lapidary"], ["created_at", "2015-04-17 02:31:03.676387"], ["updated_at", "2015-04-17 02:31:03.676387"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "interests" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Leather"], ["created_at", "2015-04-17 02:31:03.678423"], ["updated_at", "2015-04-17 02:31:03.678423"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "interests" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "crafting"], ["created_at", "2015-04-17 02:31:03.680407"], ["updated_at", "2015-04-17 02:31:03.680407"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "interests" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Lego"], ["created_at", "2015-04-17 02:31:03.682371"], ["updated_at", "2015-04-17 02:31:03.682371"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "interests" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "building"], ["created_at", "2015-04-17 02:31:03.684317"], ["updated_at", "2015-04-17 02:31:03.684317"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "interests" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Machining"], ["created_at", "2015-04-17 02:31:03.686264"], ["updated_at", "2015-04-17 02:31:03.686264"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "interests" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "Macrame"], ["created_at", "2015-04-17 02:31:03.688533"], ["updated_at", "2015-04-17 02:31:03.688533"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "interests" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Magic"], ["created_at", "2015-04-17 02:31:03.690469"], ["updated_at", "2015-04-17 02:31:03.690469"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "interests" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "Model building"], ["created_at", "2015-04-17 02:31:03.692425"], ["updated_at", "2015-04-17 02:31:03.692425"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "interests" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Listening to music"], ["created_at", "2015-04-17 02:31:03.694326"], ["updated_at", "2015-04-17 02:31:03.694326"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "interests" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "Origami"], ["created_at", "2015-04-17 02:31:03.696252"], ["updated_at", "2015-04-17 02:31:03.696252"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "interests" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Painting"], ["created_at", "2015-04-17 02:31:03.698161"], ["updated_at", "2015-04-17 02:31:03.698161"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "interests" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "Playing musical instruments"], ["created_at", "2015-04-17 02:31:03.700083"], ["updated_at", "2015-04-17 02:31:03.700083"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "interests" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Pottery"], ["created_at", "2015-04-17 02:31:03.702003"], ["updated_at", "2015-04-17 02:31:03.702003"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "interests" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "Puzzles"], ["created_at", "2015-04-17 02:31:03.703955"], ["updated_at", "2015-04-17 02:31:03.703955"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "interests" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Quilting"], ["created_at", "2015-04-17 02:31:03.705921"], ["updated_at", "2015-04-17 02:31:03.705921"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "interests" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "Reading"], ["created_at", "2015-04-17 02:31:03.707884"], ["updated_at", "2015-04-17 02:31:03.707884"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "interests" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Scrapbooking"], ["created_at", "2015-04-17 02:31:03.709701"], ["updated_at", "2015-04-17 02:31:03.709701"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "interests" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "Sculpting"], ["created_at", "2015-04-17 02:31:03.711707"], ["updated_at", "2015-04-17 02:31:03.711707"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "interests" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Sewing"], ["created_at", "2015-04-17 02:31:03.713673"], ["updated_at", "2015-04-17 02:31:03.713673"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "interests" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "Singing"], ["created_at", "2015-04-17 02:31:03.715675"], ["updated_at", "2015-04-17 02:31:03.715675"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "interests" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Sketching"], ["created_at", "2015-04-17 02:31:03.717600"], ["updated_at", "2015-04-17 02:31:03.717600"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "interests" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "Soapmaking"], ["created_at", "2015-04-17 02:31:03.719475"], ["updated_at", "2015-04-17 02:31:03.719475"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "interests" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Sports"], ["created_at", "2015-04-17 02:31:03.721622"], ["updated_at", "2015-04-17 02:31:03.721622"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "interests" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "Standup comedy"], ["created_at", "2015-04-17 02:31:03.724170"], ["updated_at", "2015-04-17 02:31:03.724170"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "interests" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Sudoku"], ["created_at", "2015-04-17 02:31:03.726268"], ["updated_at", "2015-04-17 02:31:03.726268"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "interests" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "Table tennis"], ["created_at", "2015-04-17 02:31:03.728231"], ["updated_at", "2015-04-17 02:31:03.728231"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "interests" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Taxidermy"], ["created_at", "2015-04-17 02:31:03.730477"], ["updated_at", "2015-04-17 02:31:03.730477"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "interests" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "Video gaming"], ["created_at", "2015-04-17 02:31:03.733065"], ["updated_at", "2015-04-17 02:31:03.733065"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "interests" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Watching"], ["created_at", "2015-04-17 02:31:03.735058"], ["updated_at", "2015-04-17 02:31:03.735058"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "interests" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "movies"], ["created_at", "2015-04-17 02:31:03.737109"], ["updated_at", "2015-04-17 02:31:03.737109"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "interests" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Web surfing"], ["created_at", "2015-04-17 02:31:03.739097"], ["updated_at", "2015-04-17 02:31:03.739097"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "interests" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "Wood carving"], ["created_at", "2015-04-17 02:31:03.740922"], ["updated_at", "2015-04-17 02:31:03.740922"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "interests" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Woodworking"], ["created_at", "2015-04-17 02:31:03.742944"], ["updated_at", "2015-04-17 02:31:03.742944"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "interests" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "Worldbuilding"], ["created_at", "2015-04-17 02:31:03.744970"], ["updated_at", "2015-04-17 02:31:03.744970"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "interests" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Writing"], ["created_at", "2015-04-17 02:31:03.746931"], ["updated_at", "2015-04-17 02:31:03.746931"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "interests" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "Yoga"], ["created_at", "2015-04-17 02:31:03.748897"], ["updated_at", "2015-04-17 02:31:03.748897"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "interests" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Yo-yoing"], ["created_at", "2015-04-17 02:31:03.750914"], ["updated_at", "2015-04-17 02:31:03.750914"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mParent Exists (0.9ms)[0m  SELECT  1 AS one FROM "parents" WHERE "parents"."email" = 'franz@hilll.com' LIMIT 1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "parents" ("first_name", "last_name", "email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "Monroe"], ["last_name", "Smith"], ["email", "franz@hilll.com"], ["encrypted_password", "$2a$10$3bwA8UBkjO6WPieNMReYxu9stJyQS7HOwLh0hVtAQzwotFO8b3gXy"], ["created_at", "2015-04-17 02:31:04.266836"], ["updated_at", "2015-04-17 02:31:04.266836"]]
+  [1m[35m (0.7ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "children" ("first_name", "last_name", "city", "state", "phone", "gender", "birthdate", "bio", "smoke", "linkedin_url", "facebook_url", "pf_image_1", "pf_image_2", "pf_image_3", "pf_image_4", "pf_image_5", "parent_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19) RETURNING "id"  [["first_name", "Mabelle"], ["last_name", "Kilback"], ["city", "East Rigoberto"], ["state", "OR"], ["phone", "(763) 533-9513"], ["gender", "other"], ["birthdate", "1993-12-06"], ["bio", "generate interactive solutions"], ["smoke", "f"], ["linkedin_url", "http://lefflerbartoletti.net/waldo"], ["facebook_url", "http://greenholtsenger.net/cody"], ["pf_image_1", "http://robohash.org/errornecessitatibusdolorem.png?size=300x300"], ["pf_image_2", "http://robohash.org/sitnesciuntlaboriosam.png?size=300x300"], ["pf_image_3", "http://robohash.org/eaquesitaliquam.png?size=300x300"], ["pf_image_4", "http://robohash.org/nemositodit.png?size=300x300"], ["pf_image_5", "http://robohash.org/quidemeumratione.png?size=300x300"], ["parent_id", 1], ["created_at", "2015-04-17 02:31:04.344119"], ["updated_at", "2015-04-17 02:31:04.344119"]]
+  [1m[36m (15.8ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["child_id", 1], ["interest_id", 22], ["created_at", "2015-04-17 02:31:04.432464"], ["updated_at", "2015-04-17 02:31:04.432464"]]
+  [1m[35m (0.7ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["child_id", 1], ["interest_id", 31], ["created_at", "2015-04-17 02:31:04.437068"], ["updated_at", "2015-04-17 02:31:04.437068"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["child_id", 1], ["interest_id", 79], ["created_at", "2015-04-17 02:31:04.439830"], ["updated_at", "2015-04-17 02:31:04.439830"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["child_id", 1], ["interest_id", 75], ["created_at", "2015-04-17 02:31:04.442553"], ["updated_at", "2015-04-17 02:31:04.442553"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["child_id", 1], ["interest_id", 59], ["created_at", "2015-04-17 02:31:04.445208"], ["updated_at", "2015-04-17 02:31:04.445208"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "children" ("first_name", "last_name", "city", "state", "phone", "gender", "birthdate", "bio", "smoke", "linkedin_url", "facebook_url", "pf_image_1", "pf_image_2", "pf_image_3", "pf_image_4", "pf_image_5", "parent_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19) RETURNING "id"  [["first_name", "Hardy"], ["last_name", "Morissette"], ["city", "New Dylan"], ["state", "ND"], ["phone", "260-427-8450 x9201"], ["gender", "other"], ["birthdate", "1981-01-31"], ["bio", "reinvent cross-media web-readiness"], ["smoke", "t"], ["linkedin_url", "http://hickle.org/eloise.konopelski"], ["facebook_url", "http://hoeger.name/delmer"], ["pf_image_1", "http://robohash.org/suscipitfugitqui.png?size=300x300"], ["pf_image_2", "http://robohash.org/teneturaperiamminus.png?size=300x300"], ["pf_image_3", "http://robohash.org/velenimsit.png?size=300x300"], ["pf_image_4", "http://robohash.org/autreprehenderitid.png?size=300x300"], ["pf_image_5", "http://robohash.org/quassaepequo.png?size=300x300"], ["parent_id", 1], ["created_at", "2015-04-17 02:31:04.450129"], ["updated_at", "2015-04-17 02:31:04.450129"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["child_id", 2], ["interest_id", 23], ["created_at", "2015-04-17 02:31:04.454304"], ["updated_at", "2015-04-17 02:31:04.454304"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["child_id", 2], ["interest_id", 45], ["created_at", "2015-04-17 02:31:04.457267"], ["updated_at", "2015-04-17 02:31:04.457267"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["child_id", 2], ["interest_id", 36], ["created_at", "2015-04-17 02:31:04.459929"], ["updated_at", "2015-04-17 02:31:04.459929"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["child_id", 2], ["interest_id", 64], ["created_at", "2015-04-17 02:31:04.462579"], ["updated_at", "2015-04-17 02:31:04.462579"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["child_id", 2], ["interest_id", 73], ["created_at", "2015-04-17 02:31:04.465254"], ["updated_at", "2015-04-17 02:31:04.465254"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mParent Exists (0.5ms)[0m  SELECT  1 AS one FROM "parents" WHERE "parents"."email" = 'cleora@kozey.info' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "parents" ("first_name", "last_name", "email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "Favian"], ["last_name", "Kshlerin"], ["email", "cleora@kozey.info"], ["encrypted_password", "$2a$10$O5K9pew3wcJKd.IrH4lhtObKk9WsB7/BNdBLgTgAZ8qDp1M9FpTPS"], ["created_at", "2015-04-17 02:31:04.560438"], ["updated_at", "2015-04-17 02:31:04.560438"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "children" ("first_name", "last_name", "city", "state", "phone", "gender", "birthdate", "bio", "smoke", "linkedin_url", "facebook_url", "pf_image_1", "pf_image_2", "pf_image_3", "pf_image_4", "pf_image_5", "parent_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19) RETURNING "id"  [["first_name", "Jonathan"], ["last_name", "Douglas"], ["city", "Feestberg"], ["state", "HI"], ["phone", "(557) 812-2119 x33569"], ["gender", "female"], ["birthdate", "1995-12-31"], ["bio", "utilize sexy web-readiness"], ["smoke", "f"], ["linkedin_url", "http://botsfordtillman.com/estrella"], ["facebook_url", "http://mcglynnfeil.name/eulah"], ["pf_image_1", "http://robohash.org/estatmollitia.png?size=300x300"], ["pf_image_2", "http://robohash.org/quiavoluptasest.png?size=300x300"], ["pf_image_3", "http://robohash.org/suscipitdolorereprehenderit.png?size=300x300"], ["pf_image_4", "http://robohash.org/nequemolestiaeexplicabo.png?size=300x300"], ["pf_image_5", "http://robohash.org/suscipitquasfacere.png?size=300x300"], ["parent_id", 2], ["created_at", "2015-04-17 02:31:04.566847"], ["updated_at", "2015-04-17 02:31:04.566847"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["child_id", 3], ["interest_id", 81], ["created_at", "2015-04-17 02:31:04.571120"], ["updated_at", "2015-04-17 02:31:04.571120"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["child_id", 3], ["interest_id", 53], ["created_at", "2015-04-17 02:31:04.573977"], ["updated_at", "2015-04-17 02:31:04.573977"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["child_id", 3], ["interest_id", 11], ["created_at", "2015-04-17 02:31:04.576768"], ["updated_at", "2015-04-17 02:31:04.576768"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["child_id", 3], ["interest_id", 48], ["created_at", "2015-04-17 02:31:04.579383"], ["updated_at", "2015-04-17 02:31:04.579383"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["child_id", 3], ["interest_id", 24], ["created_at", "2015-04-17 02:31:04.581988"], ["updated_at", "2015-04-17 02:31:04.581988"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "children" ("first_name", "last_name", "city", "state", "phone", "gender", "birthdate", "bio", "smoke", "linkedin_url", "facebook_url", "pf_image_1", "pf_image_2", "pf_image_3", "pf_image_4", "pf_image_5", "parent_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19) RETURNING "id"  [["first_name", "Cheyanne"], ["last_name", "Lemke"], ["city", "Raynorhaven"], ["state", "GA"], ["phone", "945-644-9812"], ["gender", "female"], ["birthdate", "1990-05-31"], ["bio", "harness efficient content"], ["smoke", "t"], ["linkedin_url", "http://ritchiemarquardt.biz/thalia"], ["facebook_url", "http://macgyver.name/jada.reinger"], ["pf_image_1", "http://robohash.org/nihiletquasi.png?size=300x300"], ["pf_image_2", "http://robohash.org/quisporrout.png?size=300x300"], ["pf_image_3", "http://robohash.org/harumnihilrerum.png?size=300x300"], ["pf_image_4", "http://robohash.org/quasdoloremquae.png?size=300x300"], ["pf_image_5", "http://robohash.org/utmolestiaeex.png?size=300x300"], ["parent_id", 2], ["created_at", "2015-04-17 02:31:04.586497"], ["updated_at", "2015-04-17 02:31:04.586497"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["child_id", 4], ["interest_id", 39], ["created_at", "2015-04-17 02:31:04.590438"], ["updated_at", "2015-04-17 02:31:04.590438"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["child_id", 4], ["interest_id", 59], ["created_at", "2015-04-17 02:31:04.593141"], ["updated_at", "2015-04-17 02:31:04.593141"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["child_id", 4], ["interest_id", 54], ["created_at", "2015-04-17 02:31:04.595792"], ["updated_at", "2015-04-17 02:31:04.595792"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["child_id", 4], ["interest_id", 25], ["created_at", "2015-04-17 02:31:04.598404"], ["updated_at", "2015-04-17 02:31:04.598404"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["child_id", 4], ["interest_id", 33], ["created_at", "2015-04-17 02:31:04.601222"], ["updated_at", "2015-04-17 02:31:04.601222"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mParent Exists (0.3ms)[0m  SELECT  1 AS one FROM "parents" WHERE "parents"."email" = 'heath@legros.biz' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "parents" ("first_name", "last_name", "email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "Lavina"], ["last_name", "Johnston"], ["email", "heath@legros.biz"], ["encrypted_password", "$2a$10$TKf65rn1Ru2lJZ0eoWLPSeOtDjVGaDQoW91oyeTQY8nLaN2cJ25La"], ["created_at", "2015-04-17 02:31:04.696586"], ["updated_at", "2015-04-17 02:31:04.696586"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "children" ("first_name", "last_name", "city", "state", "phone", "gender", "birthdate", "bio", "smoke", "linkedin_url", "facebook_url", "pf_image_1", "pf_image_2", "pf_image_3", "pf_image_4", "pf_image_5", "parent_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19) RETURNING "id"  [["first_name", "Delia"], ["last_name", "Kovacek"], ["city", "Drewfurt"], ["state", "WA"], ["phone", "280-593-0938 x71603"], ["gender", "male"], ["birthdate", "1982-12-06"], ["bio", "engineer user-centric deliverables"], ["smoke", "t"], ["linkedin_url", "http://waters.name/sanford"], ["facebook_url", "http://kuphal.org/erik_schimmel"], ["pf_image_1", "http://robohash.org/nesciuntquostemporibus.png?size=300x300"], ["pf_image_2", "http://robohash.org/consecteturquofacilis.png?size=300x300"], ["pf_image_3", "http://robohash.org/utconsequaturfuga.png?size=300x300"], ["pf_image_4", "http://robohash.org/quiiustopraesentium.png?size=300x300"], ["pf_image_5", "http://robohash.org/animisuntcupiditate.png?size=300x300"], ["parent_id", 3], ["created_at", "2015-04-17 02:31:04.703446"], ["updated_at", "2015-04-17 02:31:04.703446"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["child_id", 5], ["interest_id", 37], ["created_at", "2015-04-17 02:31:04.708845"], ["updated_at", "2015-04-17 02:31:04.708845"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["child_id", 5], ["interest_id", 22], ["created_at", "2015-04-17 02:31:04.712359"], ["updated_at", "2015-04-17 02:31:04.712359"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["child_id", 5], ["interest_id", 48], ["created_at", "2015-04-17 02:31:04.715384"], ["updated_at", "2015-04-17 02:31:04.715384"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["child_id", 5], ["interest_id", 64], ["created_at", "2015-04-17 02:31:04.718164"], ["updated_at", "2015-04-17 02:31:04.718164"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["child_id", 5], ["interest_id", 47], ["created_at", "2015-04-17 02:31:04.720873"], ["updated_at", "2015-04-17 02:31:04.720873"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "children" ("first_name", "last_name", "city", "state", "phone", "gender", "birthdate", "bio", "smoke", "linkedin_url", "facebook_url", "pf_image_1", "pf_image_2", "pf_image_3", "pf_image_4", "pf_image_5", "parent_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19) RETURNING "id"  [["first_name", "Vivian"], ["last_name", "Konopelski"], ["city", "Fritzmouth"], ["state", "TX"], ["phone", "(497) 418-2442"], ["gender", "female"], ["birthdate", "1986-07-25"], ["bio", "engage viral technologies"], ["smoke", "f"], ["linkedin_url", "http://lebsackgerlach.info/anderson.cormier"], ["facebook_url", "http://hilll.biz/sadye"], ["pf_image_1", "http://robohash.org/consequaturaliquiddeserunt.png?size=300x300"], ["pf_image_2", "http://robohash.org/fugitbeataemaxime.png?size=300x300"], ["pf_image_3", "http://robohash.org/estquiaalias.png?size=300x300"], ["pf_image_4", "http://robohash.org/abquiaut.png?size=300x300"], ["pf_image_5", "http://robohash.org/adipisciminimablanditiis.png?size=300x300"], ["parent_id", 3], ["created_at", "2015-04-17 02:31:04.725499"], ["updated_at", "2015-04-17 02:31:04.725499"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["child_id", 6], ["interest_id", 19], ["created_at", "2015-04-17 02:31:04.730744"], ["updated_at", "2015-04-17 02:31:04.730744"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["child_id", 6], ["interest_id", 26], ["created_at", "2015-04-17 02:31:04.734307"], ["updated_at", "2015-04-17 02:31:04.734307"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["child_id", 6], ["interest_id", 33], ["created_at", "2015-04-17 02:31:04.737324"], ["updated_at", "2015-04-17 02:31:04.737324"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["child_id", 6], ["interest_id", 70], ["created_at", "2015-04-17 02:31:04.740335"], ["updated_at", "2015-04-17 02:31:04.740335"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["child_id", 6], ["interest_id", 70], ["created_at", "2015-04-17 02:31:04.743034"], ["updated_at", "2015-04-17 02:31:04.743034"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mParent Exists (0.3ms)[0m  SELECT  1 AS one FROM "parents" WHERE "parents"."email" = 'oscar_schowalter@beier.net' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "parents" ("first_name", "last_name", "email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "Uriel"], ["last_name", "VonRueden"], ["email", "oscar_schowalter@beier.net"], ["encrypted_password", "$2a$10$FyGz.ScNn6G0UPnfbLBmseUskQESgytxtP.lJQykDA9DfvevZmRaO"], ["created_at", "2015-04-17 02:31:04.834713"], ["updated_at", "2015-04-17 02:31:04.834713"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "children" ("first_name", "last_name", "city", "state", "phone", "gender", "birthdate", "bio", "smoke", "linkedin_url", "facebook_url", "pf_image_1", "pf_image_2", "pf_image_3", "pf_image_4", "pf_image_5", "parent_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19) RETURNING "id"  [["first_name", "Taryn"], ["last_name", "Lehner"], ["city", "Deltaland"], ["state", "AK"], ["phone", "(180) 240-5704"], ["gender", "male"], ["birthdate", "1992-05-08"], ["bio", "grow compelling applications"], ["smoke", "f"], ["linkedin_url", "http://fahey.net/burdette_collier"], ["facebook_url", "http://heel.info/paxton_okuneva"], ["pf_image_1", "http://robohash.org/autautemnesciunt.png?size=300x300"], ["pf_image_2", "http://robohash.org/autrerumomnis.png?size=300x300"], ["pf_image_3", "http://robohash.org/quasvoluptaseligendi.png?size=300x300"], ["pf_image_4", "http://robohash.org/explicaboperspiciatisvelit.png?size=300x300"], ["pf_image_5", "http://robohash.org/ipsamcumeos.png?size=300x300"], ["parent_id", 4], ["created_at", "2015-04-17 02:31:04.841727"], ["updated_at", "2015-04-17 02:31:04.841727"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["child_id", 7], ["interest_id", 16], ["created_at", "2015-04-17 02:31:04.846410"], ["updated_at", "2015-04-17 02:31:04.846410"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["child_id", 7], ["interest_id", 16], ["created_at", "2015-04-17 02:31:04.849307"], ["updated_at", "2015-04-17 02:31:04.849307"]]
+  [1m[36m (0.8ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["child_id", 7], ["interest_id", 20], ["created_at", "2015-04-17 02:31:04.852614"], ["updated_at", "2015-04-17 02:31:04.852614"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["child_id", 7], ["interest_id", 52], ["created_at", "2015-04-17 02:31:04.855547"], ["updated_at", "2015-04-17 02:31:04.855547"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["child_id", 7], ["interest_id", 23], ["created_at", "2015-04-17 02:31:04.858306"], ["updated_at", "2015-04-17 02:31:04.858306"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "children" ("first_name", "last_name", "city", "state", "phone", "gender", "birthdate", "bio", "smoke", "linkedin_url", "facebook_url", "pf_image_1", "pf_image_2", "pf_image_3", "pf_image_4", "pf_image_5", "parent_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19) RETURNING "id"  [["first_name", "Alexander"], ["last_name", "Waelchi"], ["city", "Alvaburgh"], ["state", "KY"], ["phone", "402-338-3959"], ["gender", "female"], ["birthdate", "1993-10-13"], ["bio", "grow efficient models"], ["smoke", "t"], ["linkedin_url", "http://williamson.com/arvilla_bradtke"], ["facebook_url", "http://ko.biz/kacey.lesch"], ["pf_image_1", "http://robohash.org/autdoloremqueest.png?size=300x300"], ["pf_image_2", "http://robohash.org/etducimusquo.png?size=300x300"], ["pf_image_3", "http://robohash.org/quaequiqui.png?size=300x300"], ["pf_image_4", "http://robohash.org/utsedbeatae.png?size=300x300"], ["pf_image_5", "http://robohash.org/doloresestet.png?size=300x300"], ["parent_id", 4], ["created_at", "2015-04-17 02:31:04.863009"], ["updated_at", "2015-04-17 02:31:04.863009"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["child_id", 8], ["interest_id", 30], ["created_at", "2015-04-17 02:31:04.866883"], ["updated_at", "2015-04-17 02:31:04.866883"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["child_id", 8], ["interest_id", 63], ["created_at", "2015-04-17 02:31:04.869768"], ["updated_at", "2015-04-17 02:31:04.869768"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["child_id", 8], ["interest_id", 20], ["created_at", "2015-04-17 02:31:04.872549"], ["updated_at", "2015-04-17 02:31:04.872549"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["child_id", 8], ["interest_id", 10], ["created_at", "2015-04-17 02:31:04.875219"], ["updated_at", "2015-04-17 02:31:04.875219"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["child_id", 8], ["interest_id", 61], ["created_at", "2015-04-17 02:31:04.877826"], ["updated_at", "2015-04-17 02:31:04.877826"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mParent Exists (0.3ms)[0m  SELECT  1 AS one FROM "parents" WHERE "parents"."email" = 'edythe@kunze.com' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "parents" ("first_name", "last_name", "email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "Kane"], ["last_name", "Sipes"], ["email", "edythe@kunze.com"], ["encrypted_password", "$2a$10$9SH3kayJ3EDOfdYgJsBGF.5bfELbYh.9JD3JbpF1zScDk1ueB9Zb6"], ["created_at", "2015-04-17 02:31:04.972633"], ["updated_at", "2015-04-17 02:31:04.972633"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "children" ("first_name", "last_name", "city", "state", "phone", "gender", "birthdate", "bio", "smoke", "linkedin_url", "facebook_url", "pf_image_1", "pf_image_2", "pf_image_3", "pf_image_4", "pf_image_5", "parent_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19) RETURNING "id"  [["first_name", "Brice"], ["last_name", "Flatley"], ["city", "Amelyfort"], ["state", "NC"], ["phone", "(424) 187-5196"], ["gender", "male"], ["birthdate", "1983-06-05"], ["bio", "implement cross-platform web-readiness"], ["smoke", "f"], ["linkedin_url", "http://fritsch.name/lyda"], ["facebook_url", "http://wardboehm.name/tomas"], ["pf_image_1", "http://robohash.org/commodiexiusto.png?size=300x300"], ["pf_image_2", "http://robohash.org/architectoenimnobis.png?size=300x300"], ["pf_image_3", "http://robohash.org/corporisquiaquo.png?size=300x300"], ["pf_image_4", "http://robohash.org/inerrorsit.png?size=300x300"], ["pf_image_5", "http://robohash.org/quiaquamdoloremque.png?size=300x300"], ["parent_id", 5], ["created_at", "2015-04-17 02:31:04.977644"], ["updated_at", "2015-04-17 02:31:04.977644"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["child_id", 9], ["interest_id", 76], ["created_at", "2015-04-17 02:31:04.982718"], ["updated_at", "2015-04-17 02:31:04.982718"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["child_id", 9], ["interest_id", 32], ["created_at", "2015-04-17 02:31:04.986434"], ["updated_at", "2015-04-17 02:31:04.986434"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["child_id", 9], ["interest_id", 29], ["created_at", "2015-04-17 02:31:04.989477"], ["updated_at", "2015-04-17 02:31:04.989477"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["child_id", 9], ["interest_id", 20], ["created_at", "2015-04-17 02:31:04.992208"], ["updated_at", "2015-04-17 02:31:04.992208"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["child_id", 9], ["interest_id", 70], ["created_at", "2015-04-17 02:31:04.994849"], ["updated_at", "2015-04-17 02:31:04.994849"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "children" ("first_name", "last_name", "city", "state", "phone", "gender", "birthdate", "bio", "smoke", "linkedin_url", "facebook_url", "pf_image_1", "pf_image_2", "pf_image_3", "pf_image_4", "pf_image_5", "parent_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19) RETURNING "id"  [["first_name", "Cruz"], ["last_name", "Carroll"], ["city", "South Kennedy"], ["state", "CO"], ["phone", "1-112-059-9873"], ["gender", "female"], ["birthdate", "1987-09-17"], ["bio", "iterate visionary niches"], ["smoke", "f"], ["linkedin_url", "http://schulist.net/emely.oconnell"], ["facebook_url", "http://ziemann.biz/jose.hoppe"], ["pf_image_1", "http://robohash.org/veritatissedodit.png?size=300x300"], ["pf_image_2", "http://robohash.org/accusantiumaspernaturnatus.png?size=300x300"], ["pf_image_3", "http://robohash.org/ducimusnonnecessitatibus.png?size=300x300"], ["pf_image_4", "http://robohash.org/delectusestaut.png?size=300x300"], ["pf_image_5", "http://robohash.org/etidmolestiae.png?size=300x300"], ["parent_id", 5], ["created_at", "2015-04-17 02:31:04.999733"], ["updated_at", "2015-04-17 02:31:04.999733"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["child_id", 10], ["interest_id", 43], ["created_at", "2015-04-17 02:31:05.003734"], ["updated_at", "2015-04-17 02:31:05.003734"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["child_id", 10], ["interest_id", 4], ["created_at", "2015-04-17 02:31:05.006407"], ["updated_at", "2015-04-17 02:31:05.006407"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["child_id", 10], ["interest_id", 26], ["created_at", "2015-04-17 02:31:05.009376"], ["updated_at", "2015-04-17 02:31:05.009376"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["child_id", 10], ["interest_id", 45], ["created_at", "2015-04-17 02:31:05.012157"], ["updated_at", "2015-04-17 02:31:05.012157"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["child_id", 10], ["interest_id", 42], ["created_at", "2015-04-17 02:31:05.014755"], ["updated_at", "2015-04-17 02:31:05.014755"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mParent Exists (0.3ms)[0m  SELECT  1 AS one FROM "parents" WHERE "parents"."email" = 'leda@shieldskunde.com' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "parents" ("first_name", "last_name", "email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "Guido"], ["last_name", "Ratke"], ["email", "leda@shieldskunde.com"], ["encrypted_password", "$2a$10$K2NNOADfmnhtx.GnZm1Bze4NG.56/AKnZTkE0ZrrmBD9qvHLRaH.u"], ["created_at", "2015-04-17 02:31:05.105653"], ["updated_at", "2015-04-17 02:31:05.105653"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "children" ("first_name", "last_name", "city", "state", "phone", "gender", "birthdate", "bio", "smoke", "linkedin_url", "facebook_url", "pf_image_1", "pf_image_2", "pf_image_3", "pf_image_4", "pf_image_5", "parent_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19) RETURNING "id"  [["first_name", "Trey"], ["last_name", "Harvey"], ["city", "Kulasmouth"], ["state", "TX"], ["phone", "545.013.9890"], ["gender", "female"], ["birthdate", "1986-06-04"], ["bio", "synthesize synergistic e-services"], ["smoke", "f"], ["linkedin_url", "http://white.name/kris.feeney"], ["facebook_url", "http://ward.com/santos"], ["pf_image_1", "http://robohash.org/corruptiinciduntvoluptatibus.png?size=300x300"], ["pf_image_2", "http://robohash.org/sedestrepellendus.png?size=300x300"], ["pf_image_3", "http://robohash.org/nonminimaest.png?size=300x300"], ["pf_image_4", "http://robohash.org/oditillumaccusantium.png?size=300x300"], ["pf_image_5", "http://robohash.org/delectusvelut.png?size=300x300"], ["parent_id", 6], ["created_at", "2015-04-17 02:31:05.110963"], ["updated_at", "2015-04-17 02:31:05.110963"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["child_id", 11], ["interest_id", 46], ["created_at", "2015-04-17 02:31:05.116147"], ["updated_at", "2015-04-17 02:31:05.116147"]]
+  [1m[35m (0.7ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["child_id", 11], ["interest_id", 36], ["created_at", "2015-04-17 02:31:05.119958"], ["updated_at", "2015-04-17 02:31:05.119958"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["child_id", 11], ["interest_id", 29], ["created_at", "2015-04-17 02:31:05.122976"], ["updated_at", "2015-04-17 02:31:05.122976"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["child_id", 11], ["interest_id", 79], ["created_at", "2015-04-17 02:31:05.125683"], ["updated_at", "2015-04-17 02:31:05.125683"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["child_id", 11], ["interest_id", 16], ["created_at", "2015-04-17 02:31:05.128402"], ["updated_at", "2015-04-17 02:31:05.128402"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "children" ("first_name", "last_name", "city", "state", "phone", "gender", "birthdate", "bio", "smoke", "linkedin_url", "facebook_url", "pf_image_1", "pf_image_2", "pf_image_3", "pf_image_4", "pf_image_5", "parent_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19) RETURNING "id"  [["first_name", "Rick"], ["last_name", "Abbott"], ["city", "Lilianeside"], ["state", "NJ"], ["phone", "1-380-080-3992 x691"], ["gender", "male"], ["birthdate", "1987-05-28"], ["bio", "target killer e-business"], ["smoke", "t"], ["linkedin_url", "http://okeefe.com/nya"], ["facebook_url", "http://carterstiedemann.name/sabryna.von"], ["pf_image_1", "http://robohash.org/consequaturtotamofficia.png?size=300x300"], ["pf_image_2", "http://robohash.org/utsitaut.png?size=300x300"], ["pf_image_3", "http://robohash.org/harumeiuscumque.png?size=300x300"], ["pf_image_4", "http://robohash.org/suntenimest.png?size=300x300"], ["pf_image_5", "http://robohash.org/numquamatquequo.png?size=300x300"], ["parent_id", 6], ["created_at", "2015-04-17 02:31:05.132894"], ["updated_at", "2015-04-17 02:31:05.132894"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["child_id", 12], ["interest_id", 9], ["created_at", "2015-04-17 02:31:05.136789"], ["updated_at", "2015-04-17 02:31:05.136789"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["child_id", 12], ["interest_id", 13], ["created_at", "2015-04-17 02:31:05.139490"], ["updated_at", "2015-04-17 02:31:05.139490"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["child_id", 12], ["interest_id", 7], ["created_at", "2015-04-17 02:31:05.142109"], ["updated_at", "2015-04-17 02:31:05.142109"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["child_id", 12], ["interest_id", 38], ["created_at", "2015-04-17 02:31:05.144708"], ["updated_at", "2015-04-17 02:31:05.144708"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["child_id", 12], ["interest_id", 53], ["created_at", "2015-04-17 02:31:05.147224"], ["updated_at", "2015-04-17 02:31:05.147224"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mParent Exists (0.3ms)[0m  SELECT  1 AS one FROM "parents" WHERE "parents"."email" = 'jovani@batz.biz' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "parents" ("first_name", "last_name", "email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "Michelle"], ["last_name", "Ryan"], ["email", "jovani@batz.biz"], ["encrypted_password", "$2a$10$z6YH6U0y6dwOFDWM18oa..7Pt9ZL/vOznlGQYLxrBzZPB/9c1syp."], ["created_at", "2015-04-17 02:31:05.237824"], ["updated_at", "2015-04-17 02:31:05.237824"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "children" ("first_name", "last_name", "city", "state", "phone", "gender", "birthdate", "bio", "smoke", "linkedin_url", "facebook_url", "pf_image_1", "pf_image_2", "pf_image_3", "pf_image_4", "pf_image_5", "parent_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19) RETURNING "id"  [["first_name", "Webster"], ["last_name", "Kuhn"], ["city", "South Kaitlynmouth"], ["state", "CA"], ["phone", "736-564-4818 x88142"], ["gender", "female"], ["birthdate", "1989-11-02"], ["bio", "monetize value-added markets"], ["smoke", "t"], ["linkedin_url", "http://hermiston.com/mark"], ["facebook_url", "http://kihnkihn.info/felicity.graham"], ["pf_image_1", "http://robohash.org/quinullain.png?size=300x300"], ["pf_image_2", "http://robohash.org/temporaeumvoluptatem.png?size=300x300"], ["pf_image_3", "http://robohash.org/quiaprovidentaut.png?size=300x300"], ["pf_image_4", "http://robohash.org/ullamporroet.png?size=300x300"], ["pf_image_5", "http://robohash.org/repellendusatquetempore.png?size=300x300"], ["parent_id", 7], ["created_at", "2015-04-17 02:31:05.242939"], ["updated_at", "2015-04-17 02:31:05.242939"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["child_id", 13], ["interest_id", 18], ["created_at", "2015-04-17 02:31:05.247572"], ["updated_at", "2015-04-17 02:31:05.247572"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["child_id", 13], ["interest_id", 62], ["created_at", "2015-04-17 02:31:05.250904"], ["updated_at", "2015-04-17 02:31:05.250904"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["child_id", 13], ["interest_id", 30], ["created_at", "2015-04-17 02:31:05.254177"], ["updated_at", "2015-04-17 02:31:05.254177"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["child_id", 13], ["interest_id", 77], ["created_at", "2015-04-17 02:31:05.257089"], ["updated_at", "2015-04-17 02:31:05.257089"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["child_id", 13], ["interest_id", 68], ["created_at", "2015-04-17 02:31:05.259755"], ["updated_at", "2015-04-17 02:31:05.259755"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "children" ("first_name", "last_name", "city", "state", "phone", "gender", "birthdate", "bio", "smoke", "linkedin_url", "facebook_url", "pf_image_1", "pf_image_2", "pf_image_3", "pf_image_4", "pf_image_5", "parent_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19) RETURNING "id"  [["first_name", "Adolph"], ["last_name", "Runolfsdottir"], ["city", "New Nickville"], ["state", "SD"], ["phone", "1-311-893-5326 x230"], ["gender", "male"], ["birthdate", "1984-03-13"], ["bio", "expedite viral ROI"], ["smoke", "t"], ["linkedin_url", "http://macgyver.org/raymundo"], ["facebook_url", "http://robertsbaumbach.biz/dallin"], ["pf_image_1", "http://robohash.org/idlaudantiumvoluptatum.png?size=300x300"], ["pf_image_2", "http://robohash.org/quiquisinventore.png?size=300x300"], ["pf_image_3", "http://robohash.org/nonabet.png?size=300x300"], ["pf_image_4", "http://robohash.org/iddoloremqueconsequatur.png?size=300x300"], ["pf_image_5", "http://robohash.org/utquasnon.png?size=300x300"], ["parent_id", 7], ["created_at", "2015-04-17 02:31:05.264431"], ["updated_at", "2015-04-17 02:31:05.264431"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["child_id", 14], ["interest_id", 56], ["created_at", "2015-04-17 02:31:05.268571"], ["updated_at", "2015-04-17 02:31:05.268571"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["child_id", 14], ["interest_id", 74], ["created_at", "2015-04-17 02:31:05.271321"], ["updated_at", "2015-04-17 02:31:05.271321"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["child_id", 14], ["interest_id", 14], ["created_at", "2015-04-17 02:31:05.274297"], ["updated_at", "2015-04-17 02:31:05.274297"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["child_id", 14], ["interest_id", 59], ["created_at", "2015-04-17 02:31:05.276937"], ["updated_at", "2015-04-17 02:31:05.276937"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["child_id", 14], ["interest_id", 72], ["created_at", "2015-04-17 02:31:05.279548"], ["updated_at", "2015-04-17 02:31:05.279548"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mParent Exists (0.3ms)[0m  SELECT  1 AS one FROM "parents" WHERE "parents"."email" = 'kurtis.price@oharatromp.biz' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "parents" ("first_name", "last_name", "email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "Jarrod"], ["last_name", "Botsford"], ["email", "kurtis.price@oharatromp.biz"], ["encrypted_password", "$2a$10$TYhXfBbOQtQtFAUKZML6Feq3K.8xn/Y5/FIfAMRq4N5jpxUtmiszG"], ["created_at", "2015-04-17 02:31:05.366578"], ["updated_at", "2015-04-17 02:31:05.366578"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "children" ("first_name", "last_name", "city", "state", "phone", "gender", "birthdate", "bio", "smoke", "linkedin_url", "facebook_url", "pf_image_1", "pf_image_2", "pf_image_3", "pf_image_4", "pf_image_5", "parent_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19) RETURNING "id"  [["first_name", "Fabian"], ["last_name", "Willms"], ["city", "New Ahmad"], ["state", "NY"], ["phone", "(357) 855-1159 x31324"], ["gender", "female"], ["birthdate", "1993-09-16"], ["bio", "optimize strategic partnerships"], ["smoke", "f"], ["linkedin_url", "http://balistreri.name/houston_herman"], ["facebook_url", "http://franecki.net/olen_jacobs"], ["pf_image_1", "http://robohash.org/nonmodimaxime.png?size=300x300"], ["pf_image_2", "http://robohash.org/quiasapienteoccaecati.png?size=300x300"], ["pf_image_3", "http://robohash.org/nonaliquidodit.png?size=300x300"], ["pf_image_4", "http://robohash.org/iustonamsed.png?size=300x300"], ["pf_image_5", "http://robohash.org/namquaesed.png?size=300x300"], ["parent_id", 8], ["created_at", "2015-04-17 02:31:05.372803"], ["updated_at", "2015-04-17 02:31:05.372803"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["child_id", 15], ["interest_id", 16], ["created_at", "2015-04-17 02:31:05.377901"], ["updated_at", "2015-04-17 02:31:05.377901"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["child_id", 15], ["interest_id", 3], ["created_at", "2015-04-17 02:31:05.380858"], ["updated_at", "2015-04-17 02:31:05.380858"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["child_id", 15], ["interest_id", 30], ["created_at", "2015-04-17 02:31:05.383545"], ["updated_at", "2015-04-17 02:31:05.383545"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["child_id", 15], ["interest_id", 69], ["created_at", "2015-04-17 02:31:05.386215"], ["updated_at", "2015-04-17 02:31:05.386215"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["child_id", 15], ["interest_id", 28], ["created_at", "2015-04-17 02:31:05.389083"], ["updated_at", "2015-04-17 02:31:05.389083"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "children" ("first_name", "last_name", "city", "state", "phone", "gender", "birthdate", "bio", "smoke", "linkedin_url", "facebook_url", "pf_image_1", "pf_image_2", "pf_image_3", "pf_image_4", "pf_image_5", "parent_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19) RETURNING "id"  [["first_name", "Neal"], ["last_name", "Hoppe"], ["city", "New Adrian"], ["state", "SD"], ["phone", "1-391-866-1326"], ["gender", "female"], ["birthdate", "1992-02-21"], ["bio", "deploy customized ROI"], ["smoke", "f"], ["linkedin_url", "http://dietrich.info/brennan.kreiger"], ["facebook_url", "http://wisozk.name/lily_bauch"], ["pf_image_1", "http://robohash.org/atnemoaut.png?size=300x300"], ["pf_image_2", "http://robohash.org/aliasquasimodi.png?size=300x300"], ["pf_image_3", "http://robohash.org/voluptatumtemporibusnam.png?size=300x300"], ["pf_image_4", "http://robohash.org/possimusautvoluptas.png?size=300x300"], ["pf_image_5", "http://robohash.org/quasiquaeratquibusdam.png?size=300x300"], ["parent_id", 8], ["created_at", "2015-04-17 02:31:05.393991"], ["updated_at", "2015-04-17 02:31:05.393991"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["child_id", 16], ["interest_id", 29], ["created_at", "2015-04-17 02:31:05.398126"], ["updated_at", "2015-04-17 02:31:05.398126"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["child_id", 16], ["interest_id", 78], ["created_at", "2015-04-17 02:31:05.400991"], ["updated_at", "2015-04-17 02:31:05.400991"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["child_id", 16], ["interest_id", 67], ["created_at", "2015-04-17 02:31:05.403764"], ["updated_at", "2015-04-17 02:31:05.403764"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["child_id", 16], ["interest_id", 7], ["created_at", "2015-04-17 02:31:05.406382"], ["updated_at", "2015-04-17 02:31:05.406382"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["child_id", 16], ["interest_id", 8], ["created_at", "2015-04-17 02:31:05.409031"], ["updated_at", "2015-04-17 02:31:05.409031"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mParent Exists (0.3ms)[0m  SELECT  1 AS one FROM "parents" WHERE "parents"."email" = 'evans.orn@kunde.info' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "parents" ("first_name", "last_name", "email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "Jarvis"], ["last_name", "Wiegand"], ["email", "evans.orn@kunde.info"], ["encrypted_password", "$2a$10$1Qj2xsXaBIgdnCYbDvNZe.d8n6Sal/X92S.sK6kSJCnDfJcHTmG4i"], ["created_at", "2015-04-17 02:31:05.504190"], ["updated_at", "2015-04-17 02:31:05.504190"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "children" ("first_name", "last_name", "city", "state", "phone", "gender", "birthdate", "bio", "smoke", "linkedin_url", "facebook_url", "pf_image_1", "pf_image_2", "pf_image_3", "pf_image_4", "pf_image_5", "parent_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19) RETURNING "id"  [["first_name", "Bettye"], ["last_name", "Luettgen"], ["city", "Bruenbury"], ["state", "NH"], ["phone", "1-789-141-9559"], ["gender", "male"], ["birthdate", "1990-03-04"], ["bio", "iterate dynamic architectures"], ["smoke", "t"], ["linkedin_url", "http://labadie.org/madison"], ["facebook_url", "http://aufderharwunsch.com/filomena_lang"], ["pf_image_1", "http://robohash.org/utitaquevoluptas.png?size=300x300"], ["pf_image_2", "http://robohash.org/quiautminus.png?size=300x300"], ["pf_image_3", "http://robohash.org/utquisconsequatur.png?size=300x300"], ["pf_image_4", "http://robohash.org/eiussintsequi.png?size=300x300"], ["pf_image_5", "http://robohash.org/estdebitisab.png?size=300x300"], ["parent_id", 9], ["created_at", "2015-04-17 02:31:05.509645"], ["updated_at", "2015-04-17 02:31:05.509645"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["child_id", 17], ["interest_id", 64], ["created_at", "2015-04-17 02:31:05.513761"], ["updated_at", "2015-04-17 02:31:05.513761"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["child_id", 17], ["interest_id", 58], ["created_at", "2015-04-17 02:31:05.516512"], ["updated_at", "2015-04-17 02:31:05.516512"]]
+  [1m[36m (1.1ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["child_id", 17], ["interest_id", 76], ["created_at", "2015-04-17 02:31:05.520117"], ["updated_at", "2015-04-17 02:31:05.520117"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["child_id", 17], ["interest_id", 44], ["created_at", "2015-04-17 02:31:05.523063"], ["updated_at", "2015-04-17 02:31:05.523063"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["child_id", 17], ["interest_id", 25], ["created_at", "2015-04-17 02:31:05.526183"], ["updated_at", "2015-04-17 02:31:05.526183"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "children" ("first_name", "last_name", "city", "state", "phone", "gender", "birthdate", "bio", "smoke", "linkedin_url", "facebook_url", "pf_image_1", "pf_image_2", "pf_image_3", "pf_image_4", "pf_image_5", "parent_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19) RETURNING "id"  [["first_name", "Kari"], ["last_name", "Zemlak"], ["city", "Reichelview"], ["state", "WA"], ["phone", "529.263.1383 x63543"], ["gender", "female"], ["birthdate", "1995-08-08"], ["bio", "reinvent rich partnerships"], ["smoke", "f"], ["linkedin_url", "http://turcotte.net/brenda_dickens"], ["facebook_url", "http://klingkilback.name/mikayla"], ["pf_image_1", "http://robohash.org/enimsedaut.png?size=300x300"], ["pf_image_2", "http://robohash.org/repellendusnumquamconsequuntur.png?size=300x300"], ["pf_image_3", "http://robohash.org/quodadipiscisunt.png?size=300x300"], ["pf_image_4", "http://robohash.org/eligendialiquidipsam.png?size=300x300"], ["pf_image_5", "http://robohash.org/quisquamrationemolestias.png?size=300x300"], ["parent_id", 9], ["created_at", "2015-04-17 02:31:05.530833"], ["updated_at", "2015-04-17 02:31:05.530833"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["child_id", 18], ["interest_id", 66], ["created_at", "2015-04-17 02:31:05.536008"], ["updated_at", "2015-04-17 02:31:05.536008"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["child_id", 18], ["interest_id", 62], ["created_at", "2015-04-17 02:31:05.538902"], ["updated_at", "2015-04-17 02:31:05.538902"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["child_id", 18], ["interest_id", 69], ["created_at", "2015-04-17 02:31:05.542221"], ["updated_at", "2015-04-17 02:31:05.542221"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["child_id", 18], ["interest_id", 23], ["created_at", "2015-04-17 02:31:05.545374"], ["updated_at", "2015-04-17 02:31:05.545374"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["child_id", 18], ["interest_id", 20], ["created_at", "2015-04-17 02:31:05.548169"], ["updated_at", "2015-04-17 02:31:05.548169"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mParent Exists (0.3ms)[0m  SELECT  1 AS one FROM "parents" WHERE "parents"."email" = 'juvenal@kihn.name' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "parents" ("first_name", "last_name", "email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "Carmelo"], ["last_name", "Dickens"], ["email", "juvenal@kihn.name"], ["encrypted_password", "$2a$10$C0UlpkmwME/IDb9voriawOilIxUsxBLC9WEX.KUt13YGBwqCQoeg2"], ["created_at", "2015-04-17 02:31:05.646364"], ["updated_at", "2015-04-17 02:31:05.646364"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "children" ("first_name", "last_name", "city", "state", "phone", "gender", "birthdate", "bio", "smoke", "linkedin_url", "facebook_url", "pf_image_1", "pf_image_2", "pf_image_3", "pf_image_4", "pf_image_5", "parent_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19) RETURNING "id"  [["first_name", "Luigi"], ["last_name", "Kuhn"], ["city", "Emmerichside"], ["state", "IL"], ["phone", "813-399-6285 x12660"], ["gender", "male"], ["birthdate", "1992-10-14"], ["bio", "optimize cross-media e-tailers"], ["smoke", "t"], ["linkedin_url", "http://lubowitz.org/ernest_ondricka"], ["facebook_url", "http://lesch.name/vicenta_renner"], ["pf_image_1", "http://robohash.org/utidab.png?size=300x300"], ["pf_image_2", "http://robohash.org/etodioid.png?size=300x300"], ["pf_image_3", "http://robohash.org/quiasuntdolor.png?size=300x300"], ["pf_image_4", "http://robohash.org/doloritaquererum.png?size=300x300"], ["pf_image_5", "http://robohash.org/recusandaefugitexercitationem.png?size=300x300"], ["parent_id", 10], ["created_at", "2015-04-17 02:31:05.651705"], ["updated_at", "2015-04-17 02:31:05.651705"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["child_id", 19], ["interest_id", 81], ["created_at", "2015-04-17 02:31:05.655877"], ["updated_at", "2015-04-17 02:31:05.655877"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["child_id", 19], ["interest_id", 33], ["created_at", "2015-04-17 02:31:05.659849"], ["updated_at", "2015-04-17 02:31:05.659849"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["child_id", 19], ["interest_id", 29], ["created_at", "2015-04-17 02:31:05.662544"], ["updated_at", "2015-04-17 02:31:05.662544"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["child_id", 19], ["interest_id", 14], ["created_at", "2015-04-17 02:31:05.666224"], ["updated_at", "2015-04-17 02:31:05.666224"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["child_id", 19], ["interest_id", 70], ["created_at", "2015-04-17 02:31:05.669720"], ["updated_at", "2015-04-17 02:31:05.669720"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "children" ("first_name", "last_name", "city", "state", "phone", "gender", "birthdate", "bio", "smoke", "linkedin_url", "facebook_url", "pf_image_1", "pf_image_2", "pf_image_3", "pf_image_4", "pf_image_5", "parent_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19) RETURNING "id"  [["first_name", "Claud"], ["last_name", "Robel"], ["city", "Vincetown"], ["state", "CA"], ["phone", "566-708-2440"], ["gender", "other"], ["birthdate", "1994-10-16"], ["bio", "recontextualize value-added applications"], ["smoke", "f"], ["linkedin_url", "http://jacobs.biz/stephany"], ["facebook_url", "http://starkdare.info/allene.toy"], ["pf_image_1", "http://robohash.org/oditlaudantiumest.png?size=300x300"], ["pf_image_2", "http://robohash.org/nullaquiet.png?size=300x300"], ["pf_image_3", "http://robohash.org/evenietfugiatrerum.png?size=300x300"], ["pf_image_4", "http://robohash.org/eaqueatquemollitia.png?size=300x300"], ["pf_image_5", "http://robohash.org/nonauta.png?size=300x300"], ["parent_id", 10], ["created_at", "2015-04-17 02:31:05.674316"], ["updated_at", "2015-04-17 02:31:05.674316"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["child_id", 20], ["interest_id", 22], ["created_at", "2015-04-17 02:31:05.678249"], ["updated_at", "2015-04-17 02:31:05.678249"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["child_id", 20], ["interest_id", 78], ["created_at", "2015-04-17 02:31:05.681929"], ["updated_at", "2015-04-17 02:31:05.681929"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["child_id", 20], ["interest_id", 46], ["created_at", "2015-04-17 02:31:05.685496"], ["updated_at", "2015-04-17 02:31:05.685496"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["child_id", 20], ["interest_id", 4], ["created_at", "2015-04-17 02:31:05.688664"], ["updated_at", "2015-04-17 02:31:05.688664"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "children_interests" ("child_id", "interest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["child_id", 20], ["interest_id", 44], ["created_at", "2015-04-17 02:31:05.691390"], ["updated_at", "2015-04-17 02:31:05.691390"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36mParent Load (1.1ms)[0m  [1mSELECT  "parents".* FROM "parents"  ORDER BY "parents"."id" ASC LIMIT 1[0m
+  [1m[35mParent Load (0.7ms)[0m  SELECT  "parents".* FROM "parents"  ORDER BY "parents"."id" ASC LIMIT 1
+  [1m[36mChild Load (0.8ms)[0m  [1mSELECT "children".* FROM "children" WHERE "children"."parent_id" = $1[0m  [["parent_id", 1]]
+  [1m[35mParent Load (0.7ms)[0m  SELECT  "parents".* FROM "parents"  ORDER BY "parents"."id" ASC LIMIT 1
+  [1m[36mChild Load (0.3ms)[0m  [1mSELECT "children".* FROM "children" WHERE "children"."parent_id" = $1[0m  [["parent_id", 1]]
+  [1m[36mParent Load (1.2ms)[0m  [1mSELECT  "parents".* FROM "parents"  ORDER BY "parents"."id" ASC LIMIT 1[0m
+  [1m[35mChild Load (0.5ms)[0m  SELECT "children".* FROM "children" WHERE "children"."parent_id" = $1  [["parent_id", 1]]
+  [1m[36mParent Load (0.6ms)[0m  [1mSELECT  "parents".* FROM "parents"  ORDER BY "parents"."id" ASC LIMIT 1[0m
+  [1m[35mChild Load (0.4ms)[0m  SELECT  "children".* FROM "children" WHERE "children"."parent_id" = $1  ORDER BY "children"."id" ASC LIMIT 1  [["parent_id", 1]]
+  [1m[36mInterest Load (0.8ms)[0m  [1mSELECT "interests".* FROM "interests" INNER JOIN "children_interests" ON "interests"."id" = "children_interests"."interest_id" WHERE "children_interests"."child_id" = $1[0m  [["child_id", 1]]
+  [1m[35mParent Load (0.7ms)[0m  SELECT  "parents".* FROM "parents"  ORDER BY "parents"."id" ASC LIMIT 1
+  [1m[36mChild Load (0.4ms)[0m  [1mSELECT  "children".* FROM "children" WHERE "children"."parent_id" = $1  ORDER BY "children"."id" ASC LIMIT 1[0m  [["parent_id", 1]]
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "interests" INNER JOIN "children_interests" ON "interests"."id" = "children_interests"."interest_id" WHERE "children_interests"."child_id" = $1  [["child_id", 1]]

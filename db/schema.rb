@@ -35,10 +35,10 @@ ActiveRecord::Schema.define(version: 20150417001556) do
     t.string   "pf_image_3"
     t.string   "pf_image_4"
     t.string   "pf_image_5"
-    t.integer  "pf_image_default"
+    t.integer  "pf_image_default",  default: 1
     t.integer  "parent_id"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
   end
 
   create_table "children_interests", force: :cascade do |t|
