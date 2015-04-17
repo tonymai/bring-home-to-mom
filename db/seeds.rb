@@ -26,6 +26,7 @@ end
       state: Faker::Address.state_abbr,
       phone: Faker::PhoneNumber.phone_number,
       gender: ['male', 'female', 'other'].sample,
+      sexual_preference: ['men', 'women', 'both'].sample,
       birthdate: Faker::Date.between(35.years.ago, 18.years.ago),
       bio: Faker::Company.bs,
       smoke: [true, false].sample,
