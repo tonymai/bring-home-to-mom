@@ -1,0 +1,49 @@
+<header class=>
+  <nav class = "navbar">
+    <div class = "logo col">BHTM</div>
+    <div class = "navbar-link-wrapper">
+      <div class = "nav-link-btn login-btn">Login</div>
+      <div class = "nav-link-btn signup-btn">Signup</div>
+    </div>
+  </nav>
+</header>
+<div class="bgvid-wrapper">
+
+  <video class = "bg-vid" autoplay loop>
+    <source src="/assets/background_vid.webm" type= "video/webm">
+    </video>
+</div>
+<button class="how-button btn-big debug">HOW IT WORKS</button>
+
+  <div id="how-it-works" class="description">
+    <div class="description-wrapper">
+      <div><i class="fa fa-user-plus"></i>1</div>
+      <div>2</div>
+      <div>3</div>
+      <div>4</div>
+    </div>
+    <button class="btn-big">GET STARTED</button>
+  </div>
+
+  <div class = "form-wrapper">
+    <%= form_for :user do |f| %>
+    <%= f.label :first_name %>:
+    <%= f.text_field :first_name %>
+    <br>
+    <%= f.label :last_name %>:
+    <%= f.text_field :last_name %>
+    <br>
+    <%= f.label :email %>:
+    <%= f.text_field :email %>
+    <br>
+    <%= f.label :password %>:
+    <%= f.text_field :password %>
+    <%= f.submit value: "Signup" %>
+    <% end %>
+  </div>
+
+
+  create profile
+  search for matches
+  setup a date
+  wait for the wedding invitation

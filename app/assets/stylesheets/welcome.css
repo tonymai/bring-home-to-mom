@@ -1,0 +1,46 @@
+.debug{
+  border:1px solid red;
+}
+header{
+  height:1.5em;
+  width: 100%;
+  position:fixed;
+}
+
+.logo{
+  max-width: 200px;
+  color:white;
+  font-size: 1.8em;
+}
+.login-btn{
+  display: inline-block;
+  color:white;
+}
+
+.signup-btn{
+  display: inline-block;
+  color:white;
+}
+
+.navbar-link-wrapper{
+  float:right;
+  display: inline-block;
+}
+
+/*@media ( min-width : 400px ) {
+  .nav-link-btn { width: 50%; }
+  .nav-link-btn { width: 50%; }
+}
+*/
+.bg-vid{
+/*  min-height: 100%;
+*/width: 100%;
+  background: no-repeat;
+  background-size: cover;
+}
+
+
+
+.description{
+/*  min-height: 500px;
+*/}
