@@ -14,7 +14,7 @@ class ProfilesController < ApplicationController
     if @child.save
       redirect_to user_path(@parent)
     else
-      render 'profiles/new'
+      render :new
     end
   end
 
