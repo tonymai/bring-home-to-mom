@@ -5,6 +5,7 @@ header{
   height:1.5em;
   width: 100%;
   position:fixed;
+  z-index: 1;
 }
 
 .logo{
@@ -33,9 +34,7 @@ header{
   background-size: cover;
 }
 
-.bgvid-wrapper{
 
-}
 
 .how-button {
   width: 150px;
@@ -52,9 +51,12 @@ header{
   border-radius: 2px;
   padding: .4em;
   height: 50px;
+  z-index: 50;
 }
 
-
+.how-step{
+  display:inline-block;
+}
 
 .logout-button{
   text-decoration: none;

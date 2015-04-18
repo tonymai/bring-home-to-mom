@@ -22865,3 +22865,521 @@ Started GET "/assets/application.self-f8806224e027f3e3f0138ea9ce99319e298dfdb323
 
 
 Started GET "/assets/background_vid.webm" for ::1 at 2015-04-17 19:02:04 -0700
+
+
+Started GET "/" for ::1 at 2015-04-17 19:05:08 -0700
+Processing by WelcomeController#index as HTML
+  [1m[35mParent Load (0.7ms)[0m  SELECT  "parents".* FROM "parents" WHERE "parents"."id" = $1  ORDER BY "parents"."id" ASC LIMIT 1  [["id", 11]]
+  Rendered welcome/_navbar_loggedin.html.erb (2.2ms)
+  Rendered welcome/index.html.erb within layouts/application (29.4ms)
+Completed 200 OK in 2075ms (Views: 2064.9ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/assets/welcome.self-b78cd2cad69ea45db285688f02de15daff47c04966ee9f8553e05a52ac156194.css?body=1" for ::1 at 2015-04-17 19:05:10 -0700
+
+
+Started GET "/assets/responsive.gs.12col.self-b6e58af35687bc6702ecf456377ecb7a8377b0540d3b3726b7b5314fcf2856e8.css?body=1" for ::1 at 2015-04-17 19:05:10 -0700
+
+
+Started GET "/assets/font-awesome.min.self-6bb04114c00dc0f2115b700bce976c1d368c4c641247d3f2bd520b3067efef45.css?body=1" for ::1 at 2015-04-17 19:05:11 -0700
+
+
+Started GET "/assets/normalize.self-333ce827f60870acbaa5a751d49889465ce84697ee03980558f7d38405f670da.css?body=1" for ::1 at 2015-04-17 19:05:11 -0700
+
+
+Started GET "/assets/profiles.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-04-17 19:05:11 -0700
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-04-17 19:05:11 -0700
+
+
+Started GET "/assets/application.self-4f22ee513bff51c07ddbacea6716b3bb025259c40c0c44f68b3b024ed0ff7a2c.css?body=1" for ::1 at 2015-04-17 19:05:11 -0700
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-04-17 19:05:11 -0700
+
+
+Started GET "/assets/jquery_ujs.self-8e98a7a072a6cee1372d19fff9ff3e6aa1e39a37d89d6f06861637d061113ee7.js?body=1" for ::1 at 2015-04-17 19:05:11 -0700
+
+
+Started GET "/assets/handlebars.self-f84f44e551c73998c0d893cd058138a67c06a9ce578c21323db932e904b63991.js?body=1" for ::1 at 2015-04-17 19:05:11 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2015-04-17 19:05:11 -0700
+
+
+Started GET "/assets/profiles.self-19a187bec6cdb96d6de80a61c16c857c613536adf9138476bd367db38d282635.js?body=1" for ::1 at 2015-04-17 19:05:12 -0700
+
+
+Started GET "/assets/users.self-19a187bec6cdb96d6de80a61c16c857c613536adf9138476bd367db38d282635.js?body=1" for ::1 at 2015-04-17 19:05:12 -0700
+
+
+Started GET "/assets/welcome.self-19a187bec6cdb96d6de80a61c16c857c613536adf9138476bd367db38d282635.js?body=1" for ::1 at 2015-04-17 19:05:12 -0700
+
+
+Started GET "/assets/application.self-f8806224e027f3e3f0138ea9ce99319e298dfdb323304d1f1be6eae8e8c74724.js?body=1" for ::1 at 2015-04-17 19:05:12 -0700
+
+
+Started GET "/assets/background_vid.webm" for ::1 at 2015-04-17 19:05:12 -0700
+
+
+Started GET "/" for ::1 at 2015-04-17 19:08:23 -0700
+Processing by WelcomeController#index as HTML
+  [1m[36mParent Load (0.5ms)[0m  [1mSELECT  "parents".* FROM "parents" WHERE "parents"."id" = $1  ORDER BY "parents"."id" ASC LIMIT 1[0m  [["id", 11]]
+  Rendered welcome/_navbar_loggedin.html.erb (0.9ms)
+  Rendered welcome/index.html.erb within layouts/application (12.8ms)
+Completed 200 OK in 1133ms (Views: 1126.8ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/normalize.self-333ce827f60870acbaa5a751d49889465ce84697ee03980558f7d38405f670da.css?body=1" for ::1 at 2015-04-17 19:08:25 -0700
+
+
+Started GET "/assets/responsive.gs.12col.self-b6e58af35687bc6702ecf456377ecb7a8377b0540d3b3726b7b5314fcf2856e8.css?body=1" for ::1 at 2015-04-17 19:08:25 -0700
+
+
+Started GET "/assets/font-awesome.min.self-6bb04114c00dc0f2115b700bce976c1d368c4c641247d3f2bd520b3067efef45.css?body=1" for ::1 at 2015-04-17 19:08:25 -0700
+
+
+Started GET "/assets/welcome.self-70cf204e7c5a08ecef2c8360cfacd70b4fb33219c4751ac038310542a8e0510f.css?body=1" for ::1 at 2015-04-17 19:08:25 -0700
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-04-17 19:08:25 -0700
+
+
+Started GET "/assets/profiles.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-04-17 19:08:25 -0700
+
+
+Started GET "/assets/application.self-4f22ee513bff51c07ddbacea6716b3bb025259c40c0c44f68b3b024ed0ff7a2c.css?body=1" for ::1 at 2015-04-17 19:08:25 -0700
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-04-17 19:08:26 -0700
+
+
+Started GET "/assets/jquery_ujs.self-8e98a7a072a6cee1372d19fff9ff3e6aa1e39a37d89d6f06861637d061113ee7.js?body=1" for ::1 at 2015-04-17 19:08:26 -0700
+
+
+Started GET "/assets/handlebars.self-f84f44e551c73998c0d893cd058138a67c06a9ce578c21323db932e904b63991.js?body=1" for ::1 at 2015-04-17 19:08:26 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2015-04-17 19:08:26 -0700
+
+
+Started GET "/assets/profiles.self-19a187bec6cdb96d6de80a61c16c857c613536adf9138476bd367db38d282635.js?body=1" for ::1 at 2015-04-17 19:08:26 -0700
+
+
+Started GET "/assets/users.self-19a187bec6cdb96d6de80a61c16c857c613536adf9138476bd367db38d282635.js?body=1" for ::1 at 2015-04-17 19:08:26 -0700
+
+
+Started GET "/assets/welcome.self-19a187bec6cdb96d6de80a61c16c857c613536adf9138476bd367db38d282635.js?body=1" for ::1 at 2015-04-17 19:08:26 -0700
+
+
+Started GET "/assets/application.self-f8806224e027f3e3f0138ea9ce99319e298dfdb323304d1f1be6eae8e8c74724.js?body=1" for ::1 at 2015-04-17 19:08:26 -0700
+
+
+Started GET "/assets/background_vid.webm" for ::1 at 2015-04-17 19:08:26 -0700
+
+
+Started GET "/" for ::1 at 2015-04-17 19:08:55 -0700
+Processing by WelcomeController#index as HTML
+  [1m[35mParent Load (0.9ms)[0m  SELECT  "parents".* FROM "parents" WHERE "parents"."id" = $1  ORDER BY "parents"."id" ASC LIMIT 1  [["id", 11]]
+  Rendered welcome/_navbar_loggedin.html.erb (2.9ms)
+  Rendered welcome/index.html.erb within layouts/application (30.7ms)
+Completed 200 OK in 1572ms (Views: 1563.5ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/assets/welcome.self-57cdd10f027d4aed1132e1ec0fdcb039a212dc56ae23fee30525f9109c08fe11.css?body=1" for ::1 at 2015-04-17 19:08:57 -0700
+
+
+Started GET "/assets/responsive.gs.12col.self-b6e58af35687bc6702ecf456377ecb7a8377b0540d3b3726b7b5314fcf2856e8.css?body=1" for ::1 at 2015-04-17 19:08:57 -0700
+
+
+Started GET "/assets/normalize.self-333ce827f60870acbaa5a751d49889465ce84697ee03980558f7d38405f670da.css?body=1" for ::1 at 2015-04-17 19:08:57 -0700
+
+
+Started GET "/assets/font-awesome.min.self-6bb04114c00dc0f2115b700bce976c1d368c4c641247d3f2bd520b3067efef45.css?body=1" for ::1 at 2015-04-17 19:08:57 -0700
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-04-17 19:08:58 -0700
+
+
+Started GET "/assets/profiles.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-04-17 19:08:58 -0700
+
+
+Started GET "/assets/application.self-4f22ee513bff51c07ddbacea6716b3bb025259c40c0c44f68b3b024ed0ff7a2c.css?body=1" for ::1 at 2015-04-17 19:08:58 -0700
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-04-17 19:08:58 -0700
+
+
+Started GET "/assets/jquery_ujs.self-8e98a7a072a6cee1372d19fff9ff3e6aa1e39a37d89d6f06861637d061113ee7.js?body=1" for ::1 at 2015-04-17 19:08:58 -0700
+
+
+Started GET "/assets/handlebars.self-f84f44e551c73998c0d893cd058138a67c06a9ce578c21323db932e904b63991.js?body=1" for ::1 at 2015-04-17 19:08:58 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2015-04-17 19:08:58 -0700
+
+
+Started GET "/assets/profiles.self-19a187bec6cdb96d6de80a61c16c857c613536adf9138476bd367db38d282635.js?body=1" for ::1 at 2015-04-17 19:08:58 -0700
+
+
+Started GET "/assets/users.self-19a187bec6cdb96d6de80a61c16c857c613536adf9138476bd367db38d282635.js?body=1" for ::1 at 2015-04-17 19:08:58 -0700
+
+
+Started GET "/assets/welcome.self-19a187bec6cdb96d6de80a61c16c857c613536adf9138476bd367db38d282635.js?body=1" for ::1 at 2015-04-17 19:08:58 -0700
+
+
+Started GET "/assets/application.self-f8806224e027f3e3f0138ea9ce99319e298dfdb323304d1f1be6eae8e8c74724.js?body=1" for ::1 at 2015-04-17 19:08:59 -0700
+
+
+Started GET "/assets/background_vid.webm" for ::1 at 2015-04-17 19:08:59 -0700
+
+
+Started GET "/" for ::1 at 2015-04-17 19:09:08 -0700
+Processing by WelcomeController#index as HTML
+  [1m[36mParent Load (0.9ms)[0m  [1mSELECT  "parents".* FROM "parents" WHERE "parents"."id" = $1  ORDER BY "parents"."id" ASC LIMIT 1[0m  [["id", 11]]
+  Rendered welcome/_navbar_loggedin.html.erb (1.7ms)
+  Rendered welcome/index.html.erb within layouts/application (22.5ms)
+Completed 200 OK in 2105ms (Views: 2096.3ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/assets/welcome.self-f572eb22f83a3f0e56a26dc8fd1c5b0fdf792790a2d94cb812f52fd43c493435.css?body=1" for ::1 at 2015-04-17 19:09:10 -0700
+
+
+Started GET "/assets/font-awesome.min.self-6bb04114c00dc0f2115b700bce976c1d368c4c641247d3f2bd520b3067efef45.css?body=1" for ::1 at 2015-04-17 19:09:10 -0700
+
+
+Started GET "/assets/normalize.self-333ce827f60870acbaa5a751d49889465ce84697ee03980558f7d38405f670da.css?body=1" for ::1 at 2015-04-17 19:09:10 -0700
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-04-17 19:09:10 -0700
+
+
+Started GET "/assets/responsive.gs.12col.self-b6e58af35687bc6702ecf456377ecb7a8377b0540d3b3726b7b5314fcf2856e8.css?body=1" for ::1 at 2015-04-17 19:09:10 -0700
+
+
+Started GET "/assets/profiles.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-04-17 19:09:10 -0700
+
+
+Started GET "/assets/application.self-4f22ee513bff51c07ddbacea6716b3bb025259c40c0c44f68b3b024ed0ff7a2c.css?body=1" for ::1 at 2015-04-17 19:09:11 -0700
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-04-17 19:09:11 -0700
+
+
+Started GET "/assets/jquery_ujs.self-8e98a7a072a6cee1372d19fff9ff3e6aa1e39a37d89d6f06861637d061113ee7.js?body=1" for ::1 at 2015-04-17 19:09:11 -0700
+
+
+Started GET "/assets/handlebars.self-f84f44e551c73998c0d893cd058138a67c06a9ce578c21323db932e904b63991.js?body=1" for ::1 at 2015-04-17 19:09:11 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2015-04-17 19:09:11 -0700
+
+
+Started GET "/assets/profiles.self-19a187bec6cdb96d6de80a61c16c857c613536adf9138476bd367db38d282635.js?body=1" for ::1 at 2015-04-17 19:09:11 -0700
+
+
+Started GET "/assets/users.self-19a187bec6cdb96d6de80a61c16c857c613536adf9138476bd367db38d282635.js?body=1" for ::1 at 2015-04-17 19:09:11 -0700
+
+
+Started GET "/assets/welcome.self-19a187bec6cdb96d6de80a61c16c857c613536adf9138476bd367db38d282635.js?body=1" for ::1 at 2015-04-17 19:09:11 -0700
+
+
+Started GET "/assets/application.self-f8806224e027f3e3f0138ea9ce99319e298dfdb323304d1f1be6eae8e8c74724.js?body=1" for ::1 at 2015-04-17 19:09:11 -0700
+
+
+Started GET "/assets/background_vid.webm" for ::1 at 2015-04-17 19:09:12 -0700
+
+
+Started GET "/" for ::1 at 2015-04-17 19:09:23 -0700
+Processing by WelcomeController#index as HTML
+  [1m[35mParent Load (0.6ms)[0m  SELECT  "parents".* FROM "parents" WHERE "parents"."id" = $1  ORDER BY "parents"."id" ASC LIMIT 1  [["id", 11]]
+  Rendered welcome/_navbar_loggedin.html.erb (1.7ms)
+  Rendered welcome/index.html.erb within layouts/application (25.1ms)
+Completed 200 OK in 2151ms (Views: 2139.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/welcome.self-8766826b4809bf008eefc06203dfc0d5d3fb3361d57e0f408fa4879af1b207a5.css?body=1" for ::1 at 2015-04-17 19:09:26 -0700
+
+
+Started GET "/assets/normalize.self-333ce827f60870acbaa5a751d49889465ce84697ee03980558f7d38405f670da.css?body=1" for ::1 at 2015-04-17 19:09:26 -0700
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-04-17 19:09:26 -0700
+
+
+Started GET "/assets/profiles.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-04-17 19:09:26 -0700
+
+
+Started GET "/assets/responsive.gs.12col.self-b6e58af35687bc6702ecf456377ecb7a8377b0540d3b3726b7b5314fcf2856e8.css?body=1" for ::1 at 2015-04-17 19:09:26 -0700
+
+
+Started GET "/assets/font-awesome.min.self-6bb04114c00dc0f2115b700bce976c1d368c4c641247d3f2bd520b3067efef45.css?body=1" for ::1 at 2015-04-17 19:09:26 -0700
+
+
+Started GET "/assets/application.self-4f22ee513bff51c07ddbacea6716b3bb025259c40c0c44f68b3b024ed0ff7a2c.css?body=1" for ::1 at 2015-04-17 19:09:26 -0700
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-04-17 19:09:26 -0700
+
+
+Started GET "/assets/jquery_ujs.self-8e98a7a072a6cee1372d19fff9ff3e6aa1e39a37d89d6f06861637d061113ee7.js?body=1" for ::1 at 2015-04-17 19:09:27 -0700
+
+
+Started GET "/assets/handlebars.self-f84f44e551c73998c0d893cd058138a67c06a9ce578c21323db932e904b63991.js?body=1" for ::1 at 2015-04-17 19:09:27 -0700
+
+
+Started GET "/assets/users.self-19a187bec6cdb96d6de80a61c16c857c613536adf9138476bd367db38d282635.js?body=1" for ::1 at 2015-04-17 19:09:27 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2015-04-17 19:09:27 -0700
+
+
+Started GET "/assets/profiles.self-19a187bec6cdb96d6de80a61c16c857c613536adf9138476bd367db38d282635.js?body=1" for ::1 at 2015-04-17 19:09:27 -0700
+
+
+Started GET "/assets/welcome.self-19a187bec6cdb96d6de80a61c16c857c613536adf9138476bd367db38d282635.js?body=1" for ::1 at 2015-04-17 19:09:27 -0700
+
+
+Started GET "/assets/application.self-f8806224e027f3e3f0138ea9ce99319e298dfdb323304d1f1be6eae8e8c74724.js?body=1" for ::1 at 2015-04-17 19:09:27 -0700
+
+
+Started GET "/assets/background_vid.webm" for ::1 at 2015-04-17 19:09:27 -0700
+
+
+Started GET "/" for ::1 at 2015-04-17 19:09:55 -0700
+Processing by WelcomeController#index as HTML
+  [1m[36mParent Load (0.7ms)[0m  [1mSELECT  "parents".* FROM "parents" WHERE "parents"."id" = $1  ORDER BY "parents"."id" ASC LIMIT 1[0m  [["id", 11]]
+  Rendered welcome/_navbar_loggedin.html.erb (1.6ms)
+  Rendered welcome/index.html.erb within layouts/application (25.4ms)
+Completed 200 OK in 2191ms (Views: 2181.1ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/assets/normalize.self-333ce827f60870acbaa5a751d49889465ce84697ee03980558f7d38405f670da.css?body=1" for ::1 at 2015-04-17 19:09:57 -0700
+
+
+Started GET "/assets/welcome.self-d3c954bf9a635519f5d348c0a35a331f48018c56e34bffebec2ca983cb7fdbcf.css?body=1" for ::1 at 2015-04-17 19:09:57 -0700
+
+
+Started GET "/assets/font-awesome.min.self-6bb04114c00dc0f2115b700bce976c1d368c4c641247d3f2bd520b3067efef45.css?body=1" for ::1 at 2015-04-17 19:09:58 -0700
+
+
+Started GET "/assets/profiles.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-04-17 19:09:58 -0700
+
+
+Started GET "/assets/responsive.gs.12col.self-b6e58af35687bc6702ecf456377ecb7a8377b0540d3b3726b7b5314fcf2856e8.css?body=1" for ::1 at 2015-04-17 19:09:58 -0700
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-04-17 19:09:58 -0700
+
+
+Started GET "/assets/application.self-4f22ee513bff51c07ddbacea6716b3bb025259c40c0c44f68b3b024ed0ff7a2c.css?body=1" for ::1 at 2015-04-17 19:09:58 -0700
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-04-17 19:09:58 -0700
+
+
+Started GET "/assets/jquery_ujs.self-8e98a7a072a6cee1372d19fff9ff3e6aa1e39a37d89d6f06861637d061113ee7.js?body=1" for ::1 at 2015-04-17 19:09:58 -0700
+
+
+Started GET "/assets/handlebars.self-f84f44e551c73998c0d893cd058138a67c06a9ce578c21323db932e904b63991.js?body=1" for ::1 at 2015-04-17 19:09:58 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2015-04-17 19:09:58 -0700
+
+
+Started GET "/assets/profiles.self-19a187bec6cdb96d6de80a61c16c857c613536adf9138476bd367db38d282635.js?body=1" for ::1 at 2015-04-17 19:09:58 -0700
+
+
+Started GET "/assets/users.self-19a187bec6cdb96d6de80a61c16c857c613536adf9138476bd367db38d282635.js?body=1" for ::1 at 2015-04-17 19:09:59 -0700
+
+
+Started GET "/assets/welcome.self-19a187bec6cdb96d6de80a61c16c857c613536adf9138476bd367db38d282635.js?body=1" for ::1 at 2015-04-17 19:09:59 -0700
+
+
+Started GET "/assets/application.self-f8806224e027f3e3f0138ea9ce99319e298dfdb323304d1f1be6eae8e8c74724.js?body=1" for ::1 at 2015-04-17 19:09:59 -0700
+
+
+Started GET "/assets/background_vid.webm" for ::1 at 2015-04-17 19:09:59 -0700
+
+
+Started GET "/" for ::1 at 2015-04-17 19:10:41 -0700
+Processing by WelcomeController#index as HTML
+  [1m[35mParent Load (0.8ms)[0m  SELECT  "parents".* FROM "parents" WHERE "parents"."id" = $1  ORDER BY "parents"."id" ASC LIMIT 1  [["id", 11]]
+  Rendered welcome/_navbar_loggedin.html.erb (1.2ms)
+  Rendered welcome/index.html.erb within layouts/application (15.3ms)
+Completed 200 OK in 1122ms (Views: 1115.0ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/assets/welcome.self-b679bfc68b3468afe2b6de164ee6ff50de38d261a6a69d191674b188672d8344.css?body=1" for ::1 at 2015-04-17 19:10:43 -0700
+
+
+Started GET "/assets/responsive.gs.12col.self-b6e58af35687bc6702ecf456377ecb7a8377b0540d3b3726b7b5314fcf2856e8.css?body=1" for ::1 at 2015-04-17 19:10:43 -0700
+
+
+Started GET "/assets/normalize.self-333ce827f60870acbaa5a751d49889465ce84697ee03980558f7d38405f670da.css?body=1" for ::1 at 2015-04-17 19:10:43 -0700
+
+
+Started GET "/assets/font-awesome.min.self-6bb04114c00dc0f2115b700bce976c1d368c4c641247d3f2bd520b3067efef45.css?body=1" for ::1 at 2015-04-17 19:10:43 -0700
+
+
+Started GET "/assets/profiles.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-04-17 19:10:43 -0700
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-04-17 19:10:43 -0700
+
+
+Started GET "/assets/application.self-4f22ee513bff51c07ddbacea6716b3bb025259c40c0c44f68b3b024ed0ff7a2c.css?body=1" for ::1 at 2015-04-17 19:10:43 -0700
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-04-17 19:10:43 -0700
+
+
+Started GET "/assets/jquery_ujs.self-8e98a7a072a6cee1372d19fff9ff3e6aa1e39a37d89d6f06861637d061113ee7.js?body=1" for ::1 at 2015-04-17 19:10:44 -0700
+
+
+Started GET "/assets/handlebars.self-f84f44e551c73998c0d893cd058138a67c06a9ce578c21323db932e904b63991.js?body=1" for ::1 at 2015-04-17 19:10:44 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2015-04-17 19:10:44 -0700
+
+
+Started GET "/assets/profiles.self-19a187bec6cdb96d6de80a61c16c857c613536adf9138476bd367db38d282635.js?body=1" for ::1 at 2015-04-17 19:10:44 -0700
+
+
+Started GET "/assets/users.self-19a187bec6cdb96d6de80a61c16c857c613536adf9138476bd367db38d282635.js?body=1" for ::1 at 2015-04-17 19:10:44 -0700
+
+
+Started GET "/assets/welcome.self-19a187bec6cdb96d6de80a61c16c857c613536adf9138476bd367db38d282635.js?body=1" for ::1 at 2015-04-17 19:10:44 -0700
+
+
+Started GET "/assets/application.self-f8806224e027f3e3f0138ea9ce99319e298dfdb323304d1f1be6eae8e8c74724.js?body=1" for ::1 at 2015-04-17 19:10:44 -0700
+
+
+Started GET "/assets/background_vid.webm" for ::1 at 2015-04-17 19:10:44 -0700
+
+
+Started DELETE "/users/sign_out" for ::1 at 2015-04-17 19:10:46 -0700
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"nI66vegPOPbq2tYgVZ0s5ujYCajJAJOohEIdCwi8E7O1248apWhN9GZNzXJIKF9UDJR70JwT9QhoAUOYDnszzg=="}
+  [1m[36mParent Load (0.6ms)[0m  [1mSELECT  "parents".* FROM "parents" WHERE "parents"."id" = $1  ORDER BY "parents"."id" ASC LIMIT 1[0m  [["id", 11]]
+  [1m[35m (0.7ms)[0m  BEGIN
+  [1m[36m (0.8ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 122ms (ActiveRecord: 2.1ms)
+
+
+Started GET "/" for ::1 at 2015-04-17 19:10:46 -0700
+Processing by WelcomeController#index as HTML
+  Rendered welcome/_navbar_loggedout.html.erb (3.6ms)
+  Rendered user/shared/_links.html.erb (12.7ms)
+  Rendered welcome/_sign_up.html.erb (151.5ms)
+  Rendered welcome/index.html.erb within layouts/application (169.1ms)
+Completed 200 OK in 1477ms (Views: 1465.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/background_vid.webm" for ::1 at 2015-04-17 19:10:48 -0700
+
+
+Started GET "/" for ::1 at 2015-04-17 19:10:55 -0700
+Processing by WelcomeController#index as HTML
+  Rendered welcome/_navbar_loggedout.html.erb (0.6ms)
+  Rendered user/shared/_links.html.erb (75.9ms)
+  Rendered welcome/_sign_up.html.erb (119.5ms)
+  Rendered welcome/index.html.erb within layouts/application (131.8ms)
+Completed 200 OK in 2139ms (Views: 2130.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/profiles.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-04-17 19:10:57 -0700
+
+
+Started GET "/assets/normalize.self-333ce827f60870acbaa5a751d49889465ce84697ee03980558f7d38405f670da.css?body=1" for ::1 at 2015-04-17 19:10:58 -0700
+
+
+Started GET "/assets/font-awesome.min.self-6bb04114c00dc0f2115b700bce976c1d368c4c641247d3f2bd520b3067efef45.css?body=1" for ::1 at 2015-04-17 19:10:58 -0700
+
+
+Started GET "/assets/responsive.gs.12col.self-b6e58af35687bc6702ecf456377ecb7a8377b0540d3b3726b7b5314fcf2856e8.css?body=1" for ::1 at 2015-04-17 19:10:58 -0700
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-04-17 19:10:58 -0700
+
+
+Started GET "/assets/application.self-4f22ee513bff51c07ddbacea6716b3bb025259c40c0c44f68b3b024ed0ff7a2c.css?body=1" for ::1 at 2015-04-17 19:10:58 -0700
+
+
+Started GET "/assets/welcome.self-2896b9d2d746f4568f4610b3764cb2678b10e220109754bc1a7f466f56f13545.css?body=1" for ::1 at 2015-04-17 19:10:58 -0700
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-04-17 19:10:58 -0700
+
+
+Started GET "/assets/jquery_ujs.self-8e98a7a072a6cee1372d19fff9ff3e6aa1e39a37d89d6f06861637d061113ee7.js?body=1" for ::1 at 2015-04-17 19:10:58 -0700
+
+
+Started GET "/assets/handlebars.self-f84f44e551c73998c0d893cd058138a67c06a9ce578c21323db932e904b63991.js?body=1" for ::1 at 2015-04-17 19:10:58 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2015-04-17 19:10:59 -0700
+
+
+Started GET "/assets/profiles.self-19a187bec6cdb96d6de80a61c16c857c613536adf9138476bd367db38d282635.js?body=1" for ::1 at 2015-04-17 19:10:59 -0700
+
+
+Started GET "/assets/users.self-19a187bec6cdb96d6de80a61c16c857c613536adf9138476bd367db38d282635.js?body=1" for ::1 at 2015-04-17 19:10:59 -0700
+
+
+Started GET "/assets/welcome.self-19a187bec6cdb96d6de80a61c16c857c613536adf9138476bd367db38d282635.js?body=1" for ::1 at 2015-04-17 19:10:59 -0700
+
+
+Started GET "/assets/application.self-f8806224e027f3e3f0138ea9ce99319e298dfdb323304d1f1be6eae8e8c74724.js?body=1" for ::1 at 2015-04-17 19:10:59 -0700
+
+
+Started GET "/assets/background_vid.webm" for ::1 at 2015-04-17 19:10:59 -0700
+
+
+Started POST "/users" for ::1 at 2015-04-17 19:11:12 -0700
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"FiUdB+RTZhOEaUyme1GLYqJ9uDohXXrlourbgvQXqbcWdFV12EQJsuJ+j0EuekFJ7oCw897pjntnOJpji63pJg==", "user"=>{"email"=>"awoirghae@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.5ms)[0m  BEGIN
+  [1m[36mParent Exists (0.7ms)[0m  [1mSELECT  1 AS one FROM "parents" WHERE "parents"."email" = 'awoirghae@gmail.com' LIMIT 1[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "parents" ("email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["email", "awoirghae@gmail.com"], ["encrypted_password", "$2a$10$pLWnv30JhAdnrh2/si7/dek/E6KPPCVqPQe2GYqN.cZrUnkbIe4Ou"], ["created_at", "2015-04-18 02:11:12.637621"], ["updated_at", "2015-04-18 02:11:12.637621"]]
+  [1m[36m (1.0ms)[0m  [1mCOMMIT[0m
+  [1m[35m (1.1ms)[0m  BEGIN
+  [1m[36mSQL (1.0ms)[0m  [1mUPDATE "parents" SET "last_sign_in_at" = $1, "current_sign_in_at" = $2, "last_sign_in_ip" = $3, "current_sign_in_ip" = $4, "sign_in_count" = $5, "updated_at" = $6 WHERE "parents"."id" = $7[0m  [["last_sign_in_at", "2015-04-18 02:11:12.678211"], ["current_sign_in_at", "2015-04-18 02:11:12.678211"], ["last_sign_in_ip", "::1/128"], ["current_sign_in_ip", "::1/128"], ["sign_in_count", 1], ["updated_at", "2015-04-18 02:11:12.779060"], ["id", 12]]
+  [1m[35m (1.1ms)[0m  COMMIT
+Redirected to http://localhost:3000/
+Completed 302 Found in 423ms (ActiveRecord: 6.2ms)
+
+
+Started GET "/" for ::1 at 2015-04-17 19:11:12 -0700
+Processing by WelcomeController#index as HTML
+  [1m[36mParent Load (0.7ms)[0m  [1mSELECT  "parents".* FROM "parents" WHERE "parents"."id" = $1  ORDER BY "parents"."id" ASC LIMIT 1[0m  [["id", 12]]
+  Rendered welcome/_navbar_loggedin.html.erb (1.8ms)
+  Rendered welcome/index.html.erb within layouts/application (29.7ms)
+Completed 200 OK in 1258ms (Views: 1248.4ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/assets/background_vid.webm" for ::1 at 2015-04-17 19:11:14 -0700
+
+
+Started DELETE "/users/sign_out" for ::1 at 2015-04-17 19:11:39 -0700
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"4dzn98zgAC5HyikOkOUxKnBE1Q/2dmD3W/7h1bPkyBzhja+F8PdvjyHd6unFzvsBPLndxgnClGmeLKA0zF6IjQ=="}
+  [1m[35mParent Load (0.6ms)[0m  SELECT  "parents".* FROM "parents" WHERE "parents"."id" = $1  ORDER BY "parents"."id" ASC LIMIT 1  [["id", 12]]
+  [1m[36m (0.5ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.4ms)[0m  COMMIT
+Redirected to http://localhost:3000/
+Completed 302 Found in 42ms (ActiveRecord: 1.6ms)
+
+
+Started GET "/" for ::1 at 2015-04-17 19:11:39 -0700
+Processing by WelcomeController#index as HTML
+  Rendered welcome/_navbar_loggedout.html.erb (0.5ms)
+  Rendered user/shared/_links.html.erb (5.2ms)
+  Rendered welcome/_sign_up.html.erb (43.2ms)
+  Rendered welcome/index.html.erb within layouts/application (53.8ms)
+Completed 200 OK in 823ms (Views: 816.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/background_vid.webm" for ::1 at 2015-04-17 19:11:40 -0700
