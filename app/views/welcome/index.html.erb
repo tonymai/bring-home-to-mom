@@ -2,37 +2,5 @@
   <%= user_signed_in? ? (render "navbar_loggedin") : (render "navbar_loggedout") %>
 </header>
 
+<%= user_signed_in? ? (render "welcome_page_loggedin") : (render "welcome_page_loggedout") %>
 
-<div class="bgvid-wrapper">
-  <button class="how-button">How it Works</button>
-  <video class = "bg-vid" autoplay loop>
-    <source src="/assets/background_vid.webm" type= "video/webm" />
-  </video>
-</div>
-
-<div id="how-it-works" class="description">
-  <div class="description-wrapper">
-    <div class="how-step">
-      <i class="fa fa-user-plus fa-5x"></i>
-      <h4>1. Create a profile for your kids!</h4>
-    </div>
-    <div class="how-step">
-      <i class="fa fa-search fa-5x"></i>
-      <h4>2. Search for other eligible bachelors and bachelorettes</h4>
-    </div>
-    <div class="how-step">
-      <i class="fa fa-calendar fa-5x"></i>
-      <h4>3. Plan the date - pick a time, movie, restaurant, etc.</h4>
-    </div>
-    <div class="how-step">
-      <i class="fa fa-heart fa-5x"></i>
-      <h4>4. Sit back and wait for the wedding invitation!</h4>
-    </div>
-  </div>
-  <button class="btn-big">GET STARTED</button>
-</div>
-
-<div class = "form-wrapper">
-
-  <%= render "sign_up_modal" %>
-  <%= render "log_in_modal" %>
