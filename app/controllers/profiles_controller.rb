@@ -5,6 +5,9 @@ class ProfilesController < ApplicationController
   def new
     @parent = Parent.find(params[:user_id])
     @child = Child.new
+
+    @interests = Interest.all.sort_by { |interest| interest.children.count }.reverse
+    @interest = Interest.new
   end
 
   def create
@@ -13,14 +16,15 @@ class ProfilesController < ApplicationController
 
     # upload profile image if provided
     Child::PF_IMAGE_INDEX.each do |pf_image_key|
-      @child.save_profile_image(params[:child][pf_image_key], pf_image_key) if params[:child][pf_image_key]
+      @child.save_profile_image(params[:child][pf_image_key], pf_image_key) if params[:child][pf_image_key] != ""
     end
 
     if @child.save
-      # add child_id to interests_path url to save interest to particular child
-      redirect_to "#{interests_path}?child_id=#{@child.id}"
+      p 'success'
+      render json: @child, status: :created
     else
-      render :new
+      p 'fail'
+      render json: { errors: @child.errors.full_messages }, status: :unprocessable_entity
     end
   end
 

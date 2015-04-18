@@ -1,10 +1,7 @@
 class InterestsController < ApplicationController
 
   def index
-    @interests = Interest.all.sort_by { |interest| interest.children.count }.reverse
-    @interest = Interest.new
-
-    @child = Child.find(params[:child_id])
+    # @child = Child.find(params[:child_id])
   end
 
   def create
