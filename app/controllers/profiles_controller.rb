@@ -29,10 +29,18 @@ class ProfilesController < ApplicationController
   def update
     #Only written for adding interests right now; when we create full edit page, this will need conditional logic to handle all cases
     @parent = Parent.find(params[:user_id])
-    # byebug
-    # @child =
+    @child = Child.find(params[:id])
+    interests = params[:interests]
+    interests.each do |interest_id|
+      @child.children_interests.new(interest_id: interest_id)
+    end
 
-    redirect '/'
+    if @child.save
+      render json: {}, status: :ok
+    else
+      render json: { errors: @child.errors.full_messages }, status: :unprocessable_entity
+    end
+
   end
 
   private
