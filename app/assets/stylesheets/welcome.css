@@ -65,3 +65,7 @@ header{
   border-radius:4px;
   color:white;
 }
+
+.hidden{
+  display: none;
+}
