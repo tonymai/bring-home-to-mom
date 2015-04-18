@@ -20,10 +20,8 @@ class ProfilesController < ApplicationController
     end
 
     if @child.save
-      p 'success'
       render json: @child, status: :created
     else
-      p 'fail'
       render json: { errors: @child.errors.full_messages }, status: :unprocessable_entity
     end
   end
