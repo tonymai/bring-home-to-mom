@@ -7,7 +7,9 @@ $(document).on('page:change', function() {
         console.log(response);
       },
       error: function(response) {
-        $('.error-explanation').show()
+        $('.error-explanation').show();
+        $('.error-messages').empty();
+
         $.each(response.responseJSON.errors, function(index, error) {
           $('.error-messages').append('<li>' + error + '</li>')
         })
