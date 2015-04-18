@@ -1,18 +1,16 @@
 $(document).on('page:change', function() {
-  $('#new_child').on('submit', function(event){
-    event.preventDefault();
+  $('#new_child').on('submit', function(){
 
-    $.ajax({
-      url: $(this).attr('action'),
-      type: 'POST',
-      dataType: 'JSON',
-      data: $(this).serialize()
-
-    }).done(function(response) {
-      console.log('success');
-
-    }).fail(function(response) {
-      console.log('fail');
+    $('#new_child').ajaxSubmit({
+      success: function(response) {
+        console.log('success');
+        console.log(response);
+      },
+      error: function(response) {
+        console.log('fail');
+        console.log(response.responseJSON);
+      }
     });
+    return false; //prevents default
   });
 });
