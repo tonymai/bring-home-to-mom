@@ -26,7 +26,8 @@ ActiveRecord::Schema.define(version: 20150417001556) do
     t.string   "sexual_preference"
     t.string   "religion"
     t.date     "birthdate"
-    t.string   "bio"
+    t.text     "bio"
+    t.text     "embarrassing_moment"
     t.boolean  "smoke"
     t.string   "linkedin_url"
     t.string   "facebook_url"
@@ -35,10 +36,10 @@ ActiveRecord::Schema.define(version: 20150417001556) do
     t.string   "pf_image_3"
     t.string   "pf_image_4"
     t.string   "pf_image_5"
-    t.integer  "pf_image_default",  default: 1
+    t.integer  "main_profile_image"
     t.integer  "parent_id"
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
   end
 
   create_table "children_interests", force: :cascade do |t|

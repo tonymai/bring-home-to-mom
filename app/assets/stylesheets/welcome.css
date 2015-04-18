@@ -1,0 +1,71 @@
+.debug{
+  border:1px solid red;
+}
+header{
+  height:1.5em;
+  width: 100%;
+  position:fixed;
+  z-index: 1;
+}
+
+.logo{
+  max-width: 200px;
+  color:white;
+  font-size: 1.8em;
+}
+.login-btn{
+  display: inline-block;
+  color:white;
+}
+
+.signup-btn{
+  display: inline-block;
+  color:white;
+}
+
+.navbar-link-wrapper{
+  float:right;
+  display: inline-block;
+}
+
+.bg-vid{
+  width: 100%;
+  background: no-repeat;
+  background-size: cover;
+}
+
+
+
+.how-button {
+  width: 150px;
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: block;
+  border: 1px solid white;
+  color: white;
+  background: rgba(256,256,256,0.5);
+  border-radius: 2px;
+  padding: .4em;
+  height: 50px;
+  z-index: 50;
+}
+
+.how-step{
+  display:inline-block;
+}
+
+.logout-button{
+  text-decoration: none;
+  padding:4px;
+  border:1px solid white;
+  border-radius:4px;
+  color:white;
+}
+
+.hidden{
+  display: none;
+}
