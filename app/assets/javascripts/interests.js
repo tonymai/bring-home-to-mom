@@ -38,8 +38,9 @@ $(document).on('page:change', function() {
       data: { interests: selectedIds },
       dataType: 'JSON',
     }).done(function (data) {
-      $('.new-interests-container').hide();
-      $('.complete-child-profile').show();
+      window.location.href ="/"
+      // $('.new-interests-container').hide();
+      // $('.complete-child-profile').show();
     });
   });
 
