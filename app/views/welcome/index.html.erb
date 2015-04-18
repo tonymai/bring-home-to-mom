@@ -1,11 +1,5 @@
 <header>
-  <nav class = "navbar">
-    <div class = "logo col">BHTM</div>
-    <div class = "navbar-link-wrapper">
-      <div class = "nav-link-btn login-btn">Login</div>
-      <div class = "nav-link-btn signup-btn">Signup</div>
-    </div>
-  </nav>
+  <%= user_signed_in? ? (render "navbar_loggedin") : (render "navbar_loggedout") %>
 </header>
 
 
@@ -14,7 +8,7 @@
   <video class = "bg-vid" autoplay loop>
     <source src="/assets/background_vid.webm" type= "video/webm">
     </video>
-</div>
+  </div>
 
   <div id="how-it-works" class="description">
     <div class="description-wrapper">
@@ -38,22 +32,9 @@
     <button class="btn-big">GET STARTED</button>
   </div>
 
-  <div class = "form-wrapper">
-    <%= form_for :user do |f| %>
-    <%= f.label :first_name %>:
-    <%= f.text_field :first_name %>
-    <br>
-    <%= f.label :last_name %>:
-    <%= f.text_field :last_name %>
-    <br>
-    <%= f.label :email %>:
-    <%= f.text_field :email %>
-    <br>
-    <%= f.label :password %>:
-    <%= f.text_field :password %>
-    <%= f.submit value: "Signup" %>
-    <% end %>
-  </div>
+<div class = "form-wrapper">
+
+<%= render "sign_up" if !user_signed_in?%>
 
 
 <!--   create profile

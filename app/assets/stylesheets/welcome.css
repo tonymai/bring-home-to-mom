@@ -54,6 +54,12 @@ header{
   height: 50px;
 }
 
-.description{
-/*  min-height: 500px;
-*/}
+
+
+.logout-button{
+  text-decoration: none;
+  padding:4px;
+  border:1px solid white;
+  border-radius:4px;
+  color:white;
+}
