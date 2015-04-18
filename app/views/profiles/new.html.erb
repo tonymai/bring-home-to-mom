@@ -1,4 +1,4 @@
-
+<h1>New Child Profile</h1>
 
 <%= form_for @child, url: url_for(controller: 'profiles', action: 'create') do |f| %>
 
@@ -65,7 +65,8 @@
       <%= f.text_field(:religion) %>
 
       <%= f.label(:smoke, 'Smokes:') %>
-      <%= f.text_field(:smoke) %>
+      Yes: <%= f.radio_button(:smoke, true) %>
+      No: <%= f.radio_button(:smoke, false) %>
 
       <%= f.label(:embarrassing_moment, 'Embarrassing Moment:') %>
       <%= f.text_area(:embarrassing_moment) %>

@@ -10870,3 +10870,1212 @@ Unpermitted parameters: pf_image_1, pf_image_2
   [1m[35m (0.2ms)[0m  ROLLBACK
   Rendered profiles/new.html.erb within layouts/application (10.6ms)
 Completed 200 OK in 82ms (Views: 61.3ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/users/1/profiles/new" for ::1 at 2015-04-17 21:06:33 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ProfilesController#new as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[35mParent Load (0.5ms)[0m  SELECT  "parents".* FROM "parents" WHERE "parents"."id" = $1 LIMIT 1  [["id", 1]]
+  Rendered profiles/new.html.erb within layouts/application (54.2ms)
+Completed 200 OK in 858ms (Views: 710.7ms | ActiveRecord: 4.9ms)
+
+
+Started POST "/users/1/profiles" for ::1 at 2015-04-17 21:06:35 -0700
+Processing by ProfilesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"4Ou1isuQYXJJHzA5cltkieyMek8raaf16g3N3JlvkTStdHUf+0hQcfpY1T05i0O/v8OBgbkxJ3N7FSiSm6KhgA==", "child"=>{"first_name"=>"", "last_name"=>"", "city"=>"", "state"=>"", "phone"=>"", "birthdate"=>"", "bio"=>"", "linkedin_url"=>"", "facebook_url"=>"", "religion"=>"", "smoke"=>"", "embarrassing_moment"=>""}, "commit"=>"Create Child Profile", "user_id"=>"1"}
+  [1m[36mParent Load (0.3ms)[0m  [1mSELECT  "parents".* FROM "parents" WHERE "parents"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mChild Exists (0.8ms)[0m  [1mSELECT  1 AS one FROM "children" WHERE "children"."phone" = '' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+Completed 500 Internal Server Error in 727ms (ActiveRecord: 1.5ms)
+
+NoMethodError - undefined method `year' for nil:NilClass:
+  app/models/child.rb:56:in `check_age'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:432:in `block in make_lambda'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:192:in `block in simple'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:504:in `block in call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:504:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:92:in `_run_callbacks'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:776:in `_run_validate_callbacks'
+  activemodel (4.2.1) lib/active_model/validations.rb:395:in `run_validations!'
+  activemodel (4.2.1) lib/active_model/validations/callbacks.rb:113:in `block in run_validations!'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:117:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:555:in `block (2 levels) in compile'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:505:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:92:in `_run_callbacks'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:776:in `_run_validation_callbacks'
+  activemodel (4.2.1) lib/active_model/validations/callbacks.rb:113:in `run_validations!'
+  activemodel (4.2.1) lib/active_model/validations.rb:334:in `valid?'
+  activerecord (4.2.1) lib/active_record/validations.rb:58:in `valid?'
+  activerecord (4.2.1) lib/active_record/validations.rb:83:in `perform_validations'
+  activerecord (4.2.1) lib/active_record/validations.rb:37:in `save'
+  activerecord (4.2.1) lib/active_record/attribute_methods/dirty.rb:21:in `save'
+  activerecord (4.2.1) lib/active_record/transactions.rb:286:in `block (2 levels) in save'
+  activerecord (4.2.1) lib/active_record/transactions.rb:347:in `block in with_transaction_returning_status'
+  activerecord (4.2.1) lib/active_record/connection_adapters/abstract/database_statements.rb:213:in `block in transaction'
+  activerecord (4.2.1) lib/active_record/connection_adapters/abstract/transaction.rb:188:in `within_new_transaction'
+  activerecord (4.2.1) lib/active_record/connection_adapters/abstract/database_statements.rb:213:in `transaction'
+  activerecord (4.2.1) lib/active_record/transactions.rb:220:in `transaction'
+  activerecord (4.2.1) lib/active_record/transactions.rb:344:in `with_transaction_returning_status'
+  activerecord (4.2.1) lib/active_record/transactions.rb:286:in `block in save'
+  activerecord (4.2.1) lib/active_record/transactions.rb:301:in `rollback_active_record_state!'
+  activerecord (4.2.1) lib/active_record/transactions.rb:285:in `save'
+  app/controllers/profiles_controller.rb:20:in `create'
+  actionpack (4.2.1) lib/action_controller/metal/implicit_render.rb:4:in `send_action'
+  actionpack (4.2.1) lib/abstract_controller/base.rb:198:in `process_action'
+  actionpack (4.2.1) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (4.2.1) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:117:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:555:in `block (2 levels) in compile'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:505:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:92:in `_run_callbacks'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:776:in `_run_process_action_callbacks'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.1) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.2.1) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.2.1) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+  activesupport (4.2.1) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.1) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.1) lib/active_support/notifications.rb:164:in `instrument'
+  actionpack (4.2.1) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.2.1) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.2.1) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.2.1) lib/abstract_controller/base.rb:137:in `process'
+  actionview (4.2.1) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.2.1) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.2.1) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.2.1) lib/action_controller/metal.rb:237:in `block in action'
+  actionpack (4.2.1) lib/action_dispatch/routing/route_set.rb:74:in `dispatch'
+  actionpack (4.2.1) lib/action_dispatch/routing/route_set.rb:43:in `serve'
+  actionpack (4.2.1) lib/action_dispatch/journey/router.rb:43:in `block in serve'
+  actionpack (4.2.1) lib/action_dispatch/journey/router.rb:30:in `serve'
+  actionpack (4.2.1) lib/action_dispatch/routing/route_set.rb:819:in `call'
+  warden (1.2.3) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.3) lib/warden/manager.rb:34:in `call'
+  rack (1.6.0) lib/rack/etag.rb:24:in `call'
+  rack (1.6.0) lib/rack/conditionalget.rb:38:in `call'
+  rack (1.6.0) lib/rack/head.rb:13:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/flash.rb:260:in `call'
+  rack (1.6.0) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.6.0) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.2.1) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.2.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:649:in `call'
+  activerecord (4.2.1) lib/active_record/migration.rb:378:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:88:in `_run_callbacks'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:776:in `_run_call_callbacks'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.1) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:84:in `protected_app_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:79:in `better_errors_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:57:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  web-console (2.1.2) lib/web_console/middleware.rb:37:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.0) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.0) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.0) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.1) lib/rails/application.rb:164:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  rack (1.6.0) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.0) lib/rack/handler/webrick.rb:89:in `service'
+  /Users/apprentice/.rbenv/versions/2.0.0-p353/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/apprentice/.rbenv/versions/2.0.0-p353/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/apprentice/.rbenv/versions/2.0.0-p353/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+
+Started POST "/__better_errors/0b7984f5dfcf59bd/variables" for ::1 at 2015-04-17 21:06:36 -0700
+
+
+Started POST "/users/1/profiles" for ::1 at 2015-04-17 21:06:51 -0700
+Processing by ProfilesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"4Ou1isuQYXJJHzA5cltkieyMek8raaf16g3N3JlvkTStdHUf+0hQcfpY1T05i0O/v8OBgbkxJ3N7FSiSm6KhgA==", "child"=>{"first_name"=>"", "last_name"=>"", "city"=>"", "state"=>"", "phone"=>"", "birthdate"=>"2015-04-15", "bio"=>"", "linkedin_url"=>"", "facebook_url"=>"", "religion"=>"", "smoke"=>"", "embarrassing_moment"=>""}, "commit"=>"Create Child Profile", "user_id"=>"1"}
+  [1m[36mParent Load (0.5ms)[0m  [1mSELECT  "parents".* FROM "parents" WHERE "parents"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mChild Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "children" WHERE "children"."phone" = '' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  Rendered profiles/new.html.erb within layouts/application (11.5ms)
+Completed 200 OK in 83ms (Views: 70.3ms | ActiveRecord: 1.2ms)
+
+
+Started POST "/users/1/profiles" for ::1 at 2015-04-17 21:07:11 -0700
+Processing by ProfilesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"4Ou1isuQYXJJHzA5cltkieyMek8raaf16g3N3JlvkTStdHUf+0hQcfpY1T05i0O/v8OBgbkxJ3N7FSiSm6KhgA==", "child"=>{"first_name"=>"", "last_name"=>"", "city"=>"", "state"=>"", "phone"=>"", "birthdate"=>"2015-04-15", "bio"=>"", "linkedin_url"=>"", "facebook_url"=>"", "religion"=>"", "smoke"=>"", "embarrassing_moment"=>""}, "commit"=>"Create Child Profile", "user_id"=>"1"}
+  [1m[36mParent Load (0.4ms)[0m  [1mSELECT  "parents".* FROM "parents" WHERE "parents"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.4ms)[0m  BEGIN
+  [1m[36mChild Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "children" WHERE "children"."phone" = '' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  Rendered profiles/new.html.erb within layouts/application (10.8ms)
+Completed 200 OK in 209ms (Views: 72.9ms | ActiveRecord: 4.2ms)
+
+
+Started POST "/users/1/profiles" for ::1 at 2015-04-17 21:07:54 -0700
+Processing by ProfilesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"4Ou1isuQYXJJHzA5cltkieyMek8raaf16g3N3JlvkTStdHUf+0hQcfpY1T05i0O/v8OBgbkxJ3N7FSiSm6KhgA==", "child"=>{"first_name"=>"testse", "last_name"=>"tewtrew", "city"=>"fewfewf", "state"=>"fewfew", "phone"=>"fewfewf", "birthdate"=>"2015-04-15", "gender"=>"other", "bio"=>"fewfewf", "linkedin_url"=>"", "facebook_url"=>"", "religion"=>"", "smoke"=>"", "embarrassing_moment"=>"", "pf_image_1"=>#<ActionDispatch::Http::UploadedFile:0x007fee3ebacc30 @tempfile=#<Tempfile:/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/RackMultipart20150417-58745-10v0l6m.png>, @original_filename="Screen Shot 2015-04-17 at 2.38.38 PM.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"child[pf_image_1]\"; filename=\"Screen Shot 2015-04-17 at 2.38.38 PM.png\"\r\nContent-Type: image/png\r\n">}, "commit"=>"Create Child Profile", "user_id"=>"1"}
+  [1m[36mParent Load (0.3ms)[0m  [1mSELECT  "parents".* FROM "parents" WHERE "parents"."id" = $1 LIMIT 1[0m  [["id", 1]]
+Unpermitted parameter: pf_image_1
+  [1m[35mChild Load (0.6ms)[0m  SELECT  "children".* FROM "children"  ORDER BY "children"."id" DESC LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "children".* FROM "children"  ORDER BY "children"."id" DESC LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mChild Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "children" WHERE "children"."phone" = 'fewfewf' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  Rendered profiles/new.html.erb within layouts/application (5.6ms)
+Completed 200 OK in 74ms (Views: 62.4ms | ActiveRecord: 1.6ms)
+
+
+Started POST "/users/1/profiles" for ::1 at 2015-04-17 21:08:16 -0700
+Processing by ProfilesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"2nRMWn3oPD2HVG3hcP8NLYd3DnkTaXCSQ4WvoSG58raX64zPTTANPjQTiOU7Lyob1Dj1t4Ex8BTSnUrvI3TCAg==", "child"=>{"first_name"=>"testse", "last_name"=>"tewtrew", "city"=>"fewfewf", "state"=>"fewfew", "phone"=>"fewfewf", "birthdate"=>"1980-04-15", "gender"=>"other", "sexual_preference"=>"men", "bio"=>"fewfewf", "linkedin_url"=>"", "facebook_url"=>"", "religion"=>"", "smoke"=>"", "embarrassing_moment"=>"", "pf_image_1"=>#<ActionDispatch::Http::UploadedFile:0x007fee42908f20 @tempfile=#<Tempfile:/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/RackMultipart20150417-58745-1ncbah0.png>, @original_filename="Screen Shot 2015-04-17 at 2.38.38 PM.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"child[pf_image_1]\"; filename=\"Screen Shot 2015-04-17 at 2.38.38 PM.png\"\r\nContent-Type: image/png\r\n">}, "commit"=>"Create Child Profile", "user_id"=>"1"}
+  [1m[36mParent Load (0.3ms)[0m  [1mSELECT  "parents".* FROM "parents" WHERE "parents"."id" = $1 LIMIT 1[0m  [["id", 1]]
+Unpermitted parameter: pf_image_1
+  [1m[35mChild Load (0.5ms)[0m  SELECT  "children".* FROM "children"  ORDER BY "children"."id" DESC LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "children".* FROM "children"  ORDER BY "children"."id" DESC LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mChild Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "children" WHERE "children"."phone" = 'fewfewf' LIMIT 1[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "children" ("first_name", "last_name", "city", "state", "phone", "gender", "sexual_preference", "religion", "birthdate", "bio", "linkedin_url", "facebook_url", "embarrassing_moment", "parent_id", "pf_image_1", "main_profile_image", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18) RETURNING "id"  [["first_name", "testse"], ["last_name", "tewtrew"], ["city", "fewfewf"], ["state", "fewfew"], ["phone", "fewfewf"], ["gender", "other"], ["sexual_preference", "men"], ["religion", ""], ["birthdate", "1980-04-15"], ["bio", "fewfewf"], ["linkedin_url", ""], ["facebook_url", ""], ["embarrassing_moment", ""], ["parent_id", 1], ["pf_image_1", "pf_image_1.png"], ["main_profile_image", 1], ["created_at", "2015-04-18 04:08:16.143467"], ["updated_at", "2015-04-18 04:08:16.143467"]]
+  [1m[36m (15.9ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/interests?child_id=22
+Completed 302 Found in 32ms (ActiveRecord: 17.9ms)
+
+
+Started GET "/interests?child_id=22" for ::1 at 2015-04-17 21:08:16 -0700
+Processing by InterestsController#index as HTML
+  Parameters: {"child_id"=>"22"}
+  [1m[35mInterest Load (0.7ms)[0m  SELECT "interests".* FROM "interests"
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM "children" INNER JOIN "children_interests" ON "children"."id" = "children_interests"."child_id" WHERE "children_interests"."interest_id" = $1[0m  [["interest_id", 1]]
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "children" INNER JOIN "children_interests" ON "children"."id" = "children_interests"."child_id" WHERE "children_interests"."interest_id" = $1  [["interest_id", 2]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "children" INNER JOIN "children_interests" ON "children"."id" = "children_interests"."child_id" WHERE "children_interests"."interest_id" = $1[0m  [["interest_id", 3]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "children" INNER JOIN "children_interests" ON "children"."id" = "children_interests"."child_id" WHERE "children_interests"."interest_id" = $1  [["interest_id", 4]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "children" INNER JOIN "children_interests" ON "children"."id" = "children_interests"."child_id" WHERE "children_interests"."interest_id" = $1[0m  [["interest_id", 5]]
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "children" INNER JOIN "children_interests" ON "children"."id" = "children_interests"."child_id" WHERE "children_interests"."interest_id" = $1  [["interest_id", 6]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "children" INNER JOIN "children_interests" ON "children"."id" = "children_interests"."child_id" WHERE "children_interests"."interest_id" = $1[0m  [["interest_id", 7]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "children" INNER JOIN "children_interests" ON "children"."id" = "children_interests"."child_id" WHERE "children_interests"."interest_id" = $1  [["interest_id", 8]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "children" INNER JOIN "children_interests" ON "children"."id" = "children_interests"."child_id" WHERE "children_interests"."interest_id" = $1[0m  [["interest_id", 9]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "children" INNER JOIN "children_interests" ON "children"."id" = "children_interests"."child_id" WHERE "children_interests"."interest_id" = $1  [["interest_id", 10]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "children" INNER JOIN "children_interests" ON "children"."id" = "children_interests"."child_id" WHERE "children_interests"."interest_id" = $1[0m  [["interest_id", 11]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "children" INNER JOIN "children_interests" ON "children"."id" = "children_interests"."child_id" WHERE "children_interests"."interest_id" = $1  [["interest_id", 12]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "children" INNER JOIN "children_interests" ON "children"."id" = "children_interests"."child_id" WHERE "children_interests"."interest_id" = $1[0m  [["interest_id", 13]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "children" INNER JOIN "children_interests" ON "children"."id" = "children_interests"."child_id" WHERE "children_interests"."interest_id" = $1  [["interest_id", 14]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "children" INNER JOIN "children_interests" ON "children"."id" = "children_interests"."child_id" WHERE "children_interests"."interest_id" = $1[0m  [["interest_id", 15]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "children" INNER JOIN "children_interests" ON "children"."id" = "children_interests"."child_id" WHERE "children_interests"."interest_id" = $1  [["interest_id", 16]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "children" INNER JOIN "children_interests" ON "children"."id" = "children_interests"."child_id" WHERE "children_interests"."interest_id" = $1[0m  [["interest_id", 17]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "children" INNER JOIN "children_interests" ON "children"."id" = "children_interests"."child_id" WHERE "children_interests"."interest_id" = $1  [["interest_id", 18]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "children" INNER JOIN "children_interests" ON "children"."id" = "children_interests"."child_id" WHERE "children_interests"."interest_id" = $1[0m  [["interest_id", 19]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "children" INNER JOIN "children_interests" ON "children"."id" = "children_interests"."child_id" WHERE "children_interests"."interest_id" = $1  [["interest_id", 20]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "children" INNER JOIN "children_interests" ON "children"."id" = "children_interests"."child_id" WHERE "children_interests"."interest_id" = $1[0m  [["interest_id", 21]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "children" INNER JOIN "children_interests" ON "children"."id" = "children_interests"."child_id" WHERE "children_interests"."interest_id" = $1  [["interest_id", 22]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "children" INNER JOIN "children_interests" ON "children"."id" = "children_interests"."child_id" WHERE "children_interests"."interest_id" = $1[0m  [["interest_id", 23]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "children" INNER JOIN "children_interests" ON "children"."id" = "children_interests"."child_id" WHERE "children_interests"."interest_id" = $1  [["interest_id", 24]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "children" INNER JOIN "children_interests" ON "children"."id" = "children_interests"."child_id" WHERE "children_interests"."interest_id" = $1[0m  [["interest_id", 25]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "children" INNER JOIN "children_interests" ON "children"."id" = "children_interests"."child_id" WHERE "children_interests"."interest_id" = $1  [["interest_id", 26]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "children" INNER JOIN "children_interests" ON "children"."id" = "children_interests"."child_id" WHERE "children_interests"."interest_id" = $1[0m  [["interest_id", 27]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "children" INNER JOIN "children_interests" ON "children"."id" = "children_interests"."child_id" WHERE "children_interests"."interest_id" = $1  [["interest_id", 28]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "children" INNER JOIN "children_interests" ON "children"."id" = "children_interests"."child_id" WHERE "children_interests"."interest_id" = $1[0m  [["interest_id", 29]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "children" INNER JOIN "children_interests" ON "children"."id" = "children_interests"."child_id" WHERE "children_interests"."interest_id" = $1  [["interest_id", 30]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "children" INNER JOIN "children_interests" ON "children"."id" = "children_interests"."child_id" WHERE "children_interests"."interest_id" = $1[0m  [["interest_id", 31]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "children" INNER JOIN "children_interests" ON "children"."id" = "children_interests"."child_id" WHERE "children_interests"."interest_id" = $1  [["interest_id", 32]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "children" INNER JOIN "children_interests" ON "children"."id" = "children_interests"."child_id" WHERE "children_interests"."interest_id" = $1[0m  [["interest_id", 33]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "children" INNER JOIN "children_interests" ON "children"."id" = "children_interests"."child_id" WHERE "children_interests"."interest_id" = $1  [["interest_id", 34]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "children" INNER JOIN "children_interests" ON "children"."id" = "children_interests"."child_id" WHERE "children_interests"."interest_id" = $1[0m  [["interest_id", 35]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "children" INNER JOIN "children_interests" ON "children"."id" = "children_interests"."child_id" WHERE "children_interests"."interest_id" = $1  [["interest_id", 36]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "children" INNER JOIN "children_interests" ON "children"."id" = "children_interests"."child_id" WHERE "children_interests"."interest_id" = $1[0m  [["interest_id", 37]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "children" INNER JOIN "children_interests" ON "children"."id" = "children_interests"."child_id" WHERE "children_interests"."interest_id" = $1  [["interest_id", 38]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "children" INNER JOIN "children_interests" ON "children"."id" = "children_interests"."child_id" WHERE "children_interests"."interest_id" = $1[0m  [["interest_id", 39]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "children" INNER JOIN "children_interests" ON "children"."id" = "children_interests"."child_id" WHERE "children_interests"."interest_id" = $1  [["interest_id", 40]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "children" INNER JOIN "children_interests" ON "children"."id" = "children_interests"."child_id" WHERE "children_interests"."interest_id" = $1[0m  [["interest_id", 41]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "children" INNER JOIN "children_interests" ON "children"."id" = "children_interests"."child_id" WHERE "children_interests"."interest_id" = $1  [["interest_id", 42]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "children" INNER JOIN "children_interests" ON "children"."id" = "children_interests"."child_id" WHERE "children_interests"."interest_id" = $1[0m  [["interest_id", 43]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "children" INNER JOIN "children_interests" ON "children"."id" = "children_interests"."child_id" WHERE "children_interests"."interest_id" = $1  [["interest_id", 44]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "children" INNER JOIN "children_interests" ON "children"."id" = "children_interests"."child_id" WHERE "children_interests"."interest_id" = $1[0m  [["interest_id", 45]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "children" INNER JOIN "children_interests" ON "children"."id" = "children_interests"."child_id" WHERE "children_interests"."interest_id" = $1  [["interest_id", 46]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "children" INNER JOIN "children_interests" ON "children"."id" = "children_interests"."child_id" WHERE "children_interests"."interest_id" = $1[0m  [["interest_id", 47]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "children" INNER JOIN "children_interests" ON "children"."id" = "children_interests"."child_id" WHERE "children_interests"."interest_id" = $1  [["interest_id", 48]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "children" INNER JOIN "children_interests" ON "children"."id" = "children_interests"."child_id" WHERE "children_interests"."interest_id" = $1[0m  [["interest_id", 49]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "children" INNER JOIN "children_interests" ON "children"."id" = "children_interests"."child_id" WHERE "children_interests"."interest_id" = $1  [["interest_id", 50]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "children" INNER JOIN "children_interests" ON "children"."id" = "children_interests"."child_id" WHERE "children_interests"."interest_id" = $1[0m  [["interest_id", 51]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "children" INNER JOIN "children_interests" ON "children"."id" = "children_interests"."child_id" WHERE "children_interests"."interest_id" = $1  [["interest_id", 52]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "children" INNER JOIN "children_interests" ON "children"."id" = "children_interests"."child_id" WHERE "children_interests"."interest_id" = $1[0m  [["interest_id", 53]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "children" INNER JOIN "children_interests" ON "children"."id" = "children_interests"."child_id" WHERE "children_interests"."interest_id" = $1  [["interest_id", 54]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "children" INNER JOIN "children_interests" ON "children"."id" = "children_interests"."child_id" WHERE "children_interests"."interest_id" = $1[0m  [["interest_id", 55]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "children" INNER JOIN "children_interests" ON "children"."id" = "children_interests"."child_id" WHERE "children_interests"."interest_id" = $1  [["interest_id", 56]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "children" INNER JOIN "children_interests" ON "children"."id" = "children_interests"."child_id" WHERE "children_interests"."interest_id" = $1[0m  [["interest_id", 57]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "children" INNER JOIN "children_interests" ON "children"."id" = "children_interests"."child_id" WHERE "children_interests"."interest_id" = $1  [["interest_id", 58]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "children" INNER JOIN "children_interests" ON "children"."id" = "children_interests"."child_id" WHERE "children_interests"."interest_id" = $1[0m  [["interest_id", 59]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "children" INNER JOIN "children_interests" ON "children"."id" = "children_interests"."child_id" WHERE "children_interests"."interest_id" = $1  [["interest_id", 60]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "children" INNER JOIN "children_interests" ON "children"."id" = "children_interests"."child_id" WHERE "children_interests"."interest_id" = $1[0m  [["interest_id", 61]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "children" INNER JOIN "children_interests" ON "children"."id" = "children_interests"."child_id" WHERE "children_interests"."interest_id" = $1  [["interest_id", 62]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "children" INNER JOIN "children_interests" ON "children"."id" = "children_interests"."child_id" WHERE "children_interests"."interest_id" = $1[0m  [["interest_id", 63]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "children" INNER JOIN "children_interests" ON "children"."id" = "children_interests"."child_id" WHERE "children_interests"."interest_id" = $1  [["interest_id", 64]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "children" INNER JOIN "children_interests" ON "children"."id" = "children_interests"."child_id" WHERE "children_interests"."interest_id" = $1[0m  [["interest_id", 65]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "children" INNER JOIN "children_interests" ON "children"."id" = "children_interests"."child_id" WHERE "children_interests"."interest_id" = $1  [["interest_id", 66]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "children" INNER JOIN "children_interests" ON "children"."id" = "children_interests"."child_id" WHERE "children_interests"."interest_id" = $1[0m  [["interest_id", 67]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "children" INNER JOIN "children_interests" ON "children"."id" = "children_interests"."child_id" WHERE "children_interests"."interest_id" = $1  [["interest_id", 68]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "children" INNER JOIN "children_interests" ON "children"."id" = "children_interests"."child_id" WHERE "children_interests"."interest_id" = $1[0m  [["interest_id", 69]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "children" INNER JOIN "children_interests" ON "children"."id" = "children_interests"."child_id" WHERE "children_interests"."interest_id" = $1  [["interest_id", 70]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "children" INNER JOIN "children_interests" ON "children"."id" = "children_interests"."child_id" WHERE "children_interests"."interest_id" = $1[0m  [["interest_id", 71]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "children" INNER JOIN "children_interests" ON "children"."id" = "children_interests"."child_id" WHERE "children_interests"."interest_id" = $1  [["interest_id", 72]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "children" INNER JOIN "children_interests" ON "children"."id" = "children_interests"."child_id" WHERE "children_interests"."interest_id" = $1[0m  [["interest_id", 73]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "children" INNER JOIN "children_interests" ON "children"."id" = "children_interests"."child_id" WHERE "children_interests"."interest_id" = $1  [["interest_id", 74]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "children" INNER JOIN "children_interests" ON "children"."id" = "children_interests"."child_id" WHERE "children_interests"."interest_id" = $1[0m  [["interest_id", 75]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "children" INNER JOIN "children_interests" ON "children"."id" = "children_interests"."child_id" WHERE "children_interests"."interest_id" = $1  [["interest_id", 76]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "children" INNER JOIN "children_interests" ON "children"."id" = "children_interests"."child_id" WHERE "children_interests"."interest_id" = $1[0m  [["interest_id", 77]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "children" INNER JOIN "children_interests" ON "children"."id" = "children_interests"."child_id" WHERE "children_interests"."interest_id" = $1  [["interest_id", 78]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "children" INNER JOIN "children_interests" ON "children"."id" = "children_interests"."child_id" WHERE "children_interests"."interest_id" = $1[0m  [["interest_id", 79]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "children" INNER JOIN "children_interests" ON "children"."id" = "children_interests"."child_id" WHERE "children_interests"."interest_id" = $1  [["interest_id", 80]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "children" INNER JOIN "children_interests" ON "children"."id" = "children_interests"."child_id" WHERE "children_interests"."interest_id" = $1[0m  [["interest_id", 81]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "children" INNER JOIN "children_interests" ON "children"."id" = "children_interests"."child_id" WHERE "children_interests"."interest_id" = $1  [["interest_id", 82]]
+  [1m[36mChild Load (0.3ms)[0m  [1mSELECT  "children".* FROM "children" WHERE "children"."id" = $1 LIMIT 1[0m  [["id", 22]]
+  Rendered interests/index.html.erb within layouts/application (3.4ms)
+Completed 200 OK in 309ms (Views: 62.7ms | ActiveRecord: 21.8ms)
+
+
+Started POST "/users/1/profiles" for ::1 at 2015-04-17 21:09:35 -0700
+Processing by ProfilesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"2nRMWn3oPD2HVG3hcP8NLYd3DnkTaXCSQ4WvoSG58raX64zPTTANPjQTiOU7Lyob1Dj1t4Ex8BTSnUrvI3TCAg==", "child"=>{"first_name"=>"testse", "last_name"=>"tewtrew", "city"=>"fewfewf", "state"=>"fewfew", "phone"=>"fewfewf", "birthdate"=>"1980-04-15", "gender"=>"other", "sexual_preference"=>"men", "bio"=>"fewfewf", "linkedin_url"=>"", "facebook_url"=>"", "religion"=>"", "smoke"=>"", "embarrassing_moment"=>"", "pf_image_1"=>#<ActionDispatch::Http::UploadedFile:0x007fee4255eaf0 @tempfile=#<Tempfile:/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/RackMultipart20150417-58745-hkkhfm.png>, @original_filename="Screen Shot 2015-04-17 at 2.38.38 PM.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"child[pf_image_1]\"; filename=\"Screen Shot 2015-04-17 at 2.38.38 PM.png\"\r\nContent-Type: image/png\r\n">}, "commit"=>"Create Child Profile", "user_id"=>"1"}
+  [1m[35mParent Load (0.2ms)[0m  SELECT  "parents".* FROM "parents" WHERE "parents"."id" = $1 LIMIT 1  [["id", 1]]
+Unpermitted parameter: pf_image_1
+  [1m[36mChild Load (0.5ms)[0m  [1mSELECT  "children".* FROM "children"  ORDER BY "children"."id" DESC LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "children".* FROM "children"  ORDER BY "children"."id" DESC LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mChild Exists (0.3ms)[0m  SELECT  1 AS one FROM "children" WHERE "children"."phone" = 'fewfewf' LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  Rendered profiles/new.html.erb within layouts/application (5.9ms)
+Completed 200 OK in 460ms (Views: 396.3ms | ActiveRecord: 4.6ms)
+
+
+Started GET "/assets/new_profile.self-5f5a9fa5944cfcd86e723b3a5ac79a7f02cae342d3f6682133784852861c50c8.js?body=1" for ::1 at 2015-04-17 21:09:36 -0700
+
+
+Started POST "/users/1/profiles" for ::1 at 2015-04-17 21:09:45 -0700
+Processing by ProfilesController#create as JSON
+  Parameters: {"child"=>{"first_name"=>"testse", "last_name"=>"tewtrew", "city"=>"fewfewf", "state"=>"fewfew", "phone"=>"fewfewffewfewf", "religion"=>"", "birthdate"=>"1980-04-15", "bio"=>"fewfewf", "smoke"=>"", "facebook_url"=>"", "embarrassing_moment"=>"", "pf_image_1"=>"", "pf_image_2"=>"", "pf_image_3"=>"", "pf_image_4"=>"", "pf_image_5"=>""}, "user_id"=>"1"}
+  [1m[35mParent Load (0.2ms)[0m  SELECT  "parents".* FROM "parents" WHERE "parents"."id" = $1 LIMIT 1  [["id", 1]]
+Unpermitted parameters: pf_image_1, pf_image_2, pf_image_3, pf_image_4, pf_image_5
+  [1m[36mChild Load (0.4ms)[0m  [1mSELECT  "children".* FROM "children"  ORDER BY "children"."id" DESC LIMIT 1[0m
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.6ms)
+
+NoMethodError - undefined method `content_type' for "":String:
+  app/models/child.rb:25:in `save_profile_image'
+  app/controllers/profiles_controller.rb:16:in `block in create'
+  app/controllers/profiles_controller.rb:15:in `create'
+  actionpack (4.2.1) lib/action_controller/metal/implicit_render.rb:4:in `send_action'
+  actionpack (4.2.1) lib/abstract_controller/base.rb:198:in `process_action'
+  actionpack (4.2.1) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (4.2.1) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:117:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:555:in `block (2 levels) in compile'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:505:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:92:in `_run_callbacks'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:776:in `_run_process_action_callbacks'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.1) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.2.1) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.2.1) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+  activesupport (4.2.1) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.1) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.1) lib/active_support/notifications.rb:164:in `instrument'
+  actionpack (4.2.1) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.2.1) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.2.1) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.2.1) lib/abstract_controller/base.rb:137:in `process'
+  actionview (4.2.1) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.2.1) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.2.1) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.2.1) lib/action_controller/metal.rb:237:in `block in action'
+  actionpack (4.2.1) lib/action_dispatch/routing/route_set.rb:74:in `dispatch'
+  actionpack (4.2.1) lib/action_dispatch/routing/route_set.rb:43:in `serve'
+  actionpack (4.2.1) lib/action_dispatch/journey/router.rb:43:in `block in serve'
+  actionpack (4.2.1) lib/action_dispatch/journey/router.rb:30:in `serve'
+  actionpack (4.2.1) lib/action_dispatch/routing/route_set.rb:819:in `call'
+  warden (1.2.3) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.3) lib/warden/manager.rb:34:in `call'
+  rack (1.6.0) lib/rack/etag.rb:24:in `call'
+  rack (1.6.0) lib/rack/conditionalget.rb:38:in `call'
+  rack (1.6.0) lib/rack/head.rb:13:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/flash.rb:260:in `call'
+  rack (1.6.0) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.6.0) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.2.1) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.2.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:649:in `call'
+  activerecord (4.2.1) lib/active_record/migration.rb:378:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:88:in `_run_callbacks'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:776:in `_run_call_callbacks'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.1) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:84:in `protected_app_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:79:in `better_errors_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:57:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  web-console (2.1.2) lib/web_console/middleware.rb:37:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.0) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.0) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.0) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.1) lib/rails/application.rb:164:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  rack (1.6.0) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.0) lib/rack/handler/webrick.rb:89:in `service'
+  /Users/apprentice/.rbenv/versions/2.0.0-p353/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/apprentice/.rbenv/versions/2.0.0-p353/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/apprentice/.rbenv/versions/2.0.0-p353/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+  [1m[36mChild Load (1.0ms)[0m  [1mSELECT  "children".* FROM "children"  ORDER BY "children"."id" DESC LIMIT 1[0m
+
+
+Started GET "/users/1/profiles/new" for ::1 at 2015-04-17 21:13:40 -0700
+Processing by ProfilesController#new as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[35mParent Load (0.2ms)[0m  SELECT  "parents".* FROM "parents" WHERE "parents"."id" = $1 LIMIT 1  [["id", 1]]
+  Rendered profiles/new.html.erb within layouts/application (5.5ms)
+Completed 200 OK in 169ms (Views: 167.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/1/profiles/new" for ::1 at 2015-04-17 21:13:41 -0700
+Processing by ProfilesController#new as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mParent Load (0.2ms)[0m  [1mSELECT  "parents".* FROM "parents" WHERE "parents"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  Rendered profiles/new.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 74ms (Views: 71.7ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/users/1/profiles" for ::1 at 2015-04-17 21:14:39 -0700
+Processing by ProfilesController#create as JSON
+  Parameters: {"child"=>{"first_name"=>"htrhtr", "last_name"=>"htrhtr", "city"=>"a;lksd", "state"=>";alskd", "phone"=>"a;lskd", "religion"=>"", "birthdate"=>"1980-12-22", "bio"=>"fewfew", "facebook_url"=>"", "embarrassing_moment"=>"", "pf_image_1"=>"C:\\fakepath\\Screen Shot 2015-04-17 at 2.38.38 PM.png", "pf_image_2"=>"", "pf_image_3"=>"", "pf_image_4"=>"", "pf_image_5"=>""}, "user_id"=>"1"}
+  [1m[35mParent Load (0.3ms)[0m  SELECT  "parents".* FROM "parents" WHERE "parents"."id" = $1 LIMIT 1  [["id", 1]]
+Unpermitted parameters: pf_image_1, pf_image_2, pf_image_3, pf_image_4, pf_image_5
+  [1m[36mChild Load (0.4ms)[0m  [1mSELECT  "children".* FROM "children"  ORDER BY "children"."id" DESC LIMIT 1[0m
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.7ms)
+
+NoMethodError - undefined method `content_type' for "C:\\fakepath\\Screen Shot 2015-04-17 at 2.38.38 PM.png":String:
+  app/models/child.rb:25:in `save_profile_image'
+  app/controllers/profiles_controller.rb:16:in `block in create'
+  app/controllers/profiles_controller.rb:15:in `create'
+  actionpack (4.2.1) lib/action_controller/metal/implicit_render.rb:4:in `send_action'
+  actionpack (4.2.1) lib/abstract_controller/base.rb:198:in `process_action'
+  actionpack (4.2.1) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (4.2.1) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:117:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:555:in `block (2 levels) in compile'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:505:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:92:in `_run_callbacks'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:776:in `_run_process_action_callbacks'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.1) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.2.1) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.2.1) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+  activesupport (4.2.1) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.1) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.1) lib/active_support/notifications.rb:164:in `instrument'
+  actionpack (4.2.1) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.2.1) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.2.1) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.2.1) lib/abstract_controller/base.rb:137:in `process'
+  actionview (4.2.1) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.2.1) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.2.1) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.2.1) lib/action_controller/metal.rb:237:in `block in action'
+  actionpack (4.2.1) lib/action_dispatch/routing/route_set.rb:74:in `dispatch'
+  actionpack (4.2.1) lib/action_dispatch/routing/route_set.rb:43:in `serve'
+  actionpack (4.2.1) lib/action_dispatch/journey/router.rb:43:in `block in serve'
+  actionpack (4.2.1) lib/action_dispatch/journey/router.rb:30:in `serve'
+  actionpack (4.2.1) lib/action_dispatch/routing/route_set.rb:819:in `call'
+  warden (1.2.3) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.3) lib/warden/manager.rb:34:in `call'
+  rack (1.6.0) lib/rack/etag.rb:24:in `call'
+  rack (1.6.0) lib/rack/conditionalget.rb:38:in `call'
+  rack (1.6.0) lib/rack/head.rb:13:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/flash.rb:260:in `call'
+  rack (1.6.0) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.6.0) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.2.1) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.2.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:649:in `call'
+  activerecord (4.2.1) lib/active_record/migration.rb:378:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:88:in `_run_callbacks'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:776:in `_run_call_callbacks'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.1) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:84:in `protected_app_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:79:in `better_errors_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:57:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  web-console (2.1.2) lib/web_console/middleware.rb:37:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.0) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.0) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.0) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.1) lib/rails/application.rb:164:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  rack (1.6.0) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.0) lib/rack/handler/webrick.rb:89:in `service'
+  /Users/apprentice/.rbenv/versions/2.0.0-p353/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/apprentice/.rbenv/versions/2.0.0-p353/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/apprentice/.rbenv/versions/2.0.0-p353/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+
+Started POST "/users/1/profiles" for ::1 at 2015-04-17 21:15:16 -0700
+Processing by ProfilesController#create as JSON
+  Parameters: {"child"=>{"first_name"=>"htrhtr", "last_name"=>"htrhtr", "city"=>"a;lksd", "state"=>";alskd", "phone"=>"a;lskd", "religion"=>"", "birthdate"=>"1980-12-22", "bio"=>"fewfew", "facebook_url"=>"", "embarrassing_moment"=>"", "pf_image_1"=>"C:\\fakepath\\Screen Shot 2015-04-17 at 2.38.38 PM.png", "pf_image_2"=>"", "pf_image_3"=>"", "pf_image_4"=>"", "pf_image_5"=>""}, "user_id"=>"1"}
+  [1m[35mParent Load (0.2ms)[0m  SELECT  "parents".* FROM "parents" WHERE "parents"."id" = $1 LIMIT 1  [["id", 1]]
+Unpermitted parameters: pf_image_1, pf_image_2, pf_image_3, pf_image_4, pf_image_5
+  [1m[36mChild Load (0.4ms)[0m  [1mSELECT  "children".* FROM "children"  ORDER BY "children"."id" DESC LIMIT 1[0m
+Completed 500 Internal Server Error in 140ms (ActiveRecord: 4.8ms)
+
+NoMethodError - undefined method `content_type' for "C:\\fakepath\\Screen Shot 2015-04-17 at 2.38.38 PM.png":String:
+  app/models/child.rb:25:in `save_profile_image'
+  app/controllers/profiles_controller.rb:16:in `block in create'
+  app/controllers/profiles_controller.rb:15:in `create'
+  actionpack (4.2.1) lib/action_controller/metal/implicit_render.rb:4:in `send_action'
+  actionpack (4.2.1) lib/abstract_controller/base.rb:198:in `process_action'
+  actionpack (4.2.1) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (4.2.1) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:117:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:555:in `block (2 levels) in compile'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:505:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:92:in `_run_callbacks'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:776:in `_run_process_action_callbacks'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.1) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.2.1) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.2.1) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+  activesupport (4.2.1) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.1) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.1) lib/active_support/notifications.rb:164:in `instrument'
+  actionpack (4.2.1) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.2.1) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.2.1) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.2.1) lib/abstract_controller/base.rb:137:in `process'
+  actionview (4.2.1) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.2.1) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.2.1) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.2.1) lib/action_controller/metal.rb:237:in `block in action'
+  actionpack (4.2.1) lib/action_dispatch/routing/route_set.rb:74:in `dispatch'
+  actionpack (4.2.1) lib/action_dispatch/routing/route_set.rb:43:in `serve'
+  actionpack (4.2.1) lib/action_dispatch/journey/router.rb:43:in `block in serve'
+  actionpack (4.2.1) lib/action_dispatch/journey/router.rb:30:in `serve'
+  actionpack (4.2.1) lib/action_dispatch/routing/route_set.rb:819:in `call'
+  warden (1.2.3) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.3) lib/warden/manager.rb:34:in `call'
+  rack (1.6.0) lib/rack/etag.rb:24:in `call'
+  rack (1.6.0) lib/rack/conditionalget.rb:38:in `call'
+  rack (1.6.0) lib/rack/head.rb:13:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/flash.rb:260:in `call'
+  rack (1.6.0) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.6.0) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.2.1) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.2.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:649:in `call'
+  activerecord (4.2.1) lib/active_record/migration.rb:378:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:88:in `_run_callbacks'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:776:in `_run_call_callbacks'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.1) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:84:in `protected_app_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:79:in `better_errors_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:57:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  web-console (2.1.2) lib/web_console/middleware.rb:37:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.0) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.0) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.0) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.1) lib/rails/application.rb:164:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  rack (1.6.0) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.0) lib/rack/handler/webrick.rb:89:in `service'
+  /Users/apprentice/.rbenv/versions/2.0.0-p353/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/apprentice/.rbenv/versions/2.0.0-p353/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/apprentice/.rbenv/versions/2.0.0-p353/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+
+Started GET "/users/1/profiles/new" for ::1 at 2015-04-17 21:17:57 -0700
+Processing by ProfilesController#new as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[35mParent Load (0.2ms)[0m  SELECT  "parents".* FROM "parents" WHERE "parents"."id" = $1 LIMIT 1  [["id", 1]]
+  Rendered profiles/new.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 463ms (Views: 335.3ms | ActiveRecord: 3.6ms)
+
+
+Started GET "/assets/normalize.self-333ce827f60870acbaa5a751d49889465ce84697ee03980558f7d38405f670da.css?body=1" for ::1 at 2015-04-17 21:17:58 -0700
+
+
+Started GET "/assets/responsive.gs.12col.self-382cc78ae9d3462a6d3cb106ba6cb237c9271f17c573e4a7018397596f5ceed8.css?body=1" for ::1 at 2015-04-17 21:17:58 -0700
+
+
+Started GET "/assets/profiles.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-04-17 21:17:58 -0700
+
+
+Started GET "/assets/interests.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-04-17 21:17:58 -0700
+
+
+Started GET "/assets/welcome.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-04-17 21:17:58 -0700
+
+
+Started GET "/assets/new_profile.self-a865afcc168ec04f2daf282a1a5f35fd4fee7e50e4f7549046c35cfb7c7b523e.js?body=1" for ::1 at 2015-04-17 21:17:58 -0700
+
+
+Started GET "/assets/application.self-167193cd81d9330d9ddb5c4ec7b44214fea529aa8a94f3a86e6526e4f652fc02.css?body=1" for ::1 at 2015-04-17 21:17:58 -0700
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-04-17 21:17:58 -0700
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-04-17 21:17:58 -0700
+
+
+Started GET "/assets/jquery_ujs.self-8e98a7a072a6cee1372d19fff9ff3e6aa1e39a37d89d6f06861637d061113ee7.js?body=1" for ::1 at 2015-04-17 21:17:58 -0700
+
+
+Started GET "/assets/handlebars.self-f84f44e551c73998c0d893cd058138a67c06a9ce578c21323db932e904b63991.js?body=1" for ::1 at 2015-04-17 21:17:58 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2015-04-17 21:17:58 -0700
+
+
+Started GET "/assets/interests.self-19a187bec6cdb96d6de80a61c16c857c613536adf9138476bd367db38d282635.js?body=1" for ::1 at 2015-04-17 21:17:58 -0700
+
+
+Started GET "/assets/profiles.self-19a187bec6cdb96d6de80a61c16c857c613536adf9138476bd367db38d282635.js?body=1" for ::1 at 2015-04-17 21:17:58 -0700
+
+
+Started GET "/assets/users.self-19a187bec6cdb96d6de80a61c16c857c613536adf9138476bd367db38d282635.js?body=1" for ::1 at 2015-04-17 21:17:58 -0700
+
+
+Started GET "/assets/welcome.self-19a187bec6cdb96d6de80a61c16c857c613536adf9138476bd367db38d282635.js?body=1" for ::1 at 2015-04-17 21:17:58 -0700
+
+
+Started GET "/assets/application.self-f8806224e027f3e3f0138ea9ce99319e298dfdb323304d1f1be6eae8e8c74724.js?body=1" for ::1 at 2015-04-17 21:17:58 -0700
+
+
+Started GET "/users/1/profiles/new" for ::1 at 2015-04-17 21:20:01 -0700
+Processing by ProfilesController#new as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mParent Load (0.3ms)[0m  [1mSELECT  "parents".* FROM "parents" WHERE "parents"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  Rendered profiles/new.html.erb within layouts/application (7.3ms)
+Completed 200 OK in 346ms (Views: 343.4ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/users/1/profiles" for ::1 at 2015-04-17 21:20:01 -0700
+Processing by ProfilesController#create as JSON
+  Parameters: {"child"=>{"first_name"=>"", "last_name"=>"", "city"=>"", "state"=>"", "phone"=>"", "religion"=>"", "birthdate"=>"", "bio"=>"", "facebook_url"=>"", "embarrassing_moment"=>"", "pf_image_1"=>"", "pf_image_2"=>"", "pf_image_3"=>"", "pf_image_4"=>"", "pf_image_5"=>""}, "user_id"=>"1"}
+  [1m[35mParent Load (0.4ms)[0m  SELECT  "parents".* FROM "parents" WHERE "parents"."id" = $1 LIMIT 1  [["id", 1]]
+Unpermitted parameters: pf_image_1, pf_image_2, pf_image_3, pf_image_4, pf_image_5
+  [1m[36mChild Load (3.3ms)[0m  [1mSELECT  "children".* FROM "children"  ORDER BY "children"."id" DESC LIMIT 1[0m
+Completed 500 Internal Server Error in 27ms (ActiveRecord: 3.6ms)
+
+NoMethodError - undefined method `content_type' for "":String:
+  app/models/child.rb:25:in `save_profile_image'
+  app/controllers/profiles_controller.rb:16:in `block in create'
+  app/controllers/profiles_controller.rb:15:in `create'
+  actionpack (4.2.1) lib/action_controller/metal/implicit_render.rb:4:in `send_action'
+  actionpack (4.2.1) lib/abstract_controller/base.rb:198:in `process_action'
+  actionpack (4.2.1) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (4.2.1) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:117:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:555:in `block (2 levels) in compile'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:505:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:92:in `_run_callbacks'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:776:in `_run_process_action_callbacks'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.1) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.2.1) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.2.1) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+  activesupport (4.2.1) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.1) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.1) lib/active_support/notifications.rb:164:in `instrument'
+  actionpack (4.2.1) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.2.1) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.2.1) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.2.1) lib/abstract_controller/base.rb:137:in `process'
+  actionview (4.2.1) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.2.1) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.2.1) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.2.1) lib/action_controller/metal.rb:237:in `block in action'
+  actionpack (4.2.1) lib/action_dispatch/routing/route_set.rb:74:in `dispatch'
+  actionpack (4.2.1) lib/action_dispatch/routing/route_set.rb:43:in `serve'
+  actionpack (4.2.1) lib/action_dispatch/journey/router.rb:43:in `block in serve'
+  actionpack (4.2.1) lib/action_dispatch/journey/router.rb:30:in `serve'
+  actionpack (4.2.1) lib/action_dispatch/routing/route_set.rb:819:in `call'
+  warden (1.2.3) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.3) lib/warden/manager.rb:34:in `call'
+  rack (1.6.0) lib/rack/etag.rb:24:in `call'
+  rack (1.6.0) lib/rack/conditionalget.rb:38:in `call'
+  rack (1.6.0) lib/rack/head.rb:13:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/flash.rb:260:in `call'
+  rack (1.6.0) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.6.0) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.2.1) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.2.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:649:in `call'
+  activerecord (4.2.1) lib/active_record/migration.rb:378:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:88:in `_run_callbacks'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:776:in `_run_call_callbacks'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.1) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:84:in `protected_app_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:79:in `better_errors_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:57:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  web-console (2.1.2) lib/web_console/middleware.rb:37:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.0) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.0) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.0) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.1) lib/rails/application.rb:164:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  rack (1.6.0) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.0) lib/rack/handler/webrick.rb:89:in `service'
+  /Users/apprentice/.rbenv/versions/2.0.0-p353/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/apprentice/.rbenv/versions/2.0.0-p353/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/apprentice/.rbenv/versions/2.0.0-p353/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+
+Started GET "/assets/normalize.self-333ce827f60870acbaa5a751d49889465ce84697ee03980558f7d38405f670da.css?body=1" for ::1 at 2015-04-17 21:20:01 -0700
+
+
+Started GET "/assets/interests.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-04-17 21:20:01 -0700
+
+
+Started GET "/assets/new_profile.self-3b9cd7a577404b41c9a411d9df7ece5c7b4abee50bc68fa45cc00ca569e52e47.js?body=1" for ::1 at 2015-04-17 21:20:01 -0700
+
+
+Started GET "/assets/responsive.gs.12col.self-382cc78ae9d3462a6d3cb106ba6cb237c9271f17c573e4a7018397596f5ceed8.css?body=1" for ::1 at 2015-04-17 21:20:01 -0700
+
+
+Started GET "/assets/profiles.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-04-17 21:20:01 -0700
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-04-17 21:20:01 -0700
+
+
+Started GET "/assets/welcome.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-04-17 21:20:01 -0700
+
+
+Started GET "/assets/application.self-167193cd81d9330d9ddb5c4ec7b44214fea529aa8a94f3a86e6526e4f652fc02.css?body=1" for ::1 at 2015-04-17 21:20:01 -0700
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-04-17 21:20:01 -0700
+
+
+Started GET "/assets/jquery_ujs.self-8e98a7a072a6cee1372d19fff9ff3e6aa1e39a37d89d6f06861637d061113ee7.js?body=1" for ::1 at 2015-04-17 21:20:01 -0700
+
+
+Started GET "/assets/handlebars.self-f84f44e551c73998c0d893cd058138a67c06a9ce578c21323db932e904b63991.js?body=1" for ::1 at 2015-04-17 21:20:01 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2015-04-17 21:20:01 -0700
+
+
+Started GET "/assets/interests.self-19a187bec6cdb96d6de80a61c16c857c613536adf9138476bd367db38d282635.js?body=1" for ::1 at 2015-04-17 21:20:01 -0700
+
+
+Started GET "/assets/profiles.self-19a187bec6cdb96d6de80a61c16c857c613536adf9138476bd367db38d282635.js?body=1" for ::1 at 2015-04-17 21:20:01 -0700
+
+
+Started GET "/assets/users.self-19a187bec6cdb96d6de80a61c16c857c613536adf9138476bd367db38d282635.js?body=1" for ::1 at 2015-04-17 21:20:01 -0700
+
+
+Started GET "/assets/welcome.self-19a187bec6cdb96d6de80a61c16c857c613536adf9138476bd367db38d282635.js?body=1" for ::1 at 2015-04-17 21:20:01 -0700
+
+
+Started GET "/assets/application.self-f8806224e027f3e3f0138ea9ce99319e298dfdb323304d1f1be6eae8e8c74724.js?body=1" for ::1 at 2015-04-17 21:20:01 -0700
+
+
+Started POST "/users/1/profiles" for ::1 at 2015-04-17 21:20:04 -0700
+Processing by ProfilesController#create as JSON
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"4vQ6CPzFJ872ZzKnHVGXhXXT9j2hN4F8AoVyW/ktmGiva/qdzB0WzUUg16NWgbCzJpwN8zNvAfqTnZcV++Co3A==", "child"=>{"first_name"=>"", "last_name"=>"", "city"=>"", "state"=>"", "phone"=>"", "birthdate"=>"", "bio"=>"", "linkedin_url"=>"", "facebook_url"=>"", "religion"=>"", "embarrassing_moment"=>""}, "user_id"=>"1"}
+  [1m[35mParent Load (0.3ms)[0m  SELECT  "parents".* FROM "parents" WHERE "parents"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mChild Exists (0.4ms)[0m  SELECT  1 AS one FROM "children" WHERE "children"."phone" = '' LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 1.0ms)
+
+NoMethodError - undefined method `year' for nil:NilClass:
+  app/models/child.rb:56:in `check_age'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:432:in `block in make_lambda'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:192:in `block in simple'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:504:in `block in call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:504:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:92:in `_run_callbacks'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:776:in `_run_validate_callbacks'
+  activemodel (4.2.1) lib/active_model/validations.rb:395:in `run_validations!'
+  activemodel (4.2.1) lib/active_model/validations/callbacks.rb:113:in `block in run_validations!'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:117:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:555:in `block (2 levels) in compile'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:505:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:92:in `_run_callbacks'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:776:in `_run_validation_callbacks'
+  activemodel (4.2.1) lib/active_model/validations/callbacks.rb:113:in `run_validations!'
+  activemodel (4.2.1) lib/active_model/validations.rb:334:in `valid?'
+  activerecord (4.2.1) lib/active_record/validations.rb:58:in `valid?'
+  activerecord (4.2.1) lib/active_record/validations.rb:83:in `perform_validations'
+  activerecord (4.2.1) lib/active_record/validations.rb:37:in `save'
+  activerecord (4.2.1) lib/active_record/attribute_methods/dirty.rb:21:in `save'
+  activerecord (4.2.1) lib/active_record/transactions.rb:286:in `block (2 levels) in save'
+  activerecord (4.2.1) lib/active_record/transactions.rb:347:in `block in with_transaction_returning_status'
+  activerecord (4.2.1) lib/active_record/connection_adapters/abstract/database_statements.rb:213:in `block in transaction'
+  activerecord (4.2.1) lib/active_record/connection_adapters/abstract/transaction.rb:188:in `within_new_transaction'
+  activerecord (4.2.1) lib/active_record/connection_adapters/abstract/database_statements.rb:213:in `transaction'
+  activerecord (4.2.1) lib/active_record/transactions.rb:220:in `transaction'
+  activerecord (4.2.1) lib/active_record/transactions.rb:344:in `with_transaction_returning_status'
+  activerecord (4.2.1) lib/active_record/transactions.rb:286:in `block in save'
+  activerecord (4.2.1) lib/active_record/transactions.rb:301:in `rollback_active_record_state!'
+  activerecord (4.2.1) lib/active_record/transactions.rb:285:in `save'
+  app/controllers/profiles_controller.rb:19:in `create'
+  actionpack (4.2.1) lib/action_controller/metal/implicit_render.rb:4:in `send_action'
+  actionpack (4.2.1) lib/abstract_controller/base.rb:198:in `process_action'
+  actionpack (4.2.1) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (4.2.1) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:117:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:555:in `block (2 levels) in compile'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:505:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:92:in `_run_callbacks'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:776:in `_run_process_action_callbacks'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.1) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.2.1) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.2.1) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+  activesupport (4.2.1) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.1) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.1) lib/active_support/notifications.rb:164:in `instrument'
+  actionpack (4.2.1) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.2.1) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.2.1) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.2.1) lib/abstract_controller/base.rb:137:in `process'
+  actionview (4.2.1) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.2.1) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.2.1) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.2.1) lib/action_controller/metal.rb:237:in `block in action'
+  actionpack (4.2.1) lib/action_dispatch/routing/route_set.rb:74:in `dispatch'
+  actionpack (4.2.1) lib/action_dispatch/routing/route_set.rb:43:in `serve'
+  actionpack (4.2.1) lib/action_dispatch/journey/router.rb:43:in `block in serve'
+  actionpack (4.2.1) lib/action_dispatch/journey/router.rb:30:in `serve'
+  actionpack (4.2.1) lib/action_dispatch/routing/route_set.rb:819:in `call'
+  warden (1.2.3) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.3) lib/warden/manager.rb:34:in `call'
+  rack (1.6.0) lib/rack/etag.rb:24:in `call'
+  rack (1.6.0) lib/rack/conditionalget.rb:38:in `call'
+  rack (1.6.0) lib/rack/head.rb:13:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/flash.rb:260:in `call'
+  rack (1.6.0) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.6.0) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.2.1) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.2.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:649:in `call'
+  activerecord (4.2.1) lib/active_record/migration.rb:378:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:88:in `_run_callbacks'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:776:in `_run_call_callbacks'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.1) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:84:in `protected_app_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:79:in `better_errors_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:57:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  web-console (2.1.2) lib/web_console/middleware.rb:37:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.0) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.0) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.0) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.1) lib/rails/application.rb:164:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  rack (1.6.0) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.0) lib/rack/handler/webrick.rb:89:in `service'
+  /Users/apprentice/.rbenv/versions/2.0.0-p353/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/apprentice/.rbenv/versions/2.0.0-p353/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/apprentice/.rbenv/versions/2.0.0-p353/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+
+Started POST "/users/1/profiles" for ::1 at 2015-04-17 21:20:40 -0700
+Processing by ProfilesController#create as JSON
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"4vQ6CPzFJ872ZzKnHVGXhXXT9j2hN4F8AoVyW/ktmGiva/qdzB0WzUUg16NWgbCzJpwN8zNvAfqTnZcV++Co3A==", "child"=>{"first_name"=>"fweewf", "last_name"=>"fewfwefew", "city"=>"fewfwef", "state"=>"fewfe", "phone"=>"fewfewfe", "birthdate"=>"", "bio"=>"", "linkedin_url"=>"", "facebook_url"=>"", "religion"=>"", "embarrassing_moment"=>""}, "user_id"=>"1"}
+  [1m[35mParent Load (0.3ms)[0m  SELECT  "parents".* FROM "parents" WHERE "parents"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mChild Exists (0.3ms)[0m  SELECT  1 AS one FROM "children" WHERE "children"."phone" = 'fewfewfe' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 0.9ms)
+
+NoMethodError - undefined method `year' for nil:NilClass:
+  app/models/child.rb:56:in `check_age'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:432:in `block in make_lambda'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:192:in `block in simple'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:504:in `block in call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:504:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:92:in `_run_callbacks'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:776:in `_run_validate_callbacks'
+  activemodel (4.2.1) lib/active_model/validations.rb:395:in `run_validations!'
+  activemodel (4.2.1) lib/active_model/validations/callbacks.rb:113:in `block in run_validations!'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:117:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:555:in `block (2 levels) in compile'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:505:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:92:in `_run_callbacks'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:776:in `_run_validation_callbacks'
+  activemodel (4.2.1) lib/active_model/validations/callbacks.rb:113:in `run_validations!'
+  activemodel (4.2.1) lib/active_model/validations.rb:334:in `valid?'
+  activerecord (4.2.1) lib/active_record/validations.rb:58:in `valid?'
+  activerecord (4.2.1) lib/active_record/validations.rb:83:in `perform_validations'
+  activerecord (4.2.1) lib/active_record/validations.rb:37:in `save'
+  activerecord (4.2.1) lib/active_record/attribute_methods/dirty.rb:21:in `save'
+  activerecord (4.2.1) lib/active_record/transactions.rb:286:in `block (2 levels) in save'
+  activerecord (4.2.1) lib/active_record/transactions.rb:347:in `block in with_transaction_returning_status'
+  activerecord (4.2.1) lib/active_record/connection_adapters/abstract/database_statements.rb:213:in `block in transaction'
+  activerecord (4.2.1) lib/active_record/connection_adapters/abstract/transaction.rb:188:in `within_new_transaction'
+  activerecord (4.2.1) lib/active_record/connection_adapters/abstract/database_statements.rb:213:in `transaction'
+  activerecord (4.2.1) lib/active_record/transactions.rb:220:in `transaction'
+  activerecord (4.2.1) lib/active_record/transactions.rb:344:in `with_transaction_returning_status'
+  activerecord (4.2.1) lib/active_record/transactions.rb:286:in `block in save'
+  activerecord (4.2.1) lib/active_record/transactions.rb:301:in `rollback_active_record_state!'
+  activerecord (4.2.1) lib/active_record/transactions.rb:285:in `save'
+  app/controllers/profiles_controller.rb:19:in `create'
+  actionpack (4.2.1) lib/action_controller/metal/implicit_render.rb:4:in `send_action'
+  actionpack (4.2.1) lib/abstract_controller/base.rb:198:in `process_action'
+  actionpack (4.2.1) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (4.2.1) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:117:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:555:in `block (2 levels) in compile'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:505:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:92:in `_run_callbacks'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:776:in `_run_process_action_callbacks'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.1) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.2.1) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.2.1) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+  activesupport (4.2.1) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.1) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.1) lib/active_support/notifications.rb:164:in `instrument'
+  actionpack (4.2.1) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.2.1) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.2.1) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.2.1) lib/abstract_controller/base.rb:137:in `process'
+  actionview (4.2.1) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.2.1) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.2.1) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.2.1) lib/action_controller/metal.rb:237:in `block in action'
+  actionpack (4.2.1) lib/action_dispatch/routing/route_set.rb:74:in `dispatch'
+  actionpack (4.2.1) lib/action_dispatch/routing/route_set.rb:43:in `serve'
+  actionpack (4.2.1) lib/action_dispatch/journey/router.rb:43:in `block in serve'
+  actionpack (4.2.1) lib/action_dispatch/journey/router.rb:30:in `serve'
+  actionpack (4.2.1) lib/action_dispatch/routing/route_set.rb:819:in `call'
+  warden (1.2.3) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.3) lib/warden/manager.rb:34:in `call'
+  rack (1.6.0) lib/rack/etag.rb:24:in `call'
+  rack (1.6.0) lib/rack/conditionalget.rb:38:in `call'
+  rack (1.6.0) lib/rack/head.rb:13:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/flash.rb:260:in `call'
+  rack (1.6.0) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.6.0) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.2.1) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.2.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:649:in `call'
+  activerecord (4.2.1) lib/active_record/migration.rb:378:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:88:in `_run_callbacks'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:776:in `_run_call_callbacks'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.1) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:84:in `protected_app_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:79:in `better_errors_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:57:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  web-console (2.1.2) lib/web_console/middleware.rb:37:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.0) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.0) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.0) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.1) lib/rails/application.rb:164:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  rack (1.6.0) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.0) lib/rack/handler/webrick.rb:89:in `service'
+  /Users/apprentice/.rbenv/versions/2.0.0-p353/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/apprentice/.rbenv/versions/2.0.0-p353/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/apprentice/.rbenv/versions/2.0.0-p353/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+
+Started GET "/users/1/profiles/new" for ::1 at 2015-04-17 21:24:36 -0700
+Processing by ProfilesController#new as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[35mParent Load (0.3ms)[0m  SELECT  "parents".* FROM "parents" WHERE "parents"."id" = $1 LIMIT 1  [["id", 1]]
+  Rendered profiles/new.html.erb within layouts/application (5.3ms)
+Completed 200 OK in 401ms (Views: 399.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/normalize.self-333ce827f60870acbaa5a751d49889465ce84697ee03980558f7d38405f670da.css?body=1" for ::1 at 2015-04-17 21:24:37 -0700
+
+
+Started GET "/assets/interests.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-04-17 21:24:37 -0700
+
+
+Started GET "/assets/responsive.gs.12col.self-382cc78ae9d3462a6d3cb106ba6cb237c9271f17c573e4a7018397596f5ceed8.css?body=1" for ::1 at 2015-04-17 21:24:37 -0700
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-04-17 21:24:37 -0700
+
+
+Started GET "/assets/welcome.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-04-17 21:24:37 -0700
+
+
+Started GET "/assets/application.self-167193cd81d9330d9ddb5c4ec7b44214fea529aa8a94f3a86e6526e4f652fc02.css?body=1" for ::1 at 2015-04-17 21:24:37 -0700
+
+
+Started GET "/assets/profiles.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-04-17 21:24:37 -0700
+
+
+Started GET "/assets/new_profile.self-c2c7f1c9b47a1b0d6f402bc961184ffb8c6b2fd714cb89c75dd333a2000777cf.js?body=1" for ::1 at 2015-04-17 21:24:37 -0700
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-04-17 21:24:37 -0700
+
+
+Started GET "/assets/jquery_ujs.self-8e98a7a072a6cee1372d19fff9ff3e6aa1e39a37d89d6f06861637d061113ee7.js?body=1" for ::1 at 2015-04-17 21:24:37 -0700
+
+
+Started GET "/assets/handlebars.self-f84f44e551c73998c0d893cd058138a67c06a9ce578c21323db932e904b63991.js?body=1" for ::1 at 2015-04-17 21:24:37 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2015-04-17 21:24:37 -0700
+
+
+Started GET "/assets/interests.self-19a187bec6cdb96d6de80a61c16c857c613536adf9138476bd367db38d282635.js?body=1" for ::1 at 2015-04-17 21:24:37 -0700
+
+
+Started GET "/assets/profiles.self-19a187bec6cdb96d6de80a61c16c857c613536adf9138476bd367db38d282635.js?body=1" for ::1 at 2015-04-17 21:24:37 -0700
+
+
+Started GET "/assets/users.self-19a187bec6cdb96d6de80a61c16c857c613536adf9138476bd367db38d282635.js?body=1" for ::1 at 2015-04-17 21:24:37 -0700
+
+
+Started GET "/assets/welcome.self-19a187bec6cdb96d6de80a61c16c857c613536adf9138476bd367db38d282635.js?body=1" for ::1 at 2015-04-17 21:24:37 -0700
+
+
+Started GET "/assets/application.self-f8806224e027f3e3f0138ea9ce99319e298dfdb323304d1f1be6eae8e8c74724.js?body=1" for ::1 at 2015-04-17 21:24:37 -0700
+
+
+Started POST "/users/1/profiles" for ::1 at 2015-04-17 21:24:39 -0700
+Processing by ProfilesController#create as JSON
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"/B2pWNfrUmvkmwB+NNuz+BSwOWRF0E5hThOfXXod0CmxgmnN5zNjaFfc5Xp/C5TOR//CqteIzuffC3oTeNDgnQ==", "child"=>{"first_name"=>"", "last_name"=>"", "city"=>"", "state"=>"", "phone"=>"", "birthdate"=>"", "bio"=>"", "linkedin_url"=>"", "facebook_url"=>"", "religion"=>"", "embarrassing_moment"=>""}, "user_id"=>"1"}
+  [1m[36mParent Load (0.2ms)[0m  [1mSELECT  "parents".* FROM "parents" WHERE "parents"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mChild Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "children" WHERE "children"."phone" = '' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 1.1ms)
+
+NoMethodError - undefined method `year' for nil:NilClass:
+  app/models/child.rb:56:in `check_age'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:432:in `block in make_lambda'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:192:in `block in simple'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:504:in `block in call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:504:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:92:in `_run_callbacks'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:776:in `_run_validate_callbacks'
+  activemodel (4.2.1) lib/active_model/validations.rb:395:in `run_validations!'
+  activemodel (4.2.1) lib/active_model/validations/callbacks.rb:113:in `block in run_validations!'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:117:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:555:in `block (2 levels) in compile'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:505:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:92:in `_run_callbacks'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:776:in `_run_validation_callbacks'
+  activemodel (4.2.1) lib/active_model/validations/callbacks.rb:113:in `run_validations!'
+  activemodel (4.2.1) lib/active_model/validations.rb:334:in `valid?'
+  activerecord (4.2.1) lib/active_record/validations.rb:58:in `valid?'
+  activerecord (4.2.1) lib/active_record/validations.rb:83:in `perform_validations'
+  activerecord (4.2.1) lib/active_record/validations.rb:37:in `save'
+  activerecord (4.2.1) lib/active_record/attribute_methods/dirty.rb:21:in `save'
+  activerecord (4.2.1) lib/active_record/transactions.rb:286:in `block (2 levels) in save'
+  activerecord (4.2.1) lib/active_record/transactions.rb:347:in `block in with_transaction_returning_status'
+  activerecord (4.2.1) lib/active_record/connection_adapters/abstract/database_statements.rb:213:in `block in transaction'
+  activerecord (4.2.1) lib/active_record/connection_adapters/abstract/transaction.rb:188:in `within_new_transaction'
+  activerecord (4.2.1) lib/active_record/connection_adapters/abstract/database_statements.rb:213:in `transaction'
+  activerecord (4.2.1) lib/active_record/transactions.rb:220:in `transaction'
+  activerecord (4.2.1) lib/active_record/transactions.rb:344:in `with_transaction_returning_status'
+  activerecord (4.2.1) lib/active_record/transactions.rb:286:in `block in save'
+  activerecord (4.2.1) lib/active_record/transactions.rb:301:in `rollback_active_record_state!'
+  activerecord (4.2.1) lib/active_record/transactions.rb:285:in `save'
+  app/controllers/profiles_controller.rb:19:in `create'
+  actionpack (4.2.1) lib/action_controller/metal/implicit_render.rb:4:in `send_action'
+  actionpack (4.2.1) lib/abstract_controller/base.rb:198:in `process_action'
+  actionpack (4.2.1) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (4.2.1) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:117:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:555:in `block (2 levels) in compile'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:505:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:92:in `_run_callbacks'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:776:in `_run_process_action_callbacks'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.1) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.2.1) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.2.1) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+  activesupport (4.2.1) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.1) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.1) lib/active_support/notifications.rb:164:in `instrument'
+  actionpack (4.2.1) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.2.1) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.2.1) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.2.1) lib/abstract_controller/base.rb:137:in `process'
+  actionview (4.2.1) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.2.1) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.2.1) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.2.1) lib/action_controller/metal.rb:237:in `block in action'
+  actionpack (4.2.1) lib/action_dispatch/routing/route_set.rb:74:in `dispatch'
+  actionpack (4.2.1) lib/action_dispatch/routing/route_set.rb:43:in `serve'
+  actionpack (4.2.1) lib/action_dispatch/journey/router.rb:43:in `block in serve'
+  actionpack (4.2.1) lib/action_dispatch/journey/router.rb:30:in `serve'
+  actionpack (4.2.1) lib/action_dispatch/routing/route_set.rb:819:in `call'
+  warden (1.2.3) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.3) lib/warden/manager.rb:34:in `call'
+  rack (1.6.0) lib/rack/etag.rb:24:in `call'
+  rack (1.6.0) lib/rack/conditionalget.rb:38:in `call'
+  rack (1.6.0) lib/rack/head.rb:13:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/flash.rb:260:in `call'
+  rack (1.6.0) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.6.0) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.2.1) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.2.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:649:in `call'
+  activerecord (4.2.1) lib/active_record/migration.rb:378:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:88:in `_run_callbacks'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:776:in `_run_call_callbacks'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.1) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:84:in `protected_app_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:79:in `better_errors_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:57:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  web-console (2.1.2) lib/web_console/middleware.rb:37:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.0) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.0) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.0) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.1) lib/rails/application.rb:164:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  rack (1.6.0) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.0) lib/rack/handler/webrick.rb:89:in `service'
+  /Users/apprentice/.rbenv/versions/2.0.0-p353/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/apprentice/.rbenv/versions/2.0.0-p353/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/apprentice/.rbenv/versions/2.0.0-p353/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
