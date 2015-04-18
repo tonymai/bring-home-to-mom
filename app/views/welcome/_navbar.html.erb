@@ -1,0 +1,6 @@
+  <nav class = "navbar">
+    <div class = "logo col">BHTM</div>
+    <div class = "navbar-link-wrapper">
+      <%= user_signed_in? ? (render "navbar_loggedin") : (render "navbar_loggedout") %>
+    </div>
+  </nav>
