@@ -6,6 +6,8 @@ $(document).on('page:change', function() {
         $('.new-pf-form-container').empty();
         $('.child-name').text(response.first_name);
         $('.new-interests-container').show();
+        $('.new-interests-container').attr('data-profile-id', response.id);
+        $('.new-interests-container').attr('data-user-id', response.parent_id);
         //reponse.id is the new child's id, need it to associate interests to child
       },
       error: function(response) {

@@ -26,6 +26,15 @@ class ProfilesController < ApplicationController
     end
   end
 
+  def update
+    #Only written for adding interests right now; when we create full edit page, this will need conditional logic to handle all cases
+    @parent = Parent.find(params[:user_id])
+    # byebug
+    # @child =
+
+    redirect '/'
+  end
+
   private
 
   def profile_params

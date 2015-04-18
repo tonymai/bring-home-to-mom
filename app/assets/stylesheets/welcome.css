@@ -23,6 +23,19 @@ header{
   color:white;
 }
 
+.interest-btn{
+  display: inline-block;
+  border: 1px gray solid;
+  padding: 2px 4px;
+  margin: 5px 0px 0px 0px;
+  border-radius: 8px;
+  background-color: lightgray;
+}
+
+.interest-btn-selected{
+  background-color: red;
+}
+
 .navbar-link-wrapper{
   float:right;
   display: inline-block;
@@ -69,3 +82,5 @@ header{
 .hidden{
   display: none;
 }
+
+

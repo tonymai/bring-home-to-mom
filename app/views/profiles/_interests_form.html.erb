@@ -2,9 +2,11 @@
 
   <h1>Add Interests for <span class="child-name">Child</span></h1>
 
-  <% @interests.each do |interest| %>
-    <button><%= interest.name %></button>
-  <% end %>
+  <div class="interests-wrapper">
+    <% @interests.each do |interest| %>
+      <div class="interest-btn" data-interest-id="<%= interest.id %>"><%= interest.name %></div>
+    <% end %>
+  </div>
 
   <%= form_for @interest do |f| %>
 
@@ -14,5 +16,7 @@
     <%= f.submit 'Add interest' %>
     <!-- need jquery to preventdefault and also send child_id -->
   <% end %>
+
+  <h3 class="submit-interests"><a href="#">[Click To Submit]</a></h3>
 
 </div>
