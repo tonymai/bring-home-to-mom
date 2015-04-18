@@ -16,6 +16,7 @@ class Child < ActiveRecord::Base
   validates :first_name, :last_name, :city, :state, :phone, :gender, :sexual_preference, :birthdate, :bio, :main_profile_image, presence: true
   validates :phone, uniqueness: true
   validates :pf_image_1, :pf_image_2, :pf_image_3, :pf_image_4, :pf_image_5, format: { with: /.+\.(jpg|png)/, message: "is not a valid image" }, allow_blank: true
+  validate :check_age
 
   def save_profile_image(uploaded_io, pf_image_key)
     make_dir_unless_exists(Rails.root.join('public','uploads', "#{self.parent.id}"))
@@ -49,6 +50,13 @@ class Child < ActiveRecord::Base
       self.main_profile_image = 5
     end
   end
+
+  def check_age
+    now = Date.today
+    age = now.year - birthdate.year - (birthdate.to_date.change(:year => now.year) > now ? 1 : 0)
+    errors.add(:birthdate, 'must be at least 18 years ago') if age < 18
+  end
+
 end
 
 
