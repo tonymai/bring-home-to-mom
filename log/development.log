@@ -10797,3 +10797,76 @@ Unpermitted parameters: pf_image_3, pf_image_4
   [1m[35m (0.8ms)[0m  ROLLBACK
   Rendered profiles/new.html.erb within layouts/application (429.4ms)
 Completed 200 OK in 1867ms (Views: 1095.7ms | ActiveRecord: 5.0ms)
+
+
+Started GET "/users/2/profiles/new" for ::1 at 2015-04-17 17:46:55 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ProfilesController#new as HTML
+  Parameters: {"user_id"=>"2"}
+  [1m[35mParent Load (0.5ms)[0m  SELECT  "parents".* FROM "parents" WHERE "parents"."id" = $1 LIMIT 1  [["id", 2]]
+  Rendered profiles/new.html.erb within layouts/application (22.9ms)
+Completed 200 OK in 624ms (Views: 490.3ms | ActiveRecord: 4.7ms)
+
+
+Started POST "/users/2/profiles" for ::1 at 2015-04-17 17:47:22 -0700
+Processing by ProfilesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sts9i/NTfiZmf8MSSxXKUgdS46SG16uvn362i6MKuBv/RP0ew4tPJdU4JhYAxe1kVB0YahSPKykOZlPFoceIrw==", "child"=>{"first_name"=>"", "last_name"=>"", "city"=>"", "state"=>"", "phone"=>"", "birthdate"=>"", "bio"=>"", "linkedin_url"=>"", "facebook_url"=>"", "religion"=>"", "smoke"=>"", "embarrassing_moment"=>"", "pf_image_1"=>#<ActionDispatch::Http::UploadedFile:0x007fcbe06b0608 @tempfile=#<Tempfile:/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/RackMultipart20150417-56633-1mzta3o.png>, @original_filename="Screen Shot 2015-04-17 at 2.38.38 PM.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"child[pf_image_1]\"; filename=\"Screen Shot 2015-04-17 at 2.38.38 PM.png\"\r\nContent-Type: image/png\r\n">, "pf_image_2"=>#<ActionDispatch::Http::UploadedFile:0x007fcbe06b0478 @tempfile=#<Tempfile:/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/RackMultipart20150417-56633-1989ikz.rdoc>, @original_filename="README.rdoc", @content_type="application/octet-stream", @headers="Content-Disposition: form-data; name=\"child[pf_image_2]\"; filename=\"README.rdoc\"\r\nContent-Type: application/octet-stream\r\n">}, "commit"=>"Create Child Profile", "user_id"=>"2"}
+  [1m[36mParent Load (0.3ms)[0m  [1mSELECT  "parents".* FROM "parents" WHERE "parents"."id" = $1 LIMIT 1[0m  [["id", 2]]
+Unpermitted parameters: pf_image_1, pf_image_2
+  [1m[35mChild Load (0.8ms)[0m  SELECT  "children".* FROM "children"  ORDER BY "children"."id" DESC LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "children".* FROM "children"  ORDER BY "children"."id" DESC LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "children".* FROM "children"  ORDER BY "children"."id" DESC LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "children".* FROM "children"  ORDER BY "children"."id" DESC LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mChild Exists (0.7ms)[0m  [1mSELECT  1 AS one FROM "children" WHERE "children"."phone" = '' LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  ROLLBACK
+  Rendered profiles/new.html.erb within layouts/application (12.0ms)
+Completed 200 OK in 680ms (Views: 141.6ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/users/2/profiles/new" for ::1 at 2015-04-17 17:50:22 -0700
+Processing by ProfilesController#new as HTML
+  Parameters: {"user_id"=>"2"}
+  [1m[36mParent Load (0.4ms)[0m  [1mSELECT  "parents".* FROM "parents" WHERE "parents"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  Rendered profiles/new.html.erb within layouts/application (4.6ms)
+Completed 200 OK in 100ms (Views: 49.7ms | ActiveRecord: 3.3ms)
+
+
+Started POST "/users/2/profiles" for ::1 at 2015-04-17 17:50:36 -0700
+Processing by ProfilesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"feGcKop/K25YYQAmGySR5dIhV59CRf9Jrdl4S/9AV5Ywfly/uqcabesm5SJQ9LbTgW6sUdAdf888wZ0F/Y1nIg==", "child"=>{"first_name"=>"", "last_name"=>"", "city"=>"", "state"=>"", "phone"=>"", "birthdate"=>"", "bio"=>"", "linkedin_url"=>"", "facebook_url"=>"", "religion"=>"", "smoke"=>"", "embarrassing_moment"=>"", "pf_image_1"=>#<ActionDispatch::Http::UploadedFile:0x007fcbde23b188 @tempfile=#<Tempfile:/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/RackMultipart20150417-56633-10tyo3v.rdoc>, @original_filename="README.rdoc", @content_type="application/octet-stream", @headers="Content-Disposition: form-data; name=\"child[pf_image_1]\"; filename=\"README.rdoc\"\r\nContent-Type: application/octet-stream\r\n">, "pf_image_2"=>#<ActionDispatch::Http::UploadedFile:0x007fcbde23a080 @tempfile=#<Tempfile:/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/RackMultipart20150417-56633-1j5t7t0.png>, @original_filename="Screen Shot 2015-04-17 at 2.38.38 PM.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"child[pf_image_2]\"; filename=\"Screen Shot 2015-04-17 at 2.38.38 PM.png\"\r\nContent-Type: image/png\r\n">}, "commit"=>"Create Child Profile", "user_id"=>"2"}
+  [1m[35mParent Load (0.3ms)[0m  SELECT  "parents".* FROM "parents" WHERE "parents"."id" = $1 LIMIT 1  [["id", 2]]
+Unpermitted parameters: pf_image_1, pf_image_2
+  [1m[36mChild Load (0.4ms)[0m  [1mSELECT  "children".* FROM "children"  ORDER BY "children"."id" DESC LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "children".* FROM "children"  ORDER BY "children"."id" DESC LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "children".* FROM "children"  ORDER BY "children"."id" DESC LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "children".* FROM "children"  ORDER BY "children"."id" DESC LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mChild Exists (0.4ms)[0m  SELECT  1 AS one FROM "children" WHERE "children"."phone" = '' LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  Rendered profiles/new.html.erb within layouts/application (12.1ms)
+Completed 200 OK in 81ms (Views: 59.3ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/users/2/profiles/new" for ::1 at 2015-04-17 17:51:27 -0700
+Processing by ProfilesController#new as HTML
+  Parameters: {"user_id"=>"2"}
+  [1m[35mParent Load (0.3ms)[0m  SELECT  "parents".* FROM "parents" WHERE "parents"."id" = $1 LIMIT 1  [["id", 2]]
+  Rendered profiles/new.html.erb within layouts/application (4.7ms)
+Completed 200 OK in 176ms (Views: 53.9ms | ActiveRecord: 3.5ms)
+
+
+Started POST "/users/2/profiles" for ::1 at 2015-04-17 17:51:47 -0700
+Processing by ProfilesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"axcIVHQymESIavVCKTJqiN/1COwd/4XJIfXM1f2mUuAmiMjBROqpRzstEEZi4k2+jLrzIo+nBU+w7Smb/2tiVA==", "child"=>{"first_name"=>"", "last_name"=>"", "city"=>"", "state"=>"", "phone"=>"", "birthdate"=>"", "bio"=>"", "linkedin_url"=>"", "facebook_url"=>"", "religion"=>"", "smoke"=>"", "embarrassing_moment"=>"", "pf_image_1"=>#<ActionDispatch::Http::UploadedFile:0x007fcbe1a42d38 @tempfile=#<Tempfile:/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/RackMultipart20150417-56633-eicbc4.png>, @original_filename="Screen Shot 2015-04-17 at 2.38.38 PM.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"child[pf_image_1]\"; filename=\"Screen Shot 2015-04-17 at 2.38.38 PM.png\"\r\nContent-Type: image/png\r\n">, "pf_image_2"=>#<ActionDispatch::Http::UploadedFile:0x007fcbe1a42bf8 @tempfile=#<Tempfile:/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/RackMultipart20150417-56633-16b61zu.rdoc>, @original_filename="README.rdoc", @content_type="application/octet-stream", @headers="Content-Disposition: form-data; name=\"child[pf_image_2]\"; filename=\"README.rdoc\"\r\nContent-Type: application/octet-stream\r\n">}, "commit"=>"Create Child Profile", "user_id"=>"2"}
+  [1m[36mParent Load (0.4ms)[0m  [1mSELECT  "parents".* FROM "parents" WHERE "parents"."id" = $1 LIMIT 1[0m  [["id", 2]]
+Unpermitted parameters: pf_image_1, pf_image_2
+  [1m[35mChild Load (0.5ms)[0m  SELECT  "children".* FROM "children"  ORDER BY "children"."id" DESC LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "children".* FROM "children"  ORDER BY "children"."id" DESC LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "children".* FROM "children"  ORDER BY "children"."id" DESC LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "children".* FROM "children"  ORDER BY "children"."id" DESC LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mChild Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "children" WHERE "children"."phone" = '' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  Rendered profiles/new.html.erb within layouts/application (10.6ms)
+Completed 200 OK in 82ms (Views: 61.3ms | ActiveRecord: 1.6ms)

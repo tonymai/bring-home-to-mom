@@ -15,6 +15,7 @@ class Child < ActiveRecord::Base
 
   validates :first_name, :last_name, :city, :state, :phone, :gender, :sexual_preference, :birthdate, :bio, :main_profile_image, presence: true
   validates :phone, uniqueness: true
+  validates :pf_image_1, :pf_image_2, :pf_image_3, :pf_image_4, :pf_image_5, format: { with: /.+\.(jpg|png)/, message: "is not a valid image" }, allow_blank: true
 
   def save_profile_image(uploaded_io, pf_image_key)
     make_dir_unless_exists(Rails.root.join('public','uploads', "#{self.parent.id}"))
