@@ -3,13 +3,22 @@
 
 $(document).ready(function(){
 
-  $('.login-btn').click(function(){
-    $('#login-modal').modal()
+
+  $('.login-btn').click(function(e){
+  	e.preventDefault();
+    $('#login-modal').modal();
   })
 
-  $('.signup-btn').click(function(){
+  $('.signup-btn').click(function(e){
+  	e.preventDefault();
     $('#signup-modal').modal()
   })
 
+
+	$('.how-btn').click(function() {
+	    $('body').animate({
+	        scrollTop: $('#how-it-works').offset().top
+	    }, 750);
+	});
 })
 
