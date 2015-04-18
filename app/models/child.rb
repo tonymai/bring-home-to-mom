@@ -19,6 +19,8 @@ class Child < ActiveRecord::Base
   validate :check_age
 
   def save_profile_image(uploaded_io, pf_image_key)
+    make_dir_unless_exists(Rails.root.join('public', 'uploads'))
+
     make_dir_unless_exists(Rails.root.join('public','uploads', "#{self.parent.id}"))
     make_dir_unless_exists(Rails.root.join('public','uploads', "#{self.parent.id}", "#{Child.last.id + 1}"))
 

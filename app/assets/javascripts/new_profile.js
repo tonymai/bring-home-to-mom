@@ -9,6 +9,7 @@ $(document).on('page:change', function() {
         //reponse.id is the new child's id, need it to associate interests to child
       },
       error: function(response) {
+        debugger
         $('.error-explanation').show();
         $('.error-messages').empty();
 
