@@ -17,6 +17,7 @@ class ProfilesController < ApplicationController
     end
 
     if @child.save
+      # add child_id to interests_path url to save interest to particular child
       redirect_to "#{interests_path}?child_id=#{@child.id}"
     else
       render :new
