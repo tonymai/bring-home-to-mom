@@ -7,8 +7,10 @@ $(document).on('page:change', function() {
         console.log(response);
       },
       error: function(response) {
-        console.log('fail');
-        console.log(response.responseJSON);
+        $('.error-explanation').show()
+        $.each(response.responseJSON.errors, function(index, error) {
+          $('.error-messages').append('<li>' + error + '</li>')
+        })
       }
     });
     return false; //prevents default
