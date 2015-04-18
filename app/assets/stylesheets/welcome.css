@@ -27,19 +27,32 @@ header{
   display: inline-block;
 }
 
-/*@media ( min-width : 400px ) {
-  .nav-link-btn { width: 50%; }
-  .nav-link-btn { width: 50%; }
-}
-*/
 .bg-vid{
-/*  min-height: 100%;
-*/width: 100%;
+  width: 100%;
   background: no-repeat;
   background-size: cover;
 }
 
+.bgvid-wrapper{
 
+}
+
+.how-button {
+  width: 150px;
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: block;
+  border: 1px solid white;
+  color: white;
+  background: rgba(256,256,256,0.5);
+  border-radius: 2px;
+  padding: .4em;
+  height: 50px;
+}
 
 .description{
 /*  min-height: 500px;
