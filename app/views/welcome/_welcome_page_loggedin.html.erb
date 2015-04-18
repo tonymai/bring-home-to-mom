@@ -1,1 +1,39 @@
-<h1>Filtering</h1>
+<div class="filter-wrapper col span_2">
+  <br>
+  <p> Filters</p>
+  Gender:
+  <select name="gender" class="filterby">
+  <option value=""></option>
+  <option value="Male">Male</option>
+  <option value="Female">Female</option>
+  <option value="Other">Other</option>
+  </select>
+  <br>
+  Religion:
+  <select name="religion" class="filterby">
+  <option value=""></option>
+  <option value="Christian">Christian</option>
+  <option value="Muslim">Muslim</option>
+  <option value="Jewish">Jewish</option>
+  <option value="Hindu">Hindu</option>
+  <option value="Buddhist">Buddhist</option>
+  </select>
+  <br>
+  Smoke:
+  <select name="smoke" class="filterby">
+  <option value=""></option>
+  <option value="Yes">Yes</option>
+  <option value="No">No</option>
+  </select>
+</div>
+<div class="matches col span_8">
+  <table>
+    <tbody>
+    <% Child.all.each do |child| %>
+    <tr>
+      <td><img class="prof-img" src="<%=child.pf_image_1%>"></td>
+    </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
