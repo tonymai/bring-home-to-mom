@@ -6,11 +6,11 @@ class CreateChildren < ActiveRecord::Migration
       t.string   :phone
       t.string   :gender, :sexual_preference, :religion
       t.date     :birthdate
-      t.string   :bio
+      t.text     :bio, :embarrassing_moment
       t.boolean  :smoke
       t.string   :linkedin_url, :facebook_url
       t.string   :pf_image_1, :pf_image_2, :pf_image_3, :pf_image_4, :pf_image_5
-      t.integer  :pf_image_default, default: 1
+      t.integer  :main_profile_image
       t.belongs_to :parent
 
       t.timestamps null: false
