@@ -5,6 +5,9 @@ class ProfilesController < ApplicationController
   def new
     @parent = Parent.find(params[:user_id])
     @child = Child.new
+
+    @interests = Interest.all.sort_by { |interest| interest.children.count }.reverse
+    @interest = Interest.new
   end
 
   def create

@@ -3,8 +3,10 @@ $(document).on('page:change', function() {
 
     $('#new_child').ajaxSubmit({
       success: function(response) {
-        console.log('success');
-        console.log(response);
+        $('.new-pf-form-container').empty();
+        $('.child-name').text(response.first_name);
+        $('.new-interests-container').show();
+        //reponse.id is the new child's id, need it to associate interests to child
       },
       error: function(response) {
         $('.error-explanation').show();

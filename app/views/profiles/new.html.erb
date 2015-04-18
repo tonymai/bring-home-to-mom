@@ -1,90 +1,96 @@
-<h1>New Child Profile</h1>
+<div class="new-pf-form-container">
 
-<%= form_for @child, url: url_for(controller: 'profiles', action: 'create') do |f| %>
+  <h1>New Child Profile</h1>
 
-  <div class="error-explanation hidden">
-    <ul class="error-messages"></ul>
-  </div>
+  <%= form_for @child, url: url_for(controller: 'profiles', action: 'create') do |f| %>
 
-  <div class="new-pf-section basic-info">
-    <h2>Basic Information</h2>
-
-    <div class="new-pf-container">
-      <%= f.label(:first_name, 'First Name:') %>
-      <%= f.text_field(:first_name) %>
-
-      <%= f.label(:last_name, 'Last Name:') %>
-      <%= f.text_field(:last_name) %>
-
-      <%= f.label(:city, 'City:') %>
-      <%= f.text_field(:city) %>
-
-      <%= f.label(:state, 'State:') %>
-      <%= f.text_field(:state) %>
-
-      <%= f.label(:phone, 'Phone Number:') %>
-      <%= f.phone_field(:phone) %>
-
-      <%= f.label(:birthdate, 'Birth Date:') %>
-      <%= f.date_field(:birthdate) %>
-
-      <%= f.label(:gender, 'Gender:') %>
-      Male: <%= f.radio_button(:gender, 'male') %>
-      Female: <%= f.radio_button(:gender, 'female') %>
-      Other: <%= f.radio_button(:gender, 'other') %>
-
-      <%= f.label(:sexual_preference, 'Interested in:') %>
-      Men: <%= f.radio_button(:sexual_preference, 'men') %>
-      Women: <%= f.radio_button(:sexual_preference, 'women') %>
-      Both: <%= f.radio_button(:sexual_preference, 'both') %>
-
-      <%= f.label(:bio, 'Short Bio:') %>
-      <%= f.text_area(:bio) %>
+    <div class="error-explanation hidden">
+      <ul class="error-messages"></ul>
     </div>
-  </div>
 
-  <div class="new-pf-section optional-info">
-    <h2>Optional Information</h2>
+    <div class="new-pf-section basic-info">
+      <h2>Basic Information</h2>
 
-    <div class="new-pf-container">
-      <%= f.label(:linkedin_url, 'LinkedIn:') %>
-      <%= f.url_field(:linkedin_url) %>
+      <div class="new-pf-container">
+        <%= f.label(:first_name, 'First Name:') %>
+        <%= f.text_field(:first_name) %>
 
-      <%= f.label(:facebook_url, 'Facebook:') %>
-      <%= f.url_field(:facebook_url) %>
+        <%= f.label(:last_name, 'Last Name:') %>
+        <%= f.text_field(:last_name) %>
 
-      <%= f.label(:religion, 'Religion:') %>
-      <%= f.text_field(:religion) %>
+        <%= f.label(:city, 'City:') %>
+        <%= f.text_field(:city) %>
 
-      <%= f.label(:smoke, 'Smokes:') %>
-      Yes: <%= f.radio_button(:smoke, true) %>
-      No: <%= f.radio_button(:smoke, false) %>
+        <%= f.label(:state, 'State:') %>
+        <%= f.text_field(:state) %>
 
-      <%= f.label(:embarrassing_moment, 'Embarrassing Moment:') %>
-      <%= f.text_area(:embarrassing_moment) %>
+        <%= f.label(:phone, 'Phone Number:') %>
+        <%= f.phone_field(:phone) %>
+
+        <%= f.label(:birthdate, 'Birth Date:') %>
+        <%= f.date_field(:birthdate) %>
+
+        <%= f.label(:gender, 'Gender:') %>
+        Male: <%= f.radio_button(:gender, 'male') %>
+        Female: <%= f.radio_button(:gender, 'female') %>
+        Other: <%= f.radio_button(:gender, 'other') %>
+
+        <%= f.label(:sexual_preference, 'Interested in:') %>
+        Men: <%= f.radio_button(:sexual_preference, 'men') %>
+        Women: <%= f.radio_button(:sexual_preference, 'women') %>
+        Both: <%= f.radio_button(:sexual_preference, 'both') %>
+
+        <%= f.label(:bio, 'Short Bio:') %>
+        <%= f.text_area(:bio) %>
+      </div>
     </div>
-  </div>
 
-  <div class="new-pf-section image-info">
-    <h2>Profile Images</h2>
+    <div class="new-pf-section optional-info">
+      <h2>Optional Information</h2>
 
-    <div class="new-pf-container">
-      <%= f.label(:pf_image_1, 'Image 1:') %>
-      <%= f.file_field(:pf_image_1) %>
+      <div class="new-pf-container">
+        <%= f.label(:linkedin_url, 'LinkedIn:') %>
+        <%= f.url_field(:linkedin_url) %>
 
-      <%= f.label(:pf_image_2, 'Image 2:') %>
-      <%= f.file_field(:pf_image_2) %>
+        <%= f.label(:facebook_url, 'Facebook:') %>
+        <%= f.url_field(:facebook_url) %>
 
-      <%= f.label(:pf_image_3, 'Image 3:') %>
-      <%= f.file_field(:pf_image_3) %>
+        <%= f.label(:religion, 'Religion:') %>
+        <%= f.text_field(:religion) %>
 
-      <%= f.label(:pf_image_4, 'Image 4:') %>
-      <%= f.file_field(:pf_image_4) %>
+        <%= f.label(:smoke, 'Smokes:') %>
+        Yes: <%= f.radio_button(:smoke, true) %>
+        No: <%= f.radio_button(:smoke, false) %>
 
-      <%= f.label(:pf_image_5, 'Image 5:') %>
-      <%= f.file_field(:pf_image_5) %>
-
-      <%= f.submit('Create Child Profile') %>
+        <%= f.label(:embarrassing_moment, 'Embarrassing Moment:') %>
+        <%= f.text_area(:embarrassing_moment) %>
+      </div>
     </div>
-  </div>
-<% end %>
+
+    <div class="new-pf-section image-info">
+      <h2>Profile Images</h2>
+
+      <div class="new-pf-container">
+        <%= f.label(:pf_image_1, 'Image 1:') %>
+        <%= f.file_field(:pf_image_1) %>
+
+        <%= f.label(:pf_image_2, 'Image 2:') %>
+        <%= f.file_field(:pf_image_2) %>
+
+        <%= f.label(:pf_image_3, 'Image 3:') %>
+        <%= f.file_field(:pf_image_3) %>
+
+        <%= f.label(:pf_image_4, 'Image 4:') %>
+        <%= f.file_field(:pf_image_4) %>
+
+        <%= f.label(:pf_image_5, 'Image 5:') %>
+        <%= f.file_field(:pf_image_5) %>
+
+        <%= f.submit('Create Child Profile') %>
+      </div>
+    </div>
+  <% end %>
+
+</div>
+
+<%= render partial: 'interests_form' %>

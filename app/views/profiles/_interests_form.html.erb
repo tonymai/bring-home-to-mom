@@ -1,0 +1,18 @@
+<div class="new-interests-container hidden">
+
+  <h1>Add Interests for <span class="child-name">Child</span></h1>
+
+  <% @interests.each do |interest| %>
+    <button><%= interest.name %></button>
+  <% end %>
+
+  <%= form_for @interest do |f| %>
+
+    <%= f.label :name, 'Interest:' %>
+    <%= f.text_field :name %>
+
+    <%= f.submit 'Add interest' %>
+    <!-- need jquery to preventdefault and also send child_id -->
+  <% end %>
+
+</div>
