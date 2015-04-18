@@ -21,6 +21,8 @@ Rails.application.routes.draw do
     resources :profiles
   end
 
+  resources :interests, only: [:index, :create]
+
   # Example resource route with options:
   #   resources :products do
   #     member do
