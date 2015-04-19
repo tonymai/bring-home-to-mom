@@ -3,6 +3,7 @@ class InterestsController < ApplicationController
   def create
     @child = Child.find(params[:child_id])
     @interest = Interest.find_or_initialize_by(interest_params)
+    @interest.name = @interest.name.downcase.titleize
 
     if @interest.save
       @child.interests << @interest

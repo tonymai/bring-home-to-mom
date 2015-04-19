@@ -6,7 +6,9 @@ class ProfilesController < ApplicationController
     @parent = Parent.find(params[:user_id])
     @child = Child.new
 
-    @interests = Interest.all.sort_by { |interest| interest.children.count }.reverse
+    # Refactor for more efficient sorting
+    interests = Interest.all.sort_by { |interest| interest.children.count }.reverse
+    @top_interests = interests[0..49].sort_by { |interest| interest.name }
     @interest = Interest.new
   end
 

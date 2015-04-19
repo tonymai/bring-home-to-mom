@@ -10,6 +10,7 @@ $(document).on('page:change', function() {
 
   $('#new_interest').on('submit', function(e){
     e.preventDefault();
+    $('.interest-error-explanation').hide();
     var interest = $('#interest_name').val();
     var childId = $('.new-interests-container').attr('data-profile-id');
     $.ajax({

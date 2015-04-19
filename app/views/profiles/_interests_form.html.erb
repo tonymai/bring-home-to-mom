@@ -3,7 +3,7 @@
   <h1>Add Interests for <span class="child-name">Child</span></h1>
 
   <div class="interests-wrapper">
-    <% @interests.each do |interest| %>
+    <% @top_interests.each do |interest| %>
       <div class="interest-btn" data-interest-id="<%= interest.id %>"><%= interest.name %></div>
     <% end %>
   </div>
