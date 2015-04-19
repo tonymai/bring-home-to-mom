@@ -9,7 +9,11 @@ $(document).on('page:change', function() {
       dialog.overlay.fadeIn('fast');
     },
     onShow: function(dialog) {
-
+      $('#nav li').bind('touchstart', function(){
+          $(this).addClass('select');
+      }).bind('touchend', function(){
+          $(this).removeClass('select');
+      });
     },
     onClose: function(dialog) {
       dialog.data.fadeOut('fast');
@@ -38,5 +42,12 @@ $(document).on('page:change', function() {
     });
   });
 
+});
+
+Handlebars.registerHelper('ifCond', function(v1, v2, options) {
+  if(v1 === v2) {
+    return options.fn(this);
+  }
+  return options.inverse(this);
 });
 

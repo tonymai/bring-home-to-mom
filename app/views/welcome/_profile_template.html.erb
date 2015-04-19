@@ -11,12 +11,34 @@
 
       <div class="pf-age-gender-wrapper debug">
         <div class="pf-age col span_6 debug">{{profile.birthdate}}</div>
-        <div class="pf-city-state col span_6 debug">{{profile.city}} {{profile.state}}</div>
+        <div class="pf-city-state col span_6 debug">{{profile.city}}, {{profile.state}}</div>
       </div>
 
       <div class="pf-sex-pref-location-wrapper debug">
-        <div class="pf-gender col span_6 debug"><i class="fa fa-mars"></i><i class="fa fa-venus"></i><i class="fa fa-transgender"></i>{{profile.gender}}</div>
-        <div class="pf-sex-pref col span_6 debug">Interested in: {{profile.sexual_preference}}<i class="fa fa-female"></i><i class="fa fa-male"></i></div>
+        <div class="pf-gender col span_6 debug">
+          {{#ifCond profile.gender "male"}}
+            <i class="fa fa-mars"></i>
+          {{else}}
+            {{#ifCond profile.gender "female"}}
+              <i class="fa fa-venus"></i>
+            {{else}}
+              <i class="fa fa-transgender"></i>
+            {{/ifCond}}
+          {{/ifCond}}
+        </div>
+        <div class="pf-sex-pref col span_6 debug">
+          Interested in:
+          {{#ifCond profile.sexual_preference "men"}}
+            <i class="fa fa-female"></i>
+          {{else}}
+            {{#ifCond profile.sexual_preference "women"}}
+              <i class="fa fa-male"></i>
+            {{else}}
+              <i class="fa fa-female"></i>
+              <i class="fa fa-male"></i>
+            {{/ifCond}}
+          {{/ifCond}}
+        </div>
       </div>
 
       <div class="pf-rel-smoke-wrapper debug">
