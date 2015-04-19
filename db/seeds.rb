@@ -11,6 +11,12 @@ interests.map! do |interest|
   new_interest = Interest.create(name: interest.titleize)
 end
 
+values = ["Accountability", "Adventurousness", "Altruism", "Ambition", "Assertiveness", "Balance", "Commitment", "Community", "Compassion", "Competitiveness", "Contentment", "Cooperation", "Courtesy", "Creativity", "Curiosity", "Devoutness", "Diligence", "Discipline", "Diversity", "Elegance", "Empathy", "Equality", "Fairness", "Faith", "Family", "Fidelity", "Fitness", "Freedom", "Generosity", "Grace", "Happiness", "Hard Work", "Health", "Holiness", "Honesty", "Honor", "Humility", "Independence", "Intelligence", "Justice", "Leadership", "Love", "Loyalty", "Marriage", "Obedience", "Openness", "Originality", "Patriotism", "Peace", "Perfection", "Piety", "Positivity", "Reliability", "Selflessness", "Self-reliance", "Sensitivity", "Service", "Success", "Support", "Teamwork", "Timeliness", "Tolerance", "Traditionalism", "Truth", "Unity"]
+
+values.map! do |value|
+  new_value = Value.create(name: value.titleize)
+end
+
 10.times do
   parent = Parent.create(
     first_name: Faker::Name.first_name,
@@ -41,6 +47,9 @@ end
       )
     5.times do
       child.interests << interests.sample
+    end
+    5.times do
+      child.values << values.sample
     end
   end
 end

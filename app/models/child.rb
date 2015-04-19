@@ -8,6 +8,9 @@ class Child < ActiveRecord::Base
   has_many :children_interests
   has_many :interests, through: :children_interests
 
+  has_many :children_values
+  has_many :values, through: :children_values
+
   has_many :initiated_playdates, class_name: 'Playdate', foreign_key: 'initiator_id'
   has_many :recipients, through: :initiated_playdates
   has_many :received_playdates, class_name: 'Playdate', foreign_key: 'recipient_id'
