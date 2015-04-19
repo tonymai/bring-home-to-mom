@@ -1,22 +1,59 @@
-$(document).on('page:change', function(){
+// Place all the behaviors and hooks related to the matching controller here.
+// All this logic will automatically be available in application.js.
+$(document).on('page:change', function() {
 
-	$('.new-pf-section h2').on('click', function(e) {
-		e.preventDefault();
-		var $thisContainer = $(this).parent().next()
-		$('.new-pf-container').not($thisContainer).slideUp('slow', function() {});
-		$thisContainer.slideDown('slow', function() {});
-	});
+  var modalSetting = {
+    onOpen: function (dialog) {
+      dialog.data.fadeIn('fast');
+      dialog.container.fadeIn('fast');
+      dialog.overlay.fadeIn('fast');
+    },
+    onShow: function(dialog) {
+      $('.pf-bio-wrapper').on('click', function(event) {
+        $('.bio-front').toggleClass('hidden');
+        $('.bio-back').toggleClass('hidden')
+      });
+      $('.pf-interests-wrapper').on('click', function(event) {
+        $('.interests-front').toggleClass('hidden');
+        $('.interests-back').toggleClass('hidden')
+      });
+      $('.pf-values-wrapper').on('click', function(event) {
+        $('.values-front').toggleClass('hidden');
+        $('.values-back').toggleClass('hidden')
+      });
+    },
+    onClose: function(dialog) {
+      dialog.data.fadeOut('fast');
+      dialog.container.fadeOut('fast');
+      dialog.overlay.fadeOut('fast');
+    },
+    opacity: 85,
+    overlayClose: true,
+    show: true
+  };
 
-  $('input[type="file"]').change(function(e){
-     var input = $(e.currentTarget);
-     var file = input[0].files[0];
-     var reader = new FileReader();
-     var preview = $(this).next().next()
-     reader.onload = function(e){
-         image_base64 = e.target.result;
-         preview.attr("src", image_base64);
-     };
-     reader.readAsDataURL(file);
+  $('.child-profiles-wrapper').on('click', '.child-profile-teaser', function(e) {
+    e.preventDefault();
+
+    $.ajax({
+      url: $(this).find('a').attr('href'),
+    }).done(function(data) {
+      var source = $('#child-profile-template').html();
+      var templatingFunction = Handlebars.compile(source);
+      var html = templatingFunction(data);
+      $('.pf-modal-container').remove();
+      $('body').append(html);
+      $('.pf-modal-container').modal(modalSetting);
+    }).fail(function(data) {
+      debugger
+    });
   });
 
+});
+
+Handlebars.registerHelper('ifCond', function(v1, v2, options) {
+  if(v1 === v2) {
+    return options.fn(this);
+  }
+  return options.inverse(this);
 });

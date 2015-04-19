@@ -112,6 +112,10 @@
   color: #000000;
 }
 
+.form-wrapper .field {
+  color: black;
+}
+
 .simplemodal-overlay {
   background: #000000;
 }

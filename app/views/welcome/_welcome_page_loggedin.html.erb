@@ -1,5 +1,5 @@
 <div class="welcome-page-loggedin filter-wrapper col span_2">
-  <br>
+  <br/>
   <p> Filters</p>
   <h1 data-gender = "<%= @first_child.gender %>"><%= @first_child.first_name %></h1>
   Gender:
@@ -10,7 +10,7 @@
     <option value="other">Other</option>
     <option value="both">Show All</option>
   </select>
-  <br>
+  <br/>
   Religion:
   <select name="religion" class="filterby">
     <option value=""></option>
@@ -20,27 +20,31 @@
     <option value="Hindu">Hindu</option>
     <option value="Buddhist">Buddhist</option>
   </select>
-  <br>
-  <br>
+  <br/>
+  <br/>
   Smoke:
 <!--   <form action="">
   <input type="radio" name="smoke" value="true">True <br>
   <input type="radio" name="smoke" value="false">False
 </form> -->
 
-<select name="smoke" class="filterby">
-  <option value=""></option>
-  <option value="true">Yes</option>
-  <option value="false">No</option>
-</select>
+  <select name="smoke" class="filterby">
+    <option value=""></option>
+    <option value="true">Yes</option>
+    <option value="false">No</option>
+  </select>
 </div>
+
 <div class="matches col span_8">
 </div>
+
+<!-- </div> -->
 
 <script id="child_preview_template" type="x-handlebars-template">
   {{#each match}}
   <div class="individual-child" data-child-id ="{{id}}">
-    <img class="prof-img" src="{{pf_image_1}}">
+  <img class="prof-img" src="{{pf_image_1}}">
   </div>
   {{/each}}
 </script>
+<%= render partial: 'profile_template' %>
