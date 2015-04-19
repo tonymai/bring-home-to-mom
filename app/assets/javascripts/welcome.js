@@ -3,17 +3,31 @@
 
 $(document).ready(function(){
 
+  var modalSetting = {
+    onOpen: function (dialog) {
+      dialog.data.fadeIn('fast');
+      dialog.container.fadeIn('fast');
+      dialog.overlay.fadeIn('fast');
+    },
+    opacity: 85
+  };
 
   $('.login-btn').click(function(e){
   	e.preventDefault();
-    $('#login-modal').modal();
-  })
+    $('#login-modal').modal(modalSetting);
+  });
 
   $('.signup-btn').click(function(e){
   	e.preventDefault();
-    $('#signup-modal').modal()
+    $('#signup-modal').modal(modalSetting)
+  });
 
-  })
+  $('body').on('click', '.simplemodal-overlay', function() {
+    $(this).fadeOut('fast');
+    $('.simplemodal-wrap').fadeOut('fast', function() {
+      $.modal.close();
+    });
+  });
 
 
 	$('.how-btn').click(function() {
@@ -22,6 +36,6 @@ $(document).ready(function(){
 	  }, 750);
     return false;
 	});
-  
+
 })
 
