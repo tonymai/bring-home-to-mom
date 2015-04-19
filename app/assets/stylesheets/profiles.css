@@ -28,4 +28,20 @@
 .upload-preview {
 	max-width:80%;
 	height: auto;
+	border-radius: 8px;
+}
+
+.interest-btn{
+  display: inline-block;
+  border: 1px gray solid;
+  padding: 2px 4px;
+  margin: 5px 0px 0px 0px;
+  border-radius: 8px;
+  color: #000000;
+  background-color: #D7DADB;
+}
+
+.interest-btn-selected{
+	color: #FFFFFF;
+  background-color: #1AB595;
 }
