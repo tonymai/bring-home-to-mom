@@ -19,7 +19,7 @@ $(document).on('page:change', function() {
     }).done(function(data) {
       var source = $('#child-profile-template').html();
       var templatingFunction = Handlebars.compile(source);
-      $('.child-profiles-wrapper').append(templatingFunction(data.profile));
+      $('.child-profiles-wrapper').append(templatingFunction(data));
       // $('#child-profile-template').modal(modalSetting);
     }).fail(function(data) {
       debugger
@@ -27,3 +27,4 @@ $(document).on('page:change', function() {
   });
 
 });
+
