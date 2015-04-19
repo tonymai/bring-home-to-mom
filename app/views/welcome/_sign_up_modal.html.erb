@@ -1,7 +1,7 @@
 <div id="signup-modal" class = "form-wrapper hidden">
   <h2>Sign Up</h2>
 
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: 'pure-form'}) do |f| %>
     <%= devise_error_messages! %>
 
     <div class="field">

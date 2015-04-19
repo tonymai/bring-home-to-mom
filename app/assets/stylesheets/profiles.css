@@ -1,0 +1,31 @@
+.new-pf-form-container {
+	width: 100%;
+	text-align: center;
+}
+
+.new-pf-section a {
+  color: #FFFFFF;
+  text-decoration: none;
+}
+
+.new-pf-section a:hover {
+  color: #2C3E50;
+}
+
+.new-pf-section h2 {
+	display: block;
+	background-color: #FF6953
+}
+
+.profile-error-messages {
+	padding-left: 0;
+}
+
+.profile-error-messages li {
+	display: block;
+}
+
+.upload-preview {
+	max-width:80%;
+	height: auto;
+}
