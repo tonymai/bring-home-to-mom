@@ -2,7 +2,7 @@
 
   <h1>New Child Profile</h1>
 
-  <%= form_for @child, url: url_for(controller: 'profiles', action: 'create') do |f| %>
+  <%= form_for @child, url: url_for(controller: 'profiles', action: 'create'), html: {class: 'pure-form'} do |f| %>
 
     <div class="profile-error-explanation hidden">
       <h3>Errors</h3>
@@ -10,84 +10,126 @@
     </div>
 
     <div class="new-pf-section basic-info">
-      <h2>Basic Information</h2>
+      <a href="#"><h2>1. Basic Information</h2></a>
 
-      <div class="new-pf-container">
-        <%= f.label(:first_name, 'First Name:') %>
-        <%= f.text_field(:first_name) %>
+      <div class="new-pf-container container row">
+        <div class="col span_6">
+          <%= f.label(:first_name, 'First Name:') %><br />
+          <%= f.text_field(:first_name) %>
+        </div>
 
-        <%= f.label(:last_name, 'Last Name:') %>
-        <%= f.text_field(:last_name) %>
+        <div class="col span_6">
+          <%= f.label(:last_name, 'Last Name:') %><br />
+          <%= f.text_field(:last_name) %>
+        </div>
 
-        <%= f.label(:city, 'City:') %>
-        <%= f.text_field(:city) %>
+        <div class="col span_6">
+          <%= f.label(:city, 'City:') %><br />
+          <%= f.text_field(:city) %>
+        </div>
 
-        <%= f.label(:state, 'State:') %>
-        <%= f.text_field(:state) %>
 
-        <%= f.label(:phone, 'Phone Number:') %>
-        <%= f.phone_field(:phone) %>
+        <div class="col span_6">
+          <%= f.label(:state, 'State:') %><br />
+          <%= f.text_field(:state) %>
+        </div>
 
-        <%= f.label(:birthdate, 'Birth Date:') %>
-        <%= f.date_field(:birthdate) %>
+        <div class="col span_6">
+          <%= f.label(:phone, 'Phone Number:') %><br />
+          <%= f.phone_field(:phone) %><br />
+        </div>
 
-        <%= f.label(:gender, 'Gender:') %>
-        Male: <%= f.radio_button(:gender, 'male') %>
-        Female: <%= f.radio_button(:gender, 'female') %>
-        Other: <%= f.radio_button(:gender, 'other') %>
+        <div class="col span_6">
+          <%= f.label(:birthdate, 'Birth Date:') %><br />
+          <%= f.date_field(:birthdate) %><br />
+        </div>
 
-        <%= f.label(:sexual_preference, 'Interested in:') %>
-        Men: <%= f.radio_button(:sexual_preference, 'men') %>
-        Women: <%= f.radio_button(:sexual_preference, 'women') %>
-        Both: <%= f.radio_button(:sexual_preference, 'both') %>
+        <div class="col span_6">
+          <%= f.label(:gender, 'Gender:') %><br />
+          Male: <%= f.radio_button(:gender, 'male') %><br />
+          Female: <%= f.radio_button(:gender, 'female') %><br />
+          Other: <%= f.radio_button(:gender, 'other') %>
+        </div>
 
-        <%= f.label(:bio, 'Short Bio:') %>
-        <%= f.text_area(:bio) %>
+        <div class="col span_6">
+          <%= f.label(:sexual_preference, 'Interested in:') %><br />
+          Men: <%= f.radio_button(:sexual_preference, 'men') %><br />
+          Women: <%= f.radio_button(:sexual_preference, 'women') %><br />
+          Both: <%= f.radio_button(:sexual_preference, 'both') %>
+        </div>
+
+        <div>
+          <%= f.label(:bio, 'Short Bio:') %><br />
+          <%= f.text_area(:bio) %>
+        </div>
       </div>
     </div>
 
     <div class="new-pf-section optional-info">
-      <h2>Optional Information</h2>
+      <a href="#"><h2>2. Optional Information</h2></a>
 
-      <div class="new-pf-container">
-        <%= f.label(:linkedin_url, 'LinkedIn:') %>
-        <%= f.url_field(:linkedin_url) %>
+      <div class="new-pf-container container row hidden">
+        <%= f.label(:linkedin_url, 'LinkedIn:') %><br />
+        <%= f.url_field(:linkedin_url) %><br />
 
-        <%= f.label(:facebook_url, 'Facebook:') %>
-        <%= f.url_field(:facebook_url) %>
+        <%= f.label(:facebook_url, 'Facebook:') %><br />
+        <%= f.url_field(:facebook_url) %><br />
 
-        <%= f.label(:religion, 'Religion:') %>
-        <%= f.text_field(:religion) %>
+        <%= f.label(:religion, 'Religion:') %><br />
+        <%= f.text_field(:religion) %><br />
 
-        <%= f.label(:smoke, 'Smokes:') %>
+        <%= f.label(:smoke, 'Smokes:') %><br />
         Yes: <%= f.radio_button(:smoke, true) %>
-        No: <%= f.radio_button(:smoke, false) %>
+        No: <%= f.radio_button(:smoke, false) %><br />
 
-        <%= f.label(:embarrassing_moment, 'Embarrassing Moment:') %>
+        <%= f.label(:embarrassing_moment, 'Embarrassing Moment:') %><br />
         <%= f.text_area(:embarrassing_moment) %>
       </div>
     </div>
 
     <div class="new-pf-section image-info">
-      <h2>Profile Images</h2>
+      <a href="#"><h2>3. Profile Images</h2></a>
 
-      <div class="new-pf-container">
-        <%= f.label(:pf_image_1, 'Image 1:') %>
-        <%= f.file_field(:pf_image_1) %>
+      <div class="new-pf-container hidden">
 
-        <%= f.label(:pf_image_2, 'Image 2:') %>
-        <%= f.file_field(:pf_image_2) %>
+        <div class="container row ">
 
-        <%= f.label(:pf_image_3, 'Image 3:') %>
-        <%= f.file_field(:pf_image_3) %>
+          <div class="col span_2">
+            <%= f.label(:pf_image_1, 'Image 1:') %>
+            <%= f.file_field(:pf_image_1) %><br />
+            <img class="upload-preview" src="/images/empty-pf-image.png" />
+          </div>
 
-        <%= f.label(:pf_image_4, 'Image 4:') %>
-        <%= f.file_field(:pf_image_4) %>
+          <div class="col span_2">
+            <%= f.label(:pf_image_2, 'Image 2:') %>
+            <%= f.file_field(:pf_image_2) %><br />
+            <img class="upload-preview" src="/images/empty-pf-image.png" />
+          </div>
 
-        <%= f.label(:pf_image_5, 'Image 5:') %>
-        <%= f.file_field(:pf_image_5) %>
+          <div class="col span_2">
+            <%= f.label(:pf_image_3, 'Image 3:') %>
+            <%= f.file_field(:pf_image_3) %><br />
+            <img class="upload-preview" src="/images/empty-pf-image.png" />
+          </div>
 
-        <%= f.submit('Create Child Profile') %>
+          <div class="col span_2">
+            <%= f.label(:pf_image_4, 'Image 4:') %>
+            <%= f.file_field(:pf_image_4) %><br />
+            <img class="upload-preview" src="/images/empty-pf-image.png" />
+          </div>
+
+          <div class="col span_2">
+            <%= f.label(:pf_image_5, 'Image 5:') %>
+            <%= f.file_field(:pf_image_5) %><br />
+            <img class="upload-preview" src="/images/empty-pf-image.png" />
+          </div>
+
+        </div>
+
+        <div class="container row">
+          <%= f.submit('Create Child Profile') %>
+        </div>
+
       </div>
     </div>
   <% end %>

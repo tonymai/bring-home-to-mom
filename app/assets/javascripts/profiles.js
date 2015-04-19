@@ -8,10 +8,31 @@ $(document).on('page:change', function() {
       dialog.container.fadeIn('fast');
       dialog.overlay.fadeIn('fast');
     },
-    opacity: 85
+    onShow: function(dialog) {
+      $('.pf-bio-wrapper').on('click', function(event) {
+        $('.bio-front').toggleClass('hidden');
+        $('.bio-back').toggleClass('hidden')
+      });
+      $('.pf-interests-wrapper').on('click', function(event) {
+        $('.interests-front').toggleClass('hidden');
+        $('.interests-back').toggleClass('hidden')
+      });
+      $('.pf-values-wrapper').on('click', function(event) {
+        $('.values-front').toggleClass('hidden');
+        $('.values-back').toggleClass('hidden')
+      });
+    },
+    onClose: function(dialog) {
+      dialog.data.fadeOut('fast');
+      dialog.container.fadeOut('fast');
+      dialog.overlay.fadeOut('fast');
+    },
+    opacity: 85,
+    overlayClose: true,
+    show: true
   };
 
-  $('.child-profiles-wrapper').on('click', '.child-profile-teaser', function(e) {
+  $('.matches').on('click', '.individual-child', function(e) {
     e.preventDefault();
 
     $.ajax({
@@ -19,9 +40,8 @@ $(document).on('page:change', function() {
     }).done(function(data) {
       var source = $('#child-profile-template').html();
       var templatingFunction = Handlebars.compile(source);
-      // $('.child-profiles-wrapper').append(templatingFunction(data));
+      $('.pf-modal-container').remove();
       $(templatingFunction(data)).modal(modalSetting);
-      // debugger
       $('#gallery-wrap').slick({
         dots: true,
         infinite: true,
@@ -37,3 +57,9 @@ $(document).on('page:change', function() {
 
 });
 
+Handlebars.registerHelper('ifCond', function(v1, v2, options) {
+  if(v1 === v2) {
+    return options.fn(this);
+  }
+  return options.inverse(this);
+});

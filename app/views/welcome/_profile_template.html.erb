@@ -1,25 +1,114 @@
 <script id="child-profile-template" type="x-handlebars-template">
-<div class="temp-profile-detail">
-  <div id="gallery-wrap" class="slick-carousel">
-    <img src="{{profile.pf_image_1}}" />
-    <img src="{{profile.pf_image_2}}" />
-    <img src="{{profile.pf_image_3}}" />
-    <img src="{{profile.pf_image_4}}" />
-    <img src="{{profile.pf_image_5}}" />
+<div class="pf-modal-container container hidden debug">
+  <div class="row debug">
+
+    <div id="gallery-wrap" class="pf-images-wrapper slick-carousel col span_5 debug">
+      <img src="{{profile.pf_image_1}}" />
+      <img src="{{profile.pf_image_2}}" />
+      <img src="{{profile.pf_image_3}}" />
+      <img src="{{profile.pf_image_4}}" />
+      <img src="{{profile.pf_image_5}}" />
+    </div>
+
+    <div class="pf-basic-info-wrapper col span_7 debug">
+      <h1>{{profile.first_name}} {{profile.last_name}}</h1>
+
+      <div class="pf-age-gender-wrapper debug">
+        <div class="pf-age col span_6 debug">Age: {{age}}</div>
+        <div class="pf-city-state col span_6 debug">City: {{profile.city}}, {{profile.state}}</div>
+      </div>
+
+      <div class="pf-sex-pref-location-wrapper debug">
+        <div class="pf-gender col span_6 debug">
+          Gender:
+          {{#ifCond profile.gender "male"}}
+            <i class="fa fa-mars"></i>
+          {{else}}
+            {{#ifCond profile.gender "female"}}
+              <i class="fa fa-venus"></i>
+            {{else}}
+              <i class="fa fa-transgender"></i>
+            {{/ifCond}}
+          {{/ifCond}}
+        </div>
+        <div class="pf-sex-pref col span_6 debug">
+          Interested in:
+          {{#ifCond profile.sexual_preference "men"}}
+            <i class="fa fa-female"></i>
+          {{else}}
+            {{#ifCond profile.sexual_preference "women"}}
+              <i class="fa fa-male"></i>
+            {{else}}
+              <i class="fa fa-female"></i>
+              <i class="fa fa-male"></i>
+            {{/ifCond}}
+          {{/ifCond}}
+        </div>
+      </div>
+
+      <div class="pf-rel-smoke-wrapper debug">
+        {{#if profile.religion}}
+          <div class="pf-rel col span_6 debug">{{profile.religion}}</div>
+        {{else}}
+          <div class="pf-rel col span_6 debug">Not specified</div>
+        {{/if}}
+        <div class="pf-smoke col span_6 debug">{{profile.smoke}}</div>
+      </div>
+
+      <div class="pf-social debug">
+        <div class="pf-linkedin col span_6 debug"><a href="{{profile.linkedin_url}}"><i class="fa fa-linkedin-square debug"></i> LinkedIn</a></div>
+        <div class="pf-facebook col span_6 debug"><a href="{{profile.facebook_url}}"><i class="fa fa-facebook-square"></i> Facebook</a></div>
+      </div>
+
+      <div class="pf-set-date-wrapper debug">
+        <div class="pf-set-date debug col span_12"><a href="#">Set up a Date!</a></div>
+      </div>
+
+    </div>
+
   </div>
-  {{profile.pf_image_1}}
-  {{profile.first_name}}
-  {{profile.last_name}}
-  {{profile.city}}
-  {{profile.state}}
-  {{profile.gender}}
-  {{profile.sexual_preference}}
-  {{profile.religion}}
-  {{profile.smoke}}
-  {{profile.birthdate}}
-  {{profile.bio}}
-  {{profile.embarrassing_moment}}
-  {{profile.linkedin_url}}
-  {{profile.facebook_url}}
+
+  <div class="row debug">
+    <h2>The Good Stuff</h2>
+  </div>
+
+  <div class="row debug">
+
+    <div class="pf-bio-wrapper col span_4 debug">
+      <div class="bio-front pf-box debug">
+        <h2>Bio</h2>
+        <p>Click to read more!</p>
+      </div>
+      <div class="bio-back pf-box hidden debug">
+        <div class="pf-bio debug">{{profile.bio}}</div>
+        <div class="pf-embarrass-moment debug">{{profile.embarrassing_moment}}</div>
+      </div>
+    </div>
+
+    <div class="pf-interests-wrapper col span_4 debug">
+      <div class="interests-front pf-box debug">
+        <h2>Interests</h2>
+        <p>Click to read more!</p>
+      </div>
+      <div class="interests-back pf-box hidden debug">
+        {{#each interests}}
+          <div class="interest-btn">{{this.name}}</div>
+        {{/each}}
+      </div>
+    </div>
+
+    <div class="pf-values-wrapper col span_4 debug">
+      <div class="values-front pf-box debug">
+        <h2>Values</h2>
+        <p>Click to read more!</p>
+      </div>
+      <div class="values-back pf-box hidden debug">
+      {{#each values}}
+        <div class="interest-btn">{{this.name}}</div>
+      {{/each}}
+      </div>
+    </div>
+
+  </div>
 </div>
 </script>
