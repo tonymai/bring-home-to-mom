@@ -1,24 +1,24 @@
-<div class="filter-wrapper col span_2">
+<div class="welcome-page-loggedin filter-wrapper col span_2">
   <br>
   <p> Filters</p>
   <h1 data-gender = "<%= @first_child.gender %>"><%= @first_child.first_name %></h1>
   Gender:
   <select name="gender" class="filterby">
-  <option value="<%=format_gender(@first_child.sexual_preference)%>"></option>
-  <option value="male">Male</option>
-  <option value="female">Female</option>
-  <option value="other">Other</option>
-  <option value="both">Show All</option>
+    <option value="<%=format_gender(@first_child.sexual_preference)%>"></option>
+    <option value="male">Male</option>
+    <option value="female">Female</option>
+    <option value="other">Other</option>
+    <option value="both">Show All</option>
   </select>
   <br>
   Religion:
   <select name="religion" class="filterby">
-  <option value=""></option>
-  <option value="Christian">Christian</option>
-  <option value="Muslim">Muslim</option>
-  <option value="Jewish">Jewish</option>
-  <option value="Hindu">Hindu</option>
-  <option value="Buddhist">Buddhist</option>
+    <option value=""></option>
+    <option value="Christian">Christian</option>
+    <option value="Muslim">Muslim</option>
+    <option value="Jewish">Jewish</option>
+    <option value="Hindu">Hindu</option>
+    <option value="Buddhist">Buddhist</option>
   </select>
   <br>
   <br>
@@ -26,13 +26,13 @@
 <!--   <form action="">
   <input type="radio" name="smoke" value="true">True <br>
   <input type="radio" name="smoke" value="false">False
-  </form> -->
+</form> -->
 
-  <select name="smoke" class="filterby">
+<select name="smoke" class="filterby">
   <option value=""></option>
   <option value="true">Yes</option>
   <option value="false">No</option>
-  </select>
+</select>
 </div>
 <div class="matches col span_8">
 </div>
