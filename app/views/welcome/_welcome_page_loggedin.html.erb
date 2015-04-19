@@ -4,9 +4,8 @@
   Gender:
   <select name="gender" class="filterby">
   <option value=""></option>
-  <option value="Male">Male</option>
-  <option value="Female">Female</option>
-  <option value="Other">Other</option>
+  <option value="male">Male</option>
+  <option value="female">Female</option>
   </select>
   <br>
   Religion:
@@ -22,15 +21,15 @@
   Smoke:
   <select name="smoke" class="filterby">
   <option value=""></option>
-  <option value="Yes">Yes</option>
-  <option value="No">No</option>
+  <option value="true">Yes</option>
+  <option value="false">No</option>
   </select>
 </div>
 <div class="matches col span_8">
   <table>
     <tbody>
     <% Child.all.each do |child| %>
-    <tr>
+    <tr id="<%= child.id %>">
       <td><img class="prof-img" src="<%=child.pf_image_1%>"></td>
     </tr>
     <% end %>
