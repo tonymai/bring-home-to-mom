@@ -6,7 +6,9 @@ class ProfilesController < ApplicationController
     @parent = Parent.find(params[:user_id])
     @child = Child.new
 
-    @interests = Interest.all.sort_by { |interest| interest.children.count }.reverse
+    # Refactor for more efficient sorting
+    interests = Interest.all.sort_by { |interest| interest.children.count }.reverse
+    @top_interests = interests[0..49].sort_by { |interest| interest.name }
     @interest = Interest.new
   end
 
@@ -24,6 +26,25 @@ class ProfilesController < ApplicationController
     else
       render json: { errors: @child.errors.full_messages }, status: :unprocessable_entity
     end
+  end
+
+  def update
+    #Only written for adding interests right now; when we create full edit page, this will need conditional logic to handle all cases
+    @parent = Parent.find(params[:user_id])
+    @child = Child.find(params[:id])
+    interests = params[:interests]
+    if interests
+      interests.each do |interest_id|
+        @child.children_interests.find_or_initialize_by(interest_id: interest_id)
+      end
+    end
+
+    if @child.save
+      render json: {}, status: :ok
+    else
+      render json: { errors: @child.errors.full_messages }, status: :unprocessable_entity
+    end
+
   end
 
   private
