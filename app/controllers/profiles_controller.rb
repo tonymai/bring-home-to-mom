@@ -16,7 +16,7 @@ class ProfilesController < ApplicationController
     @child = Child.find(params[:id])
 
     if @child
-      render json: { profile: @child, interests: @child.interests }, status: :ok
+      render json: { profile: @child, interests: @child.interests, age: @child.age }, status: :ok
     else
       render json: { error: 'Profile does not exist' }, status: :not_found
     end

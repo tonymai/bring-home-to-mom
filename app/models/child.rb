@@ -31,6 +31,10 @@ class Child < ActiveRecord::Base
     end
   end
 
+  def age
+    now = Date.today
+    age = now.year - birthdate.year - (birthdate.to_date.change(:year => now.year) > now ? 1 : 0)
+  end
 
   private
 
@@ -54,8 +58,6 @@ class Child < ActiveRecord::Base
   end
 
   def check_age
-    now = Date.today
-    age = now.year - birthdate.year - (birthdate.to_date.change(:year => now.year) > now ? 1 : 0)
     errors.add(:birthdate, 'must be at least 18 years ago') if age < 18
   end
 
