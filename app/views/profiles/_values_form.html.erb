@@ -1,0 +1,13 @@
+<div class="new-values-container hidden">
+
+  <h1>Add Values for <span class="child-name">Child</span></h1>
+
+  <div class="values-wrapper">
+    <% @top_values.each do |value| %>
+      <div class="value-btn" data-value-id="<%= value.id %>"><%= value.name %></div>
+    <% end %>
+  </div>
+
+  <h3 class="submit-values"><a href="#">Submit Values and See Matches!</a></h3>
+
+</div>

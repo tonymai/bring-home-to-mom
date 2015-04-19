@@ -56,7 +56,7 @@
 	border-radius: 8px;
 }
 
-.interest-btn{
+.interest-btn, .value-btn{
   display: inline-block;
   border: 1px gray solid;
   padding: 2px 4px;
@@ -66,7 +66,7 @@
   background-color: #D7DADB;
 }
 
-.interest-btn-selected{
+.interest-btn-selected, .value-btn-selected{
 	color: #FFFFFF;
   background-color: #1AB595;
 }
