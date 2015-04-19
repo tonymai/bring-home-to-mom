@@ -1,7 +1,3 @@
-.simplemodal-container {
-
-}
-
 .pf-modal-container {
     background-color: #ffffff;
     height: auto;
@@ -18,3 +14,50 @@
   font-size: 1.5em;
 }
 
+.new-pf-form-container {
+	width: 100%;
+	text-align: center;
+}
+
+.new-pf-section a {
+  color: #FFFFFF;
+  text-decoration: none;
+}
+
+.new-pf-section a:hover {
+  color: #2C3E50;
+}
+
+.new-pf-section h2 {
+	display: block;
+	background-color: #FF6953
+}
+
+.profile-error-messages {
+	padding-left: 0;
+}
+
+.profile-error-messages li {
+	display: block;
+}
+
+.upload-preview {
+	max-width:80%;
+	height: auto;
+	border-radius: 8px;
+}
+
+.interest-btn{
+  display: inline-block;
+  border: 1px gray solid;
+  padding: 2px 4px;
+  margin: 5px 0px 0px 0px;
+  border-radius: 8px;
+  color: #000000;
+  background-color: #D7DADB;
+}
+
+.interest-btn-selected{
+	color: #FFFFFF;
+  background-color: #1AB595;
+}
