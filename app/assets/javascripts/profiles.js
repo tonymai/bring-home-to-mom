@@ -40,12 +40,17 @@ $(document).on('page:change', function() {
     }).done(function(data) {
       var source = $('#child-profile-template').html();
       var templatingFunction = Handlebars.compile(source);
-      var html = templatingFunction(data);
-      $('.pf-modal-container').remove();
-      $('body').append(html);
-      $('.pf-modal-container').modal(modalSetting);
+      $(templatingFunction(data)).modal(modalSetting);
+      $('#gallery-wrap').slick({
+        dots: true,
+        infinite: true,
+        speed: 500,
+        initialSlide: (data.profile.main_profile_image - 1),
+        // slidesToShow: 1,
+        // fade: true,
+        // cssEase: 'linear',
+      });
     }).fail(function(data) {
-      debugger
     });
   });
 

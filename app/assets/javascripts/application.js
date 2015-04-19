@@ -15,5 +15,6 @@
 //= require jquery.form
 //= require handlebars
 //= require jquery.simplemodal
+//= require slick
 //= require turbolinks
 //= require_tree .
