@@ -21,17 +21,17 @@ $(document).on('page:change', function() {
       var templatingFunction = Handlebars.compile(source);
       // $('.child-profiles-wrapper').append(templatingFunction(data));
       $(templatingFunction(data)).modal(modalSetting);
-      $('#gallery-wrap').owlCarousel({
-        loop: true,
-        margin: 10,
-        nav: true,
-        center: true,
-        items: 1,
-        // autoWidth: true,
-        // responsive:{0:{items:1}, 1000:{items:1}},
+      // debugger
+      $('#gallery-wrap').slick({
+        dots: true,
+        infinite: true,
+        speed: 500,
+        initialSlide: (data.profile.main_profile_image - 1),
+        // slidesToShow: 1,
+        // fade: true,
+        // cssEase: 'linear',
       });
     }).fail(function(data) {
-      debugger
     });
   });
 

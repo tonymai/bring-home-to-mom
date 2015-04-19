@@ -13,8 +13,8 @@
  *= require normalize
  *= require responsive.gs.12col
  *= require font-awesome.min
- *= require owl.carousel
- *= require owl.theme
+ *= require slick
+ *= require slick-theme
  *= require_tree .
  *= require_self
  */

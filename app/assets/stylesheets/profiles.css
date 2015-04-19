@@ -5,6 +5,11 @@
   color: #FFFFFF;
 }
 
-.owl-carousel img{
-  max-width: 200px;
+.slick-carousel img{
+  height: auto;
+  /*max-width: 200px;*/
+}
+
+.slick-carousel{
+  width: 300px;
 }
