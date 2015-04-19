@@ -69,3 +69,22 @@ header{
 .hidden{
   display: none;
 }
+
+/*Filter page*/
+.filter-wrapper{
+  background-color: coral;
+  height:1000px;
+}
+.filter-wrapper select{
+  width:100px;
+  text-align: left;
+}
+
+.prof-img{
+  height:100px;
+  width:100px;
+}
+
+.matches tr{
+  display: inline-block;
+}
