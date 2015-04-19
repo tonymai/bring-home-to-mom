@@ -4,3 +4,7 @@
   background: rgba(44,62,80,0.9);
   color: #FFFFFF;
 }
+
+.owl-carousel img{
+  max-width: 200px;
+}
