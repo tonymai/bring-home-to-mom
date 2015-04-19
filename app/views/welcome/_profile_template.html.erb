@@ -1,19 +1,44 @@
 <script id="child-profile-template" type="x-handlebars-template">
-  <div class="gallery-wrap">
+
+  <div class="pf-images-wrapper">
     // image scroll here
   </div>
-  {{profile.first_name}}
-  {{profile.last_name}}
-  {{profile.city}}
-  {{profile.state}}
-  {{profile.gender}}
-  {{profile.sexual_preference}}
-  {{profile.religion}}
-  {{profile.smoke}}
-  {{profile.birthdate}}
+  <div class="pf-basic-info">
+    <h2>{{profile.first_name}} {{profile.last_name}}</h2>
+    <div class="row">
+    // reorganize this into divs upon divs upon divs
+      <ul>
+      <li>{{profile.birthdate}}</li>
+      <li>{{profile.gender}}</li>
+      <li>{{profile.sexual_preference}}</li>
+      </ul>
+    </div>
+    <div class="row">
+      <ul>
+        <li>{{profile.city}} {{profile.state}}</li>
+        <li>{{profile.gender}}</li>
+      </ul>
+    </div>
+    <div class="row">
+      <ul>
+        <li>{{profile.religion}}</li>
+        <li>{{profile.smoke}}</li>
+      </ul>
+    </div>
+    <div class="row">
+      <ul>
+        <li><a href="{{profile.linkedin_url}}"><i class="fa fa-linkedin-square"></i></a></li>
+        <li><a href="{{profile.facebook_url}}"><i class="fa fa-facebook-square"></i></a></li>
+      </ul>
+    </div>
+
+  </div>
+  <div class="#">
+  </div>
   {{profile.bio}}
   {{profile.embarrassing_moment}}
-  {{profile.linkedin_url}}
-  {{profile.facebook_url}}
+
+
+  // {{interests}} // appears as an array
 
 </script>
