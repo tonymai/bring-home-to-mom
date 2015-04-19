@@ -7,7 +7,8 @@
   <option value="<%=format_gender(@first_child.sexual_preference)%>"></option>
   <option value="male">Male</option>
   <option value="female">Female</option>
-  <option value="both">Both</option>
+  <option value="other">Other</option>
+  <option value="both">Show All</option>
   </select>
   <br>
   Religion:
@@ -20,12 +21,18 @@
   <option value="Buddhist">Buddhist</option>
   </select>
   <br>
+  <br>
   Smoke:
-  <select name="smoke" class="filterby">
+  <form action="">
+  <input type="radio" name="smoke" value="true">True <br>
+  <input type="radio" name="smoke" value="false">False
+  </form>
+
+<!--   <select name="smoke" class="filterby">
   <option value=""></option>
   <option value="true">Yes</option>
   <option value="false">No</option>
-  </select>
+  </select> -->
 </div>
 <div class="matches col span_8">
 </div>
