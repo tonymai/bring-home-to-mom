@@ -31,8 +31,10 @@ class ProfilesController < ApplicationController
     @parent = Parent.find(params[:user_id])
     @child = Child.find(params[:id])
     interests = params[:interests]
-    interests.each do |interest_id|
-      @child.children_interests.new(interest_id: interest_id)
+    if interests
+      interests.each do |interest_id|
+        @child.children_interests.find_or_initialize_by(interest_id: interest_id)
+      end
     end
 
     if @child.save

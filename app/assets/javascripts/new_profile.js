@@ -8,12 +8,10 @@ $(document).on('page:change', function() {
         $('.new-interests-container').show();
         $('.new-interests-container').attr('data-profile-id', response.id);
         $('.new-interests-container').attr('data-user-id', response.parent_id);
-        //reponse.id is the new child's id, need it to associate interests to child
       },
       error: function(response) {
-        $('.error-explanation').show();
-        $('.error-messages').empty();
-
+        $('.profile-error-explanation').show();
+        $('.profile-error-messages').empty();
         $.each(response.responseJSON.errors, function(index, error) {
           $('.error-messages').append('<li>' + error + '</li>')
         })

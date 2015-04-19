@@ -10,11 +10,16 @@
 
   <%= form_for @interest do |f| %>
 
+    <div class="interest-error-explanation hidden">
+      <h3>Errors</h3>
+      <ul class="interest-error-messages"></ul>
+    </div>
+
     <%= f.label :name, 'Interest:' %>
     <%= f.text_field :name %>
 
     <%= f.submit 'Add interest' %>
-    <!-- need jquery to preventdefault and also send child_id -->
+
   <% end %>
 
   <h3 class="submit-interests"><a href="#">[Click To Submit]</a></h3>

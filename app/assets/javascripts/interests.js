@@ -10,10 +10,8 @@ $(document).on('page:change', function() {
 
   $('#new_interest').on('submit', function(e){
     e.preventDefault();
-
     var interest = $('#interest_name').val();
     var childId = $('.new-interests-container').attr('data-profile-id');
-
     $.ajax({
       url: $(this).attr('action'),
       type: 'POST',
@@ -21,9 +19,17 @@ $(document).on('page:change', function() {
       data: { interest: {name: interest}, child_id: childId }
     }).done(function(data) {
       $('#new_interest')[0].reset();
-      $('.interests-wrapper').append('<div class="interest-btn interest-btn-selected" data-interest-id="' + data.interest.id + '">' + data.interest.name + '</div>');
-    }).fail(function(errors) {
-
+      if ($('[data-interest-id='+ data.interest.id +']').length === 0) {
+        $('.interests-wrapper').append('<div class="interest-btn interest-btn-selected" data-interest-id="' + data.interest.id + '">' + data.interest.name + '</div>');
+      } else {
+        $('[data-interest-id='+ data.interest.id +']').addClass('interest-btn-selected');
+      }
+    }).fail(function(data) {
+      $('.interest-error-explanation').show();
+      $('.interest-error-messages').empty();
+      $.each(data.responseJSON.errors, function(index, error) {
+        $('.interest-error-messages').append('<li>' + error + '</li>')
+      })
     });
   });
 
@@ -39,13 +45,13 @@ $(document).on('page:change', function() {
       dataType: 'JSON',
     }).done(function (data) {
       window.location.href ="/"
+      // Hides interest container and shows button to complete full child profile
       // $('.new-interests-container').hide();
       // $('.complete-child-profile').show();
     });
   });
 
 });
-
 
 function getSelectedInterestIds() {
   var selectedIds = [];

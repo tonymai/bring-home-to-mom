@@ -4,8 +4,9 @@
 
   <%= form_for @child, url: url_for(controller: 'profiles', action: 'create') do |f| %>
 
-    <div class="error-explanation hidden">
-      <ul class="error-messages"></ul>
+    <div class="profile-error-explanation hidden">
+      <h3>Errors</h3>
+      <ul class="profile-error-messages"></ul>
     </div>
 
     <div class="new-pf-section basic-info">
