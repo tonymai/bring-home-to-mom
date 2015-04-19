@@ -13,7 +13,7 @@ $(document).on('page:change', function() {
         $('.profile-error-explanation').show();
         $('.profile-error-messages').empty();
         $.each(response.responseJSON.errors, function(index, error) {
-          $('.error-messages').append('<li>' + error + '</li>')
+          $('.profile-error-messages').append('<li>' + error + '</li>')
         })
       }
     });

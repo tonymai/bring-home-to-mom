@@ -12,6 +12,7 @@
  *
  *= require normalize
  *= require responsive.gs.12col
+ *= require pure-forms-min
  *= require font-awesome.min
  *= require_tree .
  *= require_self
@@ -19,6 +20,50 @@
 
 .debug{
   border:1px solid red;
+}
+
+body {
+	width: 100%;
+	position: absolute;
+}
+
+header {
+  height:30px;
+  width: 100%;
+  position: fixed;
+  z-index: 1;
+  background: rgba(26,181,149,1);
+}
+
+.logo {
+  color:white;
+  font-size: 1.5em;
+  display: inline-block;
+}
+
+.navbar a {
+  color: #FFFFFF;
+  text-decoration: none;
+}
+
+.navbar a:hover {
+  color: #2C3E50;
+}
+
+.navbar ul {
+  float:right;
+  display: inline-block;
+  margin: 0;
+}
+
+.navbar li {
+  display: inline-block;
+  padding: 5px;
+  color:white;
+}
+
+.navbar li a {
+  color: #FFFFFF;
 }
 
 .hidden {

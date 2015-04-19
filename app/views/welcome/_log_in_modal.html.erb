@@ -1,7 +1,7 @@
 <div id= "login-modal" class = "form-wrapper hidden">
   <h2>Log In</h2>
 
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'pure-form'}) do |f| %>
     <div class="field">
       <%= f.email_field :email, autofocus: true %>
     </div>
