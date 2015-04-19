@@ -40,7 +40,6 @@ $(document).on('page:change', function() {
     }).done(function(data) {
       var source = $('#child-profile-template').html();
       var templatingFunction = Handlebars.compile(source);
-      $('.pf-modal-container').remove();
       $(templatingFunction(data)).modal(modalSetting);
       $('#gallery-wrap').slick({
         dots: true,
