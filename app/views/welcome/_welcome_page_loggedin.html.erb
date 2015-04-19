@@ -1,11 +1,13 @@
 <div class="filter-wrapper col span_2">
   <br>
   <p> Filters</p>
+  <h1><%= @first_child.first_name %></h1>
   Gender:
   <select name="gender" class="filterby">
-  <option value=""></option>
+  <option value="<%=@first_child.sexual_preference%>"></option>
   <option value="male">Male</option>
   <option value="female">Female</option>
+  <option value="both">Both</option>
   </select>
   <br>
   Religion:
