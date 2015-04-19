@@ -32,7 +32,7 @@ $(document).on('page:change', function() {
     show: true
   };
 
-  $('.child-profiles-wrapper').on('click', '.child-profile-teaser', function(e) {
+  $('.matches').on('click', '.individual-child', function(e) {
     e.preventDefault();
 
     $.ajax({
