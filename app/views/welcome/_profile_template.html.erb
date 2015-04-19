@@ -1,5 +1,5 @@
 <script id="child-profile-template" type="x-handlebars-template">
-<div class="pf-modal-container hidden debug">
+<div class="pf-modal-container container hidden debug">
   <div class="row debug">
 
     <div class="pf-images-wrapper col span_5 debug">
@@ -16,6 +16,7 @@
 
       <div class="pf-sex-pref-location-wrapper debug">
         <div class="pf-gender col span_6 debug">
+          Gender:
           {{#ifCond profile.gender "male"}}
             <i class="fa fa-mars"></i>
           {{else}}
@@ -42,13 +43,17 @@
       </div>
 
       <div class="pf-rel-smoke-wrapper debug">
-        <div class="pf-rel col span_6 debug">{{profile.religion}}</div>
+        {{#if profile.religion}}
+          <div class="pf-rel col span_6 debug">{{profile.religion}}</div>
+        {{else}}
+          <div class="pf-rel col span_6 debug">Not specified</div>
+        {{/if}}
         <div class="pf-smoke col span_6 debug">{{profile.smoke}}</div>
       </div>
 
       <div class="pf-social debug">
         <div class="pf-linkedin col span_6 debug"><a href="{{profile.linkedin_url}}"><i class="fa fa-linkedin-square debug"></i> LinkedIn</a></div>
-        <div class="pf-facebook col span_6"><a href="{{profile.facebook_url}}"><i class="fa fa-facebook-square"></i> Facebook</a></div>
+        <div class="pf-facebook col span_6 debug"><a href="{{profile.facebook_url}}"><i class="fa fa-facebook-square"></i> Facebook</a></div>
       </div>
 
       <div class="pf-set-date-wrapper debug">
@@ -66,16 +71,35 @@
   <div class="row debug">
 
     <div class="pf-bio-wrapper col span_4 debug">
-      <div class="pf-bio debug">{{profile.bio}}</div>
-      <div class="pf-embarrass-moment debug">{{profile.embarrassing_moment}}</div>
+      <div class="front debug">
+        <h2>Bio</h2>
+      </div>
+      <div class="back hidden debug">
+        <div class="pf-bio debug">{{profile.bio}}</div>
+        <div class="pf-embarrass-moment debug">{{profile.embarrassing_moment}}</div>
+      </div>
     </div>
 
     <div class="pf-interests-wrapper col span_4 debug">
-      interests
+      <div class="front debug">
+        <h2>Interests</h2>
+      </div>
+      <div class="back hidden debug">
+        {{#each interests}}
+          <div class="interest-btn">{{this.name}}</div>
+        {{/each}}
+      </div>
     </div>
 
     <div class="pf-values-wrapper col span_4 debug">
-      values
+      <div class="front debug">
+        <h2>Values</h2>
+      </div>
+      <div class="back hidden debug">
+      {{#each values}}
+        <div class="interest-btn">{{this.name}}</div>
+      {{/each}}
+      </div>
     </div>
 
   </div>

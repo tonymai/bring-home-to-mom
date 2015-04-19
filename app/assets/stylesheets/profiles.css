@@ -4,10 +4,12 @@
 
 .pf-modal-container {
     background-color: #ffffff;
-    width: 100em;
     height: auto;
+    width: 100em;
     text-align: center;
     padding: 1em;
 }
 
-
+.front, .back {
+  height: 200px;
+}
