@@ -1,7 +1,13 @@
 <script id="child-profile-template" type="x-handlebars-template">
-  <div class="gallery-wrap">
-    // image scroll here
+<div class="temp-profile-detail">
+  <div id="gallery-wrap" class="owl-carousel">
+    <img src="{{profile.pf_image_1}}" />
+    <img src="{{profile.pf_image_2}}" />
+    <img src="{{profile.pf_image_3}}" />
+    <img src="{{profile.pf_image_4}}" />
+    <img src="{{profile.pf_image_5}}" />
   </div>
+  {{profile.pf_image_1}}
   {{profile.first_name}}
   {{profile.last_name}}
   {{profile.city}}
@@ -15,5 +21,5 @@
   {{profile.embarrassing_moment}}
   {{profile.linkedin_url}}
   {{profile.facebook_url}}
-
+</div>
 </script>

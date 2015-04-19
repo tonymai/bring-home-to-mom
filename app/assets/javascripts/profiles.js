@@ -19,8 +19,14 @@ $(document).on('page:change', function() {
     }).done(function(data) {
       var source = $('#child-profile-template').html();
       var templatingFunction = Handlebars.compile(source);
-      $('.child-profiles-wrapper').append(templatingFunction(data));
-      // $('#child-profile-template').modal(modalSetting);
+      // $('.child-profiles-wrapper').append(templatingFunction(data));
+      $(templatingFunction(data)).modal(modalSetting);
+      $('#gallery-wrap').owlCarousel({
+        navigation: true,
+        slideSpeed: 300,
+        paginationSpeed: 400,
+        singleItem: true,
+      });
     }).fail(function(data) {
       debugger
     });
