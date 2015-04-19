@@ -1,7 +1,7 @@
 <div class="filter-wrapper col span_2">
   <br>
   <p> Filters</p>
-  <h1><%= @first_child.first_name %></h1>
+  <h1 data-gender = "<%= @first_child.gender %>"><%= @first_child.first_name %></h1>
   Gender:
   <select name="gender" class="filterby">
   <option value="<%=format_gender(@first_child.sexual_preference)%>"></option>
@@ -23,16 +23,16 @@
   <br>
   <br>
   Smoke:
-  <form action="">
+<!--   <form action="">
   <input type="radio" name="smoke" value="true">True <br>
   <input type="radio" name="smoke" value="false">False
-  </form>
+  </form> -->
 
-<!--   <select name="smoke" class="filterby">
+  <select name="smoke" class="filterby">
   <option value=""></option>
   <option value="true">Yes</option>
   <option value="false">No</option>
-  </select> -->
+  </select>
 </div>
 <div class="matches col span_8">
 </div>
