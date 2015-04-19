@@ -1,44 +1,61 @@
 <script id="child-profile-template" type="x-handlebars-template">
+<div class="pf-modal-container hidden debug">
+  <div class="row debug">
 
-  <div class="pf-images-wrapper">
-    // image scroll here
+    <div class="pf-images-wrapper col span_5 debug">
+      <img src="{{profile.pf_image_1}}">
+    </div>
+
+    <div class="pf-basic-info-wrapper col span_7 debug">
+      <h2>{{profile.first_name}} {{profile.last_name}}</h2>
+
+      <div class="pf-age-gender-wrapper debug">
+        <div class="pf-age col span_6 debug">{{profile.birthdate}}</div>
+        <div class="pf-city-state col span_6 debug">{{profile.city}} {{profile.state}}</div>
+      </div>
+
+      <div class="pf-sex-pref-location-wrapper debug">
+        <div class="pf-gender col span_6 debug"><i class="fa fa-mars"></i><i class="fa fa-venus"></i><i class="fa fa-transgender"></i>{{profile.gender}}</div>
+        <div class="pf-sex-pref col span_6 debug">Interested in: {{profile.sexual_preference}}<i class="fa fa-female"></i><i class="fa fa-male"></i></div>
+      </div>
+
+      <div class="pf-rel-smoke-wrapper debug">
+        <div class="pf-rel col span_6 debug">{{profile.religion}}</div>
+        <div class="pf-smoke col span_6 debug">{{profile.smoke}}</div>
+      </div>
+
+      <div class="pf-social debug">
+        <div class="pf-linkedin col span_6 debug"><a href="{{profile.linkedin_url}}"><i class="fa fa-linkedin-square debug"></i> LinkedIn</a></div>
+        <div class="pf-facebook col span_6"><a href="{{profile.facebook_url}}"><i class="fa fa-facebook-square"></i> Facebook</a></div>
+      </div>
+
+      <div class="pf-set-date-wrapper debug">
+        <div class="pf-set-date debug col span_12"><a href="#">Set up a Date!</a></div>
+      </div>
+
+    </div>
+
   </div>
-  <div class="pf-basic-info">
-    <h2>{{profile.first_name}} {{profile.last_name}}</h2>
-    <div class="row">
-    // reorganize this into divs upon divs upon divs
-      <ul>
-      <li>{{profile.birthdate}}</li>
-      <li>{{profile.gender}}</li>
-      <li>{{profile.sexual_preference}}</li>
-      </ul>
+
+  <div class="row debug">
+    <h3>The Good Stuff</h3>
+  </div>
+
+  <div class="row debug">
+
+    <div class="pf-bio-wrapper col span_4 debug">
+      <div class="pf-bio debug">{{profile.bio}}</div>
+      <div class="pf-embarrass-moment debug">{{profile.embarrassing_moment}}</div>
     </div>
-    <div class="row">
-      <ul>
-        <li>{{profile.city}} {{profile.state}}</li>
-        <li>{{profile.gender}}</li>
-      </ul>
+
+    <div class="pf-interests-wrapper col span_4 debug">
+      interests
     </div>
-    <div class="row">
-      <ul>
-        <li>{{profile.religion}}</li>
-        <li>{{profile.smoke}}</li>
-      </ul>
-    </div>
-    <div class="row">
-      <ul>
-        <li><a href="{{profile.linkedin_url}}"><i class="fa fa-linkedin-square"></i></a></li>
-        <li><a href="{{profile.facebook_url}}"><i class="fa fa-facebook-square"></i></a></li>
-      </ul>
+
+    <div class="pf-values-wrapper col span_4 debug">
+      values
     </div>
 
   </div>
-  <div class="#">
-  </div>
-  {{profile.bio}}
-  {{profile.embarrassing_moment}}
-
-
-  // {{interests}} // appears as an array
-
+</div>
 </script>

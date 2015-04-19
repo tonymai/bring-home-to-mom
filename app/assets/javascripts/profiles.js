@@ -8,7 +8,17 @@ $(document).on('page:change', function() {
       dialog.container.fadeIn('fast');
       dialog.overlay.fadeIn('fast');
     },
-    opacity: 85
+    onShow: function(dialog) {
+
+    },
+    onClose: function(dialog) {
+      dialog.data.fadeOut('fast');
+      dialog.container.fadeOut('fast');
+      dialog.overlay.fadeOut('fast');
+    },
+    opacity: 85,
+    overlayClose: true,
+    show: true
   };
 
   $('.child-profiles-wrapper').on('click', '.child-profile-teaser', function(e) {
@@ -19,8 +29,10 @@ $(document).on('page:change', function() {
     }).done(function(data) {
       var source = $('#child-profile-template').html();
       var templatingFunction = Handlebars.compile(source);
-      $('.child-profiles-wrapper').append(templatingFunction(data));
-      // $('#child-profile-template').modal(modalSetting);
+      var html = templatingFunction(data);
+      $('.pf-modal-container').remove();
+      $('body').append(html);
+      $('.pf-modal-container').modal(modalSetting);
     }).fail(function(data) {
       debugger
     });
