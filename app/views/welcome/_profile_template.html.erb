@@ -71,20 +71,22 @@
   <div class="row debug">
 
     <div class="pf-bio-wrapper col span_4 debug">
-      <div class="front debug">
+      <div class="bio-front pf-box debug">
         <h2>Bio</h2>
+        <p>Click to read more!</p>
       </div>
-      <div class="back hidden debug">
+      <div class="bio-back pf-box hidden debug">
         <div class="pf-bio debug">{{profile.bio}}</div>
         <div class="pf-embarrass-moment debug">{{profile.embarrassing_moment}}</div>
       </div>
     </div>
 
     <div class="pf-interests-wrapper col span_4 debug">
-      <div class="front debug">
+      <div class="interests-front pf-box debug">
         <h2>Interests</h2>
+        <p>Click to read more!</p>
       </div>
-      <div class="back hidden debug">
+      <div class="interests-back pf-box hidden debug">
         {{#each interests}}
           <div class="interest-btn">{{this.name}}</div>
         {{/each}}
@@ -92,10 +94,11 @@
     </div>
 
     <div class="pf-values-wrapper col span_4 debug">
-      <div class="front debug">
+      <div class="values-front pf-box debug">
         <h2>Values</h2>
+        <p>Click to read more!</p>
       </div>
-      <div class="back hidden debug">
+      <div class="values-back pf-box hidden debug">
       {{#each values}}
         <div class="interest-btn">{{this.name}}</div>
       {{/each}}

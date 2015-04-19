@@ -9,7 +9,18 @@ $(document).on('page:change', function() {
       dialog.overlay.fadeIn('fast');
     },
     onShow: function(dialog) {
-
+      $('.pf-bio-wrapper').on('click', function(event) {
+        $('.bio-front').toggleClass('hidden');
+        $('.bio-back').toggleClass('hidden')
+      });
+      $('.pf-interests-wrapper').on('click', function(event) {
+        $('.interests-front').toggleClass('hidden');
+        $('.interests-back').toggleClass('hidden')
+      });
+      $('.pf-values-wrapper').on('click', function(event) {
+        $('.values-front').toggleClass('hidden');
+        $('.values-back').toggleClass('hidden')
+      });
     },
     onClose: function(dialog) {
       dialog.data.fadeOut('fast');

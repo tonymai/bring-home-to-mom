@@ -10,6 +10,7 @@
     padding: 1em;
 }
 
-.front, .back {
+.pf-box {
   height: 200px;
 }
+
