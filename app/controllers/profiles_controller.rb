@@ -12,6 +12,16 @@ class ProfilesController < ApplicationController
     @interest = Interest.new
   end
 
+  def show
+    @child = Child.find(params[:id])
+
+    if @child
+      render json: { profile: @child }, status: :ok
+    else
+      render json: { error: 'Profile does not exist' }, status: :not_found
+    end
+  end
+
   def create
     @parent = Parent.find(params[:user_id])
     @child = @parent.children.new(profile_params)

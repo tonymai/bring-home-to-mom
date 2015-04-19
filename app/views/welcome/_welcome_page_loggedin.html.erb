@@ -27,12 +27,16 @@
 </div>
 <div class="matches col span_8">
   <table>
-    <tbody>
+    <tbody class="child-profiles-wrapper">
     <% Child.all.each do |child| %>
-    <tr id="<%= child.id %>">
-      <td><img class="prof-img" src="<%=child.pf_image_1%>"></td>
+    <tr class="child-profile-teaser" id="<%= child.id %>">
+      <td><a href="/users/<%= child.parent_id %>/profiles/<%= child.id %>"><img class="prof-img" src="<%=child.pf_image_1%>"></a></td>
     </tr>
     <% end %>
     </tbody>
   </table>
 </div>
+
+<script id="child-profile-template" type="x-handlebars-template">
+  {{first_name}}
+</script>
