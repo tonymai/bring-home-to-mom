@@ -12,13 +12,16 @@ $(document).ready(function(){
   $('.signup-btn').click(function(e){
   	e.preventDefault();
     $('#signup-modal').modal()
+
   })
 
 
 	$('.how-btn').click(function() {
-	    $('body').animate({
-	        scrollTop: $('#how-it-works').offset().top
-	    }, 750);
+	  $('body').animate({
+	    scrollTop: $('#how-it-works').offset().top
+	  }, 750);
+    return false;
 	});
+  
 })
 
