@@ -1,30 +1,59 @@
-<div class="bgvid-wrapper">
-  <button class="how-button">How it Works</button>
+<div class="bg-vid-wrapper">
+  <h1>Bring Home To Mom</h1>
+  <a href="#how-it-works" class="how-btn">How it Works</a>
   <video class = "bg-vid" autoplay loop>
     <source src="/assets/background_vid.webm" type= "video/webm" />
   </video>
 </div>
 
-<div id="how-it-works" class="description">
-  <div class="description-wrapper">
-    <div class="how-step">
-      <i class="fa fa-user-plus fa-5x"></i>
+<div id="how-it-works" class="welcome-description">
+  <div class="description-wrapper container row">
+    <div class="how-step col span_3">
+
+      <div class="circle-outer">
+        <div class="circle-inner">
+          <i class="fa fa-user-plus fa-5x"></i>
+        </div>
+      </div>
+      
       <h4>1. Create a profile for your kids!</h4>
     </div>
-    <div class="how-step">
-      <i class="fa fa-search fa-5x"></i>
+    <div class="how-step col span_3">
+
+      <div class="circle-outer">
+        <div class="circle-inner">
+          <i class="fa fa-search fa-5x"></i>
+        </div>
+      </div>
+
       <h4>2. Search for other eligible bachelors and bachelorettes</h4>
     </div>
-    <div class="how-step">
-      <i class="fa fa-calendar fa-5x"></i>
+    <div class="how-step col span_3">
+
+      <div class="circle-outer">
+        <div class="circle-inner">
+          <i class="fa fa-calendar fa-5x"></i>
+        </div>
+      </div>
+      
       <h4>3. Plan the date - pick a time, movie, restaurant, etc.</h4>
     </div>
-    <div class="how-step">
-      <i class="fa fa-heart fa-5x"></i>
+    <div class="how-step col span_3">
+
+      <div class="circle-outer">
+        <div class="circle-inner">
+          <i class="fa fa-heart fa-5x"></i>
+        </div>
+      </div>
+      
       <h4>4. Sit back and wait for the wedding invitation!</h4>
     </div>
   </div>
-  <button class="btn-big">GET STARTED</button>
+
+  <div>
+    <a href="#" class="signup-btn get-started-btn">Get Started!</a>
+  </div>
+
 </div>
 
 <%= render "sign_up_modal" %>

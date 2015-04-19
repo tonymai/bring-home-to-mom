@@ -1,26 +1,35 @@
-.debug{
-  border:1px solid red;
+a {
+  text-decoration: none;
 }
-header{
-  height:1.5em;
+
+header {
+  height:30px;
   width: 100%;
-  position:fixed;
+  position: fixed;
   z-index: 1;
+  background: rgba(26,181,149,0.5);
 }
 
-.logo{
-  max-width: 200px;
+.logo {
   color:white;
-  font-size: 1.8em;
-}
-.login-btn{
+  font-size: 1.5em;
   display: inline-block;
+}
+
+.navbar ul {
+  float:right;
+  display: inline-block;
+  margin: 0;
+}
+
+.navbar li {
+  display: inline-block;
+  padding: 5px;
   color:white;
 }
 
-.signup-btn{
-  display: inline-block;
-  color:white;
+.navbar li a {
+  color: #FFFFFF;
 }
 
 .interest-btn{
@@ -39,39 +48,114 @@ header{
 .navbar-link-wrapper{
   float:right;
   display: inline-block;
+
+
+.bg-vid-wrapper {
+  position: relative;
+  top: -170px;
 }
 
-.bg-vid{
+.bg-vid {
   width: 100%;
   background: no-repeat;
   background-size: cover;
 }
 
-
-
-.how-button {
-  width: 150px;
-  position: absolute;
-  margin: auto;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
+.bg-vid-wrapper h1 {
+  font-size: 3em;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
   display: block;
-  border: 1px solid white;
+  top: 7em;/* need another way to position*/
   color: white;
-  background: rgba(256,256,256,0.5);
-  border-radius: 2px;
+  z-index: 1;
+}
+
+.how-btn {
+  text-align: center;
+  position: relative;
+  top: 30em;/* need another way to position*/
+  width: 175px;
+  margin: auto;
+  display: block;
+  color: white;
+  background: rgba(255,105,83,0.55);
+  border: 1px solid #FF6953;
   padding: .4em;
   height: 50px;
-  z-index: 50;
+  z-index: 1;
 }
 
-.how-step{
-  display:inline-block;
+.how-btn:hover {
+  background: rgba(255,105,83,0.8);
 }
 
-.logout-button{
+.welcome-description {
+  position: relative;
+  top: -175px;
+  padding: 10em;
+  background-color: #FF6953;
+}
+
+.how-step {
+  text-align: center;
+}
+
+.circle-outer {
+  position: relative;
+  width: 190px;
+  height: 190px;
+  text-align: center;
+  background: #1AB595;
+  -moz-border-radius: 95px;
+  -webkit-border-radius: 95px;
+  border-radius: 100px;
+}
+
+.circle-inner {
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  width: 140px;
+  height: 140px;
+  text-align: center;
+  background: #FFFFFF;
+  -moz-border-radius: 70px;
+  -webkit-border-radius: 70px;
+  border-radius: 75px;
+}
+
+.get-started-btn {
+  text-align: center;
+  position: relative;
+  width: 150px;
+  margin: auto;
+  display: block;
+  color: white;
+  background: rgba(26,181,149,0.7);
+  border: 2px solid #1AB595;
+  padding: .4em;
+  height: 50px;
+  z-index: 1;
+}
+
+.get-started-btn:hover {
+  background: rgba(26,181,149,0.85);
+}
+
+
+.form-wrapper {
+  padding: 2em;
+  background: rgba(44,62,80,0.9);
+  color: #FFFFFF;
+}
+
+.simplemodal-overlay {
+  background: #000000;
+}
+
+.logout-button {
   text-decoration: none;
   padding:4px;
   border:1px solid white;

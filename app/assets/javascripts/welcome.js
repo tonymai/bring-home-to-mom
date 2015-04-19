@@ -3,13 +3,39 @@
 
 $(document).ready(function(){
 
-  $('.login-btn').click(function(){
-    $('#login-modal').modal()
-  })
+  var modalSetting = {
+    onOpen: function (dialog) {
+      dialog.data.fadeIn('fast');
+      dialog.container.fadeIn('fast');
+      dialog.overlay.fadeIn('fast');
+    },
+    opacity: 85
+  };
 
-  $('.signup-btn').click(function(){
-    $('#signup-modal').modal()
-  })
+  $('.login-btn').click(function(e){
+  	e.preventDefault();
+    $('#login-modal').modal(modalSetting);
+  });
+
+  $('.signup-btn').click(function(e){
+  	e.preventDefault();
+    $('#signup-modal').modal(modalSetting)
+  });
+
+  $('body').on('click', '.simplemodal-overlay', function() {
+    $(this).fadeOut('fast');
+    $('.simplemodal-wrap').fadeOut('fast', function() {
+      $.modal.close();
+    });
+  });
+
+
+	$('.how-btn').click(function() {
+	  $('body').animate({
+	    scrollTop: $('#how-it-works').offset().top
+	  }, 750);
+    return false;
+	});
 
 
   $('.filterby').change(function(){

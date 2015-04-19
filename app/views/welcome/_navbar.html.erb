@@ -1,6 +1,11 @@
-  <nav class = "navbar">
-    <div class = "logo col">BHTM</div>
-    <div class = "navbar-link-wrapper">
-      <%= user_signed_in? ? (render "navbar_loggedin") : (render "navbar_loggedout") %>
-    </div>
-  </nav>
+<nav class="navbar">
+  <div class="logo">BHTM</div>
+  <ul>
+    <% if user_signed_in? %>
+    	<li><%= link_to "Log Out", "users/sign_out", method: 'delete',class:"logout-button" %><li>
+    <% else %>
+			<li><a href="#" class="login-btn">Log In</a></li>
+			<li><a href="#" class="signup-btn">Sign Up</a></li>
+		<% end %>
+  </ul>
+</nav>

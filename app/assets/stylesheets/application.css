@@ -16,3 +16,11 @@
  *= require_tree .
  *= require_self
  */
+
+.debug{
+  border:1px solid red;
+}
+
+.hidden {
+  display: none;
+}
