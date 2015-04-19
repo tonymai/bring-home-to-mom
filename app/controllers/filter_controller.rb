@@ -2,7 +2,7 @@ class FilterController < ApplicationController
   include FilterConcern
 
   def filter_matches
-
+    #could use refactoring
     params[:filterData].delete('gender') if params[:filterData]['gender'] == "both"
     child_gender = params[:filterData]['childGender']
     params[:filterData].delete('childGender')
