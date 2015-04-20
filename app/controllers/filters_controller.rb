@@ -12,8 +12,16 @@ class FiltersController < ApplicationController
 
   def filter_matches
     potential_matches = apply_scopes(Child).all
-    nonincestual_matches = potential_matches.select{|child| child.parent != current_user}
-    render json: nonincestual_matches
+    potential_matches = potential_matches.select {|child| child.parent != current_user}
+
+    # empty_arr = []
+    # selected_interests = params[:selected_interest]
+    # selected_interests.each do |interest|
+      # empty_arr << potential_matches.select! {|child| child.interests.include?(interest) }
+    # end
+
+
+    render json: potential_matches
   end
 
   # def autocomplete_interests

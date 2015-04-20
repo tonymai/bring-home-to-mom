@@ -22,13 +22,6 @@ $(document).on('page:change', function() {
 
 
     var updateMatches = function() {
-      // var user_filters = $.map($("select.filterby").toArray(), function(e){return $(e).val();});
-      // var filterData = {
-      //   gender: user_filters[0],
-      //   religion: user_filters[1],
-      //   smoke: user_filters[2],
-      //   childGender: $("h1").attr("data-gender")
-      // }
       var gender = $("h1").attr("data-gender")
       if (gender = 'male') {
         gender = 'men';
@@ -39,9 +32,23 @@ $(document).on('page:change', function() {
       else {
         gender = 'both';
       }
+
+      //age
       var lowerAge = $("#input-lower").val();
       var upperAge = $("#input-upper").val();
-      var filterParams = $("form.filters").serialize() + "&by_sexual_preference=" + gender + "&by_age[min]=" + lowerAge + "&by_age[max]=" + upperAge; //refactor to use session
+
+      //interests
+      var $interestElements = $('.filterby-interest .autocomplete-container ul li')
+      var interestIds = $.map($interestElements, function(element) { return $(element).attr('data-id') });
+      var interestParams = '&interests=' + interestIds.join(',')
+
+      //values
+      var $valueElements = $('.filterby-value .autocomplete-container ul li')
+      var valueIds = $.map($valueElements, function(element) { return $(element).attr('data-id') });
+      var valueParams = '&values=' + valueIds.join(',')
+
+      //combined
+      var filterParams = $("form.filters").serialize() + "&by_sexual_preference=" + gender + "&by_age[min]=" + lowerAge + "&by_age[max]=" + upperAge + interestParams + valueParams; //refactor to use session
       console.log(filterParams)
       $.ajax({
         url: '/filters?' + filterParams,

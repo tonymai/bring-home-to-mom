@@ -14,16 +14,17 @@
 *       <input type="text" data-autocomplete="/url/to/autocomplete" data-id-element="#id_field">
 */
 
+
 (function(jQuery)
 {
   var self = null;
-  jQuery.fn.railsAutocomplete = function() {
+  $.fn.railsAutocomplete = function() {
     var handler = function() {
       if (!this.railsAutoCompleter) {
-        this.railsAutoCompleter = new jQuery.railsAutocomplete(this);
+        this.railsAutoCompleter = new $.railsAutocomplete(this);
       }
     };
-    if (jQuery.fn.on !== undefined) {
+    if ($.fn.on !== undefined) {
       return jQuery(document).on('focus',this.selector,handler);
     }
     else {
@@ -31,17 +32,17 @@
     }
   };
 
-  jQuery.railsAutocomplete = function (e) {
+  $.railsAutocomplete = function (e) {
     var _e = e;
     this.init(_e);
   };
 
-  jQuery.railsAutocomplete.fn = jQuery.railsAutocomplete.prototype = {
+  $.railsAutocomplete.fn = $.railsAutocomplete.prototype = {
     railsAutocomplete: '0.0.1'
   };
 
-  jQuery.railsAutocomplete.fn.extend = jQuery.railsAutocomplete.extend = jQuery.extend;
-  jQuery.railsAutocomplete.fn.extend({
+  $.railsAutocomplete.fn.extend = $.railsAutocomplete.extend = $.extend;
+  $.railsAutocomplete.fn.extend({
     init: function(e) {
       e.delimiter = jQuery(e).attr('data-delimiter') || null;
       e.min_length = jQuery(e).attr('min-length') || 2;
@@ -62,11 +63,11 @@
           var firedFrom = this.element[0];
           var params = {term: extractLast( request.term )};
           if (jQuery(e).attr('data-autocomplete-fields')) {
-              jQuery.each(jQuery.parseJSON(jQuery(e).attr('data-autocomplete-fields')), function(field, selector) {
+              $.each($.parseJSON(jQuery(e).attr('data-autocomplete-fields')), function(field, selector) {
               params[field] = jQuery(selector).val();
             });
           }
-          jQuery.getJSON( jQuery(e).attr('data-autocomplete'), params, function() {
+          $.getJSON( jQuery(e).attr('data-autocomplete'), params, function() {
             if(arguments[0].length === 0) {
               arguments[0] = [];
               arguments[0][0] = { id: "", label: "no existing match" };
@@ -88,7 +89,7 @@
             jQuery(jQuery(this).attr('data-id-element')).val(ui.item ? ui.item.id : "");
 
             if (jQuery(this).attr('data-update-elements')) {
-                var update_elements = jQuery.parseJSON(jQuery(this).attr("data-update-elements"));
+                var update_elements = $.parseJSON(jQuery(this).attr("data-update-elements"));
                 var data = ui.item ? jQuery(this).data(ui.item.id.toString()) : {};
                 if(update_elements && jQuery(update_elements['id']).val() === "") {
                   return;
@@ -117,56 +118,13 @@
           return false;
         },
         select: function( event, ui ) {
-          if(ui.item.value.toLowerCase().indexOf('no match') != -1 || ui.item.value.toLowerCase().indexOf('too many results') != -1){
-            jQuery(this).trigger('railsAutocomplete.noMatch', ui);
-            return false;
+          if (ui.item.id != "") {
+            $(this).parent().children('.autocomplete-container').children('ul').append('<li data-id=' + ui.item.id + '>' + ui.item.value + '</li>')
+            $('.ui-autocomplete-input').val('');
+            $(this).parent().children('.autocomplete-dropdown ul').empty('');
           }
-          var terms = split( this.value );
-          // remove the current input
-          terms.pop();
-          // add the selected item
-          terms.push( ui.item.value );
-          // add placeholder to get the comma-and-space at the end
-          if (e.delimiter != null) {
-            terms.push( "" );
-            this.value = terms.join( e.delimiter );
-          } else {
-            this.value = terms.join("");
-            if (jQuery(this).attr('data-id-element')) {
-              jQuery(jQuery(this).attr('data-id-element')).val(ui.item.id);
-            }
-            if (jQuery(this).attr('data-update-elements')) {
-              var data = ui.item;
-              var new_record = ui.item.value.indexOf('Create New') != -1 ? true : false;
-              var update_elements = jQuery.parseJSON(jQuery(this).attr("data-update-elements"));
-              for (var key in update_elements) {
-                if(jQuery(update_elements[key]).attr("type") === "checkbox"){
-                   if(data[key] === true || data[key] === 1) {
-                       jQuery(update_elements[key]).attr("checked","checked");
-                   }
-                   else {
-                       jQuery(update_elements[key]).removeAttr("checked");
-                   }
-                }
-                else{
-                  if((new_record && data[key] && data[key].indexOf('Create New') == -1) || !new_record){
-                    jQuery(update_elements[key]).val(data[key]);
-                  }else{
-                    jQuery(update_elements[key]).val('');
-                  }
-                }
-               }
-            }
-          }
-          var remember_string = this.value;
-          jQuery(this).bind('keyup.clearId', function(){
-            if(jQuery.trim(jQuery(this).val()) != jQuery.trim(remember_string)){
-              jQuery(jQuery(this).attr('data-id-element')).val("");
-              jQuery(this).unbind('keyup.clearId');
-            }
-          });
-          jQuery(e).trigger('railsAutocomplete.select', ui);
-
+          // updateMatches();
+         
           return false;
         }
       });

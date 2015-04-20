@@ -34,12 +34,7 @@
     Between: <input id="input-lower" class="filterby" name='by_age'> and <input class= "filterby" name="by_age" id="input-upper">
     <div class="filterby age-slider"></div>
   </div>
-  <div class="filterby">
-    <input type="text" data-autocomplete="filters/autocomplete/interests">
-  </div>
-  <div class="filterby">
-    <input type="text" data-autocomplete="filters/autocomplete/values">
-  </div>
+  <%= render partial: 'autocomplete_container' %>
 </div>
 
 <div class="matches col span_8">
