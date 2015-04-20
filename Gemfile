@@ -35,6 +35,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
 gem 'has_scope'
 
+#for APIs
+gem 'httparty'
+gem 'fandango'
+
 # For messaging
 gem 'private_pub'
 gem 'thin'
@@ -52,7 +56,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'dotenv-rails'
   gem 'capybara'
-
+  gem 'awesome_print'
 
 
   # Access an IRB console on exception pages or by using <%= console %> in views

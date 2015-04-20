@@ -38,6 +38,7 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.3.8)
     arel (6.0.0)
+    awesome_print (1.6.1)
     bcrypt (3.1.10)
     better_errors (2.1.1)
       coderay (>= 1.0.0)
@@ -90,6 +91,8 @@ GEM
     execjs (2.5.2)
     faker (1.4.3)
       i18n (~> 0.5)
+    fandango (1.0.0)
+      nokogiri (~> 1.0)
     faye (1.1.1)
       cookiejar (>= 0.3.0)
       em-http-request (>= 0.3.0)
@@ -108,6 +111,9 @@ GEM
       activesupport (>= 3.2, < 5)
     hirb (0.7.3)
     http_parser.rb (0.6.0)
+    httparty (0.13.3)
+      json (~> 1.8)
+      multi_xml (>= 0.5.2)
     i18n (0.7.0)
     jbuilder (2.2.13)
       activesupport (>= 3.0.0, < 5)
@@ -125,6 +131,7 @@ GEM
     mini_portile (0.6.2)
     minitest (5.6.0)
     multi_json (1.11.0)
+    multi_xml (0.5.5)
     nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
     orm_adapter (0.5.0)
@@ -228,6 +235,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  awesome_print
   better_errors
   binding_of_caller
   byebug
@@ -235,8 +243,10 @@ DEPENDENCIES
   devise
   dotenv-rails
   faker
+  fandango
   has_scope
   hirb
+  httparty
   jbuilder (~> 2.0)
   jquery-rails
   pg

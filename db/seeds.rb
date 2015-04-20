@@ -28,8 +28,8 @@ end
     child = parent.children.create(
       first_name: Faker::Name.first_name,
       last_name: Faker::Name.last_name,
-      city: Faker::Address.city,
-      state: Faker::Address.state_abbr,
+      city: ['San Francisco', 'Los Angeles', 'San Diego', 'Sacramento'].sample,
+      state: "CA",
       phone: Faker::PhoneNumber.phone_number,
       gender: ['male', 'female', 'other'].sample,
       sexual_preference: ['men', 'women', 'both'].sample,
