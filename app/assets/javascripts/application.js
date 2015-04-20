@@ -10,10 +10,12 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require private_pub
 //= require jquery
 //= require jquery_ujs
 //= require jquery.form
 //= require handlebars
+//= require jquery.nouislider.all.min
 //= require jquery.simplemodal
 //= require slick
 //= require turbolinks

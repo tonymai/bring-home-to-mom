@@ -1,0 +1,27 @@
+<div class="new-pf-section values">
+
+  <a href="#"><h2>5. Values for <span class="child-name">Child</span></h2></a>
+
+  <div class="new-pf-container new-values-container hidden">
+
+    <div class="values-wrapper container row">
+      <div class="col span_12">
+        <% @values.each do |value| %>
+          <div class="value-btn" data-value-id="<%= value.id %>"><%= value.name %></div>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="container row">
+      <a class="continue" href="#">Continue</a>
+    </div>
+
+  </div>
+
+
+</div>
+
+<div class="new-pf-section submit">
+  <a href="#"><h2 class="submit-all">Submit Profile and See Matches!</h2></a>
+  <div class="new-pf-container"></div>
+</div>

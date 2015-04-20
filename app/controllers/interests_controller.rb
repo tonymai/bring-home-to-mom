@@ -2,8 +2,8 @@ class InterestsController < ApplicationController
 
   def create
     @child = Child.find(params[:child_id])
+    params[:interest][:name] = params[:interest][:name].downcase.titleize
     @interest = Interest.find_or_initialize_by(interest_params)
-    @interest.name = @interest.name.downcase.titleize
 
     if @interest.save
       @child.interests << @interest
@@ -12,7 +12,6 @@ class InterestsController < ApplicationController
       render json: { errors: @interest.errors.full_messages }, status: :unprocessable_entity
     end
   end
-
   private
 
   def interest_params

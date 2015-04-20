@@ -149,7 +149,7 @@
 }
 
 .new-pf-section a {
-  color: #FFFFFF;
+  color: black;
   text-decoration: none;
 }
 
@@ -160,6 +160,10 @@
 .new-pf-section h2 {
   display: block;
   background-color: #FF6953
+}
+
+.contine {
+  border: 1px solid black;
 }
 
 .profile-error-messages {
@@ -176,7 +180,7 @@
   border-radius: 8px;
 }
 
-.interest-btn{
+.interest-btn, .value-btn{
   display: inline-block;
   border: 1px gray solid;
   padding: 2px 4px;
@@ -186,8 +190,8 @@
   background-color: #D7DADB;
 }
 
-.interest-btn-selected{
-  color: #FFFFFF;
+.interest-btn-selected, .value-btn-selected{
+	color: #FFFFFF;
   background-color: #1AB595;
 }
 
