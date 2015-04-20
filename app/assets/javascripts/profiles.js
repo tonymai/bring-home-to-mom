@@ -4,11 +4,13 @@ $(document).on('page:change', function() {
 
   var modalSetting = {
     onOpen: function (dialog) {
-      dialog.data.fadeIn('fast');
-      dialog.container.fadeIn('fast');
+      dialog.data.fadeIn('medium');
+      dialog.container.fadeIn('medium');
       dialog.overlay.fadeIn('fast');
+      $("html,body").css("overflow","hidden"); // disables scrolling on page in background
     },
     onShow: function(dialog) {
+      $('#simplemodal-container').css({'height' : 'auto'}); // necessary to fix simplemodal positioning
       $('.pf-bio-wrapper').on('click', function(event) {
         $('.bio-front').toggleClass('hidden');
         $('.bio-back').toggleClass('hidden')
@@ -24,17 +26,19 @@ $(document).on('page:change', function() {
     },
     onClose: function(dialog) {
       dialog.data.fadeOut('fast');
-      dialog.container.fadeOut('fast');
-      dialog.overlay.fadeOut('fast');
+        dialog.overlay.fadeOut('medium', function(){
+          $.modal.close(); // without this, if you close modal with ESC, you can't open it again
+        });
+      $("html,body").css("overflow","auto"); //re-enables scrolling on main page
     },
-    opacity: 85,
+    opacity: 88,
     overlayClose: true,
-    show: true
+    show: true,
+    overlayCss: {backgroundImage: "url('/images/backgrounds/bg-dark_exa.png')"},
   };
 
   $('.matches').on('click', '.individual-child', function(e) {
     e.preventDefault();
-
     $.ajax({
       url: $(this).find('a').attr('href'),
     }).done(function(data) {
@@ -44,12 +48,15 @@ $(document).on('page:change', function() {
       $('#gallery-wrap').slick({
         dots: true,
         infinite: true,
-        speed: 500,
+        speed: 700,
         initialSlide: (data.profile.main_profile_image - 1),
-        // slidesToShow: 1,
+        autoplay: true,
+        slidesToShow: 1,
+        autoplaySpeed: 6000,
         // fade: true,
         // cssEase: 'linear',
       });
+      $(window).resize(); // necessary to fix simplemodal positioning
     }).fail(function(data) {
     });
   });
