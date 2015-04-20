@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   end
 
   resources :interests, only: [:index, :create]
+  resources :values, only: [:index, :create]
 
   get '/filter' => 'filter#filter_matches'
 

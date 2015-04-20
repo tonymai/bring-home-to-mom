@@ -1,30 +1,39 @@
-<div class="new-interests-container hidden">
+<div class="new-pf-section interests">
 
-  <h1>Add Interests for <span class="child-name">Child</span></h1>
+  <a href="#"><h2>4. Interests for <span class="child-name">Child</span></h2></a>
 
-  <div class="interests-wrapper">
-    <% @top_interests.each do |interest| %>
-      <div class="interest-btn" data-interest-id="<%= interest.id %>"><%= interest.name %></div>
-    <% end %>
-  </div>
+  <div class="new-pf-container new-interests-container hidden">
 
-  <%= form_for @interest do |f| %>
+    <div class="container row">
+      <div class="interests-wrapper">
+        <% @top_interests.each do |interest| %>
+          <div class="interest-btn" data-interest-id="<%= interest.id %>"><%= interest.name %></div>
+        <% end %>
+      </div>
 
-    <div class="interest-error-explanation hidden">
-      <h3>Errors</h3>
-      <ul class="interest-error-messages"></ul>
+      <%= form_for @interest do |f| %>
+
+        <div class="interest-error-explanation hidden">
+          <h3>Errors</h3>
+          <ul class="interest-error-messages"></ul>
+        </div>
+
+        <%= f.label :name, 'Interest:' %>
+        <%= f.text_field :name %>
+
+        <%= f.submit 'Add interest' %>
+
+      <% end %>
     </div>
 
-    <%= f.label :name, 'Interest:' %>
-    <%= f.text_field :name %>
+    <div class="container row">
+      <a class="continue" href="#">Continue</a>
+    </div>
 
-    <%= f.submit 'Add interest' %>
-
-  <% end %>
-
-  <h3 class="submit-interests"><a href="#">Submit Interests and See Matches!</a></h3>
+  </div>
 
 </div>
+
 
 <!-- <div class="complete-child-profile hidden">
   <h3 class="create-child-profile"><a href="/">[Complete child profile]</a></h3>
