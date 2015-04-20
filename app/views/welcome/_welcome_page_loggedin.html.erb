@@ -2,17 +2,17 @@
   <br/>
   <p> Filters</p>
   <h1 data-gender = "<%= @first_child.gender %>"><%= @first_child.first_name %></h1>
-  Gender:
-  <select name="gender" class="filterby">
-    <option value="<%=format_gender(@first_child.sexual_preference)%>"></option>
-    <option value="male">Male</option>
-    <option value="female">Female</option>
+  <form class = "filters">
+  Interested in:
+  <select name="by_gender" class="filterby">
+    <option <%= 'selected=selected' if @first_child.sexual_preference == 'both' %> value="">All</option>
+    <option <%= 'selected=selected' if @first_child.sexual_preference == 'men' %> value="male">Men</option>
+    <option <%= 'selected=selected' if @first_child.sexual_preference == 'women' %> value="female">Women</option>
     <option value="other">Other</option>
-    <option value="both">Show All</option>
   </select>
   <br/>
   Religion:
-  <select name="religion" class="filterby">
+  <select name="by_religion" class="filterby">
     <option value=""></option>
     <option value="Christian">Christian</option>
     <option value="Muslim">Muslim</option>
@@ -22,17 +22,15 @@
   </select>
   <br/>
   <br/>
-  Smoke:
-<!--   <form action="">
-  <input type="radio" name="smoke" value="true">True <br>
-  <input type="radio" name="smoke" value="false">False
-</form> -->
+  Smoke?<br>
+  No Preference <input class="filterby" type="radio" checked="checked" name="smoke" value=""><br>
+  Exclude Smokers <input class="filterby" type="radio" name="smoke" value="1">
 
-  <select name="smoke" class="filterby">
-    <option value=""></option>
-    <option value="true">Yes</option>
-    <option value="false">No</option>
-  </select>
+<!--   <select name="smoke" class="filterby">
+    <option selected="selected" value="">No Preference</option>
+    <option value="1">Exclude Smokers</option>
+  </select> -->
+</form>
 </div>
 
 <div class="matches col span_8">

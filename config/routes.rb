@@ -23,7 +23,6 @@ Rails.application.routes.draw do
   resources :interests, only: [:index, :create]
 
   get '/filter' => 'filter#filter_matches'
-  get '/test' => 'filter#test'
 
   # Example resource route with options:
   #   resources :products do

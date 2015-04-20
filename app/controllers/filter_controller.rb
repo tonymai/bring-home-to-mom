@@ -18,6 +18,13 @@ class FilterController < ApplicationController
     # same_orientation = nonincestual_matches.select{|child| child.sexual_preference = child_gender}
 
     # render json: {matches: nonincestual_matches}
+
+    @children_interested_in_your_gender = apply_scopes(Child).all
+
+    params[:by_sexual_preference] = 'both'
+    @children_interested_in_both_genders = apply_scopes(Child).all
+
+    render json: @children_interested_in_your_gender + @children_interested_in_both_genders
   end
 
   def test

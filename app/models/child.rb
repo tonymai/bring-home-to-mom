@@ -6,7 +6,7 @@ class Child < ActiveRecord::Base
   scope :by_city, -> city { where(city: city)}
   # scope :by_birthdate, -> started_at, ended_at {where("birthdate BETWEEN ? AND ?", started_at, ended_at)}
   scope :by_age, -> min, max {where("birthdate BETWEEN ? AND ?", Date.today-((max.to_i+1)*365), Date.today-(min.to_i*365.25))}
-  scope :smoke, -> {where(smoke: true)}
+  scope :smoke, -> {where(smoke: false)} #Need to understand better.
 
   ##
   PF_IMAGE_INDEX = [:pf_image_1, :pf_image_2, :pf_image_3, :pf_image_4, :pf_image_5]
