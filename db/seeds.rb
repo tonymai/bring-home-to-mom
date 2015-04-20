@@ -18,7 +18,7 @@ end
     email: Faker::Internet.email,
     password: 'password'
     )
-  2.times do
+  10.times do
     child = parent.children.create(
       first_name: Faker::Name.first_name,
       last_name: Faker::Name.last_name,
@@ -27,7 +27,7 @@ end
       phone: Faker::PhoneNumber.phone_number,
       gender: ['male', 'female', 'other'].sample,
       sexual_preference: ['men', 'women', 'both'].sample,
-      birthdate: Faker::Date.between(35.years.ago, 18.years.ago),
+      birthdate: Faker::Date.between(50.years.ago, 18.years.ago),
       bio: Faker::Company.bs,
       religion: ['Christian','Muslim','Buddhist', 'Atheist', 'Rastafarian', 'Pastafarian', 'Hindu', 'Sikh', 'Jewish', 'Shinto', 'N/A', 'Shamanist', 'Scientologist', 'Mormon','Satanist'].sample,
       smoke: [true, false].sample,
