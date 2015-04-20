@@ -1,0 +1,13 @@
+<br />
+<br />
+<% @users.each_with_index do |user, i| %>
+<div>
+	<div>
+		<%= i +=1 %>. <%= user.first_name %>
+	</div>
+	<div>
+		<%= link_to "Send Message", "#", class: "btn btn-success btn-xs start-conversation",
+		"data-sid" => current_user.id, "data-rip" => user.id %>
+	</div>
+</div>
+<% end %>
