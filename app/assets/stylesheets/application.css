@@ -27,6 +27,7 @@
 body {
 	width: 100%;
 	position: absolute;
+  font-family: 'Open Sans', sans-serif;
 }
 
 header {

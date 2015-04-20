@@ -1,3 +1,103 @@
+/*STYLING FOR BASIC INFO CONTAINER*/
+.pf-basic-info-wrapper{
+  background-image: url('/images/backgrounds/bg-blizzard.png');
+  margin: 0.5em;
+  border: 1px lightgray solid;
+  border-radius: 8px;
+  font-family: 'Vollkorn', serif;
+}
+
+.pf-age-gender-wrapper, .pf-sex-pref-location-wrapper, .pf-rel-smoke-wrapper, .pf-social-wrapper{
+  text-align: left;
+  text-indent: 1em;
+}
+
+.fa{
+  text-indent: initial;
+}
+
+.category-icon{
+  color: gray;
+}
+
+.category-icon::after{
+  content: "\00a0\00a0";
+}
+
+.pf-basic-info-wrapper h1{
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 2.2em;
+  margin: 0.4em 0.12em 0.3em 0.12em;
+}
+
+.pf-set-date-wrapper{
+  margin: 2em 0.5em;
+  font-family: 'Questrial', sans-serif;
+}
+
+.pf-set-date a{
+  border: 2px solid darkgray;
+  padding: 5px 13px;
+  border-radius: 6px;
+  color: #1ab595;
+  font-size: 1.5em;
+}
+
+.pf-set-date a:hover{
+  color: #fff;
+  border: 2px solid #ff6953;
+  background-color: #1ab595;
+}
+
+.pf-modal-container h2{
+  font-family: 'Arvo', serif;
+  margin: 0.5em;
+  padding: 0.2em;
+}
+
+.pf-modal-container h3{
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  font-size: 1.5em;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  background: transparent;
+}
+
+a:hover{
+  color: #444;
+  /*font-weight: 700;*/
+}
+
+.capitalize{
+  text-transform: capitalize;
+}
+
+.pf-box {
+  position: relative;
+  color: #1ab595;
+  height: 200px;
+  margin: 0 0.5em;
+  /*background-color: #1ab595;*/
+  /*background-image: url('/images/backgrounds/bg-grey_wash_wall.png');*/
+}
+
+.pf-box p{
+  font-size: 0.9em;
+  text-align: right;
+  color: #d7dadb;
+}
+
+
+
+
+/***************************************************/
+
 .slick-carousel img{
   height: auto;
   /*max-width: 200px;*/
@@ -8,19 +108,11 @@
 }
 
 .pf-modal-container {
-    background-color: #ffffff;
-    height: auto;
-    width: 100em;
-    text-align: center;
-    padding: 1em;
-}
-
-.pf-box {
-  height: 200px;
-}
-
-.pf-set-date {
-  font-size: 1.5em;
+  background-image: url('/images/backgrounds/bg-paper.png');
+  height: auto;
+  width: 100em;
+  text-align: center;
+  padding: 1em;
 }
 
 .new-pf-form-container {
@@ -69,4 +161,127 @@
 .interest-btn-selected{
 	color: #FFFFFF;
   background-color: #1AB595;
+}
+
+/*---------------*/
+/***** Dexter *****/
+/*---------------*/
+
+figure.effect-dexter {
+/*  background: -webkit-linear-gradient(top, rgba(37,141,200,1) 0%, rgba(104,60,19,1) 100%);
+  background: linear-gradient(to bottom, rgba(37,141,200,1) 0%,rgba(104,60,19,1) 100%);*/
+}
+
+figure.effect-dexter {
+  -webkit-transition: background-color 0.35s;
+  transition: background-color 0.35s;
+}
+
+figure.effect-dexter:hover {
+  background-color: #1ab595;
+  color: #d7dadb;
+}
+
+figure.effect-dexter figcaption::after {
+  position: absolute;
+  right: 30px;
+  bottom: 15px;
+  left: 30px;
+  height: -webkit-calc(50% - 30px);
+  height: calc(50% - 30px);
+  border: 7px solid #ff6953;
+  content: '';
+  -webkit-transition: -webkit-transform 0.35s;
+  transition: transform 0.35s;
+  -webkit-transform: translate3d(0,-100%,0);
+  transform: translate3d(0,-100%,0);
+}
+
+figure.effect-dexter:hover figcaption::after {
+  -webkit-transform: translate3d(0,0,0);
+  transform: translate3d(0,0,0);
+}
+
+figure.effect-dexter figcaption {
+  padding: 0.2em 3em;
+  text-align: left;
+}
+
+figure.effect-dexter p {
+  position: absolute;
+  right: 50px;
+  bottom: 17px;
+  left: 50px;
+  opacity: 0;
+  -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+  transition: opacity 0.35s, transform 0.35s;
+  -webkit-transform: translate3d(0,-100px,0);
+  transform: translate3d(0,-100px,0);
+}
+
+figure.effect-dexter:hover p {
+  opacity: 1;
+  -webkit-transform: translate3d(0,0,0);
+  transform: translate3d(0,0,0);
+}
+
+
+/* FLIPPING CSS (http://davidwalsh.name/css-flip) */
+/* entire container, keeps perspective */
+.flip-container {
+  -webkit-perspective: 1000;
+          perspective: 1000;
+  float: left;
+}
+  /* flip the pane when hovered */
+  .flip-container:hover .flipper, .flip-container.hover .flipper {
+    -webkit-transform: rotateY(180deg);
+            transform: rotateY(180deg);
+  }
+
+.flip-container {
+  width: 320px;
+  height: 480px;
+  border: 1px solid gray;
+}
+
+/* flip speed goes here */
+.flipper {
+  transition: 1.2s;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+}
+
+/* hide back of pane during swap */
+.front, .back {
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+/*  top: 0;
+  left: 0;*/
+}
+
+.flipper, .front, .back, .front img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+/* front pane, placed above back */
+.front {
+  z-index: 2;
+  /* for firefox 31 */
+  -webkit-transform: rotateY(0deg);
+          transform: rotateY(0deg);
+}
+
+/* back, initially hidden pane */
+.back {
+  padding: 10px 10px 10px 10px;
+  display: flex;
+  flex-direction: column;
+  background-image: url('../img/extra_clean_paper.png');
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
 }
