@@ -29,13 +29,4 @@ class FiltersController < ApplicationController
     render json: potential_matches
   end
 
-  # def autocomplete_interests
-
-
-  # end
-
-  # def autocomplete_values
-
-  # end
-
 end

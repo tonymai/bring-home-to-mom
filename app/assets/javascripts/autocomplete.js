@@ -1,21 +1,8 @@
 /*
 * Unobtrusive autocomplete
-*
-* To use it, you just have to include the HTML attribute autocomplete
-* with the autocomplete URL as the value
-*
-*   Example:
-*       <input type="text" data-autocomplete="/url/to/autocomplete">
-*
-* Optionally, you can use a jQuery selector to specify a field that can
-* be updated with the element id whenever you find a matching value
-*
-*   Example:
-*       <input type="text" data-autocomplete="/url/to/autocomplete" data-id-element="#id_field">
 */
 
-
-(function(jQuery)
+(function($)
 {
   var self = null;
   $.fn.railsAutocomplete = function() {
@@ -25,7 +12,7 @@
       }
     };
     if ($.fn.on !== undefined) {
-      return jQuery(document).on('focus',this.selector,handler);
+      return $(document).on('focus',this.selector,handler);
     }
     else {
       return this.live('focus',handler);
@@ -44,10 +31,10 @@
   $.railsAutocomplete.fn.extend = $.railsAutocomplete.extend = $.extend;
   $.railsAutocomplete.fn.extend({
     init: function(e) {
-      e.delimiter = jQuery(e).attr('data-delimiter') || null;
-      e.min_length = jQuery(e).attr('min-length') || 2;
-      e.append_to = jQuery(e).attr('data-append-to') || null;
-      e.autoFocus = jQuery(e).attr('data-auto-focus') || false;
+      e.delimiter = $(e).attr('data-delimiter') || null;
+      e.min_length = $(e).attr('min-length') || 2;
+      e.append_to = $(e).attr('data-append-to') || null;
+      e.autoFocus = $(e).attr('data-auto-focus') || false;
       function split( val ) {
         return val.split( e.delimiter );
       }
@@ -55,47 +42,47 @@
         return split( term ).pop().replace(/^\s+/,"");
       }
 
-      jQuery(e).autocomplete({
+      $(e).autocomplete({
         appendTo: e.append_to,
         autoFocus: e.autoFocus,
-        delay: jQuery(e).attr('delay') || 0,
+        delay: $(e).attr('delay') || 0,
         source: function( request, response ) {
           var firedFrom = this.element[0];
           var params = {term: extractLast( request.term )};
-          if (jQuery(e).attr('data-autocomplete-fields')) {
-              $.each($.parseJSON(jQuery(e).attr('data-autocomplete-fields')), function(field, selector) {
-              params[field] = jQuery(selector).val();
+          if ($(e).attr('data-autocomplete-fields')) {
+              $.each($.parseJSON($(e).attr('data-autocomplete-fields')), function(field, selector) {
+              params[field] = $(selector).val();
             });
           }
-          $.getJSON( jQuery(e).attr('data-autocomplete'), params, function() {
+          $.getJSON( $(e).attr('data-autocomplete'), params, function() {
             if(arguments[0].length === 0) {
               arguments[0] = [];
               arguments[0][0] = { id: "", label: "no existing match" };
             }
-            jQuery(arguments[0]).each(function(i, el) {
+            $(arguments[0]).each(function(i, el) {
               var obj = {};
               obj[el.id] = el;
-              jQuery(e).data(obj);
+              $(e).data(obj);
             });
             response.apply(null, arguments);
-            jQuery(firedFrom).trigger('railsAutocomplete.source', arguments);
+            $(firedFrom).trigger('railsAutocomplete.source', arguments);
           });
         },
         change: function( event, ui ) {
-            if(!jQuery(this).is('[data-id-element]') ||
-                    jQuery(jQuery(this).attr('data-id-element')).val() === "") {
+            if(!$(this).is('[data-id-element]') ||
+                    $($(this).attr('data-id-element')).val() === "") {
                     return;
             }
-            jQuery(jQuery(this).attr('data-id-element')).val(ui.item ? ui.item.id : "");
+            $($(this).attr('data-id-element')).val(ui.item ? ui.item.id : "");
 
-            if (jQuery(this).attr('data-update-elements')) {
-                var update_elements = $.parseJSON(jQuery(this).attr("data-update-elements"));
-                var data = ui.item ? jQuery(this).data(ui.item.id.toString()) : {};
-                if(update_elements && jQuery(update_elements['id']).val() === "") {
+            if ($(this).attr('data-update-elements')) {
+                var update_elements = $.parseJSON($(this).attr("data-update-elements"));
+                var data = ui.item ? $(this).data(ui.item.id.toString()) : {};
+                if(update_elements && $(update_elements['id']).val() === "") {
                   return;
                 }
                 for (var key in update_elements) {
-                    var element = jQuery(update_elements[key]);
+                    var element = $(update_elements[key]);
                     if (element.is(':checkbox')) {
                         if (data[key] != null) {
                             element.prop('checked', data[key]);
@@ -118,12 +105,17 @@
           return false;
         },
         select: function( event, ui ) {
-          if (ui.item.id != "") {
-            $(this).parent().children('.autocomplete-container').children('ul').append('<li data-id=' + ui.item.id + '>' + ui.item.value + '</li>')
+
+          // to prevent duplicates from being added
+          var $elements = $(this).parent().children('.autocomplete-container').children('ul').children('li')
+          var ids = $.map($elements, function(element) { return $(element).attr('data-id') });
+
+          if (ui.item.id != "" && ids.indexOf(ui.item.id) === -1 ) {
+            $(this).parent().children('.autocomplete-container').children('ul').append('<li data-id=' + ui.item.id + '>' + ui.item.value + '<a class="autocomplete-tag" href="#">x</a></li>')
             $('.ui-autocomplete-input').val('');
             $(this).parent().children('.autocomplete-dropdown ul').empty('');
           }
-          // updateMatches();
+          updateMatches();
          
           return false;
         }
@@ -131,7 +123,19 @@
     }
   });
 
-  jQuery(document).ready(function(){
-    jQuery('input[data-autocomplete]').railsAutocomplete();
+  $(document).on('page:change', function(){
+    $('input[data-autocomplete]').railsAutocomplete();
+
+    $('.autocomplete-container').on('click', '.autocomplete-tag', function(e) {
+      e.preventDefault();
+
+      $selectedTag = $(this).parent()
+      $selectedTag.hide('fast', function() {
+        $selectedTag.remove();
+        updateMatches();
+      });
+
+      
+    })
   });
-})(jQuery);
+})($);
