@@ -1,13 +1,27 @@
-<div class="new-values-container hidden">
+<div class="new-pf-section values">
 
-  <h1>Add Values for <span class="child-name">Child</span></h1>
+  <a href="#"><h2>5. Values for <span class="child-name">Child</span></h2></a>
 
-  <div class="values-wrapper">
-    <% @top_values.each do |value| %>
-      <div class="value-btn" data-value-id="<%= value.id %>"><%= value.name %></div>
-    <% end %>
+  <div class="new-pf-container new-values-container hidden">
+
+    <div class="values-wrapper container row">
+      <div class="col span_12">
+        <% @values.each do |value| %>
+          <div class="value-btn" data-value-id="<%= value.id %>"><%= value.name %></div>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="container row">
+      <a class="continue" href="#">Continue</a>
+    </div>
+
   </div>
 
-  <h3 class="submit-values"><a href="#">Submit Values and See Matches!</a></h3>
 
+</div>
+
+<div class="new-pf-section submit">
+  <a href="#"><h2 class="submit-all">Submit Profile and See Matches!</h2></a>
+  <div class="new-pf-container"></div>
 </div>

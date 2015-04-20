@@ -6,7 +6,14 @@ $(document).on('page:change', function() {
   $('.interests-wrapper').on('click', '.interest-btn', function(e){
     e.preventDefault();
     $(this).toggleClass('interest-btn-selected')
-  })
+  });
+
+  $('.new-pf-section h2').on('click', function(e) {
+    e.preventDefault();
+    var $thisContainer = $(this).parent().next()
+    $('.new-pf-container').not($thisContainer).slideUp('slow', function() {});
+    $thisContainer.slideDown('slow', function() {});
+  });
 
   $('#new_interest').on('submit', function(e){
     e.preventDefault();
@@ -34,20 +41,35 @@ $(document).on('page:change', function() {
     });
   });
 
-  $('.new-interests-container').on('click', '.submit-interests', function(e){
+  $('.new-pf-section').on('click', '.submit-all', function(e){
     e.preventDefault();
-    var selectedIds = getSelectedInterestIds();
-    var parentId = $('.new-interests-container').attr('data-user-id');
-    var childId = $('.new-interests-container').attr('data-profile-id');
+    debugger
+    var selectedInterestIds = getSelectedInterestIds();
+    var parentIdInterest = $('.new-interests-container').attr('data-user-id');
+    var childIdInterest = $('.new-interests-container').attr('data-profile-id');
     $.ajax({
-      url: '/users/'+parentId+'/profiles/'+childId,
+      url: '/users/'+parentIdInterest+'/profiles/'+childIdInterest,
       type: 'PUT',
-      data: { interests: selectedIds },
+      data: { interests: selectedInterestIds },
+      dataType: 'JSON',
+    }).done(function (data) {
+      // window.location.href ="/"
+      // Hides interest container and shows button to complete full child profile
+      // $('.new-interests-container').hide();
+      // $('.new-values-container').show();
+    });
+    var selectedValueIds = getSelectedValueIds();
+    var parentIdValue = $('.new-values-container').attr('data-user-id');
+    var childIdValue = $('.new-values-container').attr('data-profile-id');
+    $.ajax({
+      url: '/users/'+parentIdValue+'/profiles/'+childIdValue,
+      type: 'PUT',
+      data: { values: selectedValueIds },
       dataType: 'JSON',
     }).done(function (data) {
       window.location.href ="/"
-      // Hides interest container and shows button to complete full child profile
-      // $('.new-interests-container').hide();
+      // Hides value container and shows button to complete full child profile
+      // $('.new-values-container').hide();
       // $('.complete-child-profile').show();
     });
   });
