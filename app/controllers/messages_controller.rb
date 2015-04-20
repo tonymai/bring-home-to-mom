@@ -1,31 +1,18 @@
 class MessagesController < ApplicationController
   before_filter :authenticate_user!
  
-  layout false
- 
   def create
-    if Conversation.between(params[:sender_id],params[:recipient_id]).present?
-      @conversation = Conversation.between(params[:sender_id],params[:recipient_id]).first
-    else
-      @conversation = Conversation.create!(conversation_params)
-    end
+    @conversation = Conversation.find(params[:conversation_id])
+    @message = @conversation.messages.build(message_params)
+    @message.user_id = current_user.id
+    @message.save!
  
-    render json: { conversation_id: @conversation.id }
-  end
- 
-  def show
-    @conversation = Conversation.find(params[:id])
-    @reciever = interlocutor(@conversation)
-    @messages = @conversation.messages
-    @message = Message.new
+    @path = conversation_path(@conversation)
   end
  
   private
-  def conversation_params
-    params.permit(:sender_id, :recipient_id)
-  end
  
-  def interlocutor(conversation)
-    current_user == conversation.recipient ? conversation.sender : conversation.recipient
+  def message_params
+    params.require(:message).permit(:body)
   end
 end

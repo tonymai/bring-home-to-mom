@@ -76,7 +76,7 @@ var ready = function () {
          * Takes in two parameters. It is responsible for fetching the specific conversation's
          * html page and appending it to the body of our home page e.g if conversation_id = 1
          *
-         * $.get("conversations/1, function(data){
+         * $.get("/conversations/1, function(data){
          *    // rest of the logic here
          * }, "html")
          *
@@ -96,7 +96,7 @@ var ready = function () {
  
             $("body").append('<div id="chatbox_' + conversation_id + '" class="chatbox"></div>')
  
-            $.get("conversations/" + conversation_id, function (data) {
+            $.get("/conversations/" + conversation_id, function (data) {
                 $('#chatbox_' + conversation_id).html(data);
                 $("#chatbox_" + conversation_id + " .chatboxcontent").scrollTop($("#chatbox_" + conversation_id + " .chatboxcontent")[0].scrollHeight);
             }, "html");
