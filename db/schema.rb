@@ -49,6 +49,13 @@ ActiveRecord::Schema.define(version: 20150420021250) do
     t.datetime "updated_at",  null: false
   end
 
+  create_table "children_values", force: :cascade do |t|
+    t.integer  "child_id"
+    t.integer  "value_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "conversations", force: :cascade do |t|
     t.integer  "sender_id"
     t.integer  "recipient_id"
@@ -107,6 +114,12 @@ ActiveRecord::Schema.define(version: 20150420021250) do
     t.string   "note"
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
+  end
+
+  create_table "values", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

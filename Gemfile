@@ -33,10 +33,13 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'capistrano-rails', group: :development
 
 gem 'devise'
+gem 'has_scope'
 
 # For messaging
 gem 'private_pub'
 gem 'thin'
+
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

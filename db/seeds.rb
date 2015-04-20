@@ -11,6 +11,12 @@ interests.map! do |interest|
   new_interest = Interest.create(name: interest.titleize)
 end
 
+values = ["Accountability", "Adventurousness", "Altruism", "Ambition", "Assertiveness", "Balance", "Commitment", "Community", "Compassion", "Competitiveness", "Contentment", "Cooperation", "Courtesy", "Creativity", "Curiosity", "Devoutness", "Diligence", "Discipline", "Diversity", "Elegance", "Empathy", "Equality", "Fairness", "Faith", "Family", "Fidelity", "Fitness", "Freedom", "Generosity", "Grace", "Happiness", "Hard Work", "Health", "Holiness", "Honesty", "Honor", "Humility", "Independence", "Intelligence", "Justice", "Leadership", "Love", "Loyalty", "Marriage", "Obedience", "Openness", "Originality", "Patriotism", "Peace", "Perfection", "Piety", "Positivity", "Reliability", "Selflessness", "Self-reliance", "Sensitivity", "Service", "Success", "Support", "Teamwork", "Timeliness", "Tolerance", "Traditionalism", "Truth", "Unity"]
+
+values.map! do |value|
+  new_value = Value.create(name: value.titleize)
+end
+
 10.times do
   parent = Parent.create(
     first_name: Faker::Name.first_name,
@@ -18,7 +24,7 @@ end
     email: Faker::Internet.email,
     password: 'password'
     )
-  2.times do
+  10.times do
     child = parent.children.create(
       first_name: Faker::Name.first_name,
       last_name: Faker::Name.last_name,
@@ -27,8 +33,9 @@ end
       phone: Faker::PhoneNumber.phone_number,
       gender: ['male', 'female', 'other'].sample,
       sexual_preference: ['men', 'women', 'both'].sample,
-      birthdate: Faker::Date.between(35.years.ago, 18.years.ago),
+      birthdate: Faker::Date.between(50.years.ago, 18.years.ago),
       bio: Faker::Company.bs,
+      religion: ['Christian','Muslim','Buddhist', 'Atheist', 'Rastafarian', 'Pastafarian', 'Hindu', 'Sikh', 'Jewish', 'Shinto', 'N/A', 'Shamanist', 'Scientologist', 'Mormon','Satanist'].sample,
       smoke: [true, false].sample,
       linkedin_url: Faker::Internet.url,
       facebook_url: Faker::Internet.url,
@@ -41,6 +48,9 @@ end
       )
     5.times do
       child.interests << interests.sample
+    end
+    5.times do
+      child.values << values.sample
     end
   end
 end

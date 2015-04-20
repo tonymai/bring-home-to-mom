@@ -10,13 +10,15 @@ class ProfilesController < ApplicationController
     interests = Interest.all.sort_by { |interest| interest.children.count }.reverse
     @top_interests = interests[0..49].sort_by { |interest| interest.name }
     @interest = Interest.new
+
+    @values = Value.all
   end
 
   def show
     @child = Child.find(params[:id])
 
     if @child
-      render json: { profile: @child, interests: @child.interests, age: @child.age }, status: :ok
+      render json: { profile: @child, interests: @child.interests, values: @child.values, age: @child.age }, status: :ok
     else
       render json: { error: 'Profile does not exist' }, status: :not_found
     end
@@ -40,12 +42,19 @@ class ProfilesController < ApplicationController
 
   def update
     #Only written for adding interests right now; when we create full edit page, this will need conditional logic to handle all cases
+    p params
     @parent = Parent.find(params[:user_id])
     @child = Child.find(params[:id])
     interests = params[:interests]
+    values = params[:values]
     if interests
       interests.each do |interest_id|
         @child.children_interests.find_or_initialize_by(interest_id: interest_id)
+      end
+    end
+    if values
+      values.each do |value_id|
+        @child.children_values.find_or_initialize_by(value_id: value_id)
       end
     end
 

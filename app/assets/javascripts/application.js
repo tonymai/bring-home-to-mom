@@ -15,6 +15,7 @@
 //= require jquery_ujs
 //= require jquery.form
 //= require handlebars
+//= require jquery.nouislider.all.min
 //= require jquery.simplemodal
 //= require slick
 //= require turbolinks
