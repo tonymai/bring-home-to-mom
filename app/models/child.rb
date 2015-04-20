@@ -1,10 +1,12 @@
 class Child < ActiveRecord::Base
   ##HasScope Filtering
   scope :by_gender, -> gender { where(gender: gender)}
-  scope :by_sexual_preference, -> sexual_preference { where(sexual_preference: sexual_preference)}
+
+  scope :by_sexual_preference, -> sexual_preference { where("sexual_preference = ? OR sexual_preference = ?", sexual_preference, "both")}
+
+
   scope :by_religion, -> religion { where(religion: religion)}
   scope :by_city, -> city { where(city: city)}
-  # scope :by_birthdate, -> started_at, ended_at {where("birthdate BETWEEN ? AND ?", started_at, ended_at)}
   scope :by_age, -> min, max {where("birthdate BETWEEN ? AND ?", Date.today-((max.to_i+1)*365), Date.today-(min.to_i*365.25))}
   scope :smoke, -> {where(smoke: false)} #Need to understand better.
 
