@@ -68,13 +68,13 @@ ActiveRecord::Schema.define(version: 20150420021250) do
   create_table "messages", force: :cascade do |t|
     t.text     "body"
     t.integer  "conversation_id"
-    t.integer  "user_id"
+    t.integer  "parent_id"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end
 
   add_index "messages", ["conversation_id"], name: "index_messages_on_conversation_id", using: :btree
-  add_index "messages", ["user_id"], name: "index_messages_on_user_id", using: :btree
+  add_index "messages", ["parent_id"], name: "index_messages_on_parent_id", using: :btree
 
   create_table "parents", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
