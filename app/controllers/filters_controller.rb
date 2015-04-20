@@ -11,14 +11,19 @@ class FiltersController < ApplicationController
   # include FilterConcern
 
   def filter_matches
-    potential_matches = apply_scopes(Child).all
-    potential_matches = potential_matches.select {|child| child.parent != current_user}
+    interests = params[:interests].split(',').map! { |id| Interest.find(id) }
+    values = params[:values].split(',').map! { |id| Value.find(id) }
 
-    # empty_arr = []
-    # selected_interests = params[:selected_interest]
-    # selected_interests.each do |interest|
-      # empty_arr << potential_matches.select! {|child| child.interests.include?(interest) }
-    # end
+    potential_matches = apply_scopes(Child).all
+    potential_matches = potential_matches.select { |child| child.parent != current_user }
+
+    interests.each do |interest|
+      potential_matches = potential_matches.select { |child| child.interests.include?(interest) }
+    end
+
+    values.each do |value|
+      potential_matches = potential_matches.select { |child| child.values.include?(value) }
+    end
 
 
     render json: potential_matches
