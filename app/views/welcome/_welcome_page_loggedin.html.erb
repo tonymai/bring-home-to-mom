@@ -13,23 +13,19 @@
   <br/>
   Religion:
   <select name="by_religion" class="filterby">
-    <option value=""></option>
+    <% ([''] + Child.uniq.pluck(:religion)).each do |religion| %>
+      <option <%= 'selected=selected' if @first_child.religion == religion %> value="<%= religion %>"><%= religion %></option>
+    <% end %>
+<!--     <option value=""></option>
     <option value="Christian">Christian</option>
     <option value="Muslim">Muslim</option>
     <option value="Jewish">Jewish</option>
     <option value="Hindu">Hindu</option>
-    <option value="Buddhist">Buddhist</option>
+    <option value="Buddhist">Buddhist</option> -->
   </select>
   <br/>
   <br/>
-  Smoke?<br>
-  No Preference <input class="filterby" type="radio" checked="checked" name="smoke" value=""><br>
-  Exclude Smokers <input class="filterby" type="radio" name="smoke" value="1">
-
-<!--   <select name="smoke" class="filterby">
-    <option selected="selected" value="">No Preference</option>
-    <option value="1">Exclude Smokers</option>
-  </select> -->
+  Exclude Smokers <input class="filterby" type="checkbox" name="smoke" value="1">
 </form>
 </div>
 
