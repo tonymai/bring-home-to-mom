@@ -43,7 +43,6 @@ $(document).on('page:change', function() {
 
   $('.new-pf-section').on('click', '.submit-all', function(e){
     e.preventDefault();
-    debugger
     var selectedInterestIds = getSelectedInterestIds();
     var parentIdInterest = $('.new-interests-container').attr('data-user-id');
     var childIdInterest = $('.new-interests-container').attr('data-profile-id');
