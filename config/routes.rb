@@ -25,6 +25,12 @@ Rails.application.routes.draw do
 
   get '/filter' => 'filter#filter_matches'
 
+  get '/users/:id/messages' => 'users#messages'
+
+  resources :conversations do
+    resources :messages
+  end
+
   # Example resource route with options:
   #   resources :products do
   #     member do
