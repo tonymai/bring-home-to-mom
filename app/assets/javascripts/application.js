@@ -16,7 +16,6 @@
 //= require jquery-ui.min
 //= require jquery.form
 //= require handlebars
-//= require autocomplete
 //= require jquery.nouislider.all.min
 //= require jquery.simplemodal
 //= require slick
