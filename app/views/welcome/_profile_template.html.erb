@@ -72,50 +72,56 @@
 
   </div>
 
-  <div class="row debug">
+  <div class="row">
     <h2>The Good Stuff</h2>
   </div>
 
-  <div class="row debug">
+  <div class="row">
 
-    <div class="pf-bio-wrapper col span_4 debug">
-      <figure class="effect-dexter bio-front pf-box debug">
-        <figcaption>
-        <h3>Bio</h3>
-        <p>Click to read more!</p>
-        </figcaption>
-      </figure>
-      <div class="bio-back pf-box hidden debug">
-        <div class="pf-bio debug">{{profile.bio}}</div>
-        <div class="pf-embarrass-moment debug">{{profile.embarrassing_moment}}</div>
+    <div class="pf-bio-wrapper pf-box-wrapper col span_4 debug">
+      <div class="flip-wrapper">
+        <figure class="effect-dexter bio-front pf-box pf-box-front debug">
+          <figcaption>
+            <h3>Bio</h3>
+            <p>Click to read more!</p>
+          </figcaption>
+        </figure>
+        <div class="bio-back pf-box pf-box-back hidden debug">
+          <div class="pf-bio">{{profile.bio}}</div>
+          <div class="pf-embarrass-moment">{{profile.embarrassing_moment}}</div>
+        </div>
       </div>
     </div>
 
-    <div class="pf-interests-wrapper col span_4 debug">
-      <figure class="effect-dexter interests-front pf-box debug">
-        <figcaption>
-        <h3>Interests</h3>
-        <p>Click to read more!</p>
-        </figcaption>
-      </figure>
-      <div class="interests-back pf-box hidden debug">
-        {{#each interests}}
-          <div class="interest-btn">{{this.name}}</div>
-        {{/each}}
+    <div class="pf-interests-wrapper pf-box-wrapper col span_4 debug">
+      <div class="flip-wrapper">
+        <figure class="effect-dexter interests-front pf-box pf-box-front debug">
+          <figcaption>
+            <h3>Interests</h3>
+            <p>Click to read more!</p>
+          </figcaption>
+        </figure>
+        <div class="interests-back pf-box pf-box-back hidden debug">
+          {{#each interests}}
+            <div class="interest-btn">{{this.name}}</div>
+          {{/each}}
+        </div>
       </div>
     </div>
 
-    <div class="pf-values-wrapper col span_4 debug">
-      <figure class="effect-dexter values-front pf-box debug">
-        <figcaption>
-        <h3>Values</h3>
-        <p>Click to read more!</p>
-        </figcaption>
-      </figure>
-      <div class="values-back pf-box hidden debug">
-      {{#each values}}
-        <div class="interest-btn">{{this.name}}</div>
-      {{/each}}
+    <div class="pf-values-wrapper pf-box-wrapper col span_4 debug">
+      <div class="flip-wrapper">
+        <figure class="effect-dexter values-front pf-box pf-box-front debug">
+          <figcaption>
+            <h3>Values</h3>
+            <p>Click to read more!</p>
+          </figcaption>
+        </figure>
+        <div class="values-back pf-box pf-box-back hidden debug">
+          {{#each values}}
+            <div class="interest-btn">{{this.name}}</div>
+          {{/each}}
+        </div>
       </div>
     </div>
 

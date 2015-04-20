@@ -10,19 +10,24 @@ $(document).on('page:change', function() {
       $("html,body").css("overflow","hidden"); // disables scrolling on page in background
     },
     onShow: function(dialog) {
+      $('.flip-wrapper').height($('.pf-box').outerHeight()); // resizes modal to account for height of absolutely positioned flipping boxes
       $('#simplemodal-container').css({'height' : 'auto'}); // necessary to fix simplemodal positioning
-      $('.pf-bio-wrapper').on('click', function(event) {
-        $('.bio-front').toggleClass('hidden');
-        $('.bio-back').toggleClass('hidden')
-      });
-      $('.pf-interests-wrapper').on('click', function(event) {
-        $('.interests-front').toggleClass('hidden');
-        $('.interests-back').toggleClass('hidden')
-      });
-      $('.pf-values-wrapper').on('click', function(event) {
-        $('.values-front').toggleClass('hidden');
-        $('.values-back').toggleClass('hidden')
-      });
+      $('.pf-modal-container').on('click', '.pf-box-wrapper', function(e){
+        var target = $(event.target).closest('.flip-wrapper');
+        target.toggleClass('flipped');
+      })
+      // $('.pf-bio-wrapper').on('click', function(event) {
+      //   $('.bio-front').toggleClass('hidden');
+      //   $('.bio-back').toggleClass('hidden')
+      // });
+      // $('.pf-interests-wrapper').on('click', function(event) {
+      //   $('.interests-front').toggleClass('hidden');
+      //   $('.interests-back').toggleClass('hidden')
+      // });
+      // $('.pf-values-wrapper').on('click', function(event) {
+      //   $('.values-front').toggleClass('hidden');
+      //   $('.values-back').toggleClass('hidden')
+      // });
     },
     onClose: function(dialog) {
       dialog.data.fadeOut('fast');
