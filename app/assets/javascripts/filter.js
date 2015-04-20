@@ -3,6 +3,24 @@
 $(document).on('page:change', function() {
   if ($('div').is('.welcome-page-loggedin')){
 
+
+    $('.age-slider').noUiSlider({
+      start: [18,40],
+      step: 1,
+      connect: true,
+      range:{
+        'min': 18,
+        'max': 50
+      },
+      format: wNumb({
+      decimals: 0
+      })
+    });
+
+    $('.age-slider').Link('lower').to($('#input-lower'));
+    $('.age-slider').Link('upper').to($('#input-upper'));
+
+
     var updateMatches = function() {
       // var user_filters = $.map($("select.filterby").toArray(), function(e){return $(e).val();});
       // var filterData = {
@@ -21,8 +39,9 @@ $(document).on('page:change', function() {
       else {
         gender = 'both';
       }
-
-      var filterParams = $("form.filters").serialize() + "&by_sexual_preference=" + gender; //refactor to use session
+      var lowerAge = $("#input-lower").val();
+      var upperAge = $("#input-upper").val();
+      var filterParams = $("form.filters").serialize() + "&by_sexual_preference=" + gender + "&by_age[min]=" + lowerAge + "&by_age[max]=" + upperAge; //refactor to use session
       console.log(filterParams)
       $.ajax({
         url: '/filter?' + filterParams,
@@ -42,6 +61,8 @@ $(document).on('page:change', function() {
     updateMatches();
 
     $('.filterby').change(updateMatches);
+
+
   };
 });
 

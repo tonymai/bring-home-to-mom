@@ -1,0 +1,13 @@
+.noUi-target{
+  width: 80%;
+  margin-top: 3%;
+  margin-left: 14%;
+}
+
+.age-slider-container input{
+  display:inline-block;
+  margin-top: 1em;
+  width:40px;
+  border:none;
+  border-radius: 5px;
+}

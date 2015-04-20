@@ -3,30 +3,37 @@
   <p> Filters</p>
   <h1 data-gender = "<%= @first_child.gender %>"><%= @first_child.first_name %></h1>
   <form class = "filters">
-  Interested in:
-  <select name="by_gender" class="filterby">
-    <option <%= 'selected=selected' if @first_child.sexual_preference == 'both' %> value="">All</option>
-    <option <%= 'selected=selected' if @first_child.sexual_preference == 'men' %> value="male">Men</option>
-    <option <%= 'selected=selected' if @first_child.sexual_preference == 'women' %> value="female">Women</option>
-    <option value="other">Other</option>
-  </select>
-  <br/>
-  Religion:
-  <select name="by_religion" class="filterby">
-    <% ([''] + Child.uniq.pluck(:religion)).each do |religion| %>
+    Interested in:
+    <select name="by_gender" class="filterby">
+      <option <%= 'selected=selected' if @first_child.sexual_preference == 'both' %> value="">All</option>
+      <option <%= 'selected=selected' if @first_child.sexual_preference == 'men' %> value="male">Men</option>
+      <option <%= 'selected=selected' if @first_child.sexual_preference == 'women' %> value="female">Women</option>
+      <option value="other">Other</option>
+    </select>
+    <br/>
+    Religion:
+    <select name="by_religion" class="filterby">
+      <% ([''] + Child.uniq.pluck(:religion)).each do |religion| %>
       <option <%= 'selected=selected' if @first_child.religion == religion %> value="<%= religion %>"><%= religion %></option>
-    <% end %>
-<!--     <option value=""></option>
-    <option value="Christian">Christian</option>
-    <option value="Muslim">Muslim</option>
-    <option value="Jewish">Jewish</option>
-    <option value="Hindu">Hindu</option>
-    <option value="Buddhist">Buddhist</option> -->
-  </select>
-  <br/>
-  <br/>
-  Exclude Smokers <input class="filterby" type="checkbox" name="smoke" value="1">
-</form>
+      <% end %>
+    </select>
+    <br>
+    City:
+    <select name="by_city" class="filterby">
+      <% ([''] + Child.uniq.pluck(:city)).each do |city| %>
+      <option <%= 'selected=selected' if @first_child.city == city %> value="<%= city %>"><%= city %></option>
+      <% end %>
+    </select>
+    <br/>
+    <br>
+
+    Exclude Smokers <input class="filterby" type="checkbox" name="smoke" value="1">
+  </form>
+  <div class= "age-slider-container">
+    Age:
+   Between: <input id="input-lower" class="filterby" name='by_age'> and <input class= "filterby" name="by_age" id="input-upper">
+   <div class="filterby age-slider"></div>
+ </div>
 </div>
 
 <div class="matches col span_8">
