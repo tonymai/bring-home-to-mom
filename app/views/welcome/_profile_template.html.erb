@@ -1,8 +1,8 @@
 <script id="child-profile-template" type="x-handlebars-template">
-<div class="pf-modal-container container hidden debug">
-  <div class="row debug">
+<div class="pf-modal-container container hidden">
+  <div class="row">
 
-    <div id="gallery-wrap" class="pf-images-wrapper slick-carousel col span_5 debug">
+    <div id="gallery-wrap" class="pf-images-wrapper slick-carousel col span_5">
       <img src="{{profile.pf_image_1}}" />
       <img src="{{profile.pf_image_2}}" />
       <img src="{{profile.pf_image_3}}" />
@@ -13,13 +13,13 @@
     <div class="pf-basic-info-wrapper col span_7">
       <h1>{{profile.first_name}} {{profile.last_name}}</h1>
 
-      <div class="pf-age-gender-wrapper debug">
-        <div class="pf-age col span_6 debug"><i class="fa fa-birthday-cake category-icon"></i> {{age}} years old</div>
-        <div class="pf-city-state col span_6 debug"><i class="fa fa-globe category-icon"></i> {{profile.city}}, {{profile.state}}</div>
+      <div class="pf-basic-info-row">
+        <div class="pf-basic-info-cell col span_6"><i class="fa fa-birthday-cake category-icon"></i> {{age}} years old</div>
+        <div class="pf-basic-info-cell col span_6"><i class="fa fa-globe category-icon"></i> {{profile.city}}, {{profile.state}}</div>
       </div>
 
-      <div class="pf-sex-pref-location-wrapper debug">
-        <div class="pf-gender col span_6 debug">
+      <div class="pf-basic-info-row">
+        <div class="pf-basic-info-cell col span_6">
           <i class="fa fa-venus-mars category-icon"></i>
           {{#ifCond profile.gender "male"}}
             <i class="fa fa-male"></i>
@@ -43,27 +43,26 @@
           {{/ifCond}}
         </div>
 
-        <div class="pf-sex-pref col span_6 debug">
+        <div class="pf-basic-info-cell col span_6">
           [Placeholder - new field?]
         </div>
       </div>
 
-      <div class="pf-rel-smoke-wrapper debug">
-        <div class="pf-rel col span_6 debug">Religion:
+      <div class="pf-basic-info-row">
+        <div class="pf-basic-info-cell col span_6">Religion:
         {{#if profile.religion}}
           {{profile.religion}}
         {{else}}
           Not specified
         {{/if}}
         </div>
-        <div class="pf-smoke col span_6 debug">Smoker: <span class="capitalize">{{profile.smoke}}</span></div>
+        <div class="pf-basic-info-cell col span_6">Smoker: <span class="capitalize">{{profile.smoke}}</span></div>
       </div>
 
-      <div class="pf-social-wrapper debug">
-        <div class="pf-linkedin col span_6 debug"><a href="{{profile.linkedin_url}}"><i class="fa fa-linkedin-square category-icon"></i> LinkedIn</a></div>
-        <div class="pf-facebook col span_6 debug"><a href="{{profile.facebook_url}}"><i class="fa fa-facebook-square category-icon"></i> Facebook</a></div>
+      <div class="pf-basic-info-row">
+        <div class="pf-basic-info-cell col span_6"><a href="{{profile.linkedin_url}}"><i class="fa fa-linkedin-square category-icon"></i> LinkedIn</a></div>
+        <div class="pf-basic-info-cell col span_6"><a href="{{profile.facebook_url}}"><i class="fa fa-facebook-square category-icon"></i> Facebook</a></div>
       </div>
-
     </div>
 
     <div class="pf-set-date-wrapper col span_7">
@@ -78,30 +77,30 @@
 
   <div class="row">
 
-    <div class="pf-bio-wrapper pf-box-wrapper col span_4 debug">
+    <div class="pf-box-wrapper col span_4">
       <div class="flip-wrapper">
-        <figure class="effect-dexter bio-front pf-box pf-box-front debug">
+        <figure class="effect-dexter pf-box pf-box-front">
           <figcaption>
             <h3>Bio</h3>
             <p>Click to read more!</p>
           </figcaption>
         </figure>
-        <div class="bio-back pf-box pf-box-back hidden debug">
+        <div class="pf-box pf-box-back hidden">
           <div class="pf-bio">{{profile.bio}}</div>
           <div class="pf-embarrass-moment">{{profile.embarrassing_moment}}</div>
         </div>
       </div>
     </div>
 
-    <div class="pf-interests-wrapper pf-box-wrapper col span_4 debug">
+    <div class="pf-box-wrapper col span_4">
       <div class="flip-wrapper">
-        <figure class="effect-dexter interests-front pf-box pf-box-front debug">
+        <figure class="effect-dexter pf-box pf-box-front">
           <figcaption>
             <h3>Interests</h3>
             <p>Click to read more!</p>
           </figcaption>
         </figure>
-        <div class="interests-back pf-box pf-box-back hidden debug">
+        <div class="pf-box pf-box-back hidden">
           {{#each interests}}
             <div class="interest-btn">{{this.name}}</div>
           {{/each}}
@@ -109,15 +108,15 @@
       </div>
     </div>
 
-    <div class="pf-values-wrapper pf-box-wrapper col span_4 debug">
+    <div class="pf-box-wrapper col span_4">
       <div class="flip-wrapper">
-        <figure class="effect-dexter values-front pf-box pf-box-front debug">
+        <figure class="effect-dexter pf-box pf-box-front">
           <figcaption>
             <h3>Values</h3>
             <p>Click to read more!</p>
           </figcaption>
         </figure>
-        <div class="values-back pf-box pf-box-back hidden debug">
+        <div class="pf-box pf-box-back hidden">
           {{#each values}}
             <div class="interest-btn">{{this.name}}</div>
           {{/each}}
