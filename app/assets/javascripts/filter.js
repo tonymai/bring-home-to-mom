@@ -44,7 +44,7 @@ $(document).on('page:change', function() {
       var filterParams = $("form.filters").serialize() + "&by_sexual_preference=" + gender + "&by_age[min]=" + lowerAge + "&by_age[max]=" + upperAge; //refactor to use session
       console.log(filterParams)
       $.ajax({
-        url: '/filter?' + filterParams,
+        url: '/filters?' + filterParams,
         type: 'GET',
         dataType: 'JSON'
       })

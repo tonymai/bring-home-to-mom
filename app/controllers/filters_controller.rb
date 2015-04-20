@@ -1,4 +1,7 @@
-class FilterController < ApplicationController
+class FiltersController < ApplicationController
+  autocomplete :interest, :name, limit: 10
+  autocomplete :value, :name, limit: 10
+
   has_scope :by_gender
   has_scope :by_sexual_preference
   has_scope :by_religion
@@ -12,5 +15,14 @@ class FilterController < ApplicationController
     nonincestual_matches = potential_matches.select{|child| child.parent != current_user}
     render json: nonincestual_matches
   end
+
+  # def autocomplete_interests
+
+
+  # end
+
+  # def autocomplete_values
+
+  # end
 
 end
