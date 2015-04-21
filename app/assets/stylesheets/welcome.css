@@ -3,6 +3,7 @@
   display: inline-block;
 }
 
+
 .bg-vid-wrapper {
   position: relative;
   top: -170px;
@@ -28,27 +29,29 @@
 .how-btn {
   text-align: center;
   position: relative;
-  top: 30em;/* need another way to position*/
+  top: 30em;
   width: 175px;
   margin: auto;
   display: block;
   color: white;
-  background: rgba(255,105,83,0.55);
-  border: 1px solid #FF6953;
-  padding: .4em;
+  background: rgba(26, 181, 149, 1);
+  border: 1px solid #179077;
+  border-radius: 3px;
+  padding: .6em;
   height: 50px;
   z-index: 1;
 }
 
 .how-btn:hover {
-  background: rgba(255,105,83,0.8);
+  color:lightgray;
+  background: rgba(26, 181, 149, 0.5);
 }
 
 .welcome-description {
   position: relative;
   top: -175px;
   padding: 10em;
-  background-color: #FF6953;
+  background-color: rgb(253, 222, 61);;
 }
 
 .how-step {
@@ -60,7 +63,7 @@
   width: 190px;
   height: 190px;
   text-align: center;
-  background: #1AB595;
+  background: rgb(253, 222, 61);
   -moz-border-radius: 95px;
   -webkit-border-radius: 95px;
   border-radius: 100px;
@@ -73,12 +76,15 @@
   width: 140px;
   height: 140px;
   text-align: center;
-  background: #FFFFFF;
+  background: #FDDE3D;
   -moz-border-radius: 70px;
   -webkit-border-radius: 70px;
   border-radius: 75px;
 }
 
+.circle-inner .fa{
+  color:rgb(230, 91, 63);
+}
 .get-started-btn {
   text-align: center;
   position: relative;
@@ -88,9 +94,10 @@
   color: white;
   background: rgba(26,181,149,0.7);
   border: 2px solid #1AB595;
-  padding: .4em;
+  padding: .6em;
   height: 50px;
   z-index: 1;
+  border-radius: 3px;
 }
 
 .get-started-btn:hover {
@@ -106,6 +113,7 @@
 }
 .form-wrapper input{
   color:black;
+  margin-bottom: 1em;
 }
 
 .form-wrapper input {
