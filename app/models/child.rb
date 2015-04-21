@@ -2,7 +2,7 @@ class Child < ActiveRecord::Base
   ##HasScope Filtering
   scope :by_gender, -> gender { where(gender: gender)}
 
-  scope :by_sexual_preference, -> sexual_preference { where("sexual_preference = ? OR sexual_preference = ?", sexual_preference, "both")}
+  scope :by_sexual_preference, -> sexual_preference { where("sexual_preference = ? OR sexual_preference = ?", sexual_preference, "no preference")}
 
 
   scope :by_religion, -> religion { where(religion: religion)}
