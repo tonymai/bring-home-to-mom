@@ -12,7 +12,13 @@ var chatboxFocus = new Array();
 var chatBoxes = new Array();
  
 var ready = function () {
- 
+
+    // Event binding for sending new messages
+    $(document).on('keydown', '.chatboxtextarea', function (event) {
+        var id = $(this).data('cid');
+        chatBox.checkInputKey(event, $(this), id);
+    });
+
     chatBox = {
  
         /**

@@ -2,7 +2,7 @@
   <div class="chatboxtitle">
     <i class="fa fa-comments"></i>
  
-    <h1><%= @reciever.first_name %> </h1>
+    <h1><%= @reciever.parent.email %> </h1>
   </div>
   <div class="chatboxoptions">
     <%= link_to "<i class='fa  fa-minus'></i> ".html_safe, "#", class: "toggleChatBox", "data-cid" => @playdate.id %>
@@ -11,14 +11,16 @@
   </div>
   <br clear="all"/>
 </div>
-<div class="chatboxcontent">
-  <% if @messages.any? %>
-      <%= render @messages %>
-  <% end %>
-</div>
+
 <div class="chatboxinput">
   <%= form_for(:message, url: date_messages_path(@playdate), remote: true, html: {id: "conversation_form_#{@playdate.id}"}) do |f| %>
       <%= f.text_area :body, class: "chatboxtextarea", "data-cid" => @playdate.id %>
+  <% end %>
+</div>
+
+<div class="chatboxcontent">
+  <% if @messages.any? %>
+      <%= render @messages.reverse %>
   <% end %>
 </div>
  
