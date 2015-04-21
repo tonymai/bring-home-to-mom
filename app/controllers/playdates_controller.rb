@@ -53,7 +53,7 @@ class PlaydatesController < ApplicationController
   end
  
   def conversation_interlocutor(conversation)
-    current_user == conversation.recipient ? conversation.sender : conversation.recipient
+    current_user == conversation.recipient.parent ? conversation.initiator : conversation.recipient
   end
 end
 
