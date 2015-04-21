@@ -15,6 +15,11 @@
     <div class="movie row debug">
       <h2> Plan the Date: </h2>
       <h3> Movies </h3>
+        <div id="gallery-wrap" class="pf-images-wrapper slick-carousel col">
+          <% @names_and_ids.each do |movie| %>
+            <img alt = "<%= movie.first %>" src="<%= movie.last[:movie_poster]%>">
+          <% end %>
+        </div>
 
     </div>
 
@@ -33,3 +38,5 @@
   </div>
 
 </div>
+
+
