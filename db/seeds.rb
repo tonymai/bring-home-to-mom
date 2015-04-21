@@ -77,13 +77,12 @@ end
   playdate = Playdate.create(
     initiator_id: children.sample.id,
     recipient_id: children.sample.id,
-    note: Faker::Lorem.sentences,
+    note: Faker::Lorem.paragraph,
     recipient_accepted: true,
     initiator_confirmed: true,
     recipient_confirmed: true,
     )
-  # playdate.create_experience(
-  experience = playdate.build_experience(
+  playdate.create_experience(
     venue: Faker::Company.name,
     address: Faker::Address.street_address + ", " + cities.sample + ", CA",
     desc_summary: "Dinner for two",
@@ -94,7 +93,6 @@ end
     image: Faker::Avatar.image,
     experience_at: experience_time,
     )
-  p experience.save
   playdate.create_movie(
     venue: Faker::Company.name,
     address: Faker::Address.street_address + ", " + cities.sample + ", CA",
@@ -105,13 +103,14 @@ end
     image: Faker::Avatar.image,
     movie_at: experience_time + 2.hours,
     )
+  playdate.save
 end
 10.times do #create paid dates
   experience_time = Faker::Time.forward(20, :evening)
   playdate = Playdate.create(
     initiator_id: children.sample.id,
     recipient_id: children.sample.id,
-    note: Faker::Lorem.sentences,
+    note: Faker::Lorem.paragraph,
     recipient_accepted: true,
     initiator_confirmed: true,
     recipient_confirmed: true,
@@ -139,4 +138,6 @@ end
     image: Faker::Avatar.image,
     movie_at: experience_time + 2.hours,
     )
+  playdate.save
+
 end
