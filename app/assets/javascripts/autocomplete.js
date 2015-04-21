@@ -134,9 +134,11 @@
     $('.autocomplete-container').on('click', '.autocomplete-tag', function(e) {
       e.preventDefault();
 
-      $selectedTag = $(this).parent()
+      $selectedTag = $(this).prev();
+      $deleteTag = $(this)
       $selectedTag.hide('fast', function() {
         $selectedTag.remove();
+        $deleteTag.remove();
         updateMatches();
       });
       
