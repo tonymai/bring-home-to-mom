@@ -32,7 +32,7 @@ end
       state: 'CA',
       phone: Faker::PhoneNumber.phone_number,
       gender: ['male', 'female', 'other'].sample,
-      sexual_preference: ['men', 'women', 'both'].sample,
+      sexual_preference: ['men', 'women', 'no preference'].sample,
       birthdate: Faker::Date.between(50.years.ago, 18.years.ago),
       bio: Faker::Company.bs,
       religion: ['Christian','Muslim','Buddhist', 'Atheist', 'Rastafarian', 'Pastafarian', 'Hindu', 'Sikh', 'Jewish', 'Shinto', 'N/A', 'Shamanist', 'Scientologist', 'Mormon','Satanist'].sample,
