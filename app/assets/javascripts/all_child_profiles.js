@@ -13,6 +13,17 @@ $(document).on('page:change', function(e) {
 			data: { profile_id: childId }
 		}).done(function(data) {
 			var child = data.profile
+
+			if (child.sexual_preference === 'men') {
+			  child.gender = 'male';
+			}
+			else if (child.sexual_preference === 'women') {
+			  child.gender = 'female';
+			}
+			else if (child.sexual_preference === 'no preference') {
+			  child.gender = '';
+			}
+
 			$('h1').attr('data-gender', child.gender);
 			$('h1').text(child.first_name);
 			changeSelected('by_gender', child.gender);

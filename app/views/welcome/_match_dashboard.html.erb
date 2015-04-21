@@ -8,7 +8,7 @@
   <form class = "filters">
     Interested in:
     <select name="by_gender" class="filterby">
-      <option <%= 'selected=selected' if @current_child.sexual_preference == 'both' %> value="">All</option>
+      <option <%= 'selected=selected' if @current_child.sexual_preference == 'no preference' %> value="">All</option>
       <option <%= 'selected=selected' if @current_child.sexual_preference == 'men' %> value="male">Men</option>
       <option <%= 'selected=selected' if @current_child.sexual_preference == 'women' %> value="female">Women</option>
       <option value="other">Other</option>
