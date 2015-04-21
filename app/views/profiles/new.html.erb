@@ -13,54 +13,62 @@
       <a href="#"><h2>1. Basic Information</h2></a>
 
       <div class="new-pf-container container row">
-        <div class="col span_6">
-          <%= f.label(:first_name, 'First Name:') %><br />
-          <%= f.text_field(:first_name) %>
+
+        <div class="container row">
+          <div class="col span_6">
+            <%= f.label(:first_name, 'First Name:') %><br />
+            <%= f.text_field(:first_name) %><br />
+          </div>
+
+          <div class="col span_6">
+            <%= f.label(:last_name, 'Last Name:') %><br />
+            <%= f.text_field(:last_name) %><br />
+          </div>
         </div>
 
-        <div class="col span_6">
-          <%= f.label(:last_name, 'Last Name:') %><br />
-          <%= f.text_field(:last_name) %>
+        <div class="container row">
+          <div class="col span_6">
+            <%= f.label(:city, 'City:') %><br />
+            <%= f.text_field(:city) %><br />
+          </div>
+
+          <div class="col span_6">
+            <%= f.label(:state, 'State:') %><br />
+            <%= f.select(:state, options_for_select(us_states), include_blank: true) %><br />
+          </div>
         </div>
 
-        <div class="col span_6">
-          <%= f.label(:city, 'City:') %><br />
-          <%= f.text_field(:city) %>
+        <div class="container row">
+          <div class="col span_6">
+            <%= f.label(:phone, 'Phone Number:') %><br />
+            <%= f.phone_field(:phone) %><br />
+          </div>
+
+          <div class="col span_6">
+            <%= f.label(:birthdate, 'Birth Date:') %><br />
+            <%= f.date_field(:birthdate) %><br />
+          </div>
         </div>
 
+        <div class="container row">
+          <div class="col span_6">
+            <%= f.label(:gender, 'Gender:') %><br />
+            Male: <%= f.radio_button(:gender, 'male') %><br />
+            Female: <%= f.radio_button(:gender, 'female') %><br />
+            Other: <%= f.radio_button(:gender, 'other') %><br />
+          </div>
 
-        <div class="col span_6">
-          <%= f.label(:state, 'State:') %><br />
-          <%= f.text_field(:state) %>
-        </div>
-
-        <div class="col span_6">
-          <%= f.label(:phone, 'Phone Number:') %><br />
-          <%= f.phone_field(:phone) %><br />
-        </div>
-
-        <div class="col span_6">
-          <%= f.label(:birthdate, 'Birth Date:') %><br />
-          <%= f.date_field(:birthdate) %><br />
-        </div>
-
-        <div class="col span_6">
-          <%= f.label(:gender, 'Gender:') %><br />
-          Male: <%= f.radio_button(:gender, 'male') %><br />
-          Female: <%= f.radio_button(:gender, 'female') %><br />
-          Other: <%= f.radio_button(:gender, 'other') %>
-        </div>
-
-        <div class="col span_6">
-          <%= f.label(:sexual_preference, 'Interested in:') %><br />
-          Men: <%= f.radio_button(:sexual_preference, 'men') %><br />
-          Women: <%= f.radio_button(:sexual_preference, 'women') %><br />
-          Both: <%= f.radio_button(:sexual_preference, 'both') %>
+          <div class="col span_6">
+            <%= f.label(:sexual_preference, 'Interested in:') %><br />
+            Men: <%= f.radio_button(:sexual_preference, 'men') %><br />
+            Women: <%= f.radio_button(:sexual_preference, 'women') %><br />
+            No Preference: <%= f.radio_button(:sexual_preference, 'no preference') %><br />
+          </div>
         </div>
 
         <div>
           <%= f.label(:bio, 'Short Bio:') %><br />
-          <%= f.text_area(:bio) %>
+          <%= f.text_area(:bio) %><br />
         </div>
 
         <div class="container row">
@@ -81,7 +89,7 @@
         <%= f.url_field(:facebook_url) %><br />
 
         <%= f.label(:religion, 'Religion:') %><br />
-        <%= f.text_field(:religion) %><br />
+        <%= f.select(:religion, options_for_select(religions), include_blank: true) %><br />
 
         <%= f.label(:smoke, 'Smokes:') %><br />
         Yes: <%= f.radio_button(:smoke, true) %>
@@ -138,6 +146,7 @@
 
         <div class="container row">
           <%= f.submit 'Continue' %>
+          <a class="continue-force hidden" href="#">Continue</a>
         </div>
 
       </div>

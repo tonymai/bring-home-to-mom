@@ -1,0 +1,23 @@
+<div class="filterby-interest">
+
+  Interests:
+  <div class="autocomplete-container"></div>
+
+  <input type="text" data-append-to=".adp-interest" data-autocomplete="filters/autocomplete/interests">
+  <div class="autocomplete-dropdown adp-interest"></div>
+
+</div>
+
+<div class="filterby-value">
+
+  Values:
+  <div class="autocomplete-container"></div>
+
+  <input type="text" data-append-to=".adp-value" data-autocomplete="filters/autocomplete/values">
+  <div class="autocomplete-dropdown adp-value"></div>
+
+</div>
+
+<script type="x-handlebars-template" class="autocomplete-template">
+	<div class="autocomplete interest-btn" data-id="{{id}}">{{value}}</div><a href="#" class="autocomplete-tag"><i class="fa fa-times"></i></a>
+</script>

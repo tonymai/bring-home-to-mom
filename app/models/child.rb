@@ -1,10 +1,12 @@
 class Child < ActiveRecord::Base
   ##HasScope Filtering
   scope :by_gender, -> gender { where(gender: gender)}
-  scope :by_sexual_preference, -> sexual_preference { where(sexual_preference: sexual_preference)}
+
+  scope :by_sexual_preference, -> sexual_preference { where("sexual_preference = ? OR sexual_preference = ?", sexual_preference, "no preference")}
+
+
   scope :by_religion, -> religion { where(religion: religion)}
   scope :by_city, -> city { where(city: city)}
-  # scope :by_birthdate, -> started_at, ended_at {where("birthdate BETWEEN ? AND ?", started_at, ended_at)}
   scope :by_age, -> min, max {where("birthdate BETWEEN ? AND ?", Date.today-((max.to_i+1)*365), Date.today-(min.to_i*365.25))}
   scope :smoke, -> {where(smoke: false)} #Need to understand better.
 
@@ -28,6 +30,7 @@ class Child < ActiveRecord::Base
 
   validates :first_name, :last_name, :city, :state, :phone, :gender, :sexual_preference, :birthdate, :bio, :main_profile_image, presence: true
   validates :phone, uniqueness: true
+  validates :phone, format: { with: /\A\(?\d{3}(\)|\s|\.|\-)?\s?\d{3}(\-|\s|\.)?\d{4}\z/, message: 'is not in a valid format'}
   validates :pf_image_1, :pf_image_2, :pf_image_3, :pf_image_4, :pf_image_5, format: { with: /.+\.(jpg|jpeg|png)/, message: "is not a valid image" }, allow_blank: true
   validate :check_age
 
@@ -35,11 +38,11 @@ class Child < ActiveRecord::Base
     make_dir_unless_exists(Rails.root.join('public', 'uploads'))
 
     make_dir_unless_exists(Rails.root.join('public','uploads', "#{self.parent.id}"))
-    make_dir_unless_exists(Rails.root.join('public','uploads', "#{self.parent.id}", "#{Child.last.id + 1}"))
+    make_dir_unless_exists(Rails.root.join('public','uploads', "#{self.parent.id}", "#{Child.last ? (Child.last.id + 1) : 1}"))
 
     self[pf_image_key] = "#{pf_image_key}.#{uploaded_io.content_type.split('/')[1]}"
 
-    File.open(Rails.root.join('public','uploads', "#{self.parent.id}", "#{Child.last.id + 1}", self[pf_image_key]), 'wb') do |file|
+    File.open(Rails.root.join('public','uploads', "#{self.parent.id}", "#{Child.last ? (Child.last.id + 1) : 1}", self[pf_image_key]), 'wb') do |file|
       file.write(uploaded_io.read)
     end
   end
