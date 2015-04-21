@@ -34,10 +34,10 @@ var ready = function () {
          * @param conversation_id
          */
  
-        close: function (conversation_id) {
-            $('#chatbox_' + conversation_id).css('display', 'none');
-            chatBox.restructure();
-        },
+        // close: function (conversation_id) {
+        //     $('#chatbox_' + conversation_id).css('display', 'none');
+        //     chatBox.restructure();
+        // },
  
         /**
          * Plays a notification sound when a new chat message arrives
@@ -54,29 +54,29 @@ var ready = function () {
          * neatly aligned on the page
          */
  
-        restructure: function () {
-            align = 0;
-            for (x in chatBoxes) {
-                chatbox_id = chatBoxes[x];
+        // restructure: function () {
+        //     align = 0;
+        //     for (x in chatBoxes) {
+        //         chatbox_id = chatBoxes[x];
  
-                if ($("#chatbox_" + chatbox_id).css('display') != 'none') {
-                    if (align == 0) {
-                        $("#chatbox_" + chatbox_id).css('right', '20px');
-                    } else {
-                        width = (align) * (280 + 7) + 20;
-                        $("#chatbox_" + chatbox_id).css('right', width + 'px');
-                    }
-                    align++;
-                }
-            }
+        //         if ($("#chatbox_" + chatbox_id).css('display') != 'none') {
+        //             if (align == 0) {
+        //                 $("#chatbox_" + chatbox_id).css('right', '20px');
+        //             } else {
+        //                 width = (align) * (280 + 7) + 20;
+        //                 $("#chatbox_" + chatbox_id).css('right', width + 'px');
+        //             }
+        //             align++;
+        //         }
+        //     }
  
-        },
+        // },
  
         /**
          * Takes in two parameters. It is responsible for fetching the specific conversation's
          * html page and appending it to the body of our home page e.g if conversation_id = 1
          *
-         * $.get("/conversations/1, function(data){
+         * $.get("/dates/1, function(data){
          *    // rest of the logic here
          * }, "html")
          *
@@ -96,7 +96,7 @@ var ready = function () {
  
             $("body").append('<div id="chatbox_' + conversation_id + '" class="chatbox"></div>')
  
-            $.get("/conversations/" + conversation_id, function (data) {
+            $.get("/dates/" + conversation_id, function (data) {
                 $('#chatbox_' + conversation_id).html(data);
                 $("#chatbox_" + conversation_id + " .chatboxcontent").scrollTop($("#chatbox_" + conversation_id + " .chatboxcontent")[0].scrollHeight);
             }, "html");
@@ -120,24 +120,24 @@ var ready = function () {
  
             chatBoxes.push(conversation_id);
  
-            if (minimizeChatBox == 1) {
-                minimizedChatBoxes = new Array();
+            // if (minimizeChatBox == 1) {
+            //     minimizedChatBoxes = new Array();
  
-                if ($.cookie('chatbox_minimized')) {
-                    minimizedChatBoxes = $.cookie('chatbox_minimized').split(/\|/);
-                }
-                minimize = 0;
-                for (j = 0; j < minimizedChatBoxes.length; j++) {
-                    if (minimizedChatBoxes[j] == conversation_id) {
-                        minimize = 1;
-                    }
-                }
+            //     if ($.cookie('chatbox_minimized')) {
+            //         minimizedChatBoxes = $.cookie('chatbox_minimized').split(/\|/);
+            //     }
+            //     minimize = 0;
+            //     for (j = 0; j < minimizedChatBoxes.length; j++) {
+            //         if (minimizedChatBoxes[j] == conversation_id) {
+            //             minimize = 1;
+            //         }
+            //     }
  
-                if (minimize == 1) {
-                    $('#chatbox_' + conversation_id + ' .chatboxcontent').css('display', 'none');
-                    $('#chatbox_' + conversation_id + ' .chatboxinput').css('display', 'none');
-                }
-            }
+            //     if (minimize == 1) {
+            //         $('#chatbox_' + conversation_id + ' .chatboxcontent').css('display', 'none');
+            //         $('#chatbox_' + conversation_id + ' .chatboxinput').css('display', 'none');
+            //     }
+            // }
  
             chatboxFocus[conversation_id] = false;
  
@@ -205,45 +205,45 @@ var ready = function () {
          * @param conversation_id
          */
  
-        toggleChatBoxGrowth: function (conversation_id) {
-            if ($('#chatbox_' + conversation_id + ' .chatboxcontent').css('display') == 'none') {
+        // toggleChatBoxGrowth: function (conversation_id) {
+        //     if ($('#chatbox_' + conversation_id + ' .chatboxcontent').css('display') == 'none') {
  
-                var minimizedChatBoxes = new Array();
+        //         var minimizedChatBoxes = new Array();
  
-                if ($.cookie('chatbox_minimized')) {
-                    minimizedChatBoxes = $.cookie('chatbox_minimized').split(/\|/);
-                }
+        //         if ($.cookie('chatbox_minimized')) {
+        //             minimizedChatBoxes = $.cookie('chatbox_minimized').split(/\|/);
+        //         }
  
-                var newCookie = '';
+        //         var newCookie = '';
  
-                for (i = 0; i < minimizedChatBoxes.length; i++) {
-                    if (minimizedChatBoxes[i] != conversation_id) {
-                        newCookie += conversation_id + '|';
-                    }
-                }
+        //         for (i = 0; i < minimizedChatBoxes.length; i++) {
+        //             if (minimizedChatBoxes[i] != conversation_id) {
+        //                 newCookie += conversation_id + '|';
+        //             }
+        //         }
  
-                newCookie = newCookie.slice(0, -1)
- 
- 
-                $.cookie('chatbox_minimized', newCookie);
-                $('#chatbox_' + conversation_id + ' .chatboxcontent').css('display', 'block');
-                $('#chatbox_' + conversation_id + ' .chatboxinput').css('display', 'block');
-                $("#chatbox_" + conversation_id + " .chatboxcontent").scrollTop($("#chatbox_" + conversation_id + " .chatboxcontent")[0].scrollHeight);
-            } else {
- 
-                var newCookie = conversation_id;
- 
-                if ($.cookie('chatbox_minimized')) {
-                    newCookie += '|' + $.cookie('chatbox_minimized');
-                }
+        //         newCookie = newCookie.slice(0, -1)
  
  
-                $.cookie('chatbox_minimized', newCookie);
-                $('#chatbox_' + conversation_id + ' .chatboxcontent').css('display', 'none');
-                $('#chatbox_' + conversation_id + ' .chatboxinput').css('display', 'none');
-            }
+        //         $.cookie('chatbox_minimized', newCookie);
+        //         $('#chatbox_' + conversation_id + ' .chatboxcontent').css('display', 'block');
+        //         $('#chatbox_' + conversation_id + ' .chatboxinput').css('display', 'block');
+        //         $("#chatbox_" + conversation_id + " .chatboxcontent").scrollTop($("#chatbox_" + conversation_id + " .chatboxcontent")[0].scrollHeight);
+        //     } else {
  
-        }
+        //         var newCookie = conversation_id;
+ 
+        //         if ($.cookie('chatbox_minimized')) {
+        //             newCookie += '|' + $.cookie('chatbox_minimized');
+        //         }
+ 
+ 
+        //         $.cookie('chatbox_minimized', newCookie);
+        //         $('#chatbox_' + conversation_id + ' .chatboxcontent').css('display', 'none');
+        //         $('#chatbox_' + conversation_id + ' .chatboxinput').css('display', 'none');
+        //     }
+ 
+        // }
  
  
  
@@ -260,47 +260,47 @@ var ready = function () {
      *
      */
  
-    jQuery.cookie = function (name, value, options) {
-        if (typeof value != 'undefined') { // name and value given, set cookie
-            options = options || {};
-            if (value === null) {
-                value = '';
-                options.expires = -1;
-            }
-            var expires = '';
-            if (options.expires && (typeof options.expires == 'number' || options.expires.toUTCString)) {
-                var date;
-                if (typeof options.expires == 'number') {
-                    date = new Date();
-                    date.setTime(date.getTime() + (options.expires * 24 * 60 * 60 * 1000));
-                } else {
-                    date = options.expires;
-                }
-                expires = '; expires=' + date.toUTCString(); // use expires attribute, max-age is not supported by IE
-            }
-            // CAUTION: Needed to parenthesize options.path and options.domain
-            // in the following expressions, otherwise they evaluate to undefined
-            // in the packed version for some reason...
-            var path = options.path ? '; path=' + (options.path) : '';
-            var domain = options.domain ? '; domain=' + (options.domain) : '';
-            var secure = options.secure ? '; secure' : '';
-            document.cookie = [name, '=', encodeURIComponent(value), expires, path, domain, secure].join('');
-        } else { // only name given, get cookie
-            var cookieValue = null;
-            if (document.cookie && document.cookie != '') {
-                var cookies = document.cookie.split(';');
-                for (var i = 0; i < cookies.length; i++) {
-                    var cookie = jQuery.trim(cookies[i]);
-                    // Does this cookie string begin with the name we want?
-                    if (cookie.substring(0, name.length + 1) == (name + '=')) {
-                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                        break;
-                    }
-                }
-            }
-            return cookieValue;
-        }
-    };
+    // jQuery.cookie = function (name, value, options) {
+    //     if (typeof value != 'undefined') { // name and value given, set cookie
+    //         options = options || {};
+    //         if (value === null) {
+    //             value = '';
+    //             options.expires = -1;
+    //         }
+    //         var expires = '';
+    //         if (options.expires && (typeof options.expires == 'number' || options.expires.toUTCString)) {
+    //             var date;
+    //             if (typeof options.expires == 'number') {
+    //                 date = new Date();
+    //                 date.setTime(date.getTime() + (options.expires * 24 * 60 * 60 * 1000));
+    //             } else {
+    //                 date = options.expires;
+    //             }
+    //             expires = '; expires=' + date.toUTCString(); // use expires attribute, max-age is not supported by IE
+    //         }
+    //         // CAUTION: Needed to parenthesize options.path and options.domain
+    //         // in the following expressions, otherwise they evaluate to undefined
+    //         // in the packed version for some reason...
+    //         var path = options.path ? '; path=' + (options.path) : '';
+    //         var domain = options.domain ? '; domain=' + (options.domain) : '';
+    //         var secure = options.secure ? '; secure' : '';
+    //         document.cookie = [name, '=', encodeURIComponent(value), expires, path, domain, secure].join('');
+    //     } else { // only name given, get cookie
+    //         var cookieValue = null;
+    //         if (document.cookie && document.cookie != '') {
+    //             var cookies = document.cookie.split(';');
+    //             for (var i = 0; i < cookies.length; i++) {
+    //                 var cookie = jQuery.trim(cookies[i]);
+    //                 // Does this cookie string begin with the name we want?
+    //                 if (cookie.substring(0, name.length + 1) == (name + '=')) {
+    //                     cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+    //                     break;
+    //                 }
+    //             }
+    //         }
+    //         return cookieValue;
+    //     }
+    // };
  
  
 }

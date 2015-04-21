@@ -32,9 +32,8 @@ class PlaydatesController < ApplicationController
     end
 
     ##Conversation
-    @conversation = Conversation.find(params[:id])
-    @reciever = conversation_interlocutor(@conversation)
-    @messages = @conversation.messages
+    @reciever = conversation_interlocutor(@playdate)
+    @messages = @playdate.messages
     @message = Message.new
   end
 
