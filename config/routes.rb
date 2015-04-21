@@ -30,6 +30,8 @@ Rails.application.routes.draw do
 
   get '/users/:id/messages' => 'users#messages'
 
+  post '/' => 'welcome#change_child'
+
   resources :conversations do
     resources :messages
   end

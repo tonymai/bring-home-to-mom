@@ -132,6 +132,20 @@
   display: none;
 }
 
+/*Children profiles*/
+.all-child-profiles {
+  float: left;
+  width: 100%;
+  text-align: center;
+}
+.child-pf-image {
+  display: inline-block;
+}
+
+.child-pf-image img {
+  width: 100px;
+  height: auto;
+}
 /*Filter page*/
 .filter-wrapper{
   background-color: coral;

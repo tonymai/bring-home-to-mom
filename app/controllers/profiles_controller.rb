@@ -34,6 +34,7 @@ class ProfilesController < ApplicationController
     end
 
     if @child.save
+      session[:profile_id] = @child.id
       render json: @child, status: :created
     else
       render json: { errors: @child.errors.full_messages }, status: :unprocessable_entity
@@ -42,7 +43,6 @@ class ProfilesController < ApplicationController
 
   def update
     #Only written for adding interests right now; when we create full edit page, this will need conditional logic to handle all cases
-    p params
     @parent = Parent.find(params[:user_id])
     @child = Child.find(params[:id])
     interests = params[:interests]
