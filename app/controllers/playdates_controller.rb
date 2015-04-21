@@ -32,7 +32,7 @@ class PlaydatesController < ApplicationController
     end
 
     ##Conversation
-    @reciever = conversation_interlocutor(@playdate)
+    @receiver = conversation_interlocutor(@playdate)
     @messages = @playdate.messages
     @message = Message.new
   end
