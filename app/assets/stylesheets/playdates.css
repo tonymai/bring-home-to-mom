@@ -2,3 +2,7 @@
   height:225px;
   width:153px;
 }
+
+.playdate-container .row{
+  border:1px solid lightgray;
+}
