@@ -35,7 +35,7 @@ end
       sexual_preference: ['men', 'women', 'no preference'].sample,
       birthdate: Faker::Date.between(50.years.ago, 18.years.ago),
       bio: Faker::Company.bs,
-      religion: ['Christian','Muslim','Buddhist', 'Atheist', 'Rastafarian', 'Pastafarian', 'Hindu', 'Sikh', 'Jewish', 'Shinto', 'N/A', 'Shamanist', 'Scientologist', 'Mormon','Satanist'].sample,
+      religion: ['Christian','Muslim','Buddhist', 'Atheist', 'Rastafarian', 'Pastafarian', 'Hindu', 'Sikh', 'Jewish', 'Shinto', 'Shamanist', 'Scientologist', 'Mormon'].sample,
       smoke: [true, false].sample,
       linkedin_url: Faker::Internet.url,
       facebook_url: Faker::Internet.url,
