@@ -1,6 +1,6 @@
 <% publish_to @path do %>
 	var id = "<%= @playdate.id %>";
-	var chatbox = $("#chatbox_" + id + " .chatboxcontent");
+	var chatbox = $(".chatboxcontent");
 	var sender_id = "<%= @message.parent.id %>";
 	var reciever_id = $('meta[name=user-id]').attr("content");
 
@@ -13,4 +13,5 @@
 		chatbox.scrollTop(chatbox[0].scrollHeight);
 		chatBox.notify();
 	}
+
 <% end %>
