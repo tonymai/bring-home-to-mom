@@ -6,8 +6,10 @@ class Playdate < ActiveRecord::Base
 
   validates :initiator_id, :recipient_id, presence: true
 
-  def budget_as_string
-    self.budget.nil? ? "To Be Determined" : "$#{self.budget}"
+  def total_cost_per_person
+    self.experience.nil? ? experience_cost = 0 : experience_cost = self.experience.price_per_person
+    self.movie.nil? ? movie_cost = 0 : movie_cost = self.movie.price_per_person
+    total_cost = experience_cost + movie_cost
   end
 
   def calendar_date_as_string
@@ -15,7 +17,7 @@ class Playdate < ActiveRecord::Base
   end
 
   def both_parents_accepted?
-    return (self.initiator_accepted && self.recipient_accepted)
+    return self.recipient_accepted #implicit that the initiator has accepted
   end
 
   def both_parents_confirmed? #this also implies they have both paid
@@ -26,14 +28,30 @@ class Playdate < ActiveRecord::Base
     end
   end
 
-  def update_date_status
-    if both_parents_confirmed?
-      self.update(status: 'confirmed')
-    elsif both_parents_accepted?
-      self.update(status: 'accepted')
+  def both_parents_paid?
+    if (both_parents_accepted? && both_parents_confirmed?) #ensure other two conditions are already met
+      return (self.initiator_paid && self.recipient_paid)
     else
-      self.update(status: 'pending')
+      return false
     end
+  end
+
+  def status #order is important here
+    if both_parents_paid?
+      return 'paid'
+    elsif both_parents_confirmed?
+      return 'confirmed'
+    elsif both_parents_accepted?
+      return 'accepted'
+    else
+      return 'pending'
+    end
+  end
+
+  def playdate_at #returns datetime of earliest event (movie or experience)
+    self.experience.nil? ? experience_datetime = 0 : experience_datetime = self.experience.experience_at
+    self.movie.nil? ? movie_datetime = 0 : movie_datetime = self.movie.experience_at
+    playdate_datetime = [experience_datetime, movie_datetime].min
   end
 
 end

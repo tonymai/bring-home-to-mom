@@ -1,13 +1,10 @@
 class CreateExperiences < ActiveRecord::Migration
   def change
     create_table :experiences do |t|
-      t.string :venue
-      t.string :address
+      t.string :venue, :address
       t.string :desc_summary
-      t.string :desc_note_1
-      t.string :desc_note_2
-      t.string :desc_note_3
-      t.integer :price_per_person
+      t.string :desc_note_1, :desc_note_2, :desc_note_3
+      t.integer :price_per_person, default: 0
       t.string :image
       t.datetime :experience_at
 
