@@ -31,7 +31,7 @@
 
         <div class="col span_6">
           <%= f.label(:state, 'State:') %><br />
-          <%= f.text_field(:state) %>
+          <%= f.select(:state, options_for_select(us_states), include_blank: true) %>
         </div>
 
         <div class="col span_6">
@@ -55,7 +55,7 @@
           <%= f.label(:sexual_preference, 'Interested in:') %><br />
           Men: <%= f.radio_button(:sexual_preference, 'men') %><br />
           Women: <%= f.radio_button(:sexual_preference, 'women') %><br />
-          Both: <%= f.radio_button(:sexual_preference, 'both') %>
+          No Preference: <%= f.radio_button(:sexual_preference, 'no preference') %>
         </div>
 
         <div>
@@ -138,6 +138,7 @@
 
         <div class="container row">
           <%= f.submit 'Continue' %>
+          <a class="continue-force hidden" href="#">Continue</a>
         </div>
 
       </div>
