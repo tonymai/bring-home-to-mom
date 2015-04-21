@@ -1,13 +1,7 @@
 <div class="chatboxhead">
   <div class="chatboxtitle">
     <i class="fa fa-comments"></i>
- 
-    <h1><%= @reciever.parent.email %> </h1>
-  </div>
-  <div class="chatboxoptions">
-    <%= link_to "<i class='fa  fa-minus'></i> ".html_safe, "#", class: "toggleChatBox", "data-cid" => @playdate.id %>
-    &nbsp;&nbsp;
-    <%= link_to "<i class='fa  fa-times'></i> ".html_safe, "#", class: "closeChat", "data-cid" => @playdate.id %>
+    <h2><%= @reciever.parent.email %></h2>
   </div>
   <br clear="all"/>
 </div>
