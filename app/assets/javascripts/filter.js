@@ -30,17 +30,19 @@ $(document).on('page:change', function() {
 });
 
 function updateMatches() {
-  var gender = $("h1").attr("data-gender")
-  if (gender = 'male') {
-    gender = 'men';
-  }
-  else if (gender = 'female') {
-    gender = 'women';
-  }
-  else {
-    gender = 'both';
-  }
+  var gender = $("h1").attr("data-gender");
+  var sexual_preference = null;
 
+  if (gender === 'male') {
+    sexual_preference = 'men';
+  }
+  else if (gender === 'female') {
+    sexual_preference = 'women';
+  }
+  else if (gender === 'other') {
+    sexual_preference = 'no+preference';
+  }
+  
   //age
   var lowerAge = $("#input-lower").val();
   var upperAge = $("#input-upper").val();
@@ -56,7 +58,7 @@ function updateMatches() {
   var valueParams = '&values=' + valueIds.join(',')
 
   //combined
-  var filterParams = $("form.filters").serialize() + "&by_sexual_preference=" + gender + "&by_age[min]=" + lowerAge + "&by_age[max]=" + upperAge + interestParams + valueParams; //refactor to use session
+  var filterParams = $("form.filters").serialize() + "&by_sexual_preference=" + sexual_preference + "&by_age[min]=" + lowerAge + "&by_age[max]=" + upperAge + interestParams + valueParams; //refactor to use session
   console.log(filterParams)
   $.ajax({
     url: '/filters?' + filterParams,

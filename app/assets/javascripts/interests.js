@@ -41,7 +41,7 @@ $(document).on('page:change', function() {
     });
   });
 
-  $('.new-pf-section').on('click', '.submit-all', function(e){
+  $('.submit-all').on('click', function(e){
     e.preventDefault();
     var selectedInterestIds = getSelectedInterestIds();
     var parentIdInterest = $('.new-interests-container').attr('data-user-id');
