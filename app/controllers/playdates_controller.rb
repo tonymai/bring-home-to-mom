@@ -4,6 +4,7 @@ class PlaydatesController < ApplicationController
   end
 
   def show
+    ##Get IMDB IDs
     box_office_movies = JSON.parse(HTTParty.get("http://api.rottentomatoes.com/api/public/v1.0/lists/movies/box_office.json?apikey=#{ENV['ROTTEN_TOMATOES_APIKEY']}&limit=10"))
     @names_and_ids = {}
     box_office_movies['movies'].each_with_index do |movie, idx|
@@ -11,7 +12,7 @@ class PlaydatesController < ApplicationController
         movie_poster: "http://img.omdbapi.com/?i=#{'tt'+box_office_movies['movies'][idx]['alternate_ids']['imdb']}&apikey=#{ENV['OMDB_KEY']}"
       }
     end
-    ##Fandango IDs
+    ##Get Fandango IDs
     id_hash = {}
     nearby_theaters = Fandango.movies_near(94107)
     nearby_theaters.each do |theater|
@@ -21,7 +22,12 @@ class PlaydatesController < ApplicationController
         end
       end
     end
-    ap id_hash
+    ####
+    @names_and_ids.each do |movie|
+      if id_hash.has_key?(movie.first)
+        movie.last[:fandango] = id_hash[movie.first]
+      end
+    end
   end
 
   def create

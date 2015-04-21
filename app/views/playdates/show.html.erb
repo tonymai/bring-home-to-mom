@@ -15,9 +15,9 @@
     <div class="movie row debug">
       <h2> Plan the Date: </h2>
       <h3> Movies </h3>
-        <div id="gallery-wrap" class="pf-images-wrapper slick-carousel col">
+        <div id="movie-wrap" class="debug col span_12">
           <% @names_and_ids.each do |movie| %>
-            <img alt = "<%= movie.first %>" src="<%= movie.last[:movie_poster]%>">
+            <a href="http://www.fandango.com/asdf_<%=movie.last[:fandango]%>/movietimes"><img class="movie-poster" alt = "<%= movie.first %>" src="<%= movie.last[:movie_poster]%>"></a>
           <% end %>
         </div>
 
