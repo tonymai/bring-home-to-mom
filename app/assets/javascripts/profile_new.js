@@ -50,10 +50,11 @@ $(document).on('page:change', function() {
         $('.new-interests-container').attr('data-user-id', response.parent_id);
         $('.new-values-container').attr('data-profile-id', response.id);
         $('.new-values-container').attr('data-user-id', response.parent_id);
-        $('.profile-error-messages').empty();
+        $('.profile-error-explanation').empty();
         //move to next section
         $('.new-pf-container').slideUp('slow', function() {});
         $nextContainer.slideDown('slow', function() {});
+        $('.submit-all').fadeIn('slow',function() {});
       },
       error: function(response) {
         $('.profile-error-explanation').show();

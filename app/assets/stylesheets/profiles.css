@@ -195,6 +195,13 @@
   background-color: #1AB595;
 }
 
+.new-pf-section .submit-all a {
+  padding: 15px;
+  color: #FFFFFF;
+  background-color: #1AB595;
+  display: inline-block;
+}
+
 /*STYLING FOR HOVER ANIMATION ON DETAILED PROFILE 'GOOD STUFF' BOXES*/
 /*---------------*/
 /***** Dexter *****/
