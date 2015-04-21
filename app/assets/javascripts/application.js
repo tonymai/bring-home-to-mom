@@ -13,6 +13,7 @@
 //= require private_pub
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui.min
 //= require jquery.form
 //= require handlebars
 //= require jquery.nouislider.all.min

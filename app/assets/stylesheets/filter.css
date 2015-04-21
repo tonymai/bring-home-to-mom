@@ -11,3 +11,12 @@
   border:none;
   border-radius: 5px;
 }
+
+.autocomplete-dropdown {
+	position: absolute;
+	background-color: gray;
+}
+
+.autocomplete-dropdown li {
+	list-style-type: none;
+}
