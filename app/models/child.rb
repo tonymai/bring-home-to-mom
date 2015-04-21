@@ -35,11 +35,11 @@ class Child < ActiveRecord::Base
     make_dir_unless_exists(Rails.root.join('public', 'uploads'))
 
     make_dir_unless_exists(Rails.root.join('public','uploads', "#{self.parent.id}"))
-    make_dir_unless_exists(Rails.root.join('public','uploads', "#{self.parent.id}", "#{Child.last.id + 1}"))
+    make_dir_unless_exists(Rails.root.join('public','uploads', "#{self.parent.id}", "#{Child.last ? (Child.last.id + 1) : 1}"))
 
     self[pf_image_key] = "#{pf_image_key}.#{uploaded_io.content_type.split('/')[1]}"
 
-    File.open(Rails.root.join('public','uploads', "#{self.parent.id}", "#{Child.last.id + 1}", self[pf_image_key]), 'wb') do |file|
+    File.open(Rails.root.join('public','uploads', "#{self.parent.id}", "#{Child.last ? (Child.last.id + 1) : 1}", self[pf_image_key]), 'wb') do |file|
       file.write(uploaded_io.read)
     end
   end
