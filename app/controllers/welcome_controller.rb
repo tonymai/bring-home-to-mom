@@ -1,8 +1,10 @@
 class WelcomeController < ApplicationController
 
   def index
-  	session[:profile_id] = current_user.children.last unless session[:profile_id]
-    @current_child = Child.find(session[:profile_id]) if user_signed_in?
+    if user_signed_in?
+    	session[:profile_id] = current_user.children.last unless session[:profile_id]
+      @current_child = Child.find(session[:profile_id])
+    end
   end
 
   def change_child

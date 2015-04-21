@@ -2,7 +2,7 @@
   <div class="logo"><a href="/">BHTM</a></div>
   <ul>
     <% if user_signed_in? %>
-    	<li><%= link_to "Log Out", "users/sign_out", method: 'delete',class:"logout-button" %><li>
+    	<li><%= link_to "Log Out", "/users/sign_out", method: 'delete',class:"logout-button" %><li>
     <% else %>
 			<li><a href="#" class="login-btn">Log In</a></li>
 			<li><a href="#" class="signup-btn">Sign Up</a></li>
