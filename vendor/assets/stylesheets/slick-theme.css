@@ -77,7 +77,7 @@
 
 .slick-prev
 {
-    left: -25px;
+    left: 2px; /* MODIFIED; ORIGINALLY -25px */
 }
 [dir='rtl'] .slick-prev
 {
@@ -95,7 +95,7 @@
 
 .slick-next
 {
-    right: -25px;
+    right: 2px; /* MODIFIED; ORIGINALLY -25px */
 }
 [dir='rtl'] .slick-next
 {
@@ -120,7 +120,8 @@
 .slick-dots
 {
     position: absolute;
-    bottom: -45px;
+    bottom: 0px; /* MODIFIED; ORIGINALLY -45px */
+    margin: 0px; /* ADDED FIELD; ORIGINALLY DID NOT EXIST */
 
     display: block;
 

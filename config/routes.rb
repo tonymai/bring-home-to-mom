@@ -24,7 +24,10 @@ Rails.application.routes.draw do
   resources :dates, class_name: 'Playdate', controller: :playdates
   resources :values, only: [:index, :create]
 
-  get '/filter' => 'filter#filter_matches'
+  get '/filters' => 'filters#filter_matches'
+
+  get '/filters/autocomplete/interests' => 'filters#autocomplete_interest_name'
+  get '/filters/autocomplete/values' => 'filters#autocomplete_value_name'
 
   get '/users/:id/messages' => 'users#messages'
 

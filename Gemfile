@@ -43,6 +43,8 @@ gem 'fandango'
 gem 'private_pub'
 gem 'thin'
 
+# For autocomplete searches
+gem 'rails-jquery-autocomplete'
 
 
 group :development, :test do

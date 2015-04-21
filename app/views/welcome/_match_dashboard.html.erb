@@ -31,9 +31,10 @@
   </form>
   <div class= "age-slider-container">
     Age:
-   Between: <input id="input-lower" class="filterby" name='by_age'> and <input class= "filterby" name="by_age" id="input-upper">
-   <div class="filterby age-slider"></div>
- </div>
+    Between: <input id="input-lower" class="filterby" name='by_age'> and <input class= "filterby" name="by_age" id="input-upper">
+    <div class="filterby age-slider"></div>
+  </div>
+  <%= render partial: 'autocomplete_container' %>
 </div>
 
 <div class="matches col span_8">
