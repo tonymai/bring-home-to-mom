@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150420021250) do
+ActiveRecord::Schema.define(version: 20150421205130) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,6 +66,20 @@ ActiveRecord::Schema.define(version: 20150420021250) do
   add_index "conversations", ["recipient_id"], name: "index_conversations_on_recipient_id", using: :btree
   add_index "conversations", ["sender_id"], name: "index_conversations_on_sender_id", using: :btree
 
+  create_table "experiences", force: :cascade do |t|
+    t.string   "venue"
+    t.string   "address"
+    t.string   "desc_summary"
+    t.string   "desc_note_1"
+    t.string   "desc_note_2"
+    t.string   "desc_note_3"
+    t.integer  "price_per_person"
+    t.string   "image"
+    t.datetime "experience_at"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
   create_table "interests", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
@@ -82,6 +96,19 @@ ActiveRecord::Schema.define(version: 20150420021250) do
 
   add_index "messages", ["conversation_id"], name: "index_messages_on_conversation_id", using: :btree
   add_index "messages", ["parent_id"], name: "index_messages_on_parent_id", using: :btree
+
+  create_table "movies", force: :cascade do |t|
+    t.string   "theater"
+    t.string   "address"
+    t.string   "description"
+    t.string   "director"
+    t.string   "rating"
+    t.integer  "price_per_person", default: 15
+    t.string   "image"
+    t.datetime "movie_at"
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+  end
 
   create_table "parents", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -106,14 +133,21 @@ ActiveRecord::Schema.define(version: 20150420021250) do
   create_table "playdates", force: :cascade do |t|
     t.integer  "initiator_id"
     t.integer  "recipient_id"
-    t.string   "status",       default: "pending"
+    t.integer  "experience_id"
+    t.integer  "movie_id"
+    t.string   "status",              default: "pending"
     t.string   "venue"
     t.string   "address"
     t.datetime "playdate_at"
     t.integer  "budget"
     t.string   "note"
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
+    t.boolean  "recipient_accepted",  default: false
+    t.boolean  "initiator_confirmed", default: false
+    t.boolean  "recipient_confirmed", default: false
+    t.boolean  "initiator_paid",      default: false
+    t.boolean  "recipient_paid",      default: false
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
   end
 
   create_table "values", force: :cascade do |t|
