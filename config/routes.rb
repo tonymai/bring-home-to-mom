@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   end
 
   resources :interests, only: [:index, :create]
+  resources :dates, class_name: 'Playdate', controller: :playdates
   resources :values, only: [:index, :create]
 
   get '/filters' => 'filters#filter_matches'

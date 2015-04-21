@@ -1,0 +1,43 @@
+
+<div class="playdate-container">
+  <div class = "status row">
+    <div class="col span_12">
+      <h1> Status: Pending//Declined//Confirmed</h1>
+    </div>
+  </div>
+
+  <div class=" col date-data span_8">
+    <div class="movie row">
+      <h3> Budget:</h3>
+      <h3> Date/Time:</h3>
+    </div>
+
+    <div class="movie row">
+      <h2> Plan the Date: </h2>
+      <h3> Movies </h3>
+        <div id="movie-wrap" class= "col span_8">
+          <% @names_and_ids.each do |movie| %>
+            <a href="http://www.fandango.com/asdf_<%=movie.last[:fandango]%>/movietimes"><img class="movie-poster" alt = "<%= movie.first %>" src="<%= movie.last[:movie_poster]%>"></a>
+          <% end %>
+        </div>
+
+    </div>
+
+    <div class="restaurant row">
+      <h2> Restaurants: </h2>
+    </div>
+
+    <div class="calendar row">
+      <h2> Calendar: </h2>
+    </div>
+
+  </div>
+
+  <div class=" chat-data col span_4">
+    Chat stuff
+  </div>
+
+
+</div>
+
+
