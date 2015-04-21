@@ -107,11 +107,16 @@
         select: function( event, ui ) {
 
           // to prevent duplicates from being added
-          var $elements = $(this).parent().children('.autocomplete-container').children('ul').children('li')
+          var $elements = $(this).parent().children('.autocomplete-container')
           var ids = $.map($elements, function(element) { return $(element).attr('data-id') });
 
+          var source = $('.autocomplete-template').html();
+          var templatingFunction = Handlebars.compile(source);
+          var context = {};
+
           if (ui.item.id != "" && ids.indexOf(ui.item.id) === -1 ) {
-            $(this).parent().children('.autocomplete-container').children('ul').append('<li data-id=' + ui.item.id + '>' + ui.item.value + '<a class="autocomplete-tag" href="#">x</a></li>')
+            context = ui.item;
+            $(this).parent().children('.autocomplete-container').append(templatingFunction(context));
             $('.ui-autocomplete-input').val('');
             $(this).parent().children('.autocomplete-dropdown ul').empty('');
           }
@@ -134,8 +139,8 @@
         $selectedTag.remove();
         updateMatches();
       });
-
       
-    })
+    });
+
   });
 })($);

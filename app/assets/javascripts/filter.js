@@ -46,12 +46,12 @@ function updateMatches() {
   var upperAge = $("#input-upper").val();
 
   //interests
-  var $interestElements = $('.filterby-interest .autocomplete-container ul li')
+  var $interestElements = $('.filterby-interest .autocomplete-container div')
   var interestIds = $.map($interestElements, function(element) { return $(element).attr('data-id') });
   var interestParams = '&interests=' + interestIds.join(',')
 
   //values
-  var $valueElements = $('.filterby-value .autocomplete-container ul li')
+  var $valueElements = $('.filterby-value .autocomplete-container div')
   var valueIds = $.map($valueElements, function(element) { return $(element).attr('data-id') });
   var valueParams = '&values=' + valueIds.join(',')
 
