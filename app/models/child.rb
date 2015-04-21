@@ -51,6 +51,35 @@ class Child < ActiveRecord::Base
     end
   end
 
+  def playdates
+    self.initiated_playdates + self.received_playdates
+  end
+
+  def pending_dates
+    self.playdates.select {|date| date.status == "pending"}
+  end
+
+  def upcoming_dates
+    self.playdates.select {|date| (date.status == "accepted") && (date.playdate_at > Time.now)}
+  end
+
+  def past_dates
+    self.playdates.select {|date| (date.status == "accepted") && (date.playdate_at < Time.now)}
+  end
+
+  def initiated_date?(date_object)
+    initiator = date_object.initiator
+    recipient = date_object.recipient
+    if initiator.id == self.id
+      return true
+    elsif recipient.id == self.id
+      return false
+    else
+      puts "This child neither initiated nor received this date"
+      return nil
+    end
+  end
+
   private
 
   def make_dir_unless_exists(dir_name)
