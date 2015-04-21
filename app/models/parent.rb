@@ -44,12 +44,15 @@ class Parent < ActiveRecord::Base
     self.playdates.select {|date| date.status == "pending"}
   end
 
-  def upcoming_dates
-    self.playdates.select {|date| (date.status == "accepted") && (date.playdate_at > Time.now)}
+  def planning_and_upcoming_dates
+    upcoming_dates = self.playdates.reject{|date| date.playdate_at.nil?}.select{|date| (date.status == 'accepted') && (date.playdate_at > Time.now)}.sort_by{|date| date.playdate_at}.reverse!
+    planning_dates = self.playdates.select{|date| (date.status == "accepted") && (date.playdate_at.nil?)}
+    sorted_and_combined_dates = upcoming_dates + planning_dates
+    return sorted_and_combined_dates
   end
 
   def past_dates
-    self.playdates.select {|date| (date.status == "accepted") && (date.playdate_at < Time.now)}
+    self.playdates.reject{|date| date.playdate_at.nil?}.select{|date| (date.status == "accepted") && (date.playdate_at < Time.now)}
   end
 
   def my_child(date_object)

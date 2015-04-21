@@ -1,11 +1,24 @@
 <div class="date-preview row">
-  <div class="your-child-photo col span_3">
-    <img src"<%= user.my_child(date).pf_image_1 %>" />
-  </div>
-  <div class="date-details col span_6">
-    TEXT
-  </div>
-  <div class="other-child-photo col span_3">
-    <img src"<%= user.other_child(date).pf_image_1 %>" />
-  </div>
+  <a href="/dates/<%= date.id %>">
+    <div class="your-child-photo col span_3">
+      <img src="<%= user.my_child(date).pf_image_1 %>" />
+    </div>
+    <div class="date-details col span_6">
+      <ul>
+        <% if user.initiated_date?(date) %>
+          <li>You asked to introduce <%= user.my_child(date).first_name %> to <span><%= user.other_child(date).first_name %></span></li>
+        <% else %>
+          <li><span><%= user.other_child(date).parent.first_name %></span> asked to introduce <span><%= user.other_child(date).first_name %></span> to <%= user.my_child(date).first_name %></li>
+        <% end %>
+        <% if date.venue %>
+          <li><span>Venue:</span> <%= date.venue %></li>
+        <% end %>
+        <li><span>Budget:</span> <%= date.budget_as_string %></li>
+        <li><span>Date:</span> <%= date.calendar_date_as_string %></li>
+      </ul>
+    </div>
+    <div class="other-child-photo col span_3">
+      <img src="<%= user.other_child(date).pf_image_1 %>" />
+    </div>
+  </a>
 </div>

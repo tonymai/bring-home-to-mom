@@ -1,45 +1,55 @@
 <div class="dates-dashboard-container container">
   <div class="row">
-    <h1><%= @user.first_name %>'s Dashboard</h1>
+    <div class="page-title-wrapper">
+      <h1><%= @user.first_name %>'s Dashboard</h1>
+    </div>
 
     <div class="col span_3">
-      <div class="dashboard-section-header">
-        <h2>Offspring</h2>
-      </div>
-      <% @user.children.each do |child| %>
-        <%= render partial: "child_snapshot", locals: {child: child} %>
-      <% end %>
-      <div class="add-child-btn">
-        <p>Add Another Child!</p>
+      <div class="children-collection">
+        <div class="dashboard-section-header">
+          <h2>Offspring</h2>
+        </div>
+        <% @user.children.each do |child| %>
+          <%= render partial: "child_snapshot", locals: {child: child} %>
+        <% end %>
+        <div class="add-child-btn">
+          <a href="/users/<%= @user.id %>/profiles/new">Add Another Child!</a>
+        </div>
       </div>
     </div>
 
     <div class="col span_9">
-      <div class="dates-collection upcoming-dates row">
-        <div class="dashboard-section-header">
-          <h2>Pending</h2>
-        </div>
-        <% @user.pending_dates.each do |date| %>
-          <%= render partial: "date_preview_row", locals: {date: date, user: @user} %>
-        <% end %>
-      </div>
-
       <div class="dates-collection pending-dates row">
         <div class="dashboard-section-header">
-          <h2>Upcoming</h2>
+          <h2>Pending Dates</h2>
         </div>
-        <% @user.upcoming_dates.each do |date| %>
-          <%= render partial: "date_preview_row", locals: {date: date, user: @user} %>
-        <% end %>
+        <div class="dates-rows-wrapper">
+          <% @user.pending_dates.each do |date| %>
+            <%= render partial: "date_preview_row", locals: {date: date, user: @user} %>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="dates-collection upcoming-dates row">
+        <div class="dashboard-section-header">
+          <h2>Planning and Upcoming Dates</h2>
+        </div>
+        <div class="dates-rows-wrapper">
+          <% @user.planning_and_upcoming_dates.each do |date| %>
+            <%= render partial: "date_preview_row", locals: {date: date, user: @user} %>
+          <% end %>
+        </div>
       </div>
 
       <div class="dates-collection past-dates row">
         <div class="dashboard-section-header">
-          <h2>Past</h2>
+          <h2>Past Dates</h2>
         </div>
-        <% @user.past_dates.each do |date| %>
-          <%= render partial: "date_preview_row", locals: {date: date, user: @user} %>
-        <% end %>
+        <div class="dates-rows-wrapper">
+          <% @user.past_dates.each do |date| %>
+            <%= render partial: "date_preview_row", locals: {date: date, user: @user} %>
+          <% end %>
+        </div>
       </div>
     </div>
 
