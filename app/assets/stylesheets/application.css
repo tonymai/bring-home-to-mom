@@ -36,7 +36,7 @@ header.app-header {
   height:30px;
   width: 100%;
   position: fixed;
-  z-index: 1;
+  z-index: 2;
 
   background: -webkit-linear-gradient(90deg, #f857a6 10%, #ff5858 90%); /* Chrome 10+, Saf5.1+ */
   background:    -moz-linear-gradient(90deg, #f857a6 10%, #ff5858 90%); /* FF3.6+ */
