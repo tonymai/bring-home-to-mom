@@ -145,9 +145,16 @@
   display: inline-block;
 }
 
-.child-pf-image img {
+.child-pf-image-sub {
   width: 100px;
-  height: auto;
+  height: 100px;
+  border-radius: 50px;
+  overflow: hidden;
+}
+
+.child-pf-image-sub img {
+ height: 100px;
+ width: auto;
 }
 /*Filter page*/
 .filter-wrapper{
