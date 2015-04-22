@@ -5,7 +5,8 @@ class ChargesController < ApplicationController
 	end
 
 	def create
-		@amount = 5000 # amount in cents
+		date = Playdate.find(params[:date_id])
+		@amount = date.total_cost_per_person # amount in cents
 
 		customer = Stripe::Customer.create(
 			email:  params[:stripeEmail],
@@ -15,19 +16,22 @@ class ChargesController < ApplicationController
 		charge = Stripe::Charge.create(
 		  customer:    customer.id,
 		  amount:      @amount,
-		  description: 'Rails Stripe customer',
+		  description: date.id,
 		  currency:    'usd'
 		)
 
-		current_user
-		
+		if current_user == date.initiator
+			date.initiator_paid = true
+		elsif current_user == date.recipient 
+			date.recipient_paid = true
+		end
+
+		date.save
 		redirect_to "/users/#{current_user.id}"
 
-		# render json: { customer: customer, charge: charge, user_id: current_user.id }
-
-		rescue Stripe::CardError => e
+		rescue Stripe::CardError, Stripe::InvalidRequestError => e
 		  flash[:error] = e.message
-		  redirect_to charges_path
+		  redirect_to date_path(date)
 	end
 
 end
