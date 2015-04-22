@@ -1,9 +1,89 @@
 <div class="playdate-container container">
-  <div class = "status row">
-
-    <div class="page-title-wrapper">
-      <h1>Design <%= current_user.my_child(@playdate).first_name %>'s Date!</h1>
+  <div class="title-and-status-wrapper row">
+    <div class="col span_8">
+      <div class="page-title-wrapper">
+        <h1>Design <%= current_user.my_child(@playdate).first_name %>'s Date with <%= current_user.other_child(@playdate).first_name %>!</h1>
+      </div>
     </div>
+    <div class="status-box-wrapper col span_4">
+      <div class="status-box row">
+        <div class="date-status-header">
+          <p>DATE STATUS</p>
+        </div>
+        <div class="col span_6">
+          <div class="date-status-parent-name">
+            <% if @playdate.initiator.parent.id == current_user.id %>
+              <span>You</span>
+            <% else %>
+              <span><%= @playdate.initiator.parent.first_name %></span>
+            <% end %>
+          </div>
+          <div class="date-status-table">
+            <div class="date-status-row">
+              <i class="fa fa-check-circle"></i>
+              <p>Initiated</p>
+            </div>
+            <div class="date-status-row">
+              <% if @playdate.initiator_confirmed %>
+                <i class="fa fa-check-circle"></i>
+              <% else %>
+                <i class="fa fa-circle-thin"></i>
+              <% end %>
+              <p>Confirmed</p>
+            </div>
+            <div class="date-status-row">
+              <% if @playdate.initiator_paid %>
+                <i class="fa fa-check-circle"></i>
+              <% else %>
+                <i class="fa fa-circle-thin"></i>
+              <% end %>
+              <p>Paid</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col span_6">
+          <div class="date-status-parent-name">
+            <% if @playdate.recipient.parent.id == current_user.id %>
+              <span>You</span>
+            <% else %>
+              <span><%= @playdate.recipient.parent.first_name %></span>
+            <% end %>
+          </div>
+          <div class="date-status-table">
+            <div class="date-status-row">
+              <% if @playdate.recipient_accepted %>
+                <i class="fa fa-check-circle"></i>
+              <% else %>
+                <i class="fa fa-circle-thin"></i>
+              <% end %>
+              <p>Accepted</p>
+            </div>
+            <div class="date-status-row">
+              <% if @playdate.recipient_confirmed %>
+                <i class="fa fa-check-circle"></i>
+              <% else %>
+                <i class="fa fa-circle-thin"></i>
+              <% end %>
+              <p>Confirmed</p>
+            </div>
+            <div class="date-status-row">
+              <% if @playdate.recipient_paid %>
+                <i class="fa fa-check-circle"></i>
+              <% else %>
+                <i class="fa fa-circle-thin"></i>
+              <% end %>
+              <p>Paid</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+  <div class = "status row">
 
     <div class="col span_8">
 
@@ -13,10 +93,15 @@
         </div>
 
         <div class="date-design-section-body">
-          <div class="date-experience-card">
-            <h3> Budget:</h3>
-            <h3> Date/Time:</h3>
-          </div>
+          <% if (@playdate.experience.nil?) && (@playdate.movie.nil?) %>
+            <p>No Experience Selected</p>
+          <% elsif (@playdate.experience) && (@playdate.movie.nil?) %>
+            <%= render partial: "experience_card", locals: {experience: @playdate.experience} %>
+          <% elsif (@playdate.movie) && (@playdate.experience.nil?) %>
+            <%= render partial: "movie_card", locals: {movie: @playdate.movie} %>
+          <% else %>
+            <p>Something is wrong!</p>
+          <% end %>
         </div>
       </div>
 
