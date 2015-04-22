@@ -44,30 +44,36 @@
 .how-btn:hover {
   color:lightgray;
   background: rgba(26, 181, 149, 0.5);
-  background: #B295ED
+
+  background: #9377d1;
+  color:white;
 
 }
 
 .welcome-description {
   position: relative;
   top: -175px;
-  padding: 10em;
-  background-color: #1AB595;
+  padding: 14em;
+  /*background-color: #1AB595;*/
+  background-image: url("green_texture.png")
 }
 
 .how-step {
   text-align: center;
 }
-
+.how-step h4{
+  color:rgb(247, 247, 247);
+}
 .circle-outer {
   position: relative;
   width: 190px;
   height: 190px;
   text-align: center;
-  background: rgb(253, 222, 61);
+  background: transparent;
   -moz-border-radius: 95px;
   -webkit-border-radius: 95px;
   border-radius: 100px;
+  margin:0 auto;
 }
 
 .circle-inner {
@@ -77,8 +83,7 @@
   width: 140px;
   height: 140px;
   text-align: center;
-  background: #FDDE3D;
-  background: #1AB595;
+  background: transparent;
   -moz-border-radius: 70px;
   -webkit-border-radius: 70px;
   border-radius: 75px;
@@ -100,13 +105,15 @@
   background: #B295ED;
   border: 2px solid #1AB595;
   padding: .6em;
+  border-radius: 4px;
   height: 50px;
   z-index: 1;
   border-radius: 3px;
 }
 
 .get-started-btn:hover {
-  background: #B295ED;
+  background: #9377d1;
+  color:white;
 }
 
 
@@ -119,6 +126,7 @@
 .form-wrapper input{
   color:black;
   margin-bottom: 1em;
+
 }
 
 .form-wrapper input {
@@ -159,6 +167,17 @@
   width: 100px;
   height: auto;
 }
+
+
+
+/*Login-external-form*/
+.signup-container{
+  background-color: yellow;
+}
+
+
+
+
 /*Filter page*/
 .filter-wrapper{
   background-color: coral;
