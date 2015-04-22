@@ -5,6 +5,8 @@ class PlaydatesController < ApplicationController
 
   def show
     @playdate = Playdate.find(params[:id])
+    redirect_to user_path(current_user) unless current_user.my_child(@playdate)
+
     @upcoming_experiences = Experience.upcoming_experiences
     ##Get IMDB IDs
 
