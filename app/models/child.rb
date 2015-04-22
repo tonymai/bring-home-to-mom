@@ -35,15 +35,23 @@ class Child < ActiveRecord::Base
   validate :check_age
 
   def save_profile_image(uploaded_io, pf_image_key)
-    byebug
-    make_dir_unless_exists(Rails.root.join('public', 'uploads'))
-    make_dir_unless_exists(Rails.root.join('public','uploads', "#{self.parent.id}"))
-    make_dir_unless_exists(Rails.root.join('public','uploads', "#{self.parent.id}", "#{Child.last ? (Child.last.id + 1) : 1}"))
+    # make_dir_unless_exists(Rails.root.join('public', 'uploads'))
+    # make_dir_unless_exists(Rails.root.join('public','uploads', "#{self.parent.id}"))
+    # make_dir_unless_exists(Rails.root.join('public','uploads', "#{self.parent.id}", "#{Child.last ? (Child.last.id + 1) : 1}"))
 
-    self[pf_image_key] = "#{pf_image_key}.#{uploaded_io.content_type.split('/')[1]}"
+    # File.open(Rails.root.join('public','uploads', "#{self.parent.id}", "#{Child.last ? (Child.last.id + 1) : 1}", self[pf_image_key]), 'wb') do |file|
+    #   file.write(uploaded_io.read)
+    # end
 
-    File.open(Rails.root.join('public','uploads', "#{self.parent.id}", "#{Child.last ? (Child.last.id + 1) : 1}", self[pf_image_key]), 'wb') do |file|
-      file.write(uploaded_io.read)
+    parent_id = self.parent.id
+    child_id = Child.last ? (Child.last.id + 1) : 1
+
+    # need error handling for if cloudinary upload fails
+    begin
+      cloudinary_response = Cloudinary::Uploader.upload(uploaded_io, public_id: "#{parent_id}/#{child_id}/#{pf_image_key}")
+      self[pf_image_key] = cloudinary_response["secure_url"]
+    rescue CloudinaryException => e
+      self[pf_image_key] = e
     end
   end
 
