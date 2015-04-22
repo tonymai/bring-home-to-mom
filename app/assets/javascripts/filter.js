@@ -30,7 +30,7 @@ $(document).on('page:change', function() {
 });
 
 function updateMatches() {
-  var gender = $("h1").attr("data-gender");
+  var gender = $(".child-name").attr("data-gender");
   var sexual_preference = null;
 
   if (gender === 'male') {

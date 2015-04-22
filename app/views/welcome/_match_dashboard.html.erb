@@ -1,7 +1,7 @@
 <div class="filter-page-container">
   <div class="welcome-page-loggedin filter-wrapper col span_3">
     <br/>
-    <h2> Filters for:</h2>
+    <h2 class="filters-title"> Filters for:</h2>
     <h2 class = "child-name" data-gender = "<%= @current_child.gender %>"><%= @current_child.first_name %></h2>
 
     <%= render partial: 'all_children_profiles' %>
@@ -11,7 +11,7 @@
       Between: <input id="input-lower" class="filterby" name='by_age'> and <input class= "filterby" name="by_age" id="input-upper">
       <div class="filterby age-slider"></div>
     </div>
-
+    <div class="form-container">
     <form class = "filters">
       <div class="dropdowns-wrapper">
       <div class="single-drpdwn-wrapper">
@@ -43,18 +43,18 @@
       </div>
     </div>
 
-      <br/>
       <br>
 
       Exclude Smokers <input class="filterby" type="checkbox" name="smoke" value="1">
     </form>
+  </div>
+  <br>
     <%= render partial: 'autocomplete_container' %>
-    <a href="/users/<%= current_user.id %>/profiles/new">Link to create a new child profile</a>
+    <a href="/users/<%= current_user.id %>/profiles/new"><button>Create A New Child Profile</button></a>
 
   </div>
   <div class="matches col span_9">
-    <div class="matches col span_7">
-    </div>
+
   </div>
 </div>
 <script id="child_preview_template" type="x-handlebars-template">

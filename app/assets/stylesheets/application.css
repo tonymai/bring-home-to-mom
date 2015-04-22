@@ -51,8 +51,6 @@ header.app-header nav {
   background:      -o-linear-gradient(90deg, #4b6cb7 10%, #182848 90%); /* Opera 11.10+ */
   background:         linear-gradient(90deg, #4b6cb7 10%, #182848 90%); /* W3C */
 
-
-
 }
 
 .logo {
@@ -116,7 +114,7 @@ header.app-header nav {
 
 .navbar-filler {
   width: 100%;
-  height: 30px;
+  height: 1em;
 }
 
 .hidden {
