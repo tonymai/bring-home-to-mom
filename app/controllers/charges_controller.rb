@@ -19,7 +19,9 @@ class ChargesController < ApplicationController
 		  currency:    'usd'
 		)
 
-		render json: { customer: customer, charge: charge }
+		redirect_to date_path()
+
+		# render json: { customer: customer, charge: charge, user_id: current_user.id }
 
 		rescue Stripe::CardError => e
 		  flash[:error] = e.message
