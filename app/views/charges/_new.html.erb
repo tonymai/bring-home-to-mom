@@ -1,0 +1,14 @@
+<%= form_tag date_charges_path(@playdate) do %>
+  <article>
+    <label class="amount">
+      <span>Amount: $<%= @playdate.total_cost_per_person %></span>
+    </label>
+  </article>
+
+  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+          data-description="Purchase Date"
+          data-amount="<%= @playdate.total_cost_per_person %>"
+          data-paid="true"
+          data-date></script>
+<% end %>

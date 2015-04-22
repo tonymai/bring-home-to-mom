@@ -16,28 +16,30 @@ Rails.application.routes.draw do
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
-  resources :users, only: [:index, :show] do
-    resources :profiles
+
+  authenticate :user do
+    resources :users, only: [:index, :show] do
+      resources :profiles
+    end
+
+    resources :dates, class_name: 'Playdate', controller: :playdates do
+      resources :messages, only: [:create]
+    # for payments
+      resources :charges, only: [:new, :create]
+    end
+
+    resources :interests, only: [:index, :create]
+    resources :values, only: [:index, :create]
+
+    get '/filters' => 'filters#filter_matches'
+
+    get '/filters/autocomplete/interests' => 'filters#autocomplete_interest_name'
+    get '/filters/autocomplete/values' => 'filters#autocomplete_value_name'
+
+    get '/users/:id/messages' => 'users#messages'
+
+    post '/' => 'welcome#change_child'
   end
-
-  resources :dates, class_name: 'Playdate', controller: :playdates do
-    resources :messages
-  end
-
-  resources :interests, only: [:index, :create]
-  resources :values, only: [:index, :create]
-
-  get '/filters' => 'filters#filter_matches'
-
-  get '/filters/autocomplete/interests' => 'filters#autocomplete_interest_name'
-  get '/filters/autocomplete/values' => 'filters#autocomplete_value_name'
-
-  get '/users/:id/messages' => 'users#messages'
-
-  get 'logout' => 'welcome#destroy'
-
-  post '/' => 'welcome#change_child'
-
 
   # Example resource route with options:
   #   resources :products do
