@@ -38,6 +38,7 @@ gem 'has_scope'
 #for APIs
 gem 'httparty'
 gem 'fandango'
+gem 'cloudinary'
 
 # For messaging
 gem 'private_pub'
@@ -46,9 +47,9 @@ gem 'thin'
 # For autocomplete searches
 gem 'rails-jquery-autocomplete'
 
+
 # For payments
 gem 'stripe'
-
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
