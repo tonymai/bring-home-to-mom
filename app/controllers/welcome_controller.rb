@@ -2,7 +2,7 @@ class WelcomeController < ApplicationController
 
   def index
     if user_signed_in?
-    	session[:profile_id] = current_user.children.last unless session[:profile_id]
+    	session[:profile_id] = current_user.children.last.id unless session[:profile_id]
       @current_child = Child.find(session[:profile_id])
     end
   end
