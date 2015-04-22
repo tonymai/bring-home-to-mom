@@ -1,13 +1,86 @@
-.noUi-target{
-  width: 80%;
-  margin-top: 3%;
-  margin-left: 14%;
+/*Filter page*/
+.filter-page-container{
+  background-image: url("green_texture.png");
+  height:100%;
+  width:100%;
+}
+.filter-wrapper{
+  height:100%;
+  background-color: rgba(256,256,256,0.3);
+  border-right:1px solid #3FB8AF;
+  text-align: center;
 }
 
+.filters{
+  margin-top: 4em;
+}
+
+.filters select{
+  margin-bottom: 1em;
+}
+.dropdowns-wrapper{
+  width: 18em;
+  margin: auto;
+}
+.single-drpdwn-wrapper{
+  display:flex;
+  justify-content: space-between;
+}
+.filter-wrapper select{
+  width:140px;
+  text-align: left;
+}
+
+.prof-img{
+  height:100px;
+  width:100px;
+}
+
+.matches .individual-child{
+  display: inline-block;
+}
+
+
+.noUi-target{
+  width: 26em;
+  margin-top: 3%;
+  margin-left: 11em;
+}
+
+
+
+/*Children profiles*/
+.all-child-profiles {
+  float: left;
+  width: 100%;
+  text-align: center;
+}
+.child-pf-image {
+  display: inline-block;
+}
+
+.child-pf-image-sub {
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
+  overflow: hidden;
+  border:2px solid white;
+}
+
+.child-pf-image-sub img {
+ height: 100px;
+ width: auto;
+}
+
+
+
+.age-slider-container{
+  margin-top: 14em;
+}
 .age-slider-container input{
   display:inline-block;
   margin-top: 1em;
-  width:40px;
+  width:4em;
   border:none;
   border-radius: 5px;
 }

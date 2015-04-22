@@ -13,7 +13,7 @@ $(document).on('page:change', function(e) {
 		}).done(function(data) {
 			var child = data.profile
 
-			$('h1').attr('data-gender', child.gender);	
+			$('h1').attr('data-gender', child.gender);
 
 			if (child.sexual_preference === 'men') {
 			  child.gender = 'male';
@@ -25,7 +25,7 @@ $(document).on('page:change', function(e) {
 			  child.gender = '';
 			}
 
-			$('h1').text(child.first_name);
+			$('.child-name').text(child.first_name);
 			changeSelected('by_gender', child.gender);
 
 			changeSelected('by_religion', child.religion);

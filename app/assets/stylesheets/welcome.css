@@ -154,27 +154,6 @@
   display: none;
 }
 
-/*Children profiles*/
-.all-child-profiles {
-  float: left;
-  width: 100%;
-  text-align: center;
-}
-.child-pf-image {
-  display: inline-block;
-}
-
-.child-pf-image-sub {
-  width: 100px;
-  height: 100px;
-  border-radius: 50px;
-  overflow: hidden;
-}
-
-.child-pf-image-sub img {
- height: 100px;
- width: auto;
-}
 
 
 
@@ -185,23 +164,4 @@
 
 
 
-
-/*Filter page*/
-.filter-wrapper{
-  background-color: coral;
-  height:1000px;
-}
-.filter-wrapper select{
-  width:100px;
-  text-align: left;
-}
-
-.prof-img{
-  height:100px;
-  width:100px;
-}
-
-.matches .individual-child{
-  display: inline-block;
-}
 
