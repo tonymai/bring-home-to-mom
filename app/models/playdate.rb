@@ -6,6 +6,19 @@ class Playdate < ActiveRecord::Base
 
   validates :initiator_id, :recipient_id, presence: true
 
+  # Conversation-specific block
+  has_many :messages, dependent: :destroy
+  validates_uniqueness_of :initiator_id, scope: :recipient_id
+
+  scope :involving, -> (user) do
+    where("conversations.initiator_id =? OR conversations.recipient_id =?",user.id,user.id)
+  end
+
+  scope :between, -> (initiator_id,recipient_id) do
+    where("(conversations.initiator_id = ? AND conversations.recipient_id =?) OR (conversations.initiator_id = ? AND conversations.recipient_id =?)", initiator_id,recipient_id, recipient_id, initiator_id)
+  end
+  # End conversation-specific block
+
   def total_cost_per_person
     self.experience.nil? ? experience_cost = 0 : experience_cost = self.experience.price_per_person
     self.movie.nil? ? movie_cost = 0 : movie_cost = self.movie.price_per_person

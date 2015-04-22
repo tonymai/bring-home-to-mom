@@ -1,0 +1,22 @@
+<div class="chatboxhead">
+  <div class="chatboxtitle">
+    <i class="fa fa-comments"></i>
+    <h2><%= @receiver.first_name %>'s Mom</h2>
+  </div>
+  <br clear="all"/>
+</div>
+
+<div class="chatboxinput">
+  <%= form_for(:message, url: date_messages_path(@playdate), remote: true, html: {id: "conversation_form_#{@playdate.id}"}) do |f| %>
+      <%= f.text_area :body, class: "chatboxtextarea", placeholder: "Add a personal message here.", "data-cid" => @playdate.id %>
+      <%= f.submit "Send Message", class: "chatboxsubmit" %>
+  <% end %>
+</div>
+
+<div class="chatboxcontent">
+  <% if @messages.any? %>
+      <%= render @messages.reverse %>
+  <% end %>
+</div>
+ 
+<%= subscribe_to date_path(@playdate) %>

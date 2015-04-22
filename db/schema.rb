@@ -56,16 +56,6 @@ ActiveRecord::Schema.define(version: 20150421205130) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "conversations", force: :cascade do |t|
-    t.integer  "sender_id"
-    t.integer  "recipient_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-  end
-
-  add_index "conversations", ["recipient_id"], name: "index_conversations_on_recipient_id", using: :btree
-  add_index "conversations", ["sender_id"], name: "index_conversations_on_sender_id", using: :btree
-
   create_table "experiences", force: :cascade do |t|
     t.string   "venue"
     t.string   "address"
@@ -88,14 +78,14 @@ ActiveRecord::Schema.define(version: 20150421205130) do
 
   create_table "messages", force: :cascade do |t|
     t.text     "body"
-    t.integer  "conversation_id"
+    t.integer  "playdate_id"
     t.integer  "parent_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
-  add_index "messages", ["conversation_id"], name: "index_messages_on_conversation_id", using: :btree
   add_index "messages", ["parent_id"], name: "index_messages_on_parent_id", using: :btree
+  add_index "messages", ["playdate_id"], name: "index_messages_on_playdate_id", using: :btree
 
   create_table "movies", force: :cascade do |t|
     t.string   "venue"
@@ -145,6 +135,9 @@ ActiveRecord::Schema.define(version: 20150421205130) do
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
   end
+
+  add_index "playdates", ["initiator_id"], name: "index_playdates_on_initiator_id", using: :btree
+  add_index "playdates", ["recipient_id"], name: "index_playdates_on_recipient_id", using: :btree
 
   create_table "values", force: :cascade do |t|
     t.string   "name"
