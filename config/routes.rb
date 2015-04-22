@@ -46,7 +46,7 @@ Rails.application.routes.draw do
 
     post '/' => 'welcome#change_child'
 
-
+  end
   
   # Example resource route with options:
   #   resources :products do

@@ -41,6 +41,6 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
 
   # 
-  config.middleware.use Rack::TwilioWebhookAuthentication, ENV['TWILIO_AUTH_TOKEN'], '/messages'
+  # config.middleware.use Rack::TwilioWebhookAuthentication, ENV['TWILIO_AUTH_TOKEN'], '/messages'
 
 end
