@@ -42,21 +42,24 @@ class PlaydatesController < ApplicationController
     @receiver = conversation_interlocutor(@playdate)
     @messages = @playdate.messages
     @message = Message.new
+
   end
 
   def create
-    new_playdate = Playdate.create(playdate_params)
-    redirect_to date_path new_playdate
+    params[:playdate][:initiator_id] = session[:profile_id]
+    playdate = Playdate.new(playdate_params)
+
+    if playdate.save
+      redirect_to date_path(playdate)
+    else
+      redirect_to root_path
+    end
   end
 
   private
 
   def playdate_params
     params.require(:playdate).permit(:initiator_id,:recipient_id)
-  end
-
-  def conversation_params
-    params.permit(:sender_id, :recipient_id)
   end
 
   def conversation_interlocutor(conversation)

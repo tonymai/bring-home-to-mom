@@ -3,6 +3,8 @@
   <div class = "status row">
     <div class="col span_12">
       <h1> Status: Pending//Declined//Confirmed</h1>
+
+      <%= render 'charges/new' %>
     </div>
   </div>
 
@@ -12,7 +14,17 @@
       <h3> Date/Time:</h3>
     </div>
 
+    <div class="movie row">
+      <h2> Plan the Date: </h2>
+      <h3> Movies </h3>
+        <div id="movie-wrap" class= "col span_8">
+
+        </div>
+
+    </div>
+
     <%= render 'movie_row' %>
+
 
     <div class="restaurant row">
       <h2> Restaurants: </h2>

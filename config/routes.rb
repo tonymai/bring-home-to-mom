@@ -16,13 +16,17 @@ Rails.application.routes.draw do
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
+
+
   authenticate :user do
     resources :users, only: [:index, :show] do
       resources :profiles
     end
 
     resources :dates, class_name: 'Playdate', controller: :playdates do
-      resources :messages
+      resources :messages, only: [:create]
+    # for payments
+      resources :charges, only: [:new, :create]
     end
 
     resources :interests, only: [:index, :create]
@@ -37,9 +41,6 @@ Rails.application.routes.draw do
 
     post '/' => 'welcome#change_child'
   end
-
-
-
 
   # Example resource route with options:
   #   resources :products do
