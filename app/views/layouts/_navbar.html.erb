@@ -2,6 +2,14 @@
   <div class="logo"><a href="/">BHTM</a></div>
   <ul>
     <% if user_signed_in? %>
+      <li class="notification">
+        <i class="fa fa-envelope-o"></i>
+        <ul class="notification-dropdown">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+      </li>
       <li><a href="/users/<%= current_user.id %>" >Dashboard</a></li>
     	<li><%= link_to "Log Out", "/users/sign_out", method: 'delete', class:"logout-button" %><li>
     <% elsif request.env['PATH_INFO'] == "/" %>
