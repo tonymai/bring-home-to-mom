@@ -1,6 +1,6 @@
 class Message < ActiveRecord::Base
-  belongs_to :conversation
+  belongs_to :playdate
   belongs_to :parent
 
-  validates :body, :conversation_id, :parent_id, presence: true
+  validates :body, :playdate_id, :parent_id, presence: true
 end

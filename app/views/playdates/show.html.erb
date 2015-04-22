@@ -9,7 +9,7 @@
   </div>
 
   <div class=" col date-data span_8">
-    <div class="movie row">
+    <div class="date-data row">
       <h3> Budget:</h3>
       <h3> Date/Time:</h3>
     </div>
@@ -23,10 +23,12 @@
 
     </div>
 
+    <%= render 'movie_row' %>
+
+
     <div class="restaurant row">
       <h2> Restaurants: </h2>
     </div>
-
     <div class="calendar row">
       <h2> Calendar: </h2>
     </div>
@@ -34,7 +36,7 @@
   </div>
 
   <div class=" chat-data col span_4">
-    Chat stuff
+    <%= render partial: 'chat' %>
   </div>
 
 

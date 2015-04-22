@@ -20,8 +20,11 @@ Rails.application.routes.draw do
     resources :profiles
   end
 
+  resources :dates, class_name: 'Playdate', controller: :playdates do
+    resources :messages
+  end
+
   resources :interests, only: [:index, :create]
-  resources :dates, class_name: 'Playdate', controller: :playdates
   resources :values, only: [:index, :create]
 
   # for payments
@@ -36,9 +39,6 @@ Rails.application.routes.draw do
 
   post '/' => 'welcome#change_child'
 
-  resources :conversations do
-    resources :messages
-  end
 
   # Example resource route with options:
   #   resources :products do
