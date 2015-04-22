@@ -146,27 +146,6 @@
   color:white;
 }
 
-.notification {
-  position: relative;
-}
-
-.notification .notification-dropdown {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  margin: 0;
-  background-color: #000000;
-  display: none;
-}
-
-.notification:hover .notification-dropdown {
-  display: block;
-}
-
-.hidden{
-  display: none;
-}
-
 /*Children profiles*/
 .all-child-profiles {
   float: left;
