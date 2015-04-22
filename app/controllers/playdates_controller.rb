@@ -48,7 +48,6 @@ class PlaydatesController < ApplicationController
   end
 
   def create
-    p session[:profile_id]
     params[:playdate][:initiator_id] = session[:profile_id]
     playdate = Playdate.find_or_initialize_by(playdate_params) #can only request date with someone once
     if playdate.save
@@ -56,6 +55,7 @@ class PlaydatesController < ApplicationController
     else
       redirect_to root_path
     end
+
   end
 
   private
