@@ -4,6 +4,6 @@ module MessagesHelper
   end
  
   def message_interlocutor(message)
-    message.parent == message.conversation.sender ? message.conversation.sender : message.conversation.recipient
+    message.parent == message.playdate.initiator.parent ? message.playdate.initiator : message.playdate.recipient
   end
 end

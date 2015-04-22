@@ -10,5 +10,8 @@ class CreatePlaydates < ActiveRecord::Migration
 
       t.timestamps null: false
     end
+
+    add_index :playdates, :initiator_id
+    add_index :playdates, :recipient_id
   end
 end
