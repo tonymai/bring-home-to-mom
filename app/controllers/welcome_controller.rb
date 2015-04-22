@@ -12,7 +12,11 @@ class WelcomeController < ApplicationController
   end
 
   def change_child
-  	session[:profile_id] = params[:profile_id]
+    p session
+    p "***********************************"
+    p params
+    p "***********************************"
+    session[:profile_id] = params[:profile_id]
   	current_child = Child.find(params[:profile_id])
 
   	render json: { profile: current_child }

@@ -2,7 +2,7 @@
   <div class = "status row">
 
     <div class="page-title-wrapper">
-      <h1>Design <%= current_user.my_child(@playdate).first_name %>'s' Date!</h1>
+      <h1>Design <%= current_user.my_child(@playdate).first_name %>'s Date!</h1>
     </div>
 
     <div class="col span_8">
@@ -24,7 +24,6 @@
         <div class="date-design-section-header">
           <h2>Food & Drink</h2>
         </div>
-
         <div class="date-design-section-body">
           <% Experience.upcoming_experiences.each do |experience| %>
             <%= render partial: "experience_card", locals: {experience: experience} %>
@@ -32,24 +31,22 @@
         </div>
       </div>
 
-      <%= render 'movie_row' %>
-
-      <div class="restaurant row">
-        <h2> Restaurants: </h2>
-      </div>
-      <div class="calendar row">
-        <h2> Calendar: </h2>
+      <div class="date-design-section movie-container row">
+        <div class="date-design-section-header">
+          <h2>In Theaters</h2>
+        </div>
+        <div class="date-design-section-body">
+          <%= render partial: 'movie_row' %>
+        </div>
       </div>
 
     </div>
 
-      <div class=" chat-data col span_4">
-        <%= render partial: 'chat' %>
-      </div>
+    <div class=" chat-data col span_4">
+      <%= render partial: 'chat' %>
     </div>
+
   </div>
-
-
 </div>
 
 

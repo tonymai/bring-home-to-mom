@@ -1,18 +1,40 @@
 <div class="date-experience-card row">
-  <div class="experience_image col span_5">
-    <img src="<%= experience.image %>" />
+  <div class="experience-image col span_5">
+    <figure class="effect-bubba">
+      <img src="<%= experience.image %>" />
+      <figcaption>
+        <h3><%= experience.venue %></h3>
+        <p><%= experience.desc_summary %></p>
+      </figcaption>
+    </figure>
   </div>
   <div class="experience-details col span_7">
-    <ul>
-        <li>You asked to introduce <%= user.my_child(date).first_name %> to <span><%= user.other_child(date).first_name %></span></li>
-        <li><span><%= user.other_child(date).parent.first_name %></span> asked to introduce <span><%= user.other_child(date).first_name %></span> to <%= user.my_child(date).first_name %></li>
-        <li><span>Venue:</span> <%= date.first_event_location %></li>
-        <li><span>Date:</span> <%= date.first_event_datetime_as_str %></li>
-        <li><span>Venue:</span> <%= date.last_event_location %></li>
-        <li><span>Date:</span> <%= date.last_event_datetime_as_str %></li>
-    </ul>
+    <div class="exp-detail-item">
+      <i class="fa fa-calendar"></i>
+      <p><%= experience.experience_at %></p>
+    </div>
+    <div class="exp-detail-item">
+      <i class="fa fa-street-view"></i>
+      <p><%= experience.address %></p>
+    </div>
+    <div class="exp-detail-item">
+      <i class="fa fa-cutlery"></i>
+      <p><%= experience.desc_note_1 %></p>
+    </div>
+    <div class="exp-detail-item">
+      <i class="fa fa-leaf"></i>
+      <p><%= experience.desc_note_2 %></p>
+    </div>
+    <div class="exp-detail-item">
+      <i class="fa fa-smile-o"></i>
+      <p><%= experience.desc_note_3 %></p>
+    </div>
+    <div class="exp-detail-item">
+      <i class="fa fa-money"></i>
+      <p>$<%= experience.price_per_person %> / person</p>
+    </div>
   </div>
-  <div class="other-child-photo col span_3">
-    <img src="<%= user.other_child(date).default_pf %>" />
+  <div class="select-experience-btn">
+    <a href="#">Choose Experience</a>
   </div>
 </div>
