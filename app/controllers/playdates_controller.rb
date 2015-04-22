@@ -42,6 +42,7 @@ class PlaydatesController < ApplicationController
     @receiver = conversation_interlocutor(@playdate)
     @messages = @playdate.messages
     @message = Message.new
+
   end
 
   def create

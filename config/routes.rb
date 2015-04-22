@@ -22,10 +22,13 @@ Rails.application.routes.draw do
 
   resources :dates, class_name: 'Playdate', controller: :playdates do
     resources :messages
+    resources :charges, only: [:new, :create]
   end
 
   resources :interests, only: [:index, :create]
   resources :values, only: [:index, :create]
+
+  # for payments
 
   get '/filters' => 'filters#filter_matches'
 
