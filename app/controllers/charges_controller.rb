@@ -39,7 +39,6 @@ class ChargesController < ApplicationController
 		  redirect_to date_path(date)
 	end
 
-<<<<<<< HEAD
 	def notify(date)
 		client = Twilio::REST::Client.new ENV['twilio_account_sid'], ENV['twilio_auth_token']
 
