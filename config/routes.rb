@@ -42,7 +42,7 @@ Rails.application.routes.draw do
 
     post 'twilio/voice' => 'twilio#voice'
     post 'twilio/status' => 'twilio#status'
-    post 'notifications/notify' => 'notifications#notify'
+    post 'charges/notify' => 'charges#notify'
 
     post '/' => 'welcome#change_child'
 
