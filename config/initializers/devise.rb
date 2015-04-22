@@ -6,6 +6,20 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # config.secret_key = '0efe7a96629d467734ba449037613abd768a08e4e7172f51cbaf714792867f31222fb2ac8b15e2ea2117bcd843b6506ff24a7732cf33c8ae18dd1eb673494bda'
 
+  #############For Custom Failures################
+  config.warden do |manager|
+    manager.failure_app = CustomFailure
+  end
+
+
+  Rails.application.config.to_prepare do
+  Devise::SessionsController.layout "devise"
+  Devise::RegistrationsController.layout proc { |controller| user_signed_in? ? "application" : "devise" }
+  Devise::ConfirmationsController.layout "devise"
+  Devise::UnlocksController.layout "devise"
+end
+
+##############################################################################
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class

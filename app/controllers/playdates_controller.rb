@@ -7,6 +7,7 @@ class PlaydatesController < ApplicationController
     @playdate = Playdate.find(params[:id])
     @upcoming_experiences = Experience.upcoming_experiences
     ##Get IMDB IDs
+
     box_office_movies = JSON.parse(HTTParty.get("https://bhtm-boxoffice.herokuapp.com"))
     # box_office_movies = JSON.parse(HTTParty.get("http://api.rottentomatoes.com/api/public/v1.0/lists/movies/box_office.json?apikey=#{ENV['ROTTEN_TOMATOES_APIKEY']}&limit=5"))
     # box_office_movies['movies'] = [] unless box_office_movies['movies']
