@@ -21,7 +21,35 @@ cities = ['San Francisco', 'San Diego', 'Los Angeles', 'Santa Barbara', 'Sacrame
 
 experience_photos = ['http://www.seamless.com/finedining/img/vendormenuplustabcontentimages/lg_27331_0.jpg', 'http://25.media.tumblr.com/8de69d887367fa0ea41ba1c628fcad9f/tumblr_myvf7h7dKh1shjq15o1_1280.jpg', 'http://collegetimes.com/wp-content/uploads/2014/09/las.jpg', 'http://www.toastedontheinside.com/wp-content/uploads/2013/11/foodporn-34.jpg', 'http://nolavie.com/wp-content/uploads/2014/02/Pork-sliders-2.jpg', 'http://i.imgur.com/iPjkzUz.jpg', 'http://loreleynyc.com/gallery/photos/Food/beer_tasting_flight.jpg', 'https://img.vimbly.com/images/full_photos/scotch-1.jpg']
 
-20.times do
+sea_lions =
+  [ ['Andrew', 'Dye', 'https://secure.gravatar.com/avatar/5abc8c1476e25191a08feba0a23f3829.png?r=PG&amp;d=mm&amp;s=300'],
+    ['Anna', 'MacDonald', 'https://secure.gravatar.com/avatar/99659b959801d235a8a7c213227008f9.png?r=PG&amp;d=mm&amp;s=300'],
+    ['Dixon', 'Adair', 'https://secure.gravatar.com/avatar/a8936e98d319c6c8dad202d692aba2d1.png?r=PG&amp;d=mm&amp;s=30]0'],
+    ['Bao', 'Tran', 'https://secure.gravatar.com/avatar/f038deaeb508bed3d78f624ca1028df9.png?r=PG&amp;d=mm&amp;s=300'],
+    ['Curtis', 'Seaton', 'https://secure.gravatar.com/avatar/e74d3dcf95f680e762f88b3909f35f9f.png?r=PG&amp;d=mm&amp;s=300'],
+    ['Danny', 'Lundy', 'https://secure.gravatar.com/avatar/ebed9794eb1db20cfbb0a63fc4d76bb9.png?r=PG&amp;d=mm&amp;s=300'],
+    ['Deb', 'Wolfe', 'https://secure.gravatar.com/avatar/716c42ca68efd84a82e58a624f809b80.png?r=PG&amp;d=mm&amp;s=300'],
+    ['Erin', 'Hyejin Kim', 'https://secure.gravatar.com/avatar/bc3161cfe66e944b2b207080149a2df4.png?r=PG&amp;d=mm&amp;s=300'],
+    ['Ganesh', 'Balaji', 'https://secure.gravatar.com/avatar/ac871ebaa0628c6a83289e7c564af480.png?r=PG&amp;d=mm&amp;s=300'],
+    ['Iulia', 'Soimaru', 'https://secure.gravatar.com/avatar/3d772ac9d054192808f55fac90a867c7.png?r=PG&amp;d=mm&amp;s=300'],
+    ['Jacqueline', 'Hernandez', 'https://secure.gravatar.com/avatar/9e75c8c3c4d507fb24ec1bd0239ed2d7.png?r=PG&amp;d=mm&amp;s=30]0'],
+    ['Janet', 'Brown', 'https://secure.gravatar.com/avatar/13de1fc4c41fb6214c540b2bd3aa256f.png?r=PG&amp;d=mm&amp;s=300'],
+    ['Jeremy', 'Gagon', 'https://secure.gravatar.com/avatar/8a6027df29e3339dbe9e9cfa314c90ec.png?r=PG&amp;d=mm&amp;s=300'],
+    ['Jonathan', 'Berk', 'https://secure.gravatar.com/avatar/3c962b80bfae0ff8e61b99ba032c89c2.png?r=PG&amp;d=mm&amp;s=300'],
+    ['Kailash', 'Duraiswami', 'https://secure.gravatar.com/avatar/d71b25f17864f11928c53639eefa8bc4.png?r=PG&amp;d=mm&amp;s=]300'],
+    ['Kevin', 'Ceballos', 'https://secure.gravatar.com/avatar/1475db0bc23485196d4cfb94e9c4a104.png?r=PG&amp;d=mm&amp;s=300'],
+    ['Marko', 'Anton Potocnik', 'https://secure.gravatar.com/avatar/793240f33e505ec0af147eaefd94e628.png?r=PG&amp;d=mm&amp;s=30]0'],
+    ['Matt', 'McDole', 'https://secure.gravatar.com/avatar/663dd748230392e54aec7879301dcac8.png?r=PG&amp;d=mm&amp;s=300'],
+    ['Matthew', 'Lao', 'https://secure.gravatar.com/avatar/70a39a576cbafe46e62db83814105b3a.png?r=PG&amp;d=mm&amp;s=300'],
+    ['Michael', 'Perez', 'https://secure.gravatar.com/avatar/abce251b8018346e771560d66db2b3a3.png?r=PG&amp;d=mm&amp;s=300'],
+    ['Mikhail', 'Delos Trinos', 'https://secure.gravatar.com/avatar/80d04fcd03aeb5df3395e79594bc4143.png?r=PG&amp;d=mm&amp;s=30]0'],
+    ['Peter', 'Brown', 'https://secure.gravatar.com/avatar/c6186e147a341a37f30e9ab54c8538ff.png?r=PG&amp;d=mm&amp;s=300'],
+    ['Sofie', 'Garden', 'https://secure.gravatar.com/avatar/d42a49d8478e2cb45d41d04daa7ba9ee.png?r=PG&amp;d=mm&amp;s=300'],
+    ['Stephanie', 'Lopez', 'https://secure.gravatar.com/avatar/62d0db03a04b24643e728391acac88ef.png?r=PG&amp;d=mm&amp;s=300'],
+    ['Tony', 'Mai', 'https://secure.gravatar.com/avatar/0c45b9639c78f8a63b36f203c9079443.png?r=PG&amp;d=mm&amp;s=300'] ]
+i = 0
+
+40.times do
   parent = Parent.create(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
@@ -29,10 +57,10 @@ experience_photos = ['http://www.seamless.com/finedining/img/vendormenuplustabco
     password: 'password'
     )
   parent.update(email: "user#{parent.id}@gmail.com") #allows us to sign in as seed users
-  5.times do
+  3.times do
     child = parent.children.create(
-      first_name: Faker::Name.first_name,
-      last_name: Faker::Name.last_name,
+      first_name: sea_lions[i] ? sea_lions[i][0] : Faker::Name.first_name,
+      last_name: sea_lions[i] ? sea_lions[i][1] : Faker::Name.last_name,
       city: cities.sample,
       state: 'CA',
       phone: rand.to_s[2..11],
@@ -45,7 +73,7 @@ experience_photos = ['http://www.seamless.com/finedining/img/vendormenuplustabco
       linkedin_url: Faker::Internet.url,
       facebook_url: Faker::Internet.url,
       embarrassing_moment: Faker::Hacker.say_something_smart,
-      pf_image_1: Faker::Avatar.image,
+      pf_image_1: sea_lions[i] ? sea_lions[i][2] : Faker::Avatar.image,
       pf_image_2: Faker::Avatar.image,
       pf_image_3: Faker::Avatar.image,
       pf_image_4: Faker::Avatar.image,
@@ -57,6 +85,7 @@ experience_photos = ['http://www.seamless.com/finedining/img/vendormenuplustabco
     5.times do
       child.values << values.sample
     end
+    i += 1
   end
 end
 
