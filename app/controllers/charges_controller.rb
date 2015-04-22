@@ -19,7 +19,9 @@ class ChargesController < ApplicationController
 		  currency:    'usd'
 		)
 
-		redirect_to date_path()
+		current_user
+		
+		redirect_to "/users/#{current_user.id}"
 
 		# render json: { customer: customer, charge: charge, user_id: current_user.id }
 

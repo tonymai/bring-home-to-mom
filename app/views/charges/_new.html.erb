@@ -1,12 +1,46 @@
-<%= form_tag charges_path, class: 'payment-form' do %>
-  <article>
-    <label class="amount">
-      <span>Amount: $50.00</span>
-    </label>
-  </article>
 
-  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-          data-description="A month's subscription"
-          data-amount="<%= 5000 %>"></script>
-<% end %>
+
+<script src="https://checkout.stripe.com/checkout.js"></script>
+
+<button class="date-purchase-btn" data-user-id="<%= current_user.id %>" data-price-id="<%=  %>">Buy Date</button>
+
+<script>
+  var handler = StripeCheckout.configure({
+    key: ENV['PUBLISHABLE_KEY'],
+    // image: '/img/documentation/checkout/marketplace.png',
+    token: function(token) {
+
+    	var userId = $(this).attr('data-user-id');
+    	debugger
+
+    	$.ajax({
+    		url: '/charges',
+    		type: 'POST',
+    		dataType: 'JSON',
+    		data: { user_id: userId }
+    	}).done(function(data) {
+    		debugger
+    	}).fail(function(data) {
+    		debugger
+    	});
+      // Use the token to create the charge with a server-side script.
+      // You can access the token ID with `token.id`
+    }
+  });
+
+  $('.date-purchase-btn').on('click', function(e) {
+
+    // Open Checkout with further options
+    handler.open({
+      name: 'Buy Date',
+      // description: '2 widgets',
+      amount: 2000
+    });
+    e.preventDefault();
+  });
+
+  // Close Checkout on page navigation
+  $(window).on('popstate', function() {
+    handler.close();
+  });
+</script>
