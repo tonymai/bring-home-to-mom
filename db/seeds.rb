@@ -19,6 +19,8 @@ end
 
 cities = ['San Francisco', 'San Diego', 'Los Angeles', 'Santa Barbara', 'Sacramento']
 
+experience_photos = ['http://www.seamless.com/finedining/img/vendormenuplustabcontentimages/lg_27331_0.jpg', 'http://25.media.tumblr.com/8de69d887367fa0ea41ba1c628fcad9f/tumblr_myvf7h7dKh1shjq15o1_1280.jpg', 'http://collegetimes.com/wp-content/uploads/2014/09/las.jpg', 'http://www.toastedontheinside.com/wp-content/uploads/2013/11/foodporn-34.jpg', 'http://nolavie.com/wp-content/uploads/2014/02/Pork-sliders-2.jpg', 'http://i.imgur.com/iPjkzUz.jpg', 'http://loreleynyc.com/gallery/photos/Food/beer_tasting_flight.jpg', 'https://img.vimbly.com/images/full_photos/scotch-1.jpg']
+
 20.times do
   parent = Parent.create(
     first_name: Faker::Name.first_name,
@@ -26,13 +28,14 @@ cities = ['San Francisco', 'San Diego', 'Los Angeles', 'Santa Barbara', 'Sacrame
     email: Faker::Internet.email,
     password: 'password'
     )
+  parent.update(email: "user#{parent.id}@gmail.com") #allows us to sign in as seed users
   5.times do
     child = parent.children.create(
       first_name: Faker::Name.first_name,
       last_name: Faker::Name.last_name,
       city: cities.sample,
       state: 'CA',
-      phone: Faker::PhoneNumber.phone_number,
+      phone: rand.to_s[2..11],
       gender: ['male', 'female', 'other'].sample,
       sexual_preference: ['men', 'women', 'no preference'].sample,
       birthdate: Faker::Date.between(50.years.ago, 18.years.ago),
@@ -58,13 +61,13 @@ cities = ['San Francisco', 'San Diego', 'Los Angeles', 'Santa Barbara', 'Sacrame
 end
 
 children = Child.all.shuffle
-10.times do #create pending dates
+15.times do #create pending dates
   Playdate.create(
     initiator_id: children.sample.id,
     recipient_id: children.sample.id,
     )
 end
-10.times do #create accepted dates
+15.times do #create accepted dates
   playdate = Playdate.create(
     initiator_id: children.sample.id,
     recipient_id: children.sample.id,
@@ -72,7 +75,7 @@ end
     )
 
 end
-10.times do #create confirmed dates
+15.times do #create confirmed dates
   experience_time = Faker::Time.forward(50, :evening)
   playdate = Playdate.create(
     initiator_id: children.sample.id,
@@ -90,7 +93,7 @@ end
     desc_note_2: "Famous for their gnocchi and fried calamari",
     desc_note_3: "Vegetarian and gluten-free friendly",
     price_per_person: rand(30..100),
-    image: Faker::Avatar.image,
+    image: experience_photos.sample,
     experience_at: experience_time,
     )
   playdate.create_movie(
@@ -105,7 +108,7 @@ end
     )
   playdate.save
 end
-10.times do #create paid dates
+15.times do #create paid dates
   experience_time = Faker::Time.forward(20, :evening)
   playdate = Playdate.create(
     initiator_id: children.sample.id,
@@ -125,7 +128,7 @@ end
     desc_note_2: "Famous for their gnocchi and fried calamari",
     desc_note_3: "Vegetarian and gluten-free friendly",
     price_per_person: rand(30..100),
-    image: Faker::Avatar.image,
+    image: experience_photos.sample,
     experience_at: experience_time,
     )
   playdate.create_movie(
