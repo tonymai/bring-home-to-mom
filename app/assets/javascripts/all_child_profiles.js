@@ -2,9 +2,8 @@ $(document).on('page:change', function(e) {
 
 	$('.all-child-profiles').on('click', '.child-pf-image a', function(e) {
 		e.preventDefault();
-		
-		var childId = $(this).attr('data-profile-id')
 
+		var childId = $(this).attr('data-profile-id')
 
 		$.ajax({
 			url: '/',
@@ -13,6 +12,8 @@ $(document).on('page:change', function(e) {
 			data: { profile_id: childId }
 		}).done(function(data) {
 			var child = data.profile
+
+			$('h1').attr('data-gender', child.gender);	
 
 			if (child.sexual_preference === 'men') {
 			  child.gender = 'male';
@@ -24,7 +25,6 @@ $(document).on('page:change', function(e) {
 			  child.gender = '';
 			}
 
-			$('h1').attr('data-gender', child.gender);
 			$('h1').text(child.first_name);
 			changeSelected('by_gender', child.gender);
 
