@@ -38,7 +38,7 @@ gem 'has_scope'
 #for APIs
 gem 'httparty'
 gem 'fandango'
-gem 'cloudinary'
+# gem 'cloudinary'
 
 # For messaging
 gem 'private_pub'

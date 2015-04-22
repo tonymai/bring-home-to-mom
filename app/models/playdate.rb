@@ -25,10 +25,6 @@ class Playdate < ActiveRecord::Base
     total_cost = experience_cost + movie_cost
   end
 
-  # def calendar_date_as_string
-  #   self.playdate_at.nil? ? "To Be Determined" : self.playdate_at.strftime("%A, %B %d, at %I:%M %p")
-  # end
-
   def both_parents_accepted?
     return self.recipient_accepted #implicit that the initiator has accepted
   end
@@ -60,14 +56,6 @@ class Playdate < ActiveRecord::Base
       return 'pending'
     end
   end
-
-  # def playdate_at #returns datetime of earliest event (movie or experience)
-  #   return "No date set" if (self.experience.nil? && self.movie.nil?)
-  #   playdate_times = []
-  #   playdate_times << self.experience.experience_at if self.experience
-  #   playdate_times << self.movie.movie_at if self.movie
-  #   playdate_datetime = playdate_times.min
-  # end
 
   def event_selected?
     !(self.experience.nil?) || !(self.movie.nil?)

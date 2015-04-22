@@ -44,7 +44,7 @@ class Parent < ActiveRecord::Base
   end
 
   def pending_dates # only dates awaiting a response from you
-    all_pending = self.playdates.select {|date| (date.status == "pending") && (date.recipient_id == self.id)}
+    all_pending = self.playdates.select {|date| (date.status == "pending") && !(self.initiated_date?(date))}
   end
 
   def accepted_dates # planning phase

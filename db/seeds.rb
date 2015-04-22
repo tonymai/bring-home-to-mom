@@ -58,13 +58,13 @@ cities = ['San Francisco', 'San Diego', 'Los Angeles', 'Santa Barbara', 'Sacrame
 end
 
 children = Child.all.shuffle
-10.times do #create pending dates
+15.times do #create pending dates
   Playdate.create(
     initiator_id: children.sample.id,
     recipient_id: children.sample.id,
     )
 end
-10.times do #create accepted dates
+15.times do #create accepted dates
   playdate = Playdate.create(
     initiator_id: children.sample.id,
     recipient_id: children.sample.id,
@@ -72,7 +72,7 @@ end
     )
 
 end
-10.times do #create confirmed dates
+15.times do #create confirmed dates
   experience_time = Faker::Time.forward(50, :evening)
   playdate = Playdate.create(
     initiator_id: children.sample.id,
@@ -105,7 +105,7 @@ end
     )
   playdate.save
 end
-10.times do #create paid dates
+15.times do #create paid dates
   experience_time = Faker::Time.forward(20, :evening)
   playdate = Playdate.create(
     initiator_id: children.sample.id,
