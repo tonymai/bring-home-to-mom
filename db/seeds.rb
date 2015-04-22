@@ -32,7 +32,7 @@ cities = ['San Francisco', 'San Diego', 'Los Angeles', 'Santa Barbara', 'Sacrame
       last_name: Faker::Name.last_name,
       city: cities.sample,
       state: 'CA',
-      phone: Faker::PhoneNumber.phone_number,
+      phone: rand.to_s[2..11],
       gender: ['male', 'female', 'other'].sample,
       sexual_preference: ['men', 'women', 'no preference'].sample,
       birthdate: Faker::Date.between(50.years.ago, 18.years.ago),

@@ -24,7 +24,10 @@ class Parent < ActiveRecord::Base
   end
 
   def playdates
-    self.initiated_playdates + self.received_playdates
+    playdates = []
+    playdates << self.initiated_playdates if self.initiated_playdates
+    playdates << self.received_playdates if self.received_playdates
+    return playdates.flatten!
   end
 
   def initiated_date?(date_object)
@@ -40,19 +43,28 @@ class Parent < ActiveRecord::Base
     end
   end
 
-  def pending_dates
-    self.playdates.select {|date| date.status == "pending"}
+  def pending_dates # only dates awaiting a response from you
+    all_pending = self.playdates.select {|date| (date.status == "pending") && (date.recipient_id == self.id)}
   end
 
-  def planning_and_upcoming_dates
-    upcoming_dates = self.playdates.reject{|date| date.playdate_at.nil?}.select{|date| (date.status == 'accepted') && (date.playdate_at > Time.now)}.sort_by{|date| date.playdate_at}.reverse!
-    planning_dates = self.playdates.select{|date| (date.status == "accepted") && (date.playdate_at.nil?)}
-    sorted_and_combined_dates = upcoming_dates + planning_dates
-    return sorted_and_combined_dates
+  def accepted_dates # planning phase
+    self.playdates.select{|date| date.status == "accepted"}
   end
+
+  def upcoming_dates # confirmed and not yet passed
+    self.playdates.select{|date| (date.status == "confirmed") && (date.first_event_datetime > Time.now)}.sort_by{|date| date.first_event_datetime}.reverse!
+  end
+
+  # def planning_and_upcoming_dates
+  #   upcoming_dates = self.playdates.reject{|date| date.event_selected?}.select{|date| (date.status == 'accepted') && (date.first_event_datetime > Time.now)}.sort_by{|date| date.first_event_datetime}.reverse!
+  #   planning_dates = self.playdates.select{|date| (date.status == "accepted") && (date.playdate_at.nil?)}
+  #   sorted_and_combined_dates = upcoming_dates + planning_dates
+  #   return sorted_and_combined_dates
+  # end
 
   def past_dates
-    self.playdates.reject{|date| date.playdate_at.nil?}.select{|date| (date.status == "accepted") && (date.playdate_at < Time.now)}
+    self.playdates.select{|date| (date.status == "confirmed") && (date.first_event_datetime < Time.now)}.sort_by{|date| date.first_event_datetime}.reverse!
+    # self.playdates.reject{|date| date.playdate_at.nil?}.select{|date| (date.status == "accepted") && (date.playdate_at < Time.now)}
   end
 
   def my_child(date_object)

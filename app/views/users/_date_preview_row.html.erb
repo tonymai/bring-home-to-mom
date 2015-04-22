@@ -1,7 +1,7 @@
 <div class="date-preview row">
   <a href="/dates/<%= date.id %>">
     <div class="your-child-photo col span_3">
-      <img src="<%= user.my_child(date).pf_image_1 %>" />
+      <img src="<%= user.my_child(date).default_pf %>" />
     </div>
     <div class="date-details col span_6">
       <ul>
@@ -10,15 +10,18 @@
         <% else %>
           <li><span><%= user.other_child(date).parent.first_name %></span> asked to introduce <span><%= user.other_child(date).first_name %></span> to <%= user.my_child(date).first_name %></li>
         <% end %>
-        <% if date.venue %>
-          <li><span>Venue:</span> <%= date.venue %></li>
+        <% if date.event_selected? %>
+          <li><span>Venue:</span> <%= date.first_event_location %></li>
+          <li><span>Date:</span> <%= date.first_event_datetime_as_str %></li>
         <% end %>
-        <li><span>Budget:</span> <%= date.budget_as_string %></li>
-        <li><span>Date:</span> <%= date.calendar_date_as_string %></li>
+        <% if date.two_events_selected? %>
+          <li><span>Venue:</span> <%= date.last_event_location %></li>
+          <li><span>Date:</span> <%= date.last_event_datetime_as_str %></li>
+        <% end %>
       </ul>
     </div>
     <div class="other-child-photo col span_3">
-      <img src="<%= user.other_child(date).pf_image_1 %>" />
+      <img src="<%= user.other_child(date).default_pf %>" />
     </div>
   </a>
 </div>

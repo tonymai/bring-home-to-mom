@@ -6,7 +6,7 @@ class Playdate < ActiveRecord::Base
 
   validates :initiator_id, :recipient_id, presence: true
 
-  # Conversation-specific block
+  ##### Conversation-specific block
   has_many :messages, dependent: :destroy
   validates_uniqueness_of :initiator_id, scope: :recipient_id
 
@@ -17,7 +17,7 @@ class Playdate < ActiveRecord::Base
   scope :between, -> (initiator_id,recipient_id) do
     where("(conversations.initiator_id = ? AND conversations.recipient_id =?) OR (conversations.initiator_id = ? AND conversations.recipient_id =?)", initiator_id,recipient_id, recipient_id, initiator_id)
   end
-  # End conversation-specific block
+  ##### End conversation-specific block
 
   def total_cost_per_person
     self.experience.nil? ? experience_cost = 0 : experience_cost = self.experience.price_per_person
@@ -25,9 +25,9 @@ class Playdate < ActiveRecord::Base
     total_cost = experience_cost + movie_cost
   end
 
-  def calendar_date_as_string
-    self.playdate_at.nil? ? "To Be Determined" : self.playdate_at.strftime("%A, %B %d, %Y")
-  end
+  # def calendar_date_as_string
+  #   self.playdate_at.nil? ? "To Be Determined" : self.playdate_at.strftime("%A, %B %d, at %I:%M %p")
+  # end
 
   def both_parents_accepted?
     return self.recipient_accepted #implicit that the initiator has accepted
@@ -61,10 +61,60 @@ class Playdate < ActiveRecord::Base
     end
   end
 
-  def playdate_at #returns datetime of earliest event (movie or experience)
-    self.experience.nil? ? experience_datetime = 0 : experience_datetime = self.experience.experience_at
-    self.movie.nil? ? movie_datetime = 0 : movie_datetime = self.movie.experience_at
-    playdate_datetime = [experience_datetime, movie_datetime].min
+  # def playdate_at #returns datetime of earliest event (movie or experience)
+  #   return "No date set" if (self.experience.nil? && self.movie.nil?)
+  #   playdate_times = []
+  #   playdate_times << self.experience.experience_at if self.experience
+  #   playdate_times << self.movie.movie_at if self.movie
+  #   playdate_datetime = playdate_times.min
+  # end
+
+  def event_selected?
+    !(self.experience.nil?) || !(self.movie.nil?)
+  end
+
+  def two_events_selected?
+    !(self.experience.nil?) && !(self.movie.nil?)
+  end
+
+  def first_event_location
+    return "No events selected" if (self.experience.nil? && self.movie.nil?)
+    playdate_locations = []
+    playdate_locations << self.experience.venue if self.experience
+    playdate_locations << self.movie.venue if self.movie
+    playdate_first_location = playdate_locations.min
+  end
+
+  def last_event_location
+    return "No events selected" if (self.experience.nil? && self.movie.nil?)
+    playdate_locations = []
+    playdate_locations << self.experience.venue if self.experience
+    playdate_locations << self.movie.venue if self.movie
+    playdate_last_location = playdate_locations.max
+  end
+
+  def first_event_datetime
+    return "No events selected" if (self.experience.nil? && self.movie.nil?)
+    playdate_times = []
+    playdate_times << self.experience.experience_at if self.experience
+    playdate_times << self.movie.movie_at if self.movie
+    playdate_first_datetime = playdate_times.min
+  end
+
+  def last_event_datetime
+    return "No events selected" if (self.experience.nil? && self.movie.nil?)
+    playdate_times = []
+    playdate_times << self.experience.experience_at if self.experience
+    playdate_times << self.movie.movie_at if self.movie
+    playdate_last_datetime = playdate_times.max
+  end
+
+  def first_event_datetime_as_str
+    self.first_event_datetime.strftime("%A, %B %d, at %I:%M %p")
+  end
+
+  def last_event_datetime_as_str
+    self.last_event_datetime.strftime("%A, %B %d, at %I:%M %p")
   end
 
 end
