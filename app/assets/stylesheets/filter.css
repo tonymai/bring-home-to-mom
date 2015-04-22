@@ -6,8 +6,8 @@
 }
 .filter-wrapper{
   height:100%;
-  width:19em;
-  background-color: rgba(256,256,256,0.3);
+/*  width:19em;
+*/  background-color: rgba(256,256,256,0.3);
   border-right:1px solid #3FB8AF;
   text-align: center;
 }
