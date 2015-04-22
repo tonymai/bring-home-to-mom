@@ -97,6 +97,10 @@ header.app-header nav {
   color: #000000;
 }
 
+.navbar .notification-dropdown a:hover {
+  color: #ff6953;
+}
+
 .navbar .notification-dropdown li {
   color: #000000;
 }
