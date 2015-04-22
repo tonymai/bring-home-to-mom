@@ -2,6 +2,60 @@
   max-width: 1024px;
 }
 
+.status-box-wrapper{
+  border: 1px solid lightgray;
+  margin: 1em 0 1em 0;
+}
+
+.status-box{
+  padding: 0.5em;
+  font-size: 0.8em;
+}
+
+.date-status-header p{
+  margin: 0 0.5em;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.2em;
+  border-bottom: 1px solid lightgray;
+}
+
+.date-status-table{
+  display: table;
+}
+
+.date-status-parent-name{
+  text-align: center;
+  border-bottom: 1px solid lightgray;
+  margin: 0 0.5em;
+  font-size: 1.1em;
+}
+
+.date-status-row{
+  display: table-row;
+}
+
+.date-status-row i, .date-status-row p{
+  display: table-cell;
+  padding: 0.2em 0 0.2em 0.8em;
+}
+
+
+/*************** SELECTED DATE EXPERIENCE *****************/
+.accept-confirm-pay-btn a, .accept-confirm-pay-btn div{
+  border: 2px solid darkgray;
+  padding: 4px 8px;
+  border-radius: 6px;
+  color: #1ab595;
+  font-size: 1.1em;
+}
+
+.date-update-status-btn{
+
+}
+
+
+/*************** EXPERIENCES (FOOD & DRINK) *****************/
 .date-experience-card{
   background-image: url('/images/backgrounds/bg-paper.png');
   margin-bottom: 1em;
@@ -75,11 +129,6 @@
   height:450px;
   width:306px;
 }
-
-.playdate-container .row{
-  border:1px solid lightgray;
-}
-
 
 div.slick-list.draggable{
   height:450px; /*carousel height*/

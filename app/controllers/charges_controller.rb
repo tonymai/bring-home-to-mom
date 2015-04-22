@@ -22,19 +22,14 @@ class ChargesController < ApplicationController
 
 		if current_user == date.initiator.parent
 			date.initiator_paid = true
-			date.save
+      date.save!
 		elsif current_user == date.recipient.parent
 			date.recipient_paid = true
-			date.save
-		end
-
-		date.save
-		p date.status
+      date.save!
+    end
 		
 		if date.status == 'paid'
-
 			notify(date)
-
 		end
 
 		redirect_to "/users/#{current_user.id}"
@@ -44,6 +39,7 @@ class ChargesController < ApplicationController
 		  redirect_to date_path(date)
 	end
 
+<<<<<<< HEAD
 	def notify(date)
 		client = Twilio::REST::Client.new ENV['twilio_account_sid'], ENV['twilio_auth_token']
 

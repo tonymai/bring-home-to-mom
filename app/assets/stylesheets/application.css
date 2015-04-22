@@ -32,7 +32,7 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 
-header.app-header {
+header.app-header nav {
   height:30px;
   width: 100%;
   position: fixed;
@@ -76,6 +76,40 @@ header.app-header {
 
 .navbar li a {
   color: #FFFFFF;
+}
+
+.dashboard::before {
+  font-family: FontAwesome;
+  content: "\f003";
+  padding-right: 5px;
+}
+
+.navbar .notification .notification-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin: 0;
+  background: ;
+  display: none;
+}
+
+.navbar .notification:hover .notification-dropdown, .navbar .notification:focus .notification-dropdown, .navbar .notification:active .notification-dropdown {
+  display: block;
+  width: 250px;
+  color: #000000;
+}
+
+.navbar .notification-dropdown a:hover {
+  color: #ff6953;
+}
+
+.navbar .notification-dropdown li {
+  color: #000000;
+}
+
+.navbar-filler {
+  width: 100%;
+  height: 30px;
 }
 
 .hidden {
