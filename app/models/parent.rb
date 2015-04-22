@@ -12,7 +12,7 @@ class Parent < ActiveRecord::Base
     self.children.each do |child|
       initiated_date_objects << child.initiated_playdates unless child.initiated_playdates.nil?
     end
-    return initiated_date_objects.flatten!
+    return initiated_date_objects.flatten! || []
   end
 
   def received_playdates
@@ -20,14 +20,14 @@ class Parent < ActiveRecord::Base
     self.children.each do |child|
       received_date_objects << child.received_playdates unless child.received_playdates.nil?
     end
-    return received_date_objects.flatten!
+    return received_date_objects.flatten! || []
   end
 
   def playdates
     playdates = []
     playdates << self.initiated_playdates if self.initiated_playdates
     playdates << self.received_playdates if self.received_playdates
-    return playdates.flatten!
+    return playdates.flatten! || []
   end
 
   def initiated_date?(date_object)
