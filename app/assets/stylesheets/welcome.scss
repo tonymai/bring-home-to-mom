@@ -1,0 +1,167 @@
+.navbar-link-wrapper{
+  float:right;
+  display: inline-block;
+}
+
+
+.bg-vid-wrapper {
+  position: relative;
+  top: -170px;
+}
+
+.bg-vid {
+  width: 100%;
+  background: no-repeat;
+  background-size: cover;
+}
+
+.bg-vid-wrapper h1 {
+  font-size: 3em;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  display: block;
+  top: 7em;/* need another way to position*/
+  color: white;
+  z-index: 1;
+}
+
+.how-btn {
+  text-align: center;
+  position: relative;
+  top: 30em;
+  width: 175px;
+  margin: auto;
+  display: block;
+  color: white;
+  background: #B295ED;
+  padding: .6em;
+  height: 50px;
+  border-radius:3px;
+  z-index: 1;
+}
+
+.how-btn:hover {
+  color:lightgray;
+  background: rgba(26, 181, 149, 0.5);
+
+  background: #9377d1;
+  color:white;
+
+}
+
+.welcome-description {
+  position: relative;
+  top: -175px;
+  padding: 14em;
+  /*background-color: #1AB595;*/
+  background-image: url("green_texture.png")
+}
+
+.how-step {
+  text-align: center;
+}
+.how-step h4{
+  color:rgb(247, 247, 247);
+  font-size: 1.3em;
+}
+.circle-outer {
+  position: relative;
+  width: 190px;
+  height: 190px;
+  text-align: center;
+  border:3px solid #81DDB3;
+  background-image: url("green_texture.png");
+  -moz-border-radius: 95px;
+  -webkit-border-radius: 95px;
+  border-radius: 50%;
+  margin:0 auto;
+}
+
+.circle-inner {
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  width: 140px;
+  height: 140px;
+  text-align: center;
+  background-image: url("green_texture.png");
+  -moz-border-radius: 70px;
+  -webkit-border-radius: 70px;
+  border-radius: 75px;
+}
+.fa-5x{
+  color:#81DDB3;
+  margin-top: .2em;
+}
+
+
+.get-started-btn {
+  text-align: center;
+  position: relative;
+  width: 150px;
+  margin: 7em auto;
+  display: block;
+  color: white;
+  background: #B295ED;
+  border: 2px solid #1AB595;
+  padding: .6em;
+  border-radius: 4px;
+  height: 50px;
+  z-index: 1;
+  border-radius: 3px;
+}
+
+.get-started-btn:hover {
+  background: #9377d1;
+  color:white;
+}
+
+
+.form-wrapper {
+  padding: 2em;
+  background: rgba(44,62,80,0.8);
+  border-radius: 8px;
+  color: #FFFFFF;
+}
+.form-wrapper input{
+  color:black;
+  margin-bottom: 1em;
+
+}
+
+.form-wrapper input {
+  color: #000000;
+}
+
+.form-wrapper .field {
+  color: black;
+}
+
+.simplemodal-overlay {
+  background: #000000;
+}
+
+.logout-button {
+  text-decoration: none;
+  padding:4px;
+  border:1px solid white;
+  border-radius:4px;
+  color:white;
+}
+
+.hidden{
+  display: none;
+}
+
+
+
+
+/*Login-external-form*/
+.signup-container{
+  background-color: yellow;
+}
+
+
+
+
