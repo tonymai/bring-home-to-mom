@@ -29,6 +29,9 @@ Rails.application.routes.draw do
       resources :charges, only: [:new, :create]
     end
 
+    post '/dates/:id/accept' => 'dates#accept_invitation'
+    post '/dates/:id/confirm' => 'dates#confirm_date'
+
     resources :interests, only: [:index, :create]
     resources :values, only: [:index, :create]
 

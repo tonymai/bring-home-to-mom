@@ -42,7 +42,7 @@
 
 
 /*************** SELECTED DATE EXPERIENCE *****************/
-.accept-confirm-pay-btn a{
+.accept-confirm-pay-btn a, .accept-confirm-pay-btn div{
   border: 2px solid darkgray;
   padding: 4px 8px;
   border-radius: 6px;

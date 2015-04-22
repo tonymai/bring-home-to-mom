@@ -1,7 +1,6 @@
 class ChargesController < ApplicationController
 
 	def new
-
 	end
 
 	def create
@@ -20,13 +19,14 @@ class ChargesController < ApplicationController
 		  currency:    'usd'
 		)
 
-		if current_user == date.initiator
+		if current_user == date.initiator.parent
 			date.initiator_paid = true
-		elsif current_user == date.recipient
+      date.save!
+		elsif current_user == date.recipient.parent
 			date.recipient_paid = true
+      date.save!
 		end
 
-		date.save
 		redirect_to "/users/#{current_user.id}"
 
 		rescue Stripe::CardError, Stripe::InvalidRequestError => e

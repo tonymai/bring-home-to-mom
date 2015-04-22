@@ -33,40 +33,51 @@
         <!-- ******BUTTON LOGIC****** -->
           <!-- AcceptEvent Logic -->
           <% if (current_user.id == @playdate.recipient.parent.id) && (@playdate.status == "pending") %>
-            <a href="ACCEPT_INVITATION_ROUTE">Accept Invitation</a>
+            <a href="/dates/<%= current_user.id %>/accept">Accept Invitation</a>
           <% end %>
 
           <!-- Confirm Event Logic -->
           <% if (@playdate.event_selected?) && (@playdate.status == 'accepted') %>
             <% if (current_user.initiated_date?(@playdate)) && (@playdate.initiator_confirmed) %>
-              <a class="date-update-status-btn" href="CONFIRM_EVENT_ROUTE">Confirm Date Selection</a>
+              <a class="accept-confirm-pay btn-selected" href="/dates/<%= current_user.id %>/confirm">Confirm Date Selection</a>
             <% elsif (current_user.initiated_date?(@playdate)) && !(@playdate.initiator_confirmed) %>
-              <a href="CONFIRM_EVENT_ROUTE">Confirm Date Selection</a>
+              <a class="accept-confirm-pay" href="/dates/<%= current_user.id %>/confirm">Confirm Date Selection</a>
             <% elsif !(current_user.initiated_date?(@playdate)) && (@playdate.recipient_confirmed) %>
-              <a class="date-update-status-btn" href="CONFIRM_EVENT_ROUTE">Confirm Date Selection</a>
+              <a class="accept-confirm-pay btn-selected" href="/dates/<%= current_user.id %>/confirm">Confirm Date Selection</a>
             <% elsif !(current_user.initiated_date?(@playdate)) && !(@playdate.recipient_confirmed) %>
-              <a href="CONFIRM_EVENT_ROUTE">Confirm Date Selection</a>
+              <a class="accept-confirm-pay" href="/dates/<%= current_user.id %>/confirm">Confirm Date Selection</a>
             <% else %>
-              <a href="#">Something is wrong</a>
+              <a class="accept-confirm-pay" href="#">Something is wrong</a>
             <% end %>
           <% end %>
 
-          <!-- Pay For Event Logic -->
+          <!-- Pay For DATE Logic -->
           <% if (@playdate.event_selected?) && (@playdate.status == 'confirmed') %>
             <% if (current_user.initiated_date?(@playdate)) && (@playdate.initiator_paid) %>
-              <a class="date-update-status-btn" href="PAY_EVENT_ROUTE">Buy This Date!</a>
+              <div class="accept-confirm-pay btn-selected">
+                Buy This Date!
+                <%= render partial: "charges/new" %>
+              </div>
             <% elsif (current_user.initiated_date?(@playdate)) && !(@playdate.initiator_paid) %>
-              <a href="PAY_EVENT_ROUTE">Buy This Date!</a>
+              <div class="accept-confirm-pay">
+                Buy This Date!
+                <%= render partial: "charges/new" %>
+              </div>
             <% elsif !(current_user.initiated_date?(@playdate)) && (@playdate.recipient_paid) %>
-              <a class="date-update-status-btn" href="PAY_EVENT_ROUTE">Buy This Date!</a>
+              <div class="accept-confirm-pay btn-selected">
+                Buy This Date!
+                <%= render partial: "charges/new" %>
+              </div>
             <% elsif !(current_user.initiated_date?(@playdate)) && !(@playdate.recipient_paid) %>
-              <a href="PAY_EVENT_ROUTE">Buy This Date!</a>
+              <div class="accept-confirm-pay">
+                Buy This Date!
+                <%= render partial: "charges/new" %>
+              </div>
             <% else %>
-              <a href="#">Something is wrong</a>
+              <div class="accept-confirm-pay">Something is wrong</div>
             <% end %>
           <% end %>
 
-          <%= render partial: "charges/new" %>
 
         </div>
       </div>
