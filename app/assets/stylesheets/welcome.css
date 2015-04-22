@@ -33,22 +33,22 @@
   margin: auto;
   display: block;
   color: white;
-  background: rgba(255,105,83,0.55);
-  border: 1px solid #FF6953;
-  padding: .4em;
+  background: #B295ED;
+  padding: .6em;
   height: 50px;
+  border-radius:3px;
   z-index: 1;
 }
 
 .how-btn:hover {
-  background: rgba(255,105,83,0.8);
+  background: #B295ED
 }
 
 .welcome-description {
   position: relative;
   top: -175px;
   padding: 10em;
-  background-color: #FF6953;
+  background-color: #1AB595;
 }
 
 .how-step {
@@ -73,10 +73,13 @@
   width: 140px;
   height: 140px;
   text-align: center;
-  background: #FFFFFF;
+  background: #1AB595;
   -moz-border-radius: 70px;
   -webkit-border-radius: 70px;
   border-radius: 75px;
+}
+.fa-5x{
+  color:#81DDB3;
 }
 
 .get-started-btn {
@@ -86,15 +89,15 @@
   margin: auto;
   display: block;
   color: white;
-  background: rgba(26,181,149,0.7);
+  background: #B295ED;
   border: 2px solid #1AB595;
-  padding: .4em;
+  padding: .6em;
   height: 50px;
   z-index: 1;
 }
 
 .get-started-btn:hover {
-  background: rgba(26,181,149,0.85);
+  background: #B295ED;
 }
 
 
