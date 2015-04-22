@@ -214,6 +214,9 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (>= 2.8, < 4.0)
+    stripe (1.21.0)
+      json (~> 1.8.1)
+      rest-client (~> 1.4)
     thin (1.6.3)
       daemons (~> 1.0, >= 1.0.9)
       eventmachine (~> 1.0)
@@ -266,6 +269,7 @@ DEPENDENCIES
   private_pub
   rails (= 4.2.1)
   rails-jquery-autocomplete
+  rest-client (~> 1.8.0)
   rspec-rails
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
