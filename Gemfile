@@ -47,9 +47,11 @@ gem 'thin'
 # For autocomplete searches
 gem 'rails-jquery-autocomplete'
 
-
 # For payments
 gem 'stripe'
+
+# For notifications
+gem 'twilio-ruby', '~> 3.12'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

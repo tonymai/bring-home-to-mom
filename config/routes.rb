@@ -39,7 +39,11 @@ Rails.application.routes.draw do
 
   post '/' => 'welcome#change_child'
 
+  post 'twilio/voice' => 'twilio#voice'
+  post 'twilio/status' => 'twilio#status'
+  post 'notifications/notify' => 'notifications#notify'
 
+  
   # Example resource route with options:
   #   resources :products do
   #     member do
