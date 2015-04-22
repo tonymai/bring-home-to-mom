@@ -1,40 +1,52 @@
-
-<div class="playdate-container">
+<div class="playdate-container container">
   <div class = "status row">
-    <div class="col span_12">
-      <h1> Status: Pending//Declined//Confirmed</h1>
-    </div>
-  </div>
 
-  <div class=" col date-data span_8">
-    <div class="movie row">
-      <h3> Budget:</h3>
-      <h3> Date/Time:</h3>
+    <div class="page-title-wrapper">
+      <h1>Design <%= current_user.my_child(@playdate).first_name %>'s' Date!</h1>
     </div>
 
-    <div class="movie row">
-      <h2> Plan the Date: </h2>
-      <h3> Movies </h3>
-        <div id="movie-wrap" class= "col span_8">
-          <% @names_and_ids.each do |movie| %>
-            <a href="http://www.fandango.com/asdf_<%=movie.last[:fandango]%>/movietimes"><img class="movie-poster" alt = "<%= movie.first %>" src="<%= movie.last[:movie_poster]%>"></a>
-          <% end %>
+    <div class="col span_8">
+
+      <div class="date-design-section selected-experience-container row">
+        <div class="date-design-section-header">
+          <h2>Selected Date Experience</h2>
         </div>
 
+        <div class="date-design-section-body">
+          <div class="date-experience-card">
+            <h3> Budget:</h3>
+            <h3> Date/Time:</h3>
+          </div>
+        </div>
+      </div>
+
+      <div class="date-design-section food-and-drink-container row">
+        <div class="date-design-section-header">
+          <h2>Food & Drink</h2>
+        </div>
+
+        <div class="date-design-section-body">
+          <% Experience.upcoming_experiences.each do |experience| %>
+            <%= render partial: "experience_card", locals: {experience: experience} %>
+          <% end %>
+        </div>
+      </div>
+
+      <%= render 'movie_row' %>
+
+      <div class="restaurant row">
+        <h2> Restaurants: </h2>
+      </div>
+      <div class="calendar row">
+        <h2> Calendar: </h2>
+      </div>
+
     </div>
 
-    <div class="restaurant row">
-      <h2> Restaurants: </h2>
+      <div class=" chat-data col span_4">
+        <%= render partial: 'chat' %>
+      </div>
     </div>
-
-    <div class="calendar row">
-      <h2> Calendar: </h2>
-    </div>
-
-  </div>
-
-  <div class=" chat-data col span_4">
-    Chat stuff
   </div>
 
 

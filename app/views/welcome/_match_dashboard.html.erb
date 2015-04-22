@@ -1,27 +1,30 @@
-<div class="welcome-page-loggedin filter-wrapper col span_2">
+<div class="welcome-page-loggedin filter-wrapper col span_3">
   <br/>
   <p> Filters</p>
-  <h1 data-gender = "<%= @first_child.gender %>"><%= @first_child.first_name %></h1>
+  <h1 data-gender = "<%= @current_child.gender %>"><%= @current_child.first_name %></h1>
+
+  <%= render partial: 'all_children_profiles' %>
+
   <form class = "filters">
     Interested in:
     <select name="by_gender" class="filterby">
-      <option <%= 'selected=selected' if @first_child.sexual_preference == 'both' %> value="">All</option>
-      <option <%= 'selected=selected' if @first_child.sexual_preference == 'men' %> value="male">Men</option>
-      <option <%= 'selected=selected' if @first_child.sexual_preference == 'women' %> value="female">Women</option>
+      <option <%= 'selected=selected' if @current_child.sexual_preference == 'no preference' %> value="">All</option>
+      <option <%= 'selected=selected' if @current_child.sexual_preference == 'men' %> value="male">Men</option>
+      <option <%= 'selected=selected' if @current_child.sexual_preference == 'women' %> value="female">Women</option>
       <option value="other">Other</option>
     </select>
     <br/>
     Religion:
     <select name="by_religion" class="filterby">
       <% ([''] + Child.uniq.pluck(:religion)).each do |religion| %>
-      <option <%= 'selected=selected' if @first_child.religion == religion %> value="<%= religion %>"><%= religion %></option>
+      <option <%= 'selected=selected' if @current_child.religion == religion %> value="<%= religion %>"><%= religion %></option>
       <% end %>
     </select>
     <br>
     City:
     <select name="by_city" class="filterby">
       <% ([''] + Child.uniq.pluck(:city)).each do |city| %>
-      <option <%= 'selected=selected' if @first_child.city == city %> value="<%= city %>"><%= city %></option>
+      <option <%= 'selected=selected' if @current_child.city == city %> value="<%= city %>"><%= city %></option>
       <% end %>
     </select>
     <br/>
@@ -35,9 +38,11 @@
     <div class="filterby age-slider"></div>
   </div>
   <%= render partial: 'autocomplete_container' %>
+  <a href="/users/<%= current_user.id %>/profiles/new">Link to create a new child profile</a>
+  
 </div>
 
-<div class="matches col span_8">
+<div class="matches col span_7">
 </div>
 
 <script id="child_preview_template" type="x-handlebars-template">
@@ -47,4 +52,4 @@
   </div>
   {{/each}}
 </script>
-<%= render partial: 'profile_template' %>
+<%= render partial: 'profile_detail_modal' %>
