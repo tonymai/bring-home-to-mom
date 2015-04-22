@@ -78,8 +78,10 @@ header.app-header nav {
   color: #FFFFFF;
 }
 
-.navbar .notification {
-  /*position: relative;*/
+.dashboard::before {
+  font-family: FontAwesome;
+  content: "\f003";
+  padding-right: 5px;
 }
 
 .navbar .notification .notification-dropdown {
