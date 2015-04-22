@@ -2,9 +2,8 @@ $(document).on('page:change', function(e) {
 
 	$('.all-child-profiles').on('click', '.child-pf-image a', function(e) {
 		e.preventDefault();
-		
-		var childId = $(this).attr('data-profile-id')
 
+		var childId = $(this).attr('data-profile-id')
 
 		$.ajax({
 			url: '/',
@@ -13,7 +12,6 @@ $(document).on('page:change', function(e) {
 			data: { profile_id: childId }
 		}).done(function(data) {
 			var child = data.profile
-
 			if (child.sexual_preference === 'men') {
 			  child.gender = 'male';
 			}
