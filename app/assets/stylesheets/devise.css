@@ -1,0 +1,45 @@
+.li-lo-container{
+
+  background: -webkit-linear-gradient(90deg, #DE6262 10%, #FFB88C 90%); /* Chrome 10+, Saf5.1+ */
+  background:    -moz-linear-gradient(90deg, #DE6262 10%, #FFB88C 90%); /* FF3.6+ */
+  background:     -ms-linear-gradient(90deg, #DE6262 10%, #FFB88C 90%); /* IE10 */
+  background:      -o-linear-gradient(90deg, #DE6262 10%, #FFB88C 90%); /* Opera 11.10+ */
+  background:         linear-gradient(90deg, #DE6262 10%, #FFB88C 90%); /* W3C */
+  color:white;
+  height:100%;
+}
+
+.li-lo-header{
+  background-color: rgba(256,256,256,0.5);
+
+}
+
+.devise-container{
+  width:11em;
+  margin:2em auto;
+  text-align: center;
+}
+.devise-container h2{
+  text-align: center;
+}
+.devise-container input{
+  margin-bottom: 1em;
+  color:black;
+
+}
+
+.devise-container .submit-btn{
+  background-color: transparent;
+  border:1px solid white;
+  border-radius: 3px;
+  color:white;
+}
+.devise-container .submit-btn:hover{
+  background-color: rgba(256,256,256,0.6);
+  color:#E26D67;
+}
+.devise-errors{
+  font-size: .8em;
+  text-align: left;
+  color:yellow;
+}

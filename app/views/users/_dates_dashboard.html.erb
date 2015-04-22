@@ -19,12 +19,25 @@
     </div>
 
     <div class="col span_9">
-      <div class="dates-collection pending-dates row">
+      <% if @user.pending_dates.length > 0 %>
+        <div class="dates-collection pending-dates row">
+          <div class="dashboard-section-header">
+            <h2>Pending Date Requests</h2>
+          </div>
+          <div class="dates-rows-wrapper">
+            <% @user.pending_dates.each do |date| %>
+              <%= render partial: "date_preview_row", locals: {date: date, user: @user} %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+
+      <div class="dates-collection upcoming-dates row">
         <div class="dashboard-section-header">
-          <h2>Pending Dates</h2>
+          <h2>Planning Phase</h2>
         </div>
         <div class="dates-rows-wrapper">
-          <% @user.pending_dates.each do |date| %>
+          <% @user.accepted_dates.each do |date| %>
             <%= render partial: "date_preview_row", locals: {date: date, user: @user} %>
           <% end %>
         </div>
@@ -32,10 +45,10 @@
 
       <div class="dates-collection upcoming-dates row">
         <div class="dashboard-section-header">
-          <h2>Planning and Upcoming Dates</h2>
+          <h2>Upcoming Dates</h2>
         </div>
         <div class="dates-rows-wrapper">
-          <% @user.planning_and_upcoming_dates.each do |date| %>
+          <% @user.upcoming_dates.each do |date| %>
             <%= render partial: "date_preview_row", locals: {date: date, user: @user} %>
           <% end %>
         </div>

@@ -67,7 +67,6 @@ class Child < ActiveRecord::Base
     when 5
       self.pf_image_5
     end
-
   end
 
   def age

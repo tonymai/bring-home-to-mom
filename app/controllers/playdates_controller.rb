@@ -5,7 +5,9 @@ class PlaydatesController < ApplicationController
 
   def show
     @playdate = Playdate.find(params[:id])
+    @upcoming_experiences = Experience.upcoming_experiences
     ##Get IMDB IDs
+
     box_office_movies = JSON.parse(HTTParty.get("https://bhtm-boxoffice.herokuapp.com"))
     # box_office_movies = JSON.parse(HTTParty.get("http://api.rottentomatoes.com/api/public/v1.0/lists/movies/box_office.json?apikey=#{ENV['ROTTEN_TOMATOES_APIKEY']}&limit=5"))
     # box_office_movies['movies'] = [] unless box_office_movies['movies']
@@ -46,18 +48,20 @@ class PlaydatesController < ApplicationController
   end
 
   def create
-    new_playdate = Playdate.create(playdate_params)
-    redirect_to date_path new_playdate
+    params[:playdate][:initiator_id] = session[:profile_id]
+    playdate = Playdate.new(playdate_params)
+
+    if playdate.save
+      redirect_to date_path(playdate)
+    else
+      redirect_to root_path
+    end
   end
 
   private
 
   def playdate_params
     params.require(:playdate).permit(:initiator_id,:recipient_id)
-  end
-
-  def conversation_params
-    params.permit(:sender_id, :recipient_id)
   end
 
   def conversation_interlocutor(conversation)

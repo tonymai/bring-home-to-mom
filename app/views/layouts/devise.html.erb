@@ -1,0 +1,15 @@
+<div class="li-lo-container">
+  <header class="li-lo-header">
+      <%= render partial: 'layouts/navbar' %>
+  </header>
+
+<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+
+<%= render 'layouts/devise_signup' if request.env['PATH_INFO'] == "/users" %>
+<%= render 'layouts/devise_login' if request.env['PATH_INFO'] == "/users/sign_in"%>
+<%= render 'layouts/devise_new_password' if request.env['PATH_INFO'] == "/users/password/new"%>
+
+</div>
+
+<!-- render login/signup page if path is login/signup, respectively. (overriding devise)
+ -->

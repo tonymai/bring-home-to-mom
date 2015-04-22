@@ -16,32 +16,36 @@ Rails.application.routes.draw do
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
-  resources :users, only: [:index, :show] do
-    resources :profiles
-  end
 
-  resources :dates, class_name: 'Playdate', controller: :playdates do
-    resources :messages
-    resources :charges, only: [:new, :create]
-  end
 
-  resources :interests, only: [:index, :create]
-  resources :values, only: [:index, :create]
+  authenticate :user do
+    resources :users, only: [:index, :show] do
+      resources :profiles
+    end
 
-  # for payments
+    resources :dates, class_name: 'Playdate', controller: :playdates do
+      resources :messages, only: [:create]
+    # for payments
+      resources :charges, only: [:new, :create]
+    end
 
-  get '/filters' => 'filters#filter_matches'
+    resources :interests, only: [:index, :create]
+    resources :values, only: [:index, :create]
 
-  get '/filters/autocomplete/interests' => 'filters#autocomplete_interest_name'
-  get '/filters/autocomplete/values' => 'filters#autocomplete_value_name'
+    get '/filters' => 'filters#filter_matches'
 
-  get '/users/:id/messages' => 'users#messages'
+    get '/filters/autocomplete/interests' => 'filters#autocomplete_interest_name'
+    get '/filters/autocomplete/values' => 'filters#autocomplete_value_name'
 
-  post '/' => 'welcome#change_child'
+    get '/users/:id/messages' => 'users#messages'
 
-  post 'twilio/voice' => 'twilio#voice'
-  post 'twilio/status' => 'twilio#status'
-  post 'notifications/notify' => 'notifications#notify'
+
+    post 'twilio/voice' => 'twilio#voice'
+    post 'twilio/status' => 'twilio#status'
+    post 'notifications/notify' => 'notifications#notify'
+
+    post '/' => 'welcome#change_child'
+
 
   
   # Example resource route with options:
