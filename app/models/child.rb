@@ -46,13 +46,28 @@ class Child < ActiveRecord::Base
     parent_id = self.parent.id
     child_id = Child.last ? (Child.last.id + 1) : 1
 
-    # need error handling for if cloudinary upload fails
     begin
       cloudinary_response = Cloudinary::Uploader.upload(uploaded_io, public_id: "#{parent_id}/#{child_id}/#{pf_image_key}")
       self[pf_image_key] = cloudinary_response["secure_url"]
     rescue CloudinaryException => e
       self[pf_image_key] = e
     end
+  end
+
+  def default_pf
+    case self.main_profile_image
+    when 1
+      self.pf_image_1
+    when 2
+      self.pf_image_2
+    when 3
+      self.pf_image_3
+    when 4
+      self.pf_image_4
+    when 5
+      self.pf_image_5
+    end
+
   end
 
   def age
