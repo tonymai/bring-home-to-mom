@@ -34,6 +34,8 @@ Rails.application.routes.draw do
 
   get '/users/:id/messages' => 'users#messages'
 
+  get 'logout' => 'welcome#destroy'
+
   post '/' => 'welcome#change_child'
 
 

@@ -19,6 +19,8 @@ end
 
 cities = ['San Francisco', 'San Diego', 'Los Angeles', 'Santa Barbara', 'Sacramento']
 
+experience_photos = ['http://www.seamless.com/finedining/img/vendormenuplustabcontentimages/lg_27331_0.jpg', 'http://25.media.tumblr.com/8de69d887367fa0ea41ba1c628fcad9f/tumblr_myvf7h7dKh1shjq15o1_1280.jpg', 'http://collegetimes.com/wp-content/uploads/2014/09/las.jpg', 'http://www.toastedontheinside.com/wp-content/uploads/2013/11/foodporn-34.jpg', 'http://nolavie.com/wp-content/uploads/2014/02/Pork-sliders-2.jpg', 'http://i.imgur.com/iPjkzUz.jpg', 'http://loreleynyc.com/gallery/photos/Food/beer_tasting_flight.jpg', 'https://img.vimbly.com/images/full_photos/scotch-1.jpg']
+
 20.times do
   parent = Parent.create(
     first_name: Faker::Name.first_name,
@@ -26,6 +28,7 @@ cities = ['San Francisco', 'San Diego', 'Los Angeles', 'Santa Barbara', 'Sacrame
     email: Faker::Internet.email,
     password: 'password'
     )
+  parent.update(email: "user#{parent.id}@gmail.com") #allows us to sign in as seed users
   5.times do
     child = parent.children.create(
       first_name: Faker::Name.first_name,
@@ -90,7 +93,7 @@ end
     desc_note_2: "Famous for their gnocchi and fried calamari",
     desc_note_3: "Vegetarian and gluten-free friendly",
     price_per_person: rand(30..100),
-    image: Faker::Avatar.image,
+    image: experience_photos.sample,
     experience_at: experience_time,
     )
   playdate.create_movie(
@@ -125,7 +128,7 @@ end
     desc_note_2: "Famous for their gnocchi and fried calamari",
     desc_note_3: "Vegetarian and gluten-free friendly",
     price_per_person: rand(30..100),
-    image: Faker::Avatar.image,
+    image: experience_photos.sample,
     experience_at: experience_time,
     )
   playdate.create_movie(
