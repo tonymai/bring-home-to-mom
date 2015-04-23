@@ -4,7 +4,7 @@
       Pending Date Requests
     </div>
     <% current_user.pending_dates.each do |date| %>
-      <%= render partial: 'users/date_preview_row', locals: {date: date, user: current_user} %>
+      <%= render partial: 'layouts/notification_date_preview', locals: {date: date, user: current_user} %>
     <% end %>
   <% end %>
 
@@ -13,7 +13,7 @@
       Planning Phase
     </div>
     <% current_user.accepted_dates.each do |date| %>
-      <%= render partial: 'users/date_preview_row', locals: {date: date, user: current_user} %>
+      <%= render partial: 'layouts/notification_date_preview', locals: {date: date, user: current_user} %>
     <% end %>
   <% end %>
 

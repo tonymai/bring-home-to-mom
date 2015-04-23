@@ -42,7 +42,7 @@ $(document).on('page:change', function() {
 					$('.accept-confirm-pay-wrapper').html('<a id="accept-invitation" class="accept-confirm-pay-btn" href="/dates/' + data.playdate.id + '/accept">Accept Invitation</a>');
 				};
 			};
-			$('body').animate({ scrollTop: 0 }, 'slow');
+			$('.experience-wrapper').animate({ scrollTop: 0 }, 'slow');
 		});
 
 	});
