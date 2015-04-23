@@ -170,17 +170,17 @@
 }
 
 .select-experience-btn a{
-  border: 2px solid darkgray;
+  border: 2px solid #4B6CB7;
   padding: 4px 8px;
   border-radius: 6px;
-  color: #1ab595;
+  color: #4B6CB7;
   font-size: 1.1em;
 }
 
 .select-experience-btn a:hover{
-  color: #fff;
-  border: 2px solid #ff6953;
-  background-color: #1ab595;
+  color: white;
+  border: 2px solid #4B6CB7;
+  background-color: #4B6CB7;
 }
 
 .close-icon{
@@ -275,7 +275,7 @@
 
 .mv-box-back ul{
   list-style: none;
-  padding-left: 29px;
+  padding-left: 25px;
 }
 .mv-box-back ul>li{
   font-size: .8em;
@@ -291,17 +291,20 @@ div.slick-list.draggable{
 }
 .add-to-package{
   position: absolute;
-  border: 1px solid gray;
-  background-color: #E2E2E2;
+  border: 1px solid #4B6CB7;
+  background-color: #4B6CB7;
+  color: white;
   border-radius: 3px;
   margin: 0 auto;
   width: 8em;
   font-size: .8em;
   padding: .2em;
+  margin-top: 252px;
+  margin-left: 43px;
 }
 .add-to-package:hover{
-  background-color: gray;
-  color: white;
+  background-color: transparent;
+  color: #4B6CB7;
 }
 /***************** FLIP ANIMATION *****************/
 #movie-wrap{
@@ -330,7 +333,14 @@ div.slick-list.draggable{
   border:1px solid gray;
 }
 .mv-box-back h3{
+  margin: 0 auto;
+  width: 6em;
+  /* border: 1px solid red; */
   text-align: center;
+  color:#4B6CB7;
+}
+.blueify{
+  color:#4B6CB7;
 }
 
 .movie-flip .mv-box-back{

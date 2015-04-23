@@ -7,11 +7,13 @@
         <a href="#"><div class="add-to-package">Add to Package</div></a>
         <h3><%= movie.first %></h3>
         <ul>
-          <li class="mv-synopsis"><span class="boldify">Synopsis: </span><%= truncate(movie.last[:synopsis], length: 50, separator: ' ') %></li>
-          <li class="mv-mpaa-rating"><span class="boldify">Rating: </span><%= movie.last[:mpaa] %></li>
-          <li class="mv-release-date"><span class="boldify">Release Date: </span><%= movie.last[:release_date] %></li>
-          <li class="mv-runtime"><span class="boldify">Runtime: </span><%= movie.last[:runtime] %></li>
-          <li class="mv-rt-score"><span class="boldify">RT score: </span><%= movie.last[:rating] %></li>
+          <li class="mv-synopsis"><span class="boldify blueify">Synopsis: </span><%= truncate(movie.last[:synopsis], length: 70, separator: ' ') %></li>
+          <li class="mv-mpaa-rating"><span class="boldify blueify">Rating: </span><%= movie.last[:mpaa] %></li>
+          <li class="mv-release-date"><span class="boldify blueify">Release Date: </span><%= movie.last[:release_date] %></li>
+          <li class="mv-runtime"><span class="boldify blueify">Runtime: </span><%= movie.last[:runtime] %></li>
+          <li class="mv-rt-score"><span class="boldify blueify">RT score: </span><%= movie.last[:rating] %>
+          </li>
+
         </ul>
       </div>
     </div>
