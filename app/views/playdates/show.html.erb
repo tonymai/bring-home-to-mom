@@ -43,9 +43,9 @@
 
         <!-- ******BUTTON LOGIC****** -->
           <!-- AcceptEvent Logic -->
-          <div class="accept-confirm-pay-wrapper row"
+          <div class="accept-confirm-pay-wrapper row">
             <% if (current_user.id == @playdate.recipient.parent.id) && (@playdate.status == "pending") %>
-              <a href="/dates/<%= current_user.id %>/accept">Accept Invitation</a>
+              <a class="accept-confirm-pay-btn" href="/dates/<%= current_user.id %>/accept">Accept Invitation</a>
             <% end %>
 
             <!-- Confirm Event Logic -->
@@ -89,6 +89,7 @@
           <h2>Food & Drink</h2>
         </div>
         <div class="date-design-section-body">
+          <%= render partial: "movie_card", locals: {movie: Movie.first} %>
           <% Experience.upcoming_experiences.each do |experience| %>
             <%= render partial: "experience_card", locals: {experience: experience} %>
           <% end %>
