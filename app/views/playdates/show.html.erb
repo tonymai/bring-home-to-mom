@@ -24,6 +24,7 @@
             <p class="design-date-notification">Everyone has paid - the date is on!</p>
           <% end %>
 
+        <!-- ******SHOW SELECTED EXPERIENCE/MOVIE****** -->
           <% if (@playdate.experience.nil?) && (@playdate.movie.nil?) %>
             <p class="design-date-notification">No Experience Selected</p>
           <% elsif (@playdate.experience) && (@playdate.movie.nil?) %>
@@ -79,6 +80,7 @@
       <% if (@playdate.status == "confirmed") || (@playdate.status == "paid") %>
         <div class="hidden">
       <% end %>
+      <!--   -->
 
       <div class="date-design-section food-and-drink-container row">
         <div class="date-design-section-header">
@@ -104,6 +106,7 @@
       <% if (@playdate.status == "confirmed") || (@playdate.status == "paid") %>
         </div>
       <% end %>
+      <!--   -->
 
     </div>
 
