@@ -92,6 +92,15 @@
   margin: 0 auto;
 }
 
+.disabled-button{
+  border: 1px solid darkgray;
+  padding: 0.8em 0;
+  color: #1ab595;
+  font-size: 1.2em;
+  width: 80%;
+  margin: 0 auto;
+}
+
 /*************** EXPERIENCES (FOOD & DRINK) *****************/
 .date-design-section{
   margin-right: 1em;
