@@ -1,6 +1,6 @@
 $(document).on('page:change', function() {
 
-	$('.date-design-section-body').on('click', '.select-experience-btn a', function(e) {
+	$('.playdate-container').on('click', '.select-experience-btn a', function(e) {
 		e.preventDefault();
 
 		var experienceId = $(this).attr('data-experience-id');
@@ -11,14 +11,14 @@ $(document).on('page:change', function() {
 			dataType: 'JSON',
 			data: { experience_id: experienceId }
 		}).done(function(data) {
-			// $('#selected-event').fadeOut(function() {
-				$('#selected-event').empty();
+			// $('#selected-event').fadeOut('slow', function() {
+			// 	$('#selected-event').remove();
 			// });
 			var source = $('.date-experience-card-template').html();
 			var templatingFunction = Handlebars.compile(source);
 			var context = data;
 			$('.design-date-notification').hide();
-			$('#selected-event').append(templatingFunction(context));
+			$('#selected-experience').append(templatingFunction(context));
 		}).fail(function(errors) {
 
 		});
@@ -29,14 +29,17 @@ $(document).on('page:change', function() {
 		e.preventDefault();
 
 		var experienceId = $(this).attr('data-experience-id')
-
 		$.ajax({
 			url: $(this).attr('href'), //need to send to different action
-			type: 'PATCH',
-			dataType: 'JSON',
-			data: { experience_id: experienceId }
+			type: 'POST',
+			dataType: 'JSON'
 		}).done(function(data) {
-			$('#selected-event').empty();
+			debugger
+			var $experienceCard = $('#selected-experience .date-experience-card')
+			$experienceCard.fadeOut('slow', function() {
+				$experienceCard.remove();
+			});
+			$('.design-date-notification').show();
 		}).fail(function(data) {
 
 		});

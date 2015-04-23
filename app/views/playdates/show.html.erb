@@ -25,7 +25,7 @@
           <% end %>
 
         <!-- ******SHOW SELECTED EXPERIENCE/MOVIE****** -->
-          <div id="selected-event">
+          <div id="selected-experience">
             <% if (@playdate.experience.nil?) && (@playdate.movie.nil?) %>
               <p class="design-date-notification">No Experience Selected</p>
             <% elsif (@playdate.experience) && (@playdate.movie.nil?) %>
@@ -118,5 +118,7 @@
 
   </div>
 </div>
+
+<%= render 'experience_card_template' %>
 
 

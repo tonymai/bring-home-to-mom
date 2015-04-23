@@ -29,10 +29,10 @@ Rails.application.routes.draw do
       resources :charges, only: [:new, :create]
     end
 
-    post '/dates/:id/accept' => 'dates#accept_invitation'
-    post '/dates/:id/confirm' => 'dates#confirm_date'
-    post '/dates/:id/experience' => 'dates#add_experience'
-    post '/dates/:id/movie' => 'dates#add_movie'
+    post '/dates/:id/accept' => 'playdates#accept_invitation'
+    post '/dates/:id/confirm' => 'playdates#confirm_date'
+    post '/dates/:id/delete' => 'playdates#delete_event'
+    post '/dates/:id/movie' => 'playdates#add_movie'
 
     resources :interests, only: [:index, :create]
     resources :values, only: [:index, :create]

@@ -10,8 +10,9 @@
   </div>
   <div class="experience-details col span_7">
 
+<!--  this is where the delete button on the card in the food and drink section appears - it happens both in the selected event container AND the food/drink section because it's the same event -->
     <% if (@playdate.experience == experience) && !(@playdate.you_confirmed?(current_user)) %>
-      <a href="/dates/<%= @playdate.id %>" data-experience-id="<%= experience.id %>" class="selected-experience-delete-btn"><i class="close-icon fa fa-times"></i></a>
+      <a href="/dates/<%= @playdate.id %>/delete" data-experience-id="<%= experience.id %>" class="selected-experience-delete-btn"><i class="close-icon fa fa-times"></i></a>
     <% end %>
 
 
@@ -48,4 +49,4 @@
   <% end %>
 </div>
 
-<%= render 'experience_card_template' %>
+

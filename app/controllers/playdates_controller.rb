@@ -83,6 +83,15 @@ class PlaydatesController < ApplicationController
     end
   end
 
+  def delete_event
+    playdate = Playdate.find(params[:id])
+    # experience = Experience.find(params[:experience_id])
+
+    playdate.experience.destroy
+
+    render json: {}
+  end
+
   def accept_invitation
     date = Playdate.find(params[:id])
     if date.recipient.parent.id == current_user.id
