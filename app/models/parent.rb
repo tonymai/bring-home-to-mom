@@ -4,6 +4,8 @@ class Parent < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  validates :first_name, :last_name, presence: true
+
   has_many :children
 	has_many :conversations, :foreign_key => :sender_id
 
