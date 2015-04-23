@@ -1,9 +1,16 @@
 $(document).on('page:change', function() {
 
+	var dateId = $('#selected-experience').attr('data-playdate-id');
+	var experienceId = $('#selected-experience .select-experience-btn').attr('data-experience-id');
+
+	$('#selected-experience .experience-details').prepend('<a href="/dates/' + dateId + '/delete" data-experience-id="'+ experienceId +'" class="selected-experience-delete-btn"><i class="close-icon fa fa-times"></i></a>')
+
 	$('.playdate-container').on('click', '.select-experience-btn a', function(e) {
 		e.preventDefault();
 
 		var experienceId = $(this).attr('data-experience-id');
+
+		var $chooseExperienceBtn = $(this).parent()
 
 		$.ajax({
 			url: $(this).attr('href'),
@@ -11,13 +18,15 @@ $(document).on('page:change', function() {
 			dataType: 'JSON',
 			data: { experience_id: experienceId }
 		}).done(function(data) {
-			// $('#selected-event').fadeOut('slow', function() {
-			// 	$('#selected-event').remove();
-			// });
+			var $experienceCard = $('#selected-experience .date-experience-card')
+			$experienceCard.fadeOut('slow', function() {
+				$experienceCard.remove();
+			});
 			var source = $('.date-experience-card-template').html();
 			var templatingFunction = Handlebars.compile(source);
 			var context = data;
-			$('.design-date-notification').hide();
+			$('.design-date-notification').text('');
+			$chooseExperienceBtn.addClass('hidden');
 			$('#selected-experience').append(templatingFunction(context));
 		}).fail(function(errors) {
 
@@ -34,12 +43,12 @@ $(document).on('page:change', function() {
 			type: 'POST',
 			dataType: 'JSON'
 		}).done(function(data) {
-			debugger
 			var $experienceCard = $('#selected-experience .date-experience-card')
 			$experienceCard.fadeOut('slow', function() {
 				$experienceCard.remove();
 			});
-			$('.design-date-notification').show();
+			$('.select-experience-btn').removeClass('hidden');
+			$('.design-date-notification').text('No Experience Selected');
 		}).fail(function(data) {
 
 		});

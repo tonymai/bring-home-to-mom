@@ -32,7 +32,7 @@
 
 
         <!-- ******SHOW SELECTED EXPERIENCE/MOVIE****** -->
-          <div id="selected-experience">
+          <div data-playdate-id="<%= @playdate.id %>" id="selected-experience">
             <% if (@playdate.experience.nil?) && (@playdate.movie.nil?) %>
             <% elsif (@playdate.experience) && (@playdate.movie.nil?) %>
               <%= render partial: "experience_card", locals: {experience: @playdate.experience} %>
