@@ -32,7 +32,7 @@ class ChargesController < ApplicationController
 			notify(date)
 		end
 
-		redirect_to "/users/#{current_user.id}"
+		redirect_to "/users/#{current_user.id}?message=paid&date=#{date.id}"
 
 		rescue Stripe::CardError, Stripe::InvalidRequestError => e
 		  flash[:error] = e.message
@@ -42,17 +42,20 @@ class ChargesController < ApplicationController
 	def notify(date)
 		client = Twilio::REST::Client.new ENV['twilio_account_sid'], ENV['twilio_auth_token']
 
+		# Rails.env.production? ? "+16263897771" : "#{date.initiator.phone.gsub('-','')}"
+
 		message_to_initiator = client.messages.create(
 			:from => '+14242653879', 
-			:to => "+1#{date.initiator.phone.gsub('-','')}", 
+			:to => "+16263897771", 
 			:body => "Your parent has set you up on a date with #{date.recipient.first_name}",
 			:media_url => "#{date.recipient.default_pf}"
 			# status_callback: request.base_url + '/twilio/status'
 			)
 
+		# Rails.env.production? ? "+16266787048" : "#{date.recipient.phone.gsub('-','')}"
 		message_to_recipient = client.messages.create(
 			:from => '+14242653879', 
-			:to => "+1#{date.recipient.phone.gsub('-','')}", 
+			:to => "+16266787048", 
 			:body => "Your parent has set you up on a date with #{date.initiator.first_name}",
 			:media_url => "#{date.initiator.default_pf}"
 			)
