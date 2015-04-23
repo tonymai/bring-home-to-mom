@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20150421205130) do
     t.string   "gender"
     t.string   "sexual_preference"
     t.string   "religion"
+    t.string   "pets"
     t.date     "birthdate"
     t.text     "bio"
     t.text     "embarrassing_moment"
