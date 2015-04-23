@@ -1,0 +1,139 @@
+<script id="my-child-profile-template" type="x-handlebars-template">
+<div class="pf-modal-container container hidden">
+  <div class="row">
+
+    <div id="gallery-wrap" class="pf-images-wrapper slick-carousel col span_5">
+      <img src="{{profile.pf_image_1}}" />
+      <img src="{{profile.pf_image_2}}" />
+      <img src="{{profile.pf_image_3}}" />
+      <img src="{{profile.pf_image_4}}" />
+      <img src="{{profile.pf_image_5}}" />
+    </div>
+
+    <div class="pf-basic-info-wrapper col span_7">
+      <h1>{{profile.first_name}} {{profile.last_name}}</h1>
+
+      <div class="pf-basic-info-row">
+        <div class="pf-basic-info-cell col span_6"><i class="fa fa-birthday-cake category-icon"></i> {{age}} years old</div>
+        <div class="pf-basic-info-cell col span_6"><i class="fa fa-globe category-icon"></i> {{profile.city}}, {{profile.state}}</div>
+      </div>
+
+      <div class="pf-basic-info-row">
+        <div class="pf-basic-info-cell col span_6">
+          <i class="fa fa-venus-mars category-icon"></i>
+          {{#ifCond profile.gender "male"}}
+            <i class="fa fa-male"></i>
+          {{else}}
+            {{#ifCond profile.gender "female"}}
+              <i class="fa fa-female"></i>
+            {{else}}
+              <i class="fa fa-transgender"></i>
+            {{/ifCond}}
+          {{/ifCond}}
+           seeking
+          {{#ifCond profile.sexual_preference "men"}}
+            <i class="fa fa-female"></i>
+          {{else}}
+            {{#ifCond profile.sexual_preference "women"}}
+              <i class="fa fa-male"></i>
+            {{else}}
+              <i class="fa fa-female"></i>
+              <i class="fa fa-male"></i>
+            {{/ifCond}}
+          {{/ifCond}}
+        </div>
+
+        <div class="pf-basic-info-cell col span_6">
+        <i class="fa fa-eye category-icon"></i>
+        {{#if profile.religion}}
+          {{profile.religion}}
+        {{else}}
+          Religion not specified
+        {{/if}}
+        </div>
+      </div>
+
+      <div class="pf-basic-info-row">
+        <div class="pf-basic-info-cell col span_6">
+          <i class="fa fa-paw category-icon"></i>
+          {{profile.pets}}
+        </div>
+        <div class="pf-basic-info-cell col span_6">
+          <i class="fa fa-heartbeat category-icon"></i>
+          {{#if profile.smoke}}
+            Smoker
+          {{else}}
+            Non-smoker
+          {{/if}}
+        </div>
+      </div>
+
+      <div class="pf-basic-info-row">
+        <div class="pf-basic-info-cell col span_6"><a href="{{profile.linkedin_url}}"><i class="fa fa-linkedin-square category-icon"></i> LinkedIn</a></div>
+        <div class="pf-basic-info-cell col span_6"><a href="{{profile.facebook_url}}"><i class="fa fa-facebook-square category-icon"></i> Facebook</a></div>
+      </div>
+
+      <div class="pf-bio-wrapper">
+        <h3>About {{profile.first_name}}</h3>
+        <p class="pf-bio-content">{{profile.bio}}</p>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="row">
+    <h2>The Good Stuff</h2>
+  </div>
+
+  <div class="row">
+
+    <div class="pf-box-wrapper col span_4">
+      <div class="flip-wrapper">
+        <figure class="effect-dexter pf-box pf-box-front">
+          <figcaption>
+            <h3>Embarrassing Moments</h3>
+            <p>Click to read more!</p>
+          </figcaption>
+        </figure>
+        <div class="pf-box pf-box-back hidden">
+          <div class="pf-embarrass-moment">{{profile.embarrassing_moment}}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pf-box-wrapper col span_4">
+      <div class="flip-wrapper">
+        <figure class="effect-dexter pf-box pf-box-front">
+          <figcaption>
+            <h3>Interests</h3>
+            <p>Click to read more!</p>
+          </figcaption>
+        </figure>
+        <div class="pf-box pf-box-back hidden">
+          {{#each interests}}
+            <div class="pf-interest-btn">{{this.name}}</div>
+          {{/each}}
+        </div>
+      </div>
+    </div>
+
+    <div class="pf-box-wrapper col span_4">
+      <div class="flip-wrapper">
+        <figure class="effect-dexter pf-box pf-box-front">
+          <figcaption>
+            <h3>Values</h3>
+            <p>Click to read more!</p>
+          </figcaption>
+        </figure>
+        <div class="pf-box pf-box-back hidden">
+          {{#each values}}
+            <div class="pf-interest-btn">{{this.name}}</div>
+          {{/each}}
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</script>

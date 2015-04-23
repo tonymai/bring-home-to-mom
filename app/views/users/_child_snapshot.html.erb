@@ -2,7 +2,9 @@
   <img src="<%= child.pf_image_1 %>" />
   <div class="child-card-text">
     <h3><%= child.first_name %></h3>
-    <a href="#">View Profile</a><br />
+    <a href="/users/<%= current_user.id %>/profiles/<%= child.id %>" data-child-id="<%= child.id %>">View Profile</a><br />
     <a href="#">Edit Profile</a><br />
   </div>
 </div>
+
+<%= render partial: 'my_child_profile_detail_modal' %>
