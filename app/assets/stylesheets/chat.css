@@ -13,29 +13,28 @@
     width: 280px;
     display: none;
 }
- 
+
 .chatboxhead {
-    background: #666;
-    color: white;
-    padding: 0.5rem;
-    overflow: hidden;
- 
-    border-right: 1px solid rgba(85, 85, 85, 0.87);
-    border-left: 1px solid rgba(85, 85, 85, 0.87);
+  background: #4B6CB7;
+  color: white;
+  padding: 0.5rem;
+  overflow: hidden;
+  border-right: 1px solid rgba(85, 85, 85, 0.87);
+  /* border-left: 1px solid rgba(85, 85, 85, 0.87); */
 }
- 
+
 .chatboxhead h2 {
     display: inline;
     font-size: 17px;
     font-weight: 700;
 }
- 
+
 .chatboxblink {
     background-color: #176689;
     border-right: 1px solid #176689;
     border-left: 1px solid #176689;
 }
- 
+
 .chatboxcontent {
     font-family: arial, sans-serif;
     height: 100%;
@@ -48,23 +47,23 @@
     line-height: 1.3em;
     list-style: none;
 }
- 
+
 .chatboxcontent li {
     padding: 0.3rem;
     overflow: hidden;
     display: flex;
 }
- 
+
 .chatboxcontent .avatar {
     width: 40px;
     position: relative;
 }
- 
+
 .chatboxcontent .avatar img {
     display: block;
     width: 100%;
 }
- 
+
 .other .avatar:after {
     content: "";
     position: absolute;
@@ -76,21 +75,21 @@
     border-left-color: transparent;
     border-bottom-color: transparent;
 }
- 
+
 .self {
     justify-content: flex-end;
     align-items: flex-end;
 }
- 
+
 .self .chatboxmessagecontent {
     order: 1;
     border-bottom-right-radius: 0;
 }
- 
+
 .self .avatar {
     order: 2;
 }
- 
+
 .self .avatar:after {
     content: "";
     position: absolute;
@@ -103,7 +102,7 @@
     border-top-color: transparent;
     box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
 }
- 
+
 .chatboxmessagecontent {
     width: 100%;
     background: white;
@@ -111,26 +110,26 @@
     border-radius: 2px;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
- 
+
 .chatboxmessagecontent p {
     font-size: 12px;
     margin: 0 0 0.2rem 0;
     -ms-word-break: break-all;
- 
+
     /* Non standard for webkit */
     word-break: break-word;
- 
+
     -webkit-hyphens: auto;
     -moz-hyphens: auto;
     hyphens: auto;
 }
- 
+
 .chatboxmessagetime {
     margin-top: -8px;
     font-size: .65em;
     color: #A0A0A0;
 }
- 
+
 .chatboxinput {
     padding: 5px;
     background-color: #FFFFFF;
@@ -138,7 +137,7 @@
     border-right: 1px solid #CCCCCC;
     border-bottom: 1px solid #CCCCCC;
 }
- 
+
 .chatboxtextarea {
     width: 100%;
     height: 44px;
@@ -148,7 +147,7 @@
     overflow: hidden;
     resize: none !important;
 }
- 
+
 .chatboxtextareaselected {
     border: 2px solid #878787;
     margin: 0;
@@ -157,21 +156,21 @@
 .chatboxsubmit {
     border: 0;
     color: #FFFFFF;
-    background-color: #FF6953;
+    background-color: #F857A6;
     padding: 10px;
     font-size: 0.75em;
 }
- 
+
 .chatboxmessage {
     margin-left: 1em;
 }
- 
+
 .chatboxinfo {
     margin-left: -1em;
     color: #666666;
- 
+
 }
- 
+
 .chatboxtitle {
     float: left;
 }

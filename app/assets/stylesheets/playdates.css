@@ -12,7 +12,9 @@
   padding: 0.5em;
   font-size: 0.8em;
 }
-
+.fa-check-circle{
+  color: rgb(56, 226, 162);
+}
 .date-status-header p{
   margin: 0 0.5em;
   text-align: center;
@@ -49,8 +51,8 @@
 }
 
 .experience-wrapper {
-  overflow:scroll;
-  height: 500px;
+  overflow-y:scroll;
+  height: 100%;
 }
 
 .design-date-notification{
@@ -111,6 +113,13 @@
   margin: 0 auto;
 }
 
+/*General Formatting of page*/
+.page-title-wrapper h1{
+  font-family: 'Open Sans', sans-serif;
+}
+.date-design-section-header h2{
+  font-size: 1.3em;
+}
 /*************** EXPERIENCES (FOOD & DRINK) *****************/
 .date-design-section{
   margin-right: 1em;
@@ -170,17 +179,17 @@
 }
 
 .select-experience-btn a{
-  border: 2px solid darkgray;
+  border: 2px solid #4B6CB7;
   padding: 4px 8px;
   border-radius: 6px;
-  color: #1ab595;
+  color: #4B6CB7;
   font-size: 1.1em;
 }
 
 .select-experience-btn a:hover{
-  color: #fff;
-  border: 2px solid #ff6953;
-  background-color: #1ab595;
+  color: white;
+  border: 2px solid #4B6CB7;
+  background-color: #4B6CB7;
 }
 
 .close-icon{
@@ -272,8 +281,15 @@
   height:293px;
   width:199px;
 }
+
+.mv-box-back ul{
+  list-style: none;
+  padding-left: 25px;
+}
 .mv-box-back ul>li{
-  font-size: .7em;
+  font-size: .8em;
+  font-family: 'Open Sans', sans-serif;
+  line-height: 1.6em;
 }
 div.slick-list.draggable{
   height: 316px;
@@ -283,17 +299,21 @@ div.slick-list.draggable{
   font-size: .7em;
 }
 .add-to-package{
-  border: 1px solid gray;
-  background-color: #E2E2E2;
+  position: absolute;
+  border: 1px solid #4B6CB7;
+  background-color: #4B6CB7;
+  color: white;
   border-radius: 3px;
   margin: 0 auto;
   width: 8em;
   font-size: .8em;
   padding: .2em;
+  margin-top: 252px;
+  margin-left: 43px;
 }
 .add-to-package:hover{
-  background-color: gray;
-  color: white;
+  background-color: transparent;
+  color: #4B6CB7;
 }
 /***************** FLIP ANIMATION *****************/
 #movie-wrap{
@@ -318,12 +338,18 @@ div.slick-list.draggable{
   backface-visibility: hidden;
 }
 .mv-box-back{
-  background-image: url('/images/backgrounds/gray_texture.png');
+  background-image: url('/images/backgrounds/bg-paper.png');
   border:1px solid gray;
-  overflow-y: scroll;
 }
 .mv-box-back h3{
+  margin: 0 auto;
+  width: 6em;
+  /* border: 1px solid red; */
   text-align: center;
+  color:#4B6CB7;
+}
+.blueify{
+  color:#4B6CB7;
 }
 
 .movie-flip .mv-box-back{
