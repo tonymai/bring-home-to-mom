@@ -17,6 +17,7 @@
 .pf-basic-info-row{
   text-align: left;
   text-indent: 1em;
+  display: flex;
 }
 
 .pf-basic-info-cell{
@@ -29,6 +30,21 @@
 
 .category-icon::after{
   content: "\00a0\00a0";
+}
+
+.pf-bio-wrapper{
+  border-top: 1px solid lightgray;
+  margin: 0 1em 0.4em 1em;
+}
+
+.pf-bio-wrapper h3{
+  margin: 0.4em 0.45em 0.3em 0.45em;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 2.2em;
+}
+
+.pf-bio-content{
+  margin: 0;
 }
 
 /*STYLING FOR 'PROPOSE A DATE' BUTTON*/
@@ -71,7 +87,7 @@
 .pf-modal-container h3{
   font-family: 'Montserrat', sans-serif;
   font-weight: 800;
-  font-size: 1.5em;
+  font-size: 1.3em;
   text-transform: uppercase;
   text-align: center;
 }
@@ -96,7 +112,9 @@
   background-color: #1ab595;
   border-radius: 10px;
   color: #D7DADB;
+  padding: 1em;
 }
+
 
 /***************** FLIP ANIMATION *****************/
 .pf-box-wrapper{
@@ -224,9 +242,9 @@ figure.effect-dexter:hover {
 
 figure.effect-dexter figcaption::after {
   position: absolute;
-  right: 30px;
+  right: 18px;
   bottom: 15px;
-  left: 30px;
+  left: 18px;
   height: -webkit-calc(50% - 30px);
   height: calc(50% - 30px);
   border: 7px solid #ff6953;
@@ -245,7 +263,7 @@ figure.effect-dexter:hover figcaption::after {
 }
 
 figure.effect-dexter figcaption {
-  padding: 0.2em 3em;
+  padding: 0.7em 2em;
   text-align: left;
 }
 

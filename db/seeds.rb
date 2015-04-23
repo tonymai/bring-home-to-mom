@@ -19,7 +19,11 @@ end
 
 cities = ['San Francisco', 'San Diego', 'Los Angeles', 'Santa Barbara', 'Sacramento']
 
+pet_owner = ['Dog Owner', 'Cat Owner', 'Dog and Cat Owner', 'No Pets']
+
 experience_photos = ['http://www.seamless.com/finedining/img/vendormenuplustabcontentimages/lg_27331_0.jpg', 'http://25.media.tumblr.com/8de69d887367fa0ea41ba1c628fcad9f/tumblr_myvf7h7dKh1shjq15o1_1280.jpg', 'http://collegetimes.com/wp-content/uploads/2014/09/las.jpg', 'http://www.toastedontheinside.com/wp-content/uploads/2013/11/foodporn-34.jpg', 'http://nolavie.com/wp-content/uploads/2014/02/Pork-sliders-2.jpg', 'http://i.imgur.com/iPjkzUz.jpg', 'http://loreleynyc.com/gallery/photos/Food/beer_tasting_flight.jpg', 'https://img.vimbly.com/images/full_photos/scotch-1.jpg']
+
+movie_posters = ['http://www.cinemablend.com/images/news/67907/_1414454351.jpg']
 
 dbc_students =
   [ ['Andrew', 'Dye', 'https://secure.gravatar.com/avatar/5abc8c1476e25191a08feba0a23f3829.png?r=PG&amp;d=mm&amp;s=300'],
@@ -171,6 +175,7 @@ i = 0
       sexual_preference: ['men', 'women', 'no preference'].sample,
       birthdate: Faker::Date.between(50.years.ago, 18.years.ago),
       bio: Faker::Company.bs,
+      pets: pet_owner.sample,
       religion: ['Christian','Muslim','Buddhist', 'Atheist', 'Rastafarian', 'Pastafarian', 'Hindu', 'Sikh', 'Jewish', 'Shinto', 'Shamanist', 'Scientologist', 'Mormon'].sample,
       smoke: [true, false].sample,
       linkedin_url: Faker::Internet.url,
@@ -270,7 +275,7 @@ end
     description: Faker::Lorem.paragraph,
     director: Faker::Name.name,
     rating: rand(40..100),
-    image: Faker::Avatar.image,
+    image: movie_posters.sample,
     movie_at: experience_time + 2.hours,
     )
   playdate.save
