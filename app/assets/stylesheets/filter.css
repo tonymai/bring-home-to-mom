@@ -31,9 +31,23 @@
 .prof-img{
   height:100px;
   width:100px;
+
+   -webkit-transition: all 1s ease;
+      -moz-transition: all 1s ease;
+        -o-transition: all 1s ease;
+       -ms-transition: all 1s ease;
+           transition: all 1s ease;
+ }
+ 
+.prof-img:hover{
+   height:125px;
+   width:125px;
 }
 
 .matches .individual-child{
+  height:100px;
+  width:100px;
+  overflow: hidden;
   display: inline-block;
 }
 
