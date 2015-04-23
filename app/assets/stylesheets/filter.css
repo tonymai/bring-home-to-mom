@@ -33,6 +33,9 @@
   width:100px;
 }
 
+.matches{
+  background-image: url('green_texture.png')
+}
 .matches .individual-child{
   display: inline-block;
 }

@@ -10,7 +10,7 @@
           <div class="interest-btn" data-interest-id="<%= interest.id %>"><%= interest.name %></div>
         <% end %>
       </div>
-
+    <div class="debug interest-form-wrapper">
       <%= form_for @interest do |f| %>
 
         <div class="interest-error-explanation hidden">
@@ -24,9 +24,10 @@
         <%= f.submit 'Add interest' %>
 
       <% end %>
+      </div>
     </div>
 
-    <div class="container row">
+    <div class="continue-wrapper container row">
       <a class="continue" href="#">Continue</a>
     </div>
 

@@ -146,6 +146,9 @@
 .new-pf-form-container {
   width: 100%;
   text-align: center;
+  background-color: rgb(248, 248, 248);
+  color: gray;
+  padding: 2em 0;
 }
 
 .new-pf-section a {
@@ -157,11 +160,84 @@
   color: #2C3E50;
 }
 
-.new-pf-section h2 {
-  display: block;
-  background-color: #FF6953
+.new-child-pf-title{
+  font-weight: bold;
+  font-size: 2em;
+  color:gray;
 }
 
+.new-pf-section h2 {
+  display: block;
+    background: -webkit-linear-gradient(90deg, #f857a6 10%, #ff5858 90%);
+  background:    -moz-linear-gradient(90deg, #f857a6 10%, #ff5858 90%);
+  background:     -ms-linear-gradient(90deg, #f857a6 10%, #ff5858 90%);
+  background:      -o-linear-gradient(90deg, #f857a6 10%, #ff5858 90%);
+  background:         linear-gradient(90deg, #f857a6 10%, #ff5858 90%);
+  color: white;
+}
+
+.continue-wrapper {
+  border: 1px solid lightgray;
+  width: 5em;
+  background-color: transparent;
+  margin-top: .5em;
+  border-radius: 3px;
+  /* color: white; */
+}
+
+.continue-wrapper:hover{
+  background-color:white;
+}
+
+.continue-wrapper a:hover{
+  color:lightgray;
+}
+.pf-img-submit-btn{
+  border: 1px solid lightgray;
+  width: 5em;
+  background-color: transparent;
+  margin-top: .5em;
+  border-radius: 3px;
+}
+
+.continue-wrapper a{
+  color:gray;
+}
+.pf-form-gender{
+    width: 6em;
+    /* display: flex; */
+    text-align: right;
+    /* justify-content: space-between; */
+}
+
+.pf-form-interested-in{
+  width: 9em;
+  /* border: 1px solid red; */
+  /* display: flex; */
+  text-align: right;
+  /* justify-content: space-between; */
+}
+.gender-interestedin-wrapper{
+  display: flex;
+  justify-content: space-between;
+  width: 37em;
+}
+.gender-wrapper{
+  /* border: 1px solid white; */
+  width: 12em;
+  /* margin-left: -1em; */
+
+}
+.interested-in-wrapper{
+   margin-left: 7em;
+  /* padding-left: 4em; */
+}
+.interested-in-wrapper label{
+  margin-left: 5em;
+}
+.radio-btn-wrapper{
+  border:1px solid red;
+}
 .contine {
   border: 1px solid black;
 }
@@ -182,17 +258,17 @@
 
 .interest-btn, .value-btn{
   display: inline-block;
-  border: 1px gray solid;
+  border: 1px rgb(180, 180, 180) solid;
   padding: 2px 4px;
   margin: 5px 0px 0px 0px;
-  border-radius: 8px;
-  color: #000000;
-  background-color: #D7DADB;
+  border-radius: 3px;
+  color: #FFFFFF;
+  background-color: #B8DAF2;
 }
 
 .interest-btn-selected, .value-btn-selected{
 	color: #FFFFFF;
-  background-color: #1AB595;
+  background-color: #72C4FF;
 }
 
 .new-pf-section .submit-all a {

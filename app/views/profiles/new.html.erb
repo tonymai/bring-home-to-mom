@@ -1,6 +1,6 @@
 <div class="new-pf-form-container">
 
-  <h1>New Child Profile</h1>
+  <p class="new-child-pf-title">New Child Profile</p>
 
   <%= form_for @child, url: url_for(controller: 'profiles', action: 'create'), html: {class: 'pure-form'} do |f| %>
 
@@ -17,7 +17,7 @@
         <div class="container row">
           <div class="col span_6">
             <%= f.label(:first_name, 'First Name:') %><br />
-            <%= f.text_field(:first_name) %><br />
+            <%= f.text_field(:first_name, class: "glowing-border" ) %><br />
           </div>
 
           <div class="col span_6">
@@ -50,19 +50,24 @@
           </div>
         </div>
 
-        <div class="container row">
-          <div class="col span_6">
+        <div class="gender-interestedin-wrapper container">
+          <div class="gender-wrapper col">
             <%= f.label(:gender, 'Gender:') %><br />
-            Male: <%= f.radio_button(:gender, 'male') %><br />
-            Female: <%= f.radio_button(:gender, 'female') %><br />
-            Other: <%= f.radio_button(:gender, 'other') %><br />
+            <div class="pf-form-gender">
+            Male: <%= f.radio_button(:gender, 'male') %><br>
+            Female: <%= f.radio_button(:gender, 'female') %><br>
+            Other: <%= f.radio_button(:gender, 'other') %><br>
+            </div>
           </div>
 
-          <div class="col span_6">
+          <div class="interested-in-wrapper">
             <%= f.label(:sexual_preference, 'Interested in:') %><br />
+            <div class="pf-form-interested-in">
+
             Men: <%= f.radio_button(:sexual_preference, 'men') %><br />
             Women: <%= f.radio_button(:sexual_preference, 'women') %><br />
             No Preference: <%= f.radio_button(:sexual_preference, 'no preference') %><br />
+            </div>
           </div>
         </div>
 
@@ -71,7 +76,7 @@
           <%= f.text_area(:bio) %><br />
         </div>
 
-        <div class="container row">
+        <div class="continue-wrapper container row">
           <a class="continue" href="#">Continue</a>
         </div>
 
@@ -98,7 +103,7 @@
         <%= f.label(:embarrassing_moment, 'Embarrassing Moment:') %><br />
         <%= f.text_area(:embarrassing_moment) %>
 
-        <div class="container row">
+        <div class="continue-wrapper container row">
           <a class="continue" href="#">Continue</a>
         </div>
 
@@ -145,7 +150,7 @@
         </div>
 
         <div class="container row">
-          <%= f.submit 'Continue' %>
+          <%= f.submit 'Continue', class: "pf-img-submit-btn" %>
           <a class="continue-force hidden" href="#">Continue</a>
         </div>
 

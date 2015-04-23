@@ -144,12 +144,16 @@
 
 .logout-button {
   text-decoration: none;
-  padding:4px;
+  padding:1px;
   border:1px solid white;
   border-radius:4px;
   color:white;
 }
+.logout-button:hover{
+  color:navy;
+  background-color: rgba(256,256,256,1);
 
+}
 .hidden{
   display: none;
 }

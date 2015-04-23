@@ -50,7 +50,9 @@
     </div>
     <br>
     <%= render partial: 'autocomplete_container' %>
-    <a href="/users/<%= current_user.id %>/profiles/new"><button>Create A New Child Profile</button></a>
+    <div class="add-child-btn">
+      <a href="/users/<%= current_user.id %>/profiles/new">Add Another Child!</a>
+    </div>
   </div>
   <div class="matches col span_9">
   </div>
