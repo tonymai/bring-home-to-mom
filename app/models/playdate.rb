@@ -105,4 +105,70 @@ class Playdate < ActiveRecord::Base
     self.last_event_datetime.strftime("%A, %B %d, at %I:%M %p")
   end
 
+  def you_accepted?(current_user)
+    if current_user.initiated_date?(self) #you are the initiator
+      return self.initiator_accepted
+    elsif (current_user.initiated_date? == false) #you are the recipient
+      return self.recipient_accepted
+    else
+      puts "You are not associated with this date"
+      return nil
+    end
+  end
+
+  def other_accepted?(current_user)
+    if current_user.initiated_date?(self) #you are the initiator
+      return self.recipient_accepted
+    elsif (current_user.initiated_date? == false) #you are the recipient
+      return self.initiator_accepted
+    else
+      puts "You are not associated with this date"
+      return nil
+    end
+  end
+
+  def you_confirmed?(current_user)
+    if current_user.initiated_date?(self) #you are the initiator
+      return self.initiator_confirmed
+    elsif (current_user.initiated_date? == false) #you are the recipient
+      return self.recipient_confirmed
+    else
+      puts "You are not associated with this date"
+      return nil
+    end
+  end
+
+  def other_confirmed?(current_user)
+    if current_user.initiated_date?(self) #you are the initiator
+      return self.recipient_confirmed
+    elsif (current_user.initiated_date? == false) #you are the recipient
+      return self.initiator_confirmed
+    else
+      puts "You are not associated with this date"
+      return nil
+    end
+  end
+
+  def you_paid?(current_user)
+    if current_user.initiated_date?(self) #you are the initiator
+      return self.initiator_paid
+    elsif (current_user.initiated_date? == false) #you are the recipient
+      return self.recipient_paid
+    else
+      puts "You are not associated with this date"
+      return nil
+    end
+  end
+
+  def other_paid?(current_user)
+    if current_user.initiated_date?(self) #you are the initiator
+      return self.recipient_paid
+    elsif (current_user.initiated_date? == false) #you are the recipient
+      return self.initiator_paid
+    else
+      puts "You are not associated with this date"
+      return nil
+    end
+  end
+
 end
