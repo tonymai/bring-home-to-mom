@@ -12,7 +12,9 @@
   padding: 0.5em;
   font-size: 0.8em;
 }
-
+.fa-check-circle{
+  color: rgb(56, 226, 162);
+}
 .date-status-header p{
   margin: 0 0.5em;
   text-align: center;
@@ -49,8 +51,8 @@
 }
 
 .experience-wrapper {
-  overflow:scroll;
-  height: 500px;
+  overflow-y:scroll;
+  height: 100%;
 }
 
 .design-date-notification{
@@ -111,6 +113,13 @@
   margin: 0 auto;
 }
 
+/*General Formatting of page*/
+.page-title-wrapper h1{
+  font-family: 'Open Sans', sans-serif;
+}
+.date-design-section-header h2{
+  font-size: 1.3em;
+}
 /*************** EXPERIENCES (FOOD & DRINK) *****************/
 .date-design-section{
   margin-right: 1em;
