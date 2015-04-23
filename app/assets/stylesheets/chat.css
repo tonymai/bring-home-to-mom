@@ -3,7 +3,10 @@
  * CREDITS: http://css-tricks.com/replicating-google-hangouts-chat/
  *
  */
- 
+.chat-data {
+ height: calc( 100vh - 130px );
+}
+
 .chatbox {
     position: fixed;
     position: expression("absolute");
@@ -35,7 +38,7 @@
  
 .chatboxcontent {
     font-family: arial, sans-serif;
-    height: 500px;
+    height: 100%;
     overflow-y: auto;
     padding: 7px;
     border-left: 1px solid #cccccc;
