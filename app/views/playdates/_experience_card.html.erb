@@ -9,13 +9,9 @@
     </figure>
   </div>
   <div class="experience-details col span_7">
-    <% if @playdate.experience == experience %>
-      <% if current_user.initiated_date?(@playdate) && !(@playdate.initiator_confirmed) %>
-        <a href="/dates/<%= @playdate.id %>" data-experience-id="<%= experience.id %>" class="selected-experience-delete-btn"><i class="close-icon fa fa-times"></i></a>
-      <% elsif !(current_user.initiated_date?(@playdate)) && !(@playdate.recipient_confirmed) %>
-        <a href="/dates/<%= @playdate.id %>" data-experience-id="<%= experience.id %>" class="selected-experience-delete-btn"><i class="close-icon fa fa-times"></i></a>
-      <% else %>
-      <% end %>
+
+    <% if (@playdate.experience == experience) && !(@playdate.you_confirmed?(current_user)) %>
+      <a href="/dates/<%= @playdate.id %>" data-experience-id="<%= experience.id %>" class="selected-experience-delete-btn"><i class="close-icon fa fa-times"></i></a>
     <% end %>
 
 
@@ -44,7 +40,8 @@
       <p>$<%= experience.price_per_person %> / person</p>
     </div>
   </div>
-  <% if !experience.playdates.include?(@playdate) %>
+
+  <% unless @playdate.experience == experience %>
     <div class="select-experience-btn">
       <a href="/dates/<%= @playdate.id %>" data-experience-id="<%= experience.id %>">Choose Experience</a>
     </div>
