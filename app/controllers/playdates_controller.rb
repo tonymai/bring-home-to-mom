@@ -61,14 +61,23 @@ class PlaydatesController < ApplicationController
   end
 
   def update
-    p params
     playdate = Playdate.find(params[:id])
     experience = Experience.find(params[:experience_id])
 
     playdate.experience_id = experience.id
 
+    if current_user.initiated_date?(playdate) && !(playdate.initiator_confirmed)
+      delete_button = true
+    elsif !(current_user.initiated_date?(playdate)) && !(playdate.recipient_confirmed)
+      delete_button = true
+    else
+      delete_button = false
+    end
+
+    formatted_experience_date = experience.experience_at_formatted
+
     if playdate.save
-      render json: { playdate: playdate, experience: experience }, status: :ok
+      render json: { playdate: playdate, experience: experience, deleteButton: delete_button, formattedExperienceDate: formatted_experience_date}, status: :ok
     else
       render json: { errors: playdate.errors.full_messages }, status: :unproccessable_entity
     end

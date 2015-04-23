@@ -11,9 +11,9 @@
   <div class="experience-details col span_7">
     <% if @playdate.experience == experience %>
       <% if current_user.initiated_date?(@playdate) && !(@playdate.initiator_confirmed) %>
-        <i class="close-icon fa fa-times"></i>
+        <a href="/dates/<%= @playdate.id %>" data-experience-id="<%= experience.id %>" class="selected-experience-delete-btn"><i class="close-icon fa fa-times"></i></a>
       <% elsif !(current_user.initiated_date?(@playdate)) && !(@playdate.recipient_confirmed) %>
-        <i class="close-icon fa fa-times"></i>
+        <a href="/dates/<%= @playdate.id %>" data-experience-id="<%= experience.id %>" class="selected-experience-delete-btn"><i class="close-icon fa fa-times"></i></a>
       <% else %>
       <% end %>
     <% end %>
@@ -44,62 +44,11 @@
       <p>$<%= experience.price_per_person %> / person</p>
     </div>
   </div>
-  <div class="select-experience-btn">
-    <a href="/dates/<%= @playdate.id %>" data-experience-id="<%= experience.id %>">Choose Experience</a>
-  </div>
+  <% if !experience.playdates.include?(@playdate) %>
+    <div class="select-experience-btn">
+      <a href="/dates/<%= @playdate.id %>" data-experience-id="<%= experience.id %>">Choose Experience</a>
+    </div>
+  <% end %>
 </div>
 
-<script type="x-handlebars-template" class="date-experience-card-template">
-<div class="date-experience-card row">
-  <div class="experience-image col span_5">
-    <figure class="effect-bubba">
-      <img src="{{experience.image}}" />
-      <figcaption>
-        <h3>{{experience.venue}}</h3>
-        <p>{{experience.desc_summary}}</p>
-      </figcaption>
-    </figure>
-  </div>
-  <div class="experience-details col span_7">
-    // <% if (current_user.initiated_date?(@playdate)) && (@playdate.experience == experience) %>
-    //   <% unless (@playdate.initiator_confirmed) %>
-    //     <i class="close-icon fa fa-times"></i>
-    //   <% end %>
-    // <% elsif !(current_user.initiated_date?(@playdate)) && (@playdate.experience == experience) %>
-    //   <% unless (@playdate.recipient_confirmed) %>
-    //     <i class="close-icon fa fa-times"></i>
-    //   <% end %>
-    // <% else %>
-    //   <p class="design-date-notification">Something is wrong</p>
-    // <% end %>
-
-    <div class="exp-detail-item">
-      <i class="fa fa-calendar"></i>
-      <p>{{experience.experience_at_formatted}}</p>
-    </div>
-    <div class="exp-detail-item">
-      <i class="fa fa-street-view"></i>
-      <p>{{experience.address}}</p>
-    </div>
-    <div class="exp-detail-item">
-      <i class="fa fa-cutlery"></i>
-      <p>{{experience.note_1}}</p>
-    </div>
-    <div class="exp-detail-item">
-      <i class="fa fa-leaf"></i>
-      <p>{{experience.desc_note_2}}</p>
-    </div>
-    <div class="exp-detail-item">
-      <i class="fa fa-smile-o"></i>
-      <p>{{experience.desc_note_3}}</p>
-    </div>
-    <div class="exp-detail-item">
-      <i class="fa fa-money"></i>
-      <p>${{experience.price_per_person}} / person</p>
-    </div>
-  </div>
-  <div class="select-experience-btn">
-    <a href="/dates/{{playdate.id}}" data-experience-id="{{experience.id}}">Choose Experience</a>
-  </div>
-</div>
-</script>
+<%= render 'experience_card_template' %>

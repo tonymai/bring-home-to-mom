@@ -27,7 +27,9 @@
           <% if (@playdate.experience.nil?) && (@playdate.movie.nil?) %>
             <p class="design-date-notification">No Experience Selected</p>
           <% elsif (@playdate.experience) && (@playdate.movie.nil?) %>
+          <div id="selected-event">
             <%= render partial: "experience_card", locals: {experience: @playdate.experience} %>
+          </div>
           <% elsif (@playdate.movie) && (@playdate.experience.nil?) %>
             <%= render partial: "movie_card", locals: {movie: @playdate.movie} %>
           <% elsif (@playdate.movie) && (@playdate.experience) %>
