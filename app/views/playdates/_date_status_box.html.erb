@@ -16,19 +16,11 @@
               <p>Initiated</p>
             </div>
             <div class="date-status-row">
-              <% if playdate.initiator_confirmed %>
-                <i class="fa fa-check-circle"></i>
-              <% else %>
-                <i class="fa fa-circle-thin"></i>
-              <% end %>
+              <i id="initiator-confirmed" class="<%= playdate.initiator_confirmed ? 'fa fa-check-circle' : 'fa fa-circle-thin' %>"></i>
               <p>Confirmed</p>
             </div>
             <div class="date-status-row">
-              <% if playdate.initiator_paid %>
-                <i class="fa fa-check-circle"></i>
-              <% else %>
-                <i class="fa fa-circle-thin"></i>
-              <% end %>
+              <i id="initiator-paid" class="<%= playdate.initiator_paid ? 'fa fa-check-circle' : 'fa fa-circle-thin' %>"></i>
               <p>Paid</p>
             </div>
           </div>
@@ -44,27 +36,15 @@
           </div>
           <div class="date-status-table">
             <div class="date-status-row">
-              <% if playdate.recipient_accepted %>
-                <i class="fa fa-check-circle"></i>
-              <% else %>
-                <i class="fa fa-circle-thin"></i>
-              <% end %>
+              <i id="recipient-accepted" class="<%= playdate.recipient_accepted ? 'fa fa-check-circle' : 'fa fa-circle-thin' %>"></i>
               <p>Accepted</p>
             </div>
             <div class="date-status-row">
-              <% if playdate.recipient_confirmed %>
-                <i class="fa fa-check-circle"></i>
-              <% else %>
-                <i class="fa fa-circle-thin"></i>
-              <% end %>
+              <i id="recipient-confirmed" class="<%= playdate.recipient_confirmed ? 'fa fa-check-circle' : 'fa fa-circle-thin' %>"></i>
               <p>Confirmed</p>
             </div>
             <div class="date-status-row">
-              <% if playdate.recipient_paid %>
-                <i class="fa fa-check-circle"></i>
-              <% else %>
-                <i class="fa fa-circle-thin"></i>
-              <% end %>
+              <i id="recipient-paid" class="<%= playdate.recipient_paid ? 'fa fa-check-circle' : 'fa fa-circle-thin' %>"></i>
               <p>Paid</p>
             </div>
           </div>

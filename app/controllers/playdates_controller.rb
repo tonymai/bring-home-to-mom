@@ -61,14 +61,20 @@ class PlaydatesController < ApplicationController
   end
 
   def update
-    playdate = Playdate.find(params[:id])
+    date = Playdate.find(params[:id])
     experience = Experience.find(params[:experience_id])
 
-    playdate.experience_id = experience.id
+    if (current_user.initiated_date?(date)) && (date.experience_id != experience.id)
+      date.recipient_confirmed = false
+    elsif !(current_user.initiated_date?(date)) && (date.experience_id != experience.id)
+      date.initiator_confirmed = false
+    end
+    date.experience_id = experience.id
+    date.save!
 
-    if current_user.initiated_date?(playdate) && !(playdate.initiator_confirmed)
+    if current_user.initiated_date?(date) && !(date.initiator_confirmed)
       delete_button = true
-    elsif !(current_user.initiated_date?(playdate)) && !(playdate.recipient_confirmed)
+    elsif !(current_user.initiated_date?(date)) && !(date.recipient_confirmed)
       delete_button = true
     else
       delete_button = false
@@ -76,10 +82,10 @@ class PlaydatesController < ApplicationController
 
     formatted_experience_date = experience.experience_at_formatted
 
-    if playdate.save
-      render json: { playdate: playdate, experience: experience, deleteButton: delete_button, formattedExperienceDate: formatted_experience_date}, status: :ok
+    if date.save
+      render json: { playdate: date, experience: experience, deleteButton: delete_button, formattedExperienceDate: formatted_experience_date}, status: :ok
     else
-      render json: { errors: playdate.errors.full_messages }, status: :unproccessable_entity
+      render json: { errors: date.errors.full_messages }, status: :unproccessable_entity
     end
   end
 
@@ -96,33 +102,36 @@ class PlaydatesController < ApplicationController
 
   def accept_invitation
     date = Playdate.find(params[:id])
-    if date.recipient.parent.id == current_user.id
+    if date.recipient.parent == current_user
       date.recipient_accepted = true
       date.save!
     end
-    render json: {date: date}
+    render json: { message: "Successfully accepted.", dateId: date.id }, status: :ok
   end
 
   def confirm_date
     date = Playdate.find(params[:id])
-    if date.recipient.parent.id == current_user.id
+    if date.recipient.parent == current_user
       date.recipient_confirmed = true
       date.save!
-    elsif date.initiator.parent.id == current_user.id
+    elsif date.initiator.parent == current_user
       date.initiator_confirmed = true
       date.save!
     else
       puts "Something is wrong"
     end
-    render json: {date: date}
+
+    recipient = (current_user == date.recipient.parent ? true : false )
+
+    render json: { recipient: recipient }
   end
 
   def add_experience
     date = Playdate.find(params[:id])
-    selected_experience = Experience.find(params[:exp_id])
-    if (current_user.initiated_date?(date)) && (date.experience_id != selected_experience.id)
+    experience = Experience.find(params[:exp_id])
+    if (current_user.initiated_date?(date)) && (date.experience_id != experience.id)
       date.recipient_confirmed = false
-    elsif !(current_user.initiated_date?(date)) && (date.experience_id != selected_experience.id)
+    elsif !(current_user.initiated_date?(date)) && (date.experience_id != experience.id)
       date.initiator_confirmed = false
     end
     date.experience_id = params[:exp_id]

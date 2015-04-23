@@ -49,9 +49,9 @@
 
         <!-- ******BUTTON LOGIC****** -->
           <!-- AcceptEvent Logic -->
-          <div class="accept-confirm-pay-wrapper row"
+          <div class="accept-confirm-pay-wrapper row">
             <% if (current_user.id == @playdate.recipient.parent.id) && (@playdate.status == "pending") %>
-              <a href="/dates/<%= current_user.id %>/accept">Accept Invitation</a>
+              <a id="accept-invitation" class="accept-confirm-pay-btn" href="/dates/<%= @playdate.id %>/accept">Accept Invitation</a>
             <% end %>
 
             <!-- Confirm Event Logic -->
@@ -59,7 +59,7 @@
               <% if (@playdate.you_confirmed?(current_user)) && !(@playdate.other_confirmed?(current_user)) %>
                 <div class="disabled-button desaturate italics">Awaiting confirmation from other parent</div>
               <% elsif (@playdate.you_confirmed?(current_user) == false) %>
-                <a class="accept-confirm-pay-btn" href="/dates/<%= current_user.id %>/confirm">Confirm Date Selection</a>
+                <a id="confirm-invitation" class="accept-confirm-pay-btn" href="/dates/<%= @playdate.id %>/confirm">Confirm Date Selection</a>
               <% else %>
                 <a class="accept-confirm-pay-btn" href="#">Something is wrong</a>
               <% end %>

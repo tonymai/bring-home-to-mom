@@ -26,10 +26,14 @@ $(document).on('page:change', function() {
 			var templatingFunction = Handlebars.compile(source);
 			var context = data;
 			$('.design-date-notification').text('');
+			$('.select-experience-btn').removeClass('hidden');
 			$chooseExperienceBtn.addClass('hidden');
 			$('#selected-experience').append(templatingFunction(context));
-		}).fail(function(errors) {
-
+			if ($('#recipient-accepted').hasClass('fa-check-circle')) {
+				$('.accept-confirm-pay-wrapper').show();
+			};
+			$('#recipient-confirmed').removeClass('fa-check-circle').addClass('fa-circle-thin');
+			$('#initiator-confirmed').removeClass('fa-check-circle').addClass('fa-circle-thin');
 		});
 
 	});
@@ -49,10 +53,44 @@ $(document).on('page:change', function() {
 			});
 			$('.select-experience-btn').removeClass('hidden');
 			$('.design-date-notification').text('No Experience Selected');
-		}).fail(function(data) {
-
+			if ($('#recipient-accepted').hasClass('fa-circle-thin')) {
+				$('.accept-confirm-pay-wrapper').show();
+			} else {
+				$('.accept-confirm-pay-wrapper').hide();
+			};
 		});
 
+	});
+
+	$('#accept-invitation').on('click', function(e) {
+		e.preventDefault();
+
+		$.ajax({
+			url: $(this).attr('href'),
+			type: 'POST',
+			dataType: 'JSON'
+		}).done(function(data) {
+			$('#recipient-accepted').removeClass('fa fa-circle-thin').addClass('fa fa-check-circle');
+			$('#accept-invitation').attr('href', '/dates/' + data.dateId + '/confirm');
+			$('#accept-invitation').text('Confirm Date Selection');
+		});
+	});
+
+	$('#confirm-invitation').on('click', function(e) {
+		e.preventDefault();
+
+		$.ajax({
+			url: $(this).attr('href'),
+			type: 'POST',
+			dataType: 'JSON'
+		}).done(function(data) {
+			if (data.recipient) {
+				$('#recipient-confirmed').removeClass('fa fa-circle-thin').addClass('fa fa-check-circle');
+			} else {
+				$('#initiator-confirmed').removeClass('fa fa-circle-thin').addClass('fa fa-check-circle');
+			};
+			$('.accept-confirm-pay-wrapper').html('<div class="disabled-button desaturate italics">Awaiting confirmation from other parent</div>');
+		});
 	});
 
 });
