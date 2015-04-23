@@ -21,14 +21,14 @@ cities = ['San Francisco', 'San Diego', 'Los Angeles', 'Santa Barbara', 'Sacrame
 
 pet_owner = ['Dog Owner', 'Cat Owner', 'Dog and Cat Owner', 'No Pets']
 
-experience_photos = ['http://www.seamless.com/finedining/img/vendormenuplustabcontentimages/lg_27331_0.jpg', 'http://25.media.tumblr.com/8de69d887367fa0ea41ba1c628fcad9f/tumblr_myvf7h7dKh1shjq15o1_1280.jpg', 'http://collegetimes.com/wp-content/uploads/2014/09/las.jpg', 'http://www.toastedontheinside.com/wp-content/uploads/2013/11/foodporn-34.jpg', 'http://nolavie.com/wp-content/uploads/2014/02/Pork-sliders-2.jpg', 'http://i.imgur.com/iPjkzUz.jpg', 'http://loreleynyc.com/gallery/photos/Food/beer_tasting_flight.jpg', 'https://img.vimbly.com/images/full_photos/scotch-1.jpg', 'http://www.catholicmatch.com/institute/wp-content/uploads/2011/11/Bali-Cooking-ClassLR.jpg', 'http://bestbottlewine.com/wp-content/uploads/2013/04/wine-tasting1a-slide.jpg']
+experience_photos = ['/images/experience/1.jpg', '/images/experience/2.jpg', '/images/experience/3.jpg', '/images/experience/4.jpg', '/images/experience/5.jpg', '/images/experience/6.jpg', '/images/experience/7.jpg', '/images/experience/8.jpg', '/images/experience/9.jpg', '/images/experience/10.jpg']
 
 movie_posters = ['http://www.cinemablend.com/images/news/67907/_1414454351.jpg']
 
 dbc_students =
   [ ['Andrew', 'Dye', 'https://secure.gravatar.com/avatar/5abc8c1476e25191a08feba0a23f3829.png?r=PG&amp;d=mm&s=300'],
     ['Anna', 'MacDonald', 'https://secure.gravatar.com/avatar/99659b959801d235a8a7c213227008f9.png?r=PG&d=mm&s=300'],
-    ['Dixon', 'Adair', 'https://secure.gravatar.com/avatar/a8936e98d319c6c8dad202d692aba2d1.png?r=PG&d=mm&s=30]0'],
+    ['Dixon', 'Adair', 'https://secure.gravatar.com/avatar/a8936e98d319c6c8dad202d692aba2d1.png?r=PG&d=mm&s=300'],
     ['Bao', 'Tran', 'https://secure.gravatar.com/avatar/f038deaeb508bed3d78f624ca1028df9.png?r=PG&d=mm&s=300'],
     ['Curtis', 'Seaton', 'https://secure.gravatar.com/avatar/e74d3dcf95f680e762f88b3909f35f9f.png?r=PG&d=mm&s=300'],
     ['Danny', 'Lundy', 'https://secure.gravatar.com/avatar/ebed9794eb1db20cfbb0a63fc4d76bb9.png?r=PG&d=mm&s=300'],
@@ -36,17 +36,17 @@ dbc_students =
     ['Erin', 'Hyejin Kim', 'https://secure.gravatar.com/avatar/bc3161cfe66e944b2b207080149a2df4.png?r=PG&d=mm&s=300'],
     ['Ganesh', 'Balaji', 'https://secure.gravatar.com/avatar/ac871ebaa0628c6a83289e7c564af480.png?r=PG&d=mm&s=300'],
     ['Iulia', 'Soimaru', 'https://secure.gravatar.com/avatar/3d772ac9d054192808f55fac90a867c7.png?r=PG&d=mm&s=300'],
-    ['Jacqueline', 'Hernandez', 'https://secure.gravatar.com/avatar/9e75c8c3c4d507fb24ec1bd0239ed2d7.png?r=PG&d=mm&s=30]0'],
+    ['Jacqueline', 'Hernandez', 'https://secure.gravatar.com/avatar/9e75c8c3c4d507fb24ec1bd0239ed2d7.png?r=PG&d=mm&s=300'],
     ['Janet', 'Brown', 'https://secure.gravatar.com/avatar/13de1fc4c41fb6214c540b2bd3aa256f.png?r=PG&d=mm&s=300'],
     ['Jeremy', 'Gagon', 'https://secure.gravatar.com/avatar/8a6027df29e3339dbe9e9cfa314c90ec.png?r=PG&d=mm&s=300'],
     ['Jonathan', 'Berk', 'https://secure.gravatar.com/avatar/3c962b80bfae0ff8e61b99ba032c89c2.png?r=PG&d=mm&s=300'],
-    ['Kailash', 'Duraiswami', 'https://secure.gravatar.com/avatar/d71b25f17864f11928c53639eefa8bc4.png?r=PG&d=mm&s=]300'],
+    ['Kailash', 'Duraiswami', 'https://secure.gravatar.com/avatar/d71b25f17864f11928c53639eefa8bc4.png?r=PG&d=mm&s=300'],
     ['Kevin', 'Ceballos', 'https://secure.gravatar.com/avatar/1475db0bc23485196d4cfb94e9c4a104.png?r=PG&d=mm&s=300'],
-    ['Marko', 'Anton Potocnik', 'https://secure.gravatar.com/avatar/793240f33e505ec0af147eaefd94e628.png?r=PG&d=mm&s=30]0'],
+    ['Marko', 'Anton Potocnik', 'https://secure.gravatar.com/avatar/793240f33e505ec0af147eaefd94e628.png?r=PG&d=mm&s=300'],
     ['Matt', 'McDole', 'https://secure.gravatar.com/avatar/663dd748230392e54aec7879301dcac8.png?r=PG&d=mm&s=300'],
     ['Matthew', 'Lao', 'https://secure.gravatar.com/avatar/70a39a576cbafe46e62db83814105b3a.png?r=PG&d=mm&s=300'],
     ['Michael', 'Perez', 'https://secure.gravatar.com/avatar/abce251b8018346e771560d66db2b3a3.png?r=PG&d=mm&s=300'],
-    ['Mikhail', 'Delos Trinos', 'https://secure.gravatar.com/avatar/80d04fcd03aeb5df3395e79594bc4143.png?r=PG&d=mm&s=30]0'],
+    ['Mikhail', 'Delos Trinos', 'https://secure.gravatar.com/avatar/80d04fcd03aeb5df3395e79594bc4143.png?r=PG&d=mm&s=300'],
     ['Peter', 'Brown', 'https://secure.gravatar.com/avatar/c6186e147a341a37f30e9ab54c8538ff.png?r=PG&d=mm&s=300'],
     ['Sofie', 'Garden', 'https://secure.gravatar.com/avatar/d42a49d8478e2cb45d41d04daa7ba9ee.png?r=PG&d=mm&s=300'],
     ['Stephanie', 'Lopez', 'https://secure.gravatar.com/avatar/62d0db03a04b24643e728391acac88ef.png?r=PG&d=mm&s=300'],
