@@ -87,9 +87,11 @@ class PlaydatesController < ApplicationController
     playdate = Playdate.find(params[:id])
     # experience = Experience.find(params[:experience_id])
 
-    playdate.experience.destroy
+    playdate.experience_id = nil
 
-    render json: {}
+    playdate.save
+
+    render json: { message: 'Successfully deleted.' }, status: :no_content
   end
 
   def accept_invitation

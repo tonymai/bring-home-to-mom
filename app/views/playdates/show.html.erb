@@ -20,14 +20,20 @@
         </div>
 
         <div class="date-design-section-body">
-          <% if (@playdate.status == 'paid') %>
-            <p class="design-date-notification">Everyone has paid - the date is on!</p>
-          <% end %>
+
+        <!-- ******SHOW NOTIFICATION****** -->
+          <p class="design-date-notification">
+            <% if (@playdate.experience.nil?) && (@playdate.movie.nil?) %>
+              No Experience Selected
+            <% elsif (@playdate.status == 'paid') %>
+              Everyone has paid - the date is on!
+            <% end %>
+          </p>
+
 
         <!-- ******SHOW SELECTED EXPERIENCE/MOVIE****** -->
           <div id="selected-experience">
             <% if (@playdate.experience.nil?) && (@playdate.movie.nil?) %>
-              <p class="design-date-notification">No Experience Selected</p>
             <% elsif (@playdate.experience) && (@playdate.movie.nil?) %>
               <%= render partial: "experience_card", locals: {experience: @playdate.experience} %>
             <% elsif (@playdate.movie) && (@playdate.experience.nil?) %>
