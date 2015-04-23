@@ -40,8 +40,9 @@ $(document).on('page:change', function() {
 					$('.accept-confirm-pay-wrapper').html('<a id="confirm-invitation" class="accept-confirm-pay-btn" href="/dates/' + data.playdate.id + '/confirm">Confirm Date Selection</a>');
 				} else {
 					$('.accept-confirm-pay-wrapper').html('<a id="accept-invitation" class="accept-confirm-pay-btn" href="/dates/' + data.playdate.id + '/accept">Accept Invitation</a>');
-				}
+				};
 			};
+			$('body').animate({ scrollTop: 0 }, 'slow');
 		});
 
 	});
@@ -82,7 +83,11 @@ $(document).on('page:change', function() {
 		}).done(function(data) {
 			$('#recipient-accepted').removeClass('fa fa-circle-thin').addClass('fa fa-check-circle');
 			$('#accept-invitation').attr('href', '/dates/' + data.dateId + '/confirm');
-			$('#accept-invitation').text('Confirm Date Selection');
+			if ($('#selected-experience').text() == '') {
+				$('#accept-invitation').text('Confirm Date Selection');
+			} else {
+				$('#accept-invitation').addClass('hidden');
+			}
 		});
 	});
 
