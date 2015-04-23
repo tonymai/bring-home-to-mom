@@ -4,6 +4,8 @@ class Parent < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  validates :first_name, :last_name, presence: true
+
   has_many :children
 	has_many :conversations, :foreign_key => :sender_id
 
@@ -42,6 +44,7 @@ class Parent < ActiveRecord::Base
       return nil
     end
   end
+
 
   def pending_dates # only dates awaiting a response from you
     all_pending = self.playdates.select {|date| (date.status == "pending") && !(self.initiated_date?(date))}

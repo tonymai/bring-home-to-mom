@@ -60,6 +60,29 @@ class PlaydatesController < ApplicationController
 
   end
 
+  def update
+    playdate = Playdate.find(params[:id])
+    experience = Experience.find(params[:experience_id])
+
+    playdate.experience_id = experience.id
+
+    if current_user.initiated_date?(playdate) && !(playdate.initiator_confirmed)
+      delete_button = true
+    elsif !(current_user.initiated_date?(playdate)) && !(playdate.recipient_confirmed)
+      delete_button = true
+    else
+      delete_button = false
+    end
+
+    formatted_experience_date = experience.experience_at_formatted
+
+    if playdate.save
+      render json: { playdate: playdate, experience: experience, deleteButton: delete_button, formattedExperienceDate: formatted_experience_date}, status: :ok
+    else
+      render json: { errors: playdate.errors.full_messages }, status: :unproccessable_entity
+    end
+  end
+
   def accept_invitation
     date = Playdate.find(params[:id])
     if date.recipient.parent.id == current_user.id
@@ -81,6 +104,21 @@ class PlaydatesController < ApplicationController
       puts "Something is wrong"
     end
     render json: {date: date}
+  end
+
+  def add_experience
+    date = Playdate.find(params[:id])
+    selected_experience = Experience.find(params[:exp_id])
+    if (current_user.initiated_date?(date)) && (date.experience_id != selected_experience.id)
+      date.recipient_confirmed = false
+    elsif !(current_user.initiated_date?(date)) && (date.experience_id != selected_experience.id)
+      date.initiator_confirmed = false
+    end
+    date.experience_id = params[:exp_id]
+    date.save!
+  end
+
+  def add_movie
   end
 
   private
