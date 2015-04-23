@@ -34,7 +34,7 @@
   margin: auto;
   display: block;
   color: white;
-  background: #B295ED;
+  background: #F857A6;
   padding: .6em;
   height: 50px;
   border-radius:3px;
@@ -43,9 +43,8 @@
 
 .how-btn:hover {
   color:lightgray;
-  background: rgba(26, 181, 149, 0.5);
+  background: #F857A6;
 
-  background: #9377d1;
   color:white;
 
 }
@@ -103,7 +102,7 @@
   margin: 7em auto;
   display: block;
   color: white;
-  background: #B295ED;
+  background: #F857A6;
   border: 2px solid #1AB595;
   padding: .6em;
   border-radius: 4px;
@@ -113,7 +112,7 @@
 }
 
 .get-started-btn:hover {
-  background: #9377d1;
+  background: #F857A6;
   color:white;
 }
 
@@ -123,17 +122,18 @@
   background: rgba(44,62,80,0.8);
   border-radius: 8px;
   color: #FFFFFF;
+  width:19em;
 }
 .form-wrapper input{
   color:black;
   margin-bottom: 1em;
 
+
 }
 
-.form-wrapper input {
-  color: #000000;
+.form-wrapper form{
+  margin-left:1.5em;
 }
-
 .form-wrapper .field {
   color: black;
 }
@@ -144,12 +144,16 @@
 
 .logout-button {
   text-decoration: none;
-  padding:4px;
+  padding:1px;
   border:1px solid white;
   border-radius:4px;
   color:white;
 }
+.logout-button:hover{
+  color:navy;
+  background-color: rgba(256,256,256,1);
 
+}
 .hidden{
   display: none;
 }

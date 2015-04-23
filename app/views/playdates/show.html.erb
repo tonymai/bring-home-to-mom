@@ -89,6 +89,7 @@
           <h2>Food & Drink</h2>
         </div>
         <div class="date-design-section-body">
+          <%= render partial: "movie_card", locals: {movie: Movie.first} %>
           <% Experience.upcoming_experiences.each do |experience| %>
             <%= render partial: "experience_card", locals: {experience: experience} %>
           <% end %>

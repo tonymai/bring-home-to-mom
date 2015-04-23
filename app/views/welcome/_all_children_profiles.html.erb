@@ -1,8 +1,8 @@
   <div class="all-child-profiles row">
     <% current_user.children.each do |child| %>
       <div class="child-pf-image">
-        <div class="child-pf-image-sub">
-        	<a href="/" data-profile-id="<%= child.id %>"><img src="<%= child.default_pf %>"></a>
+        <div class="child-pf-image-sub <%= 'pf-image-selected' if child.id == session[:profile_id].to_i %>" >
+        	<a href="/" data-profile-id="<%= child.id %>"><img <%= 'class = desaturate' unless child.id == session[:profile_id].to_i%> src="<%= child.default_pf %>"></a>
         </div>
         <div class="child-pf-name"><%= child.first_name %></div>
       </div>

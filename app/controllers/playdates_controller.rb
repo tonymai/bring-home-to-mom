@@ -63,6 +63,7 @@ class PlaydatesController < ApplicationController
   def update
     date = Playdate.find(params[:id])
     experience = Experience.find(params[:experience_id])
+    movie = Movie.find(params[:movie_id])
 
     
     date.recipient_confirmed = false
@@ -82,7 +83,7 @@ class PlaydatesController < ApplicationController
     formatted_experience_date = experience.experience_at_formatted
 
     if date.save
-      render json: { playdate: date, experience: experience, deleteButton: delete_button, formattedExperienceDate: formatted_experience_date}, status: :ok
+      render json: { playdate: date, experience: experience, deleteButton: delete_button, formattedExperienceDate: formatted_experience_date, formattedMovieDate: movie.movie_at_formatted, movieDescriptionClipped: movie.description_clipped, movieRatingFormatted: movie.rating_formatted }, status: :ok
     else
       render json: { errors: date.errors.full_messages }, status: :unproccessable_entity
     end

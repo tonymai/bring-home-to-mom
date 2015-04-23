@@ -7,8 +7,8 @@
 }
 
 .dashboard-section-header{
-  background-color: #1ab595;
-  border: 1px solid #ff6953;
+  background-color: #4B6CB7;
+  border: 1px solid #4B6CB7;
   color: white;
   margin-bottom: 1em;
 }
@@ -23,7 +23,7 @@
 }
 
 .child-snapshot-card{
-  background-image: url('/images/backgrounds/bg-paper.png');
+  background-image: url('/images/backgrounds/light-gray-texture.png');
   margin-bottom: 1em;
   border: 1px solid lightgray;
 }
@@ -43,7 +43,7 @@
 }
 
 .child-card-text a{
-  color: #ff6953;
+  color: #F857A6;
   font-size: 0.8em;
 }
 
@@ -55,7 +55,7 @@
 }
 
 .dates-rows-wrapper{
-  background-image: url('/images/backgrounds/bg-paper.png');
+  background-image: url('/images/backgrounds/light-gray-texture.png');
   border: 1px solid lightgray;
 }
 
@@ -73,7 +73,7 @@
   margin-right: auto;
   display: block;
   border-radius: 50%;
-  border: 2px solid #1ab595;
+  border: 2px solid #4B6CB7;
 }
 
 .date-preview ul {
@@ -89,26 +89,24 @@
 }
 
 .date-preview a:hover{
-  color: #ff6953;
+  color: #F857A6;
 }
 
 .add-child-btn{
   margin: 1.5em 0;
   text-align: center;
-  font-family: 'Questrial', sans-serif;
 }
 
 .add-child-btn a{
-  border: 2px solid darkgray;
+  border: 2px solid #4B6CB7;
   padding: 4px 8px;
-  border-radius: 6px;
-  color: #1ab595;
-  font-size: 1.1em;
+  border-radius: 3px;
+  color: #4B6CB7;
+  font-size: 1em;
 }
 
-.add-child-btn a:hover{
-  color: #fff;
-  border: 2px solid #ff6953;
-  background-color: #1ab595;
+.add-child-btn a:hover {
+  color: white;
+  border: 2px solid #4B6CB7;
+  background-color: #4B6CB7;
 }
-
