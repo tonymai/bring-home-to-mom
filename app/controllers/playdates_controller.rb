@@ -61,58 +61,89 @@ class PlaydatesController < ApplicationController
   end
 
   def update
-    playdate = Playdate.find(params[:id])
-    experience = Experience.find(params[:experience_id])
-    movie = Movie.find(params[:movie_id])
+    date = Playdate.find(params[:id])
 
-    playdate.experience_id = experience.id
+    if params[:experience_id]
+      experience = Experience.find(params[:experience_id])
+      experience_data = {formattedExperienceDate: experience.experience_at_formatted}
+      date.experience = experience
+    else
+      experience_data = {}
+    end
 
-    if current_user.initiated_date?(playdate) && !(playdate.initiator_confirmed)
+    if params[:movie_id]
+      movie = Movie.find(params[:movie_id]) if params[:movie_id]
+      movie_data = { formattedMovieDate: movie.movie_at_formatted, movieDescriptionClipped: movie.description_clipped, movieRatingFormatted: movie.rating_formatted }
+      date.movie = movie
+    else
+      movie_data = {}
+    end
+
+    date.recipient_confirmed = false
+    date.initiator_confirmed = false
+
+    if current_user.initiated_date?(date) && !(date.initiator_confirmed)
       delete_button = true
-    elsif !(current_user.initiated_date?(playdate)) && !(playdate.recipient_confirmed)
+    elsif !(current_user.initiated_date?(date)) && !(date.recipient_confirmed)
       delete_button = true
     else
       delete_button = false
     end
 
-    formatted_experience_date = experience.experience_at_formatted
+    recipient = (current_user == date.recipient.parent ? true : false )
 
-    if playdate.save
-      render json: { playdate: playdate, experience: experience, deleteButton: delete_button, formattedExperienceDate: formatted_experience_date, formattedMovieDate: movie.movie_at_formatted, movieDescriptionClipped: movie.description_clipped, movieRatingFormatted: movie.rating_formatted}, status: :ok
+    if date.save!
+      render json: { recipient: recipient, playdate: date, experience: experience, deleteButton: delete_button, experienceData: experience_data, movieData: movie_data }, status: :ok
     else
-      render json: { errors: playdate.errors.full_messages }, status: :unproccessable_entity
+      render json: { errors: date.errors.full_messages }, status: :unproccessable_entity
     end
+  end
+
+  def delete_event
+    playdate = Playdate.find(params[:id])
+
+    playdate.recipient_confirmed = false
+    playdate.initiator_confirmed = false
+
+    playdate.experience_id = nil
+
+    playdate.save
+
+    render json: { message: 'Successfully deleted.' }, status: :no_content
   end
 
   def accept_invitation
     date = Playdate.find(params[:id])
-    if date.recipient.parent.id == current_user.id
+    if date.recipient.parent == current_user
       date.recipient_accepted = true
       date.save!
     end
-    render json: {date: date}
+    render json: { message: "Successfully accepted.", dateId: date.id }, status: :ok
   end
 
   def confirm_date
     date = Playdate.find(params[:id])
-    if date.recipient.parent.id == current_user.id
+    if date.recipient.parent == current_user
       date.recipient_confirmed = true
       date.save!
-    elsif date.initiator.parent.id == current_user.id
+    elsif date.initiator.parent == current_user
       date.initiator_confirmed = true
       date.save!
     else
       puts "Something is wrong"
     end
-    render json: {date: date}
+
+    recipient = (current_user == date.recipient.parent ? true : false )
+
+    render json: { recipient: recipient }
   end
 
   def add_experience
     date = Playdate.find(params[:id])
-    selected_experience = Experience.find(params[:exp_id])
-    if (current_user.initiated_date?(date)) && (date.experience_id != selected_experience.id)
+    experience = Experience.find(params[:exp_id])
+    if (current_user.initiated_date?(date)) && (date.experience_id != experience.id)
       date.recipient_confirmed = false
-    elsif !(current_user.initiated_date?(date)) && (date.experience_id != selected_experience.id)
+    elsif !(current_user.initiated_date?(date)) && (date.experience_id != experience.id)
       date.initiator_confirmed = false
     end
     date.experience_id = params[:exp_id]
