@@ -51,11 +51,11 @@ class Parent < ActiveRecord::Base
   end
 
   def accepted_dates # planning phase
-    self.playdates.select{|date| date.status == "accepted"}
+    self.playdates.select{|date| (date.status == "accepted") || (date.status == "confirmed")}
   end
 
-  def upcoming_dates # confirmed and not yet passed
-    self.playdates.select { |date| (date.status == "confirmed") && (date.first_event_datetime > Time.now)}.sort_by{|date| date.first_event_datetime }.reverse!
+  def upcoming_dates # PAID and not yet passed
+    self.playdates.select { |date| (date.status == "paid") && (date.first_event_datetime > Time.now)}.sort_by{|date| date.first_event_datetime }.reverse!
   end
 
   # def planning_and_upcoming_dates
@@ -66,7 +66,7 @@ class Parent < ActiveRecord::Base
   # end
 
   def past_dates
-    self.playdates.select{|date| (date.status == "confirmed") && (date.first_event_datetime < Time.now)}.sort_by{|date| date.first_event_datetime}.reverse!
+    self.playdates.select{|date| (date.status == "paid") && (date.first_event_datetime < Time.now)}.sort_by{|date| date.first_event_datetime}.reverse!
     # self.playdates.reject{|date| date.playdate_at.nil?}.select{|date| (date.status == "accepted") && (date.playdate_at < Time.now)}
   end
 
