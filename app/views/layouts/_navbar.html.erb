@@ -3,7 +3,7 @@
   <ul>
     <% if user_signed_in? %>
       <li class="notification">
-        <a class="dashboard" href="/users/<%= current_user.id %>" >Dashboard</a>
+        <a class="dashboard" href="/users/<%= current_user.id %>" >(<%= current_user.pending_dates.count + current_user.accepted_dates.count %>) Dashboard</a>
         <%= render partial: 'layouts/notification_dropdown' %>
       </li>
     	<li><%= link_to "Log Out", "/users/sign_out", method: 'delete', class:"logout-button" %><li>
