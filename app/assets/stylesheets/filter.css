@@ -1,6 +1,6 @@
 /*Filter page*/
 .filter-page-container{
-  background-image: url("light-gray-texture.png");
+  background-image: url("/images/backgrounds/light-gray-texture.png");
   height:100%;
   width:100%;
 }
@@ -46,7 +46,7 @@
 
 .matches{
   margin-top: 1em;
-  background-image: url("light-gray-texture.png")
+  background-image: url("/images/backgrounds/light-gray-texture.png")
 }
 .matches .individual-child{
   height:100px;

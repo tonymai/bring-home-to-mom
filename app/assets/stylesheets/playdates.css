@@ -240,7 +240,7 @@ div.slick-list.draggable{
   backface-visibility: hidden;
 }
 .mv-box-back{
-  background-image: url(gray_texture.png);
+  background-image: url('/images/backgrounds/gray_texture.png');
   border:1px solid gray;
   overflow-y: scroll;
 }

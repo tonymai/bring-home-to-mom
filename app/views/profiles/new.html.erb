@@ -86,15 +86,15 @@
     <div class="new-pf-section optional-info">
       <a href="#"><h2>2. Optional Information</h2></a>
 
-      <div class="new-pf-container new-values-container container row hidden">
+      <div class="new-pf-container new-values-container row hidden">
         <%= f.label(:linkedin_url, 'LinkedIn:') %><br />
-        <%= f.url_field(:linkedin_url) %><br />
+        <%= f.url_field(:linkedin_url, class: "opt-input") %><br />
 
         <%= f.label(:facebook_url, 'Facebook:') %><br />
-        <%= f.url_field(:facebook_url) %><br />
+        <%= f.url_field(:facebook_url, class: "opt-input") %><br />
 
         <%= f.label(:religion, 'Religion:') %><br />
-        <%= f.select(:religion, options_for_select(religions), include_blank: true) %><br />
+        <%= f.select(:religion, options_for_select(religions), include_blank: true, class: "opt-input") %><br />
 
         <%= f.label(:smoke, 'Smokes:') %><br />
         Yes: <%= f.radio_button(:smoke, true) %>
@@ -119,31 +119,31 @@
 
           <div class="col span_2">
             <%= f.label(:pf_image_1, 'Image 1:') %>
-            <%= f.file_field(:pf_image_1) %><br />
+            <%= f.file_field(:pf_image_1, class: 'file-input') %><br />
             <img class="upload-preview" src="/images/empty-pf-image.png" />
           </div>
 
           <div class="col span_2">
             <%= f.label(:pf_image_2, 'Image 2:') %>
-            <%= f.file_field(:pf_image_2) %><br />
+            <%= f.file_field(:pf_image_2, class: 'file-input') %><br />
             <img class="upload-preview" src="/images/empty-pf-image.png" />
           </div>
 
           <div class="col span_2">
             <%= f.label(:pf_image_3, 'Image 3:') %>
-            <%= f.file_field(:pf_image_3) %><br />
+            <%= f.file_field(:pf_image_3, class: 'file-input') %>
             <img class="upload-preview" src="/images/empty-pf-image.png" />
           </div>
 
           <div class="col span_2">
             <%= f.label(:pf_image_4, 'Image 4:') %>
-            <%= f.file_field(:pf_image_4) %><br />
+            <%= f.file_field(:pf_image_4, class: 'file-input') %><br />
             <img class="upload-preview" src="/images/empty-pf-image.png" />
           </div>
 
           <div class="col span_2">
             <%= f.label(:pf_image_5, 'Image 5:') %>
-            <%= f.file_field(:pf_image_5) %><br />
+            <%= f.file_field(:pf_image_5, class: 'file-input') %><br />
             <img class="upload-preview" src="/images/empty-pf-image.png" />
           </div>
 
