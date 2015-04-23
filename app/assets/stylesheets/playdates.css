@@ -43,6 +43,16 @@
 
 
 /*************** SELECTED DATE EXPERIENCE *****************/
+.status {
+  overflow: hidden;
+  height: calc(100vh - 200px);
+}
+
+.experience-wrapper {
+  overflow:scroll;
+  height: 500px;
+}
+
 .design-date-notification{
   text-align: center;
   color: #888;
