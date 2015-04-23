@@ -172,13 +172,31 @@
 
 
 
-
-
 .autocomplete-dropdown {
-	position: absolute;
-	background-color: gray;
+  width: 175px;
 }
 
-.autocomplete-dropdown li {
-	list-style-type: none;
+.autocomplete-dropdown ul {
+  list-style: none;
+  padding-left: 0;
+  background-color: #E1E1E1;
+  border: 1px solid gray;
+  z-index: 1;
+}
+
+.autocomplete-dropdown li:hover {
+  background-color: #B8DAF2;
+}
+
+.autocomplete-tag {
+  color: gray;
+}
+
+.autocomplete-container .interest-btn {
+  margin-bottom: 5px;
+}
+
+/* autocomplete results div */
+.ui-helper-hidden-accessible {
+  display: none;
 }

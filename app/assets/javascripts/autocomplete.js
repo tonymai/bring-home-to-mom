@@ -107,7 +107,7 @@
         select: function( event, ui ) {
 
           // to prevent duplicates from being added
-          var $elements = $(this).parent().children('.autocomplete-container')
+          var $elements = $(this).parent().children('.autocomplete-container').children('.interest-btn')
           var ids = $.map($elements, function(element) { return $(element).attr('data-id') });
 
           var source = $('.autocomplete-template').html();
