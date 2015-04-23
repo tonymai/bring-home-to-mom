@@ -70,7 +70,11 @@ function updateMatches() {
     var templatingFunction = Handlebars.compile(source);
     var context = {};
     context.match = response;
-    $(".matches").text("");
-    $(".matches").append(templatingFunction(context));
+    if (response.length === 0) {
+      $(".matches").text("No matches found. Consider expanding your search restrictions.");
+    } else {
+      $(".matches").text("");
+      $(".matches").append(templatingFunction(context));
+    };
   });
 };
