@@ -1,6 +1,6 @@
 <div class="new-pf-form-container">
 
-  <h1>New Child Profile</h1>
+  <p class="new-child-pf-title">New Child Profile</p>
 
   <%= form_for @child, url: url_for(controller: 'profiles', action: 'create'), html: {class: 'pure-form'} do |f| %>
 
@@ -17,7 +17,7 @@
         <div class="container row">
           <div class="col span_6">
             <%= f.label(:first_name, 'First Name:') %><br />
-            <%= f.text_field(:first_name) %><br />
+            <%= f.text_field(:first_name, class: "glowing-border" ) %><br />
           </div>
 
           <div class="col span_6">
@@ -50,19 +50,24 @@
           </div>
         </div>
 
-        <div class="container row">
-          <div class="col span_6">
+        <div class="gender-interestedin-wrapper container">
+          <div class="gender-wrapper col">
             <%= f.label(:gender, 'Gender:') %><br />
-            Male: <%= f.radio_button(:gender, 'male') %><br />
-            Female: <%= f.radio_button(:gender, 'female') %><br />
-            Other: <%= f.radio_button(:gender, 'other') %><br />
+            <div class="pf-form-gender">
+            Male: <%= f.radio_button(:gender, 'male') %><br>
+            Female: <%= f.radio_button(:gender, 'female') %><br>
+            Other: <%= f.radio_button(:gender, 'other') %><br>
+            </div>
           </div>
 
-          <div class="col span_6">
+          <div class="interested-in-wrapper">
             <%= f.label(:sexual_preference, 'Interested in:') %><br />
+            <div class="pf-form-interested-in">
+
             Men: <%= f.radio_button(:sexual_preference, 'men') %><br />
             Women: <%= f.radio_button(:sexual_preference, 'women') %><br />
             No Preference: <%= f.radio_button(:sexual_preference, 'no preference') %><br />
+            </div>
           </div>
         </div>
 
@@ -71,7 +76,7 @@
           <%= f.text_area(:bio) %><br />
         </div>
 
-        <div class="container row">
+        <div class="continue-wrapper container row">
           <a class="continue" href="#">Continue</a>
         </div>
 
@@ -81,15 +86,15 @@
     <div class="new-pf-section optional-info">
       <a href="#"><h2>2. Optional Information</h2></a>
 
-      <div class="new-pf-container new-values-container container row hidden">
+      <div class="new-pf-container new-values-container row hidden">
         <%= f.label(:linkedin_url, 'LinkedIn:') %><br />
-        <%= f.url_field(:linkedin_url) %><br />
+        <%= f.url_field(:linkedin_url, class: "opt-input") %><br />
 
         <%= f.label(:facebook_url, 'Facebook:') %><br />
-        <%= f.url_field(:facebook_url) %><br />
+        <%= f.url_field(:facebook_url, class: "opt-input") %><br />
 
         <%= f.label(:religion, 'Religion:') %><br />
-        <%= f.select(:religion, options_for_select(religions), include_blank: true) %><br />
+        <%= f.select(:religion, options_for_select(religions), include_blank: true, class: "opt-input") %><br />
 
         <%= f.label(:smoke, 'Smokes:') %><br />
         Yes: <%= f.radio_button(:smoke, true) %>
@@ -98,7 +103,7 @@
         <%= f.label(:embarrassing_moment, 'Embarrassing Moment:') %><br />
         <%= f.text_area(:embarrassing_moment) %>
 
-        <div class="container row">
+        <div class="continue-wrapper container row">
           <a class="continue" href="#">Continue</a>
         </div>
 
@@ -114,38 +119,38 @@
 
           <div class="col span_2">
             <%= f.label(:pf_image_1, 'Image 1:') %>
-            <%= f.file_field(:pf_image_1) %><br />
+            <%= f.file_field(:pf_image_1, class: 'file-input') %><br />
             <img class="upload-preview" src="/images/empty-pf-image.png" />
           </div>
 
           <div class="col span_2">
             <%= f.label(:pf_image_2, 'Image 2:') %>
-            <%= f.file_field(:pf_image_2) %><br />
+            <%= f.file_field(:pf_image_2, class: 'file-input') %><br />
             <img class="upload-preview" src="/images/empty-pf-image.png" />
           </div>
 
           <div class="col span_2">
             <%= f.label(:pf_image_3, 'Image 3:') %>
-            <%= f.file_field(:pf_image_3) %><br />
+            <%= f.file_field(:pf_image_3, class: 'file-input') %>
             <img class="upload-preview" src="/images/empty-pf-image.png" />
           </div>
 
           <div class="col span_2">
             <%= f.label(:pf_image_4, 'Image 4:') %>
-            <%= f.file_field(:pf_image_4) %><br />
+            <%= f.file_field(:pf_image_4, class: 'file-input') %><br />
             <img class="upload-preview" src="/images/empty-pf-image.png" />
           </div>
 
           <div class="col span_2">
             <%= f.label(:pf_image_5, 'Image 5:') %>
-            <%= f.file_field(:pf_image_5) %><br />
+            <%= f.file_field(:pf_image_5, class: 'file-input') %><br />
             <img class="upload-preview" src="/images/empty-pf-image.png" />
           </div>
 
         </div>
 
         <div class="container row">
-          <%= f.submit 'Continue' %>
+          <%= f.submit 'Continue', class: "pf-img-submit-btn" %>
           <a class="continue-force hidden" href="#">Continue</a>
         </div>
 

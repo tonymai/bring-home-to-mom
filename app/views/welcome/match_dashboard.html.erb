@@ -28,7 +28,7 @@
             Religion:
             <select name="by_religion" class="filterby">
               <% ([''] + Child.uniq.pluck(:religion)).each do |religion| %>
-              <option <%= 'selected=selected' if @current_child.religion == religion %> value="<%= religion %>"><%= religion %></option>
+              <option <%= 'selected=selected' if @current_child.religion == religion %> value="<%= religion %>"><%= religion == "" ?  "All" : religion %></option>
               <% end %>
             </select>
           </div>
@@ -37,7 +37,7 @@
             City:
             <select name="by_city" class="filterby">
               <% ([''] + Child.uniq.pluck(:city)).each do |city| %>
-              <option <%= 'selected=selected' if @current_child.city == city %> value="<%= city %>"><%= city %></option>
+              <option <%= 'selected=selected' if @current_child.city == city %> value="<%= city %>"><%= city == "" ? "All" : city %></option>
               <% end %>
             </select>
           </div>
@@ -50,7 +50,9 @@
     </div>
     <br>
     <%= render partial: 'autocomplete_container' %>
-    <a href="/users/<%= current_user.id %>/profiles/new"><button>Create A New Child Profile</button></a>
+    <div class="add-child-btn">
+      <a href="/users/<%= current_user.id %>/profiles/new">Add Another Child!</a>
+    </div>
   </div>
   <div class="matches col span_9">
   </div>

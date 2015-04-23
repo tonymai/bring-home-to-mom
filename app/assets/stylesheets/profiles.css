@@ -8,7 +8,7 @@
 }
 
 .pf-basic-info-wrapper h1{
-  border-bottom: 1px solid #1ab595;
+  border-bottom: 1px solid #C7C7C7;
   margin: 0.4em 0.45em 0.3em 0.45em;
   font-family: 'Josefin Sans', sans-serif;
   font-size: 2.2em;
@@ -54,22 +54,22 @@
 }
 
 .pf-set-date a{
-  border: 2px solid darkgray;
-  padding: 5px 13px;
-  border-radius: 6px;
-  color: #1ab595;
-  font-size: 1.5em;
+  border: 2px solid #4B6CB7;
+  padding: 4px 8px;
+  border-radius: 3px;
+  color: #4B6CB7;
+  font-size: 1em;
 }
 
 .pf-set-date a:hover{
-  color: #fff;
-  border: 2px solid #ff6953;
-  background-color: #1ab595;
+  color: white;
+  border: 2px solid #4B6CB7;
+  background-color: #4B6CB7;
 }
 
 /*GENERAL PROFILE DETAIL MODAL STYLING*/
 .pf-modal-container {
-  background-image: url('/images/backgrounds/bg-paper.png');
+  background-image: url('/images/backgrounds/symphony.png');
   height: auto;
   width: 100em;
   text-align: center;
@@ -80,8 +80,9 @@
   font-family: 'Arvo', serif;
   margin: 0.5em;
   padding: 0.2em;
-  border-top: 1px solid gray;
-  border-bottom: 1px solid gray;
+  border-top: 1px solid rgb(207, 207, 207);
+  border-bottom: 1px solid rgb(207, 207, 207);
+
 }
 
 .pf-modal-container h3{
@@ -95,7 +96,7 @@
 /*STYLING FOR 'GOOD STUFF' BOXES*/
 .pf-box {
   position: relative;
-  color: #1ab595;
+  color: #4B6CB7;
   height: 200px;
   margin: 0;
   /*background-color: #1ab595;*/
@@ -105,14 +106,15 @@
 .pf-box p{
   font-size: 0.9em;
   text-align: right;
-  color: #d7dadb;
+  color: #4B6CB7;
 }
 
 .pf-box-back{
-  background-color: #1ab595;
+  background-image: url("/images/backgrounds/light-gray-texture.png");
   border-radius: 10px;
-  color: #D7DADB;
-  padding: 1em;
+  color: #4B6CB7;
+  padding:1em;
+
 }
 
 
@@ -164,22 +166,109 @@
 .new-pf-form-container {
   width: 100%;
   text-align: center;
+  background-color: rgb(248, 248, 248);
+  color: gray;
+  padding: 2em 0;
 }
 
-.new-pf-section a {
+/*.new-pf-section a {
   color: black;
   text-decoration: none;
 }
-
+*/
 .new-pf-section a:hover {
   color: #2C3E50;
 }
 
-.new-pf-section h2 {
-  display: block;
-  background-color: #FF6953
+.new-child-pf-title{
+  font-weight: bold;
+  font-size: 2em;
+  color:gray;
 }
 
+.new-pf-section h2 {
+  display: block;
+    background: -webkit-linear-gradient(90deg, #f857a6 10%, #ff5858 90%);
+  background:    -moz-linear-gradient(90deg, #f857a6 10%, #ff5858 90%);
+  background:     -ms-linear-gradient(90deg, #f857a6 10%, #ff5858 90%);
+  background:      -o-linear-gradient(90deg, #f857a6 10%, #ff5858 90%);
+  background:         linear-gradient(90deg, #f857a6 10%, #ff5858 90%);
+  color: white;
+  border-top:1px solid #F857A6;
+  border-bottom:1px solid #F857A6;
+}
+.opt-input{
+  width: 23em;
+}
+.optional-info input,select{
+  margin-bottom: 1em;
+}
+.continue-wrapper {
+  border: 1px solid lightgray;
+  width: 5em;
+  background-color: transparent;
+  margin-top: .5em;
+  border-radius: 3px;
+  /* color: white; */
+}
+
+.continue-wrapper:hover{
+  background-color:white;
+}
+
+.continue-wrapper a:hover{
+  color:lightgray;
+}
+.pf-img-submit-btn{
+  border: 1px solid lightgray;
+  width: 5em;
+  background-color: transparent;
+  margin-top: .5em;
+  border-radius: 3px;
+}
+
+.continue-wrapper a{
+  color:gray;
+}
+
+.interest-form-wrapper{
+  margin-top:1em;
+}
+.pf-form-gender{
+    width: 6em;
+    /* display: flex; */
+    text-align: right;
+    /* justify-content: space-between; */
+}
+
+.pf-form-interested-in{
+  width: 9em;
+  /* border: 1px solid red; */
+  /* display: flex; */
+  text-align: right;
+  /* justify-content: space-between; */
+}
+.gender-interestedin-wrapper{
+  display: flex;
+  justify-content: space-between;
+  width: 37em;
+}
+.gender-wrapper{
+  /* border: 1px solid white; */
+  width: 12em;
+  /* margin-left: -1em; */
+
+}
+.interested-in-wrapper{
+   margin-left: 7em;
+  /* padding-left: 4em; */
+}
+.interested-in-wrapper label{
+  margin-left: 5em;
+}
+.radio-btn-wrapper{
+  border:1px solid red;
+}
 .contine {
   border: 1px solid black;
 }
@@ -200,17 +289,17 @@
 
 .interest-btn, .value-btn{
   display: inline-block;
-  border: 1px gray solid;
+  border: 1px rgb(180, 180, 180) solid;
   padding: 2px 4px;
   margin: 5px 0px 0px 0px;
-  border-radius: 8px;
-  color: #000000;
-  background-color: #D7DADB;
+  border-radius: 3px;
+  color: #FFFFFF;
+  background-color: #B8DAF2;
 }
 
 .interest-btn-selected, .value-btn-selected{
 	color: #FFFFFF;
-  background-color: #1AB595;
+  background-color: #72C4FF;
 }
 
 .new-pf-section .submit-all a {
@@ -235,8 +324,8 @@ figure.effect-dexter {
 }
 
 figure.effect-dexter:hover {
-  background-color: #1ab595;
-  color: #d7dadb;
+  background-image: url("/images/backgrounds/light-gray-texture.png")
+  color: #4B6CB7;
   border-radius: 10px;
 }
 
@@ -247,7 +336,7 @@ figure.effect-dexter figcaption::after {
   left: 18px;
   height: -webkit-calc(50% - 30px);
   height: calc(50% - 30px);
-  border: 7px solid #ff6953;
+  border: 7px solid #4B6CB7;
   content: '';
   -webkit-transition: -webkit-transform 0.35s;
   transition: transform 0.35s;

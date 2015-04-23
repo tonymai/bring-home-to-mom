@@ -259,12 +259,14 @@
 /*************** MOVIE CAROUSEL *****************/
 
 .movie-poster{
-  height:450px;
-  width:306px;
+  height:293px;
+  width:199px;
 }
-
+.mv-box-back ul>li{
+  font-size: .7em;
+}
 div.slick-list.draggable{
-  height:450px; /*carousel height*/
+  height: 316px;
 }
 
 .mv-synopsis{
@@ -274,8 +276,14 @@ div.slick-list.draggable{
   border: 1px solid gray;
   background-color: #E2E2E2;
   border-radius: 3px;
-  margin-left: 5em;
-
+  margin: 0 auto;
+  width: 8em;
+  font-size: .8em;
+  padding: .2em;
+}
+.add-to-package:hover{
+  background-color: gray;
+  color: white;
 }
 /***************** FLIP ANIMATION *****************/
 #movie-wrap{
@@ -300,8 +308,12 @@ div.slick-list.draggable{
   backface-visibility: hidden;
 }
 .mv-box-back{
-  background-image: url(gray_texture.png);
+  background-image: url('/images/backgrounds/gray_texture.png');
   border:1px solid gray;
+  overflow-y: scroll;
+}
+.mv-box-back h3{
+  text-align: center;
 }
 
 .movie-flip .mv-box-back{
