@@ -4,15 +4,15 @@
     <div class= "movie-flip">
       <img class="movie-poster mv-box-front" alt = "<%= movie.first %>" src="<%= movie.last[:movie_poster]%>">
       <div class="movie-poster mv-box-back hidden">
+        <a href="#"><div class="add-to-package">Add to Package</div></a>
         <h3><%= movie.first %></h3>
         <ul>
-          <li class="mv-synopsis"><span class="boldify">Synopsis: </span><%= movie.last[:synopsis] %></li>
+          <li class="mv-synopsis"><span class="boldify">Synopsis: </span><%= truncate(movie.last[:synopsis], length: 50, separator: ' ') %></li>
           <li class="mv-mpaa-rating"><span class="boldify">Rating: </span><%= movie.last[:mpaa] %></li>
           <li class="mv-release-date"><span class="boldify">Release Date: </span><%= movie.last[:release_date] %></li>
           <li class="mv-runtime"><span class="boldify">Runtime: </span><%= movie.last[:runtime] %></li>
           <li class="mv-rt-score"><span class="boldify">RT score: </span><%= movie.last[:rating] %></li>
         </ul>
-        <a href="#"><div class="add-to-package">Add to Package</div></a>
       </div>
     </div>
     <% end %>

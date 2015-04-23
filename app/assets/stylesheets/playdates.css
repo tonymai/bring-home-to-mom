@@ -262,8 +262,15 @@
   height:293px;
   width:199px;
 }
+
+.mv-box-back ul{
+  list-style: none;
+  padding-left: 29px;
+}
 .mv-box-back ul>li{
-  font-size: .7em;
+  font-size: .8em;
+  font-family: 'Open Sans', sans-serif;
+  line-height: 1.6em;
 }
 div.slick-list.draggable{
   height: 316px;
@@ -273,6 +280,7 @@ div.slick-list.draggable{
   font-size: .7em;
 }
 .add-to-package{
+  position: absolute;
   border: 1px solid gray;
   background-color: #E2E2E2;
   border-radius: 3px;
@@ -308,9 +316,8 @@ div.slick-list.draggable{
   backface-visibility: hidden;
 }
 .mv-box-back{
-  background-image: url('/images/backgrounds/gray_texture.png');
+  background-image: url('/images/backgrounds/bg-paper.png');
   border:1px solid gray;
-  overflow-y: scroll;
 }
 .mv-box-back h3{
   text-align: center;
