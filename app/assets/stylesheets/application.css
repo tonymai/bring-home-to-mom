@@ -141,3 +141,7 @@ a:hover{
 .capitalize{
   text-transform: capitalize;
 }
+
+.italics{
+  font-style: italic;
+}

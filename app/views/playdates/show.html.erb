@@ -23,6 +23,7 @@
           <% if (@playdate.status == 'paid') %>
             <p class="design-date-notification">Everyone has paid - the date is on!</p>
           <% end %>
+
           <% if (@playdate.experience.nil?) && (@playdate.movie.nil?) %>
             <p class="design-date-notification">No Experience Selected</p>
           <% elsif (@playdate.experience) && (@playdate.movie.nil?) %>
@@ -47,11 +48,11 @@
             <!-- Confirm Event Logic -->
             <% if (@playdate.event_selected?) && (@playdate.status == 'accepted') %>
               <% if (current_user.initiated_date?(@playdate)) && (@playdate.initiator_confirmed) %>
-                <a class="accept-confirm-pay-btn btn-selected" href="/dates/<%= current_user.id %>/confirm">Confirm Date Selection</a>
+                <div class="disabled-button desaturate italics">Awaiting confirmation from other parent</div>
               <% elsif (current_user.initiated_date?(@playdate)) && !(@playdate.initiator_confirmed) %>
                 <a class="accept-confirm-pay-btn" href="/dates/<%= current_user.id %>/confirm">Confirm Date Selection</a>
               <% elsif !(current_user.initiated_date?(@playdate)) && (@playdate.recipient_confirmed) %>
-                <a class="accept-confirm-pay-btn btn-selected" href="/dates/<%= current_user.id %>/confirm">Confirm Date Selection</a>
+                <div class="disabled-button desaturate italics">Awaiting confirmation from other parent</div>
               <% elsif !(current_user.initiated_date?(@playdate)) && !(@playdate.recipient_confirmed) %>
                 <a class="accept-confirm-pay-btn" href="/dates/<%= current_user.id %>/confirm">Confirm Date Selection</a>
               <% else %>
@@ -79,6 +80,22 @@
                 <div class="accept-confirm-pay-btn row">Something is wrong</div>
               <% end %>
             <% end %>
+
+            <!-- Display message: waiting for other parent to confirm date -->
+            <% if (current_user.id == @playdate.initiator.parent.id) && (@playdate.initiator_confirmed == true) && (@playdate.recipient_confirmed == false) %>
+              <div class="disabled-button desaturate italics">Awaiting confirmation from other parent</div>
+              <!-- <p class="design-date-notification">Awaiting confirmation from other parent</p> -->
+            <% elsif (current_user.id == @playdate.recipient.parent.id) && (@playdate.recipient_confirmed == true) && (@playdate.initiator_confirmed == false) %>
+              <div class="disabled-button desaturate italics">Awaiting confirmation from other parent</div>
+            <% end %>
+
+            <!-- Display message: waiting for other parent to submit payment -->
+            <% if (current_user.id == @playdate.initiator.parent.id) && (@playdate.initiator_paid == true) && (@playdate.recipient_paid == false) %>
+              <div class="disabled-button desaturate italics">Awaiting payment from other parent</div>
+            <% elsif (current_user.id == @playdate.recipient.parent.id) && (@playdate.recipient_paid == true) && (@playdate.initiator_paid == false) %>
+              <div class="disabled-button desaturate italics">Awaiting payment from other parent</div>
+            <% end %>
+
           </div>
 
         </div>

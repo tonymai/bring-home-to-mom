@@ -9,17 +9,15 @@
     </figure>
   </div>
   <div class="experience-details col span_7">
-    <% if (current_user.initiated_date?(@playdate)) && (@playdate.experience == experience) %>
-      <% unless (@playdate.initiator_confirmed) %>
+    <% if @playdate.experience == experience %>
+      <% if current_user.initiated_date?(@playdate) && !(@playdate.initiator_confirmed) %>
         <i class="close-icon fa fa-times"></i>
-      <% end %>
-    <% elsif !(current_user.initiated_date?(@playdate)) && (@playdate.experience == experience) %>
-      <% unless (@playdate.recipient_confirmed) %>
+      <% elsif !(current_user.initiated_date?(@playdate)) && !(@playdate.recipient_confirmed) %>
         <i class="close-icon fa fa-times"></i>
+      <% else %>
       <% end %>
-    <% else %>
-      <p class="design-date-notification">Something is wrong</p>
     <% end %>
+
 
     <div class="exp-detail-item">
       <i class="fa fa-calendar"></i>

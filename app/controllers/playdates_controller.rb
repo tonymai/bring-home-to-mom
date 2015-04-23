@@ -97,6 +97,21 @@ class PlaydatesController < ApplicationController
     render json: {date: date}
   end
 
+  def add_experience
+    date = Playdate.find(params[:id])
+    selected_experience = Experience.find(params[:exp_id])
+    if (current_user.initiated_date?(date)) && (date.experience_id != selected_experience.id)
+      date.recipient_confirmed = false
+    elsif !(current_user.initiated_date?(date)) && (date.experience_id != selected_experience.id)
+      date.initiator_confirmed = false
+    end
+    date.experience_id = params[:exp_id]
+    date.save!
+  end
+
+  def add_movie
+  end
+
   private
 
   def playdate_params

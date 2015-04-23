@@ -31,6 +31,8 @@ Rails.application.routes.draw do
 
     post '/dates/:id/accept' => 'dates#accept_invitation'
     post '/dates/:id/confirm' => 'dates#confirm_date'
+    post '/dates/:id/experience' => 'dates#add_experience'
+    post '/dates/:id/movie' => 'dates#add_movie'
 
     resources :interests, only: [:index, :create]
     resources :values, only: [:index, :create]
@@ -50,7 +52,7 @@ Rails.application.routes.draw do
     post '/' => 'welcome#change_child'
 
   end
-  
+
   # Example resource route with options:
   #   resources :products do
   #     member do
