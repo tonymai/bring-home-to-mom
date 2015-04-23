@@ -9,13 +9,8 @@
     </figure>
   </div>
   <div class="experience-details col span_7">
-    <% if @playdate.experience == experience %>
-      <% if current_user.initiated_date?(@playdate) && !(@playdate.initiator_confirmed) %>
-        <i class="close-icon fa fa-times"></i>
-      <% elsif !(current_user.initiated_date?(@playdate)) && !(@playdate.recipient_confirmed) %>
-        <i class="close-icon fa fa-times"></i>
-      <% else %>
-      <% end %>
+    <% if (@playdate.experience == experience) && !(@playdate.you_confirmed?(current_user)) %>
+      <i class="close-icon fa fa-times"></i>
     <% end %>
 
 
@@ -44,7 +39,10 @@
       <p>$<%= experience.price_per_person %> / person</p>
     </div>
   </div>
-  <div class="select-experience-btn">
-    <a href="/dates/<%= @playdate.id %>?exp_id=<%= experience.id %>">Choose Experience</a>
-  </div>
+
+  <% unless @playdate.experience == experience %>
+    <div class="select-experience-btn">
+      <a href="/dates/<%= @playdate.id %>/experience/?exp_id=<%= experience.id %>">Choose Experience</a>
+    </div>
+  <% end %>
 </div>
