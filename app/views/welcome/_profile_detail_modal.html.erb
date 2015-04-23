@@ -44,25 +44,40 @@
         </div>
 
         <div class="pf-basic-info-cell col span_6">
-          [Placeholder - new field?]
+        <i class="fa fa-eye category-icon"></i>
+        {{#if profile.religion}}
+          {{profile.religion}}
+        {{else}}
+          Religion not specified
+        {{/if}}
         </div>
       </div>
 
       <div class="pf-basic-info-row">
-        <div class="pf-basic-info-cell col span_6">Religion:
-        {{#if profile.religion}}
-          {{profile.religion}}
-        {{else}}
-          Not specified
-        {{/if}}
+        <div class="pf-basic-info-cell col span_6">
+          <i class="fa fa-paw category-icon"></i>
+          {{profile.pets}}
         </div>
-        <div class="pf-basic-info-cell col span_6">Smoker: <span class="capitalize">{{profile.smoke}}</span></div>
+        <div class="pf-basic-info-cell col span_6">
+          <i class="fa fa-heartbeat category-icon"></i>
+          {{#if profile.smoke}}
+            Smoker
+          {{else}}
+            Non-smoker
+          {{/if}}
+        </div>
       </div>
 
       <div class="pf-basic-info-row">
         <div class="pf-basic-info-cell col span_6"><a href="{{profile.linkedin_url}}"><i class="fa fa-linkedin-square category-icon"></i> LinkedIn</a></div>
         <div class="pf-basic-info-cell col span_6"><a href="{{profile.facebook_url}}"><i class="fa fa-facebook-square category-icon"></i> Facebook</a></div>
       </div>
+
+      <div class="pf-bio-wrapper">
+        <h3>About {{profile.first_name}}</h3>
+        <p class="pf-bio-content">{{profile.bio}}</p>
+      </div>
+
     </div>
 
     <div class="pf-set-date-wrapper col span_7">
@@ -83,12 +98,11 @@
       <div class="flip-wrapper">
         <figure class="effect-dexter pf-box pf-box-front">
           <figcaption>
-            <h3>Bio</h3>
+            <h3>Embarrassing Moments</h3>
             <p>Click to read more!</p>
           </figcaption>
         </figure>
         <div class="pf-box pf-box-back hidden">
-          <div class="pf-bio">{{profile.bio}}</div>
           <div class="pf-embarrass-moment">{{profile.embarrassing_moment}}</div>
         </div>
       </div>

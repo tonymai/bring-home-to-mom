@@ -4,7 +4,7 @@ class CreateChildren < ActiveRecord::Migration
       t.string   :first_name, :last_name
       t.string   :city, :state
       t.string   :phone
-      t.string   :gender, :sexual_preference, :religion
+      t.string   :gender, :sexual_preference, :religion, :pets
       t.date     :birthdate
       t.text     :bio, :embarrassing_moment
       t.boolean  :smoke
