@@ -5,6 +5,8 @@ class PlaydatesController < ApplicationController
 
   def show
     @playdate = Playdate.find(params[:id])
+    redirect_to user_path(current_user) unless current_user.my_child(@playdate)
+
     @upcoming_experiences = Experience.upcoming_experiences
     ##Get IMDB IDs
 
@@ -48,7 +50,6 @@ class PlaydatesController < ApplicationController
   end
 
   def create
-    p session[:profile_id]
     params[:playdate][:initiator_id] = session[:profile_id]
     playdate = Playdate.find_or_initialize_by(playdate_params) #can only request date with someone once
     if playdate.save
@@ -56,6 +57,30 @@ class PlaydatesController < ApplicationController
     else
       redirect_to root_path
     end
+
+  end
+
+  def accept_invitation
+    date = Playdate.find(params[:id])
+    if date.recipient.parent.id == current_user.id
+      date.recipient_accepted = true
+      date.save!
+    end
+    render json: {date: date}
+  end
+
+  def confirm_date
+    date = Playdate.find(params[:id])
+    if date.recipient.parent.id == current_user.id
+      date.recipient_confirmed = true
+      date.save!
+    elsif date.initiator.parent.id == current_user.id
+      date.initiator_confirmed = true
+      date.save!
+    else
+      puts "Something is wrong"
+    end
+    render json: {date: date}
   end
 
   private

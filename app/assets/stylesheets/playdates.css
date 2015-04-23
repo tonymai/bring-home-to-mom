@@ -4,7 +4,7 @@
 
 .status-box-wrapper{
   border: 1px solid lightgray;
-  margin: 3em 0 1em 0;
+  margin: 1em 0 1em 0;
 }
 
 .status-box{
@@ -13,10 +13,11 @@
 }
 
 .date-status-header p{
-  margin: 0;
+  margin: 0 0.5em;
   text-align: center;
   font-weight: bold;
   font-size: 1.2em;
+  border-bottom: 1px solid lightgray;
 }
 
 .date-status-table{
@@ -37,6 +38,20 @@
 .date-status-row i, .date-status-row p{
   display: table-cell;
   padding: 0.2em 0 0.2em 0.8em;
+}
+
+
+/*************** SELECTED DATE EXPERIENCE *****************/
+.accept-confirm-pay-btn a, .accept-confirm-pay-btn div{
+  border: 2px solid darkgray;
+  padding: 4px 8px;
+  border-radius: 6px;
+  color: #1ab595;
+  font-size: 1.1em;
+}
+
+.date-update-status-btn{
+
 }
 
 

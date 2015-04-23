@@ -8,6 +8,7 @@ class WelcomeController < ApplicationController
       else
         redirect_to new_user_profile_path(current_user.id)
       end
+      render 'match_dashboard'
     end
   end
 

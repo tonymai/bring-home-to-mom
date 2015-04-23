@@ -29,6 +29,9 @@ Rails.application.routes.draw do
       resources :charges, only: [:new, :create]
     end
 
+    post '/dates/:id/accept' => 'dates#accept_invitation'
+    post '/dates/:id/confirm' => 'dates#confirm_date'
+
     resources :interests, only: [:index, :create]
     resources :values, only: [:index, :create]
 
@@ -39,9 +42,15 @@ Rails.application.routes.draw do
 
     get '/users/:id/messages' => 'users#messages'
 
-    post '/' => 'welcome#change_child'
-  end
 
+    post 'twilio/voice' => 'twilio#voice'
+    post 'twilio/status' => 'twilio#status'
+    post 'charges/notify' => 'charges#notify'
+
+    post '/' => 'welcome#change_child'
+
+  end
+  
   # Example resource route with options:
   #   resources :products do
   #     member do

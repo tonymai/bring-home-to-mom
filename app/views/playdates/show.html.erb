@@ -6,85 +6,12 @@
       </div>
     </div>
     <div class="status-box-wrapper col span_4">
-      <div class="status-box row">
-        <div class="date-status-header">
-          <p>DATE STATUS</p>
-        </div>
-        <div class="col span_6">
-          <div class="date-status-parent-name">
-            <% if @playdate.initiator.parent.id == current_user.id %>
-              <span>You</span>
-            <% else %>
-              <span><%= @playdate.initiator.parent.first_name %></span>
-            <% end %>
-          </div>
-          <div class="date-status-table">
-            <div class="date-status-row">
-              <i class="fa fa-check-circle"></i>
-              <p>Initiated</p>
-            </div>
-            <div class="date-status-row">
-              <% if @playdate.initiator_confirmed %>
-                <i class="fa fa-check-circle"></i>
-              <% else %>
-                <i class="fa fa-circle-thin"></i>
-              <% end %>
-              <p>Confirmed</p>
-            </div>
-            <div class="date-status-row">
-              <% if @playdate.initiator_paid %>
-                <i class="fa fa-check-circle"></i>
-              <% else %>
-                <i class="fa fa-circle-thin"></i>
-              <% end %>
-              <p>Paid</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="col span_6">
-          <div class="date-status-parent-name">
-            <% if @playdate.recipient.parent.id == current_user.id %>
-              <span>You</span>
-            <% else %>
-              <span><%= @playdate.recipient.parent.first_name %></span>
-            <% end %>
-          </div>
-          <div class="date-status-table">
-            <div class="date-status-row">
-              <% if @playdate.recipient_accepted %>
-                <i class="fa fa-check-circle"></i>
-              <% else %>
-                <i class="fa fa-circle-thin"></i>
-              <% end %>
-              <p>Accepted</p>
-            </div>
-            <div class="date-status-row">
-              <% if @playdate.recipient_confirmed %>
-                <i class="fa fa-check-circle"></i>
-              <% else %>
-                <i class="fa fa-circle-thin"></i>
-              <% end %>
-              <p>Confirmed</p>
-            </div>
-            <div class="date-status-row">
-              <% if @playdate.recipient_paid %>
-                <i class="fa fa-check-circle"></i>
-              <% else %>
-                <i class="fa fa-circle-thin"></i>
-              <% end %>
-              <p>Paid</p>
-            </div>
-          </div>
-        </div>
-
-      </div>
+      <%= render partial: "date_status_box", locals: {playdate: @playdate} %>
     </div>
   </div>
 
 
   <div class = "status row">
-
     <div class="col span_8">
 
       <div class="date-design-section selected-experience-container row">
@@ -99,11 +26,70 @@
             <%= render partial: "experience_card", locals: {experience: @playdate.experience} %>
           <% elsif (@playdate.movie) && (@playdate.experience.nil?) %>
             <%= render partial: "movie_card", locals: {movie: @playdate.movie} %>
+          <% elsif (@playdate.movie) && (@playdate.experience) %>
+            <%= render partial: "experience_card", locals: {experience: @playdate.experience} %>
+            <div class="date-comment">with</div>
+            <%= render partial: "movie_card", locals: {movie: @playdate.movie} %>
           <% else %>
             <p>Something is wrong!</p>
           <% end %>
+
+        <!-- ******BUTTON LOGIC****** -->
+          <!-- AcceptEvent Logic -->
+          <% if (current_user.id == @playdate.recipient.parent.id) && (@playdate.status == "pending") %>
+            <a href="/dates/<%= current_user.id %>/accept">Accept Invitation</a>
+          <% end %>
+
+          <!-- Confirm Event Logic -->
+          <% if (@playdate.event_selected?) && (@playdate.status == 'accepted') %>
+            <% if (current_user.initiated_date?(@playdate)) && (@playdate.initiator_confirmed) %>
+              <a class="accept-confirm-pay btn-selected" href="/dates/<%= current_user.id %>/confirm">Confirm Date Selection</a>
+            <% elsif (current_user.initiated_date?(@playdate)) && !(@playdate.initiator_confirmed) %>
+              <a class="accept-confirm-pay" href="/dates/<%= current_user.id %>/confirm">Confirm Date Selection</a>
+            <% elsif !(current_user.initiated_date?(@playdate)) && (@playdate.recipient_confirmed) %>
+              <a class="accept-confirm-pay btn-selected" href="/dates/<%= current_user.id %>/confirm">Confirm Date Selection</a>
+            <% elsif !(current_user.initiated_date?(@playdate)) && !(@playdate.recipient_confirmed) %>
+              <a class="accept-confirm-pay" href="/dates/<%= current_user.id %>/confirm">Confirm Date Selection</a>
+            <% else %>
+              <a class="accept-confirm-pay" href="#">Something is wrong</a>
+            <% end %>
+          <% end %>
+
+          <!-- Pay For DATE Logic -->
+          <% if (@playdate.event_selected?) && (@playdate.status == 'confirmed') %>
+            <% if (current_user.initiated_date?(@playdate)) && (@playdate.initiator_paid) %>
+              <div class="accept-confirm-pay btn-selected">
+                Buy This Date!
+                <%= render partial: "charges/new" %>
+              </div>
+            <% elsif (current_user.initiated_date?(@playdate)) && !(@playdate.initiator_paid) %>
+              <div class="accept-confirm-pay">
+                Buy This Date!
+                <%= render partial: "charges/new" %>
+              </div>
+            <% elsif !(current_user.initiated_date?(@playdate)) && (@playdate.recipient_paid) %>
+              <div class="accept-confirm-pay btn-selected">
+                Buy This Date!
+                <%= render partial: "charges/new" %>
+              </div>
+            <% elsif !(current_user.initiated_date?(@playdate)) && !(@playdate.recipient_paid) %>
+              <div class="accept-confirm-pay">
+                Buy This Date!
+                <%= render partial: "charges/new" %>
+              </div>
+            <% else %>
+              <div class="accept-confirm-pay">Something is wrong</div>
+            <% end %>
+          <% end %>
+
+
         </div>
       </div>
+
+      <!-- 'If statement for "hide if confirmed or paid" logic -->
+      <% if (@playdate.status == "confirmed") || (@playdate.status == "paid") %>
+        <div class="hidden">
+      <% end %>
 
       <div class="date-design-section food-and-drink-container row">
         <div class="date-design-section-header">
@@ -124,6 +110,11 @@
           <%= render partial: 'movie_row' %>
         </div>
       </div>
+
+      <!-- Closing 'end' statement for "hide if confirmed or paid" logic -->
+      <% if (@playdate.status == "confirmed") || (@playdate.status == "paid") %>
+        </div>
+      <% end %>
 
     </div>
 
