@@ -26,6 +26,10 @@
             <%= render partial: "experience_card", locals: {experience: @playdate.experience} %>
           <% elsif (@playdate.movie) && (@playdate.experience.nil?) %>
             <%= render partial: "movie_card", locals: {movie: @playdate.movie} %>
+          <% elsif (@playdate.movie) && (@playdate.experience) %>
+            <%= render partial: "experience_card", locals: {experience: @playdate.experience} %>
+            <div class="date-comment">with</div>
+            <%= render partial: "movie_card", locals: {movie: @playdate.movie} %>
           <% else %>
             <p>Something is wrong!</p>
           <% end %>

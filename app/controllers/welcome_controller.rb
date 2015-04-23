@@ -8,14 +8,12 @@ class WelcomeController < ApplicationController
       else
         redirect_to new_user_profile_path(current_user.id)
       end
+      render 'match_dashboard'
     end
   end
 
   def change_child
-    p session
-    p "***********************************"
-    p params
-    p "***********************************"
+
     session[:profile_id] = params[:profile_id]
   	current_child = Child.find(params[:profile_id])
 

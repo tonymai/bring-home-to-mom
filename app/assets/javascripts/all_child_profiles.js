@@ -2,8 +2,19 @@ $(document).on('page:change', function(e) {
 
 	$('.all-child-profiles').on('click', '.child-pf-image a', function(e) {
 		e.preventDefault();
-
 		var childId = $(this).attr('data-profile-id')
+
+
+
+		//reset all pf-pics to unselected
+		$('.child-pf-image-sub').attr("class", "child-pf-image-sub");
+			//desaturate all other pics
+			$('.child-pf-image-sub').find("img").addClass('desaturate');
+		//Add border to selected
+		$(this).parent().addClass('pf-image-selected');
+			//colorize selected child
+			$('.pf-image-selected').find('img').removeClass("desaturate")
+
 
 		$.ajax({
 			url: '/',
@@ -25,7 +36,7 @@ $(document).on('page:change', function(e) {
 			  child.gender = '';
 			}
 
-			$('h1').text(child.first_name);
+			$('.child-name').text(child.first_name);
 			changeSelected('by_gender', child.gender);
 
 			changeSelected('by_religion', child.religion);
