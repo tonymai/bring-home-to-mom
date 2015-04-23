@@ -43,32 +43,28 @@
 
 
 /*************** SELECTED DATE EXPERIENCE *****************/
+.design-date-notification{
+  text-align: center;
+  color: #888;
+  font-style: italic;
+}
+
 .accept-confirm-pay-wrapper{
   text-align: center;
 }
 
 .accept-confirm-pay-btn{
-  border: 2px solid darkgray;
-  /*padding: 0.8em 7em;*/
+  border: 1px solid darkgray;
+  padding: 1% 15%;
   color: #1ab595;
   font-size: 1.2em;
-  display: inline-block;
-  width: 26em;
-  height: 4em;
-  display: table-cell;
-  vertical-align: middle;
+  width: 80%;
 }
 
-.accept-confirm-pay-btn:hover, .btn-selected{
+.accept-confirm-pay-btn:hover, .pay-btn-wrapper:hover, .btn-selected{
   color: #fff;
   border: 2px solid #ff6953;
   background-color: #1ab595;
-}
-
-.stripe-btn{
-  display: inline-block;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .accept-confirm-pay-btn span{
@@ -77,6 +73,24 @@
   text-align: center;
 }
 
+.pay-btn-wrapper{
+  border: 1px solid darkgray;
+  padding: 0.8em 0;
+  color: #1ab595;
+  font-size: 1.2em;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.pay-btn-wrapper span{
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.stripe-btn{
+  margin: 0 auto;
+}
 
 /*************** EXPERIENCES (FOOD & DRINK) *****************/
 .date-design-section{
@@ -114,6 +128,7 @@
 .experience-details{
   padding: 1em;
   text-align: left;
+  position: relative;
 }
 .exp-detail-item{
   display: table;
@@ -147,6 +162,20 @@
   color: #fff;
   border: 2px solid #ff6953;
   background-color: #1ab595;
+}
+
+.close-icon{
+  color: #777;
+  position: absolute;
+  top: 1%;
+  right: 1%;
+}
+
+.close-icon:hover{
+  color: #aaa;
+  position: absolute;
+  top: 1%;
+  right: 1%;
 }
 
 
