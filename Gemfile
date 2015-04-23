@@ -48,9 +48,11 @@ gem 'thin'
 # For autocomplete searches
 gem 'rails-jquery-autocomplete'
 
-
 # For payments
 gem 'stripe'
+
+# For notifications
+gem 'twilio-ruby', '~> 3.12'
 
 
 group :development, :test do

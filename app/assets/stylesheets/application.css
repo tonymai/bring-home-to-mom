@@ -36,14 +36,20 @@ header.app-header nav {
   height:30px;
   width: 100%;
   position: fixed;
-  z-index: 1;
+  z-index: 2;
 
-  background: -webkit-linear-gradient(90deg, #f857a6 10%, #ff5858 90%); /* Chrome 10+, Saf5.1+ */
-  background:    -moz-linear-gradient(90deg, #f857a6 10%, #ff5858 90%); /* FF3.6+ */
-  background:     -ms-linear-gradient(90deg, #f857a6 10%, #ff5858 90%); /* IE10 */
-  background:      -o-linear-gradient(90deg, #f857a6 10%, #ff5858 90%); /* Opera 11.10+ */
-  background:         linear-gradient(90deg, #f857a6 10%, #ff5858 90%); /* W3C */
+/*  background: -webkit-linear-gradient(90deg, #f857a6 10%, #ff5858 90%);
+  background:    -moz-linear-gradient(90deg, #f857a6 10%, #ff5858 90%);
+  background:     -ms-linear-gradient(90deg, #f857a6 10%, #ff5858 90%);
+  background:      -o-linear-gradient(90deg, #f857a6 10%, #ff5858 90%);
+  background:         linear-gradient(90deg, #f857a6 10%, #ff5858 90%);*/
 
+
+  background: -webkit-linear-gradient(90deg, #4b6cb7 10%, #182848 90%); /* Chrome 10+, Saf5.1+ */
+  background:    -moz-linear-gradient(90deg, #4b6cb7 10%, #182848 90%); /* FF3.6+ */
+  background:     -ms-linear-gradient(90deg, #4b6cb7 10%, #182848 90%); /* IE10 */
+  background:      -o-linear-gradient(90deg, #4b6cb7 10%, #182848 90%); /* Opera 11.10+ */
+  background:         linear-gradient(90deg, #4b6cb7 10%, #182848 90%); /* W3C */
 
 }
 
@@ -78,8 +84,11 @@ header.app-header nav {
   color: #FFFFFF;
 }
 
-.navbar .notification {
-  /*position: relative;*/
+
+.dashboard::before {
+  font-family: FontAwesome;
+  content: "\f003";
+  padding-right: 5px;
 }
 
 .navbar .notification .notification-dropdown {
@@ -107,7 +116,7 @@ header.app-header nav {
 
 .navbar-filler {
   width: 100%;
-  height: 30px;
+  height: 1em;
 }
 
 .hidden {

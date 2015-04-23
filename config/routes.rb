@@ -42,9 +42,15 @@ Rails.application.routes.draw do
 
     get '/users/:id/messages' => 'users#messages'
 
-    post '/' => 'welcome#change_child'
-  end
 
+    post 'twilio/voice' => 'twilio#voice'
+    post 'twilio/status' => 'twilio#status'
+    post 'charges/notify' => 'charges#notify'
+
+    post '/' => 'welcome#change_child'
+
+  end
+  
   # Example resource route with options:
   #   resources :products do
   #     member do
