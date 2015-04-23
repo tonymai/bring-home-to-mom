@@ -6,7 +6,7 @@ class ChargesController < ApplicationController
 
 	def create
 		date = Playdate.find(params[:date_id])
-		@amount = date.total_cost_per_person # amount in cents
+		@amount = (date.total_cost_per_person * 100) # amount in cents
 
 		customer = Stripe::Customer.create(
 			email:  params[:stripeEmail],

@@ -64,11 +64,10 @@ class PlaydatesController < ApplicationController
     date = Playdate.find(params[:id])
     experience = Experience.find(params[:experience_id])
 
-    if (current_user.initiated_date?(date)) && (date.experience_id != experience.id)
-      date.recipient_confirmed = false
-    elsif !(current_user.initiated_date?(date)) && (date.experience_id != experience.id)
-      date.initiator_confirmed = false
-    end
+    
+    date.recipient_confirmed = false
+    date.initiator_confirmed = false
+
     date.experience_id = experience.id
     date.save!
 
@@ -91,7 +90,9 @@ class PlaydatesController < ApplicationController
 
   def delete_event
     playdate = Playdate.find(params[:id])
-    # experience = Experience.find(params[:experience_id])
+
+    playdate.recipient_confirmed = false
+    playdate.initiator_confirmed = false
 
     playdate.experience_id = nil
 

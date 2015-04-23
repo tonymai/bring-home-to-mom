@@ -66,31 +66,25 @@
             <% end %>
 
             <!-- Pay For Date Logic -->
-            <% if (@playdate.event_selected?) && (@playdate.status == 'confirmed') %>
-              <% if (@playdate.you_paid?(current_user)) && !(@playdate.other_paid?(current_user)) %>
-                <div class="disabled-button desaturate italics">Awaiting payment from other parent</div>
-              <% elsif (@playdate.you_paid?(current_user) == false) %>
-                <div class="pay-btn-wrapper row">
-                  <span class="col span_6">Total Cost: $<%= @playdate.total_cost_per_person %>/person</span>
-                  <div class="stripe-btn col span_6"><%= render partial: "charges/new" %></div>
-                </div>
-              <% else %>
-                <a class="accept-confirm-pay-btn" href="#">Something is wrong</a>
-              <% end %>
+            <% if (@playdate.event_selected?) &&
+                  (@playdate.status == 'confirmed') &&
+                  (@playdate.you_paid?(current_user)) &&
+                  !(@playdate.other_paid?(current_user)) %>
+              <div class="disabled-button desaturate italics">Awaiting payment from other parent</div>
             <% end %>
+
+            <div class="pay-btn-wrapper row <%= 'hidden' unless ((@playdate.event_selected?) && (@playdate.status == 'confirmed') && (@playdate.you_paid?(current_user) == false)) %>">
+              <span class="col span_6">Total Cost: $<%= @playdate.total_cost_per_person %>/person</span>
+              <div class="stripe-btn col span_6"><%= render partial: "charges/new" %></div>
+            </div>
+
 
           </div>
 
         </div>
       </div>
 
-      <!-- 'If statement for "hide if confirmed or paid" logic -->
-      <% if (@playdate.status == "confirmed") || (@playdate.status == "paid") %>
-        <div class="hidden">
-      <% end %>
-      <!--   -->
-
-      <div class="date-design-section food-and-drink-container row">
+      <div class="date-design-section food-and-drink-container row <%= 'hidden' if (@playdate.status == "confirmed") || (@playdate.status == "paid") %>">
         <div class="date-design-section-header">
           <h2>Food & Drink</h2>
         </div>
@@ -101,7 +95,7 @@
         </div>
       </div>
 
-      <div class="date-design-section movie-container row">
+      <div class="date-design-section movie-container row <%= 'hidden' if (@playdate.status == "confirmed") || (@playdate.status == "paid") %>">
         <div class="date-design-section-header">
           <h2>In Theaters</h2>
         </div>
@@ -109,12 +103,6 @@
           <%= render partial: 'movie_row' %>
         </div>
       </div>
-
-      <!-- Closing 'end' statement for "hide if confirmed or paid" logic -->
-      <% if (@playdate.status == "confirmed") || (@playdate.status == "paid") %>
-        </div>
-      <% end %>
-      <!--   -->
 
     </div>
 
