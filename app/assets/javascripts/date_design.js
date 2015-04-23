@@ -38,7 +38,7 @@ $(document).on('page:change', function() {
 			if ($('.disabled-button')) {
 				if ($('#recipient-accepted').hasClass('fa-check-circle')) {
 					$('.accept-confirm-pay-wrapper').html('<a id="confirm-invitation" class="accept-confirm-pay-btn" href="/dates/' + data.playdate.id + '/confirm">Confirm Date Selection</a>');
-				} else {
+				} else if (data.recipient) {
 					$('.accept-confirm-pay-wrapper').html('<a id="accept-invitation" class="accept-confirm-pay-btn" href="/dates/' + data.playdate.id + '/accept">Accept Invitation</a>');
 				};
 			};

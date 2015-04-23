@@ -62,15 +62,25 @@ class PlaydatesController < ApplicationController
 
   def update
     date = Playdate.find(params[:id])
-    experience = Experience.find(params[:experience_id])
-    movie = Movie.find(params[:movie_id])
 
-    
+    if params[:experience_id]
+      experience = Experience.find(params[:experience_id])
+      experience_data = {formattedExperienceDate: experience.experience_at_formatted}
+      date.experience = experience
+    else
+      experience_data = {}
+    end
+
+    if params[:movie_id]
+      movie = Movie.find(params[:movie_id]) if params[:movie_id]
+      movie_data = { formattedMovieDate: movie.movie_at_formatted, movieDescriptionClipped: movie.description_clipped, movieRatingFormatted: movie.rating_formatted }
+      date.movie = movie
+    else
+      movie_data = {}
+    end
+
     date.recipient_confirmed = false
     date.initiator_confirmed = false
-
-    date.experience_id = experience.id
-    date.save!
 
     if current_user.initiated_date?(date) && !(date.initiator_confirmed)
       delete_button = true
@@ -80,10 +90,10 @@ class PlaydatesController < ApplicationController
       delete_button = false
     end
 
-    formatted_experience_date = experience.experience_at_formatted
+    recipient = (current_user == date.recipient.parent ? true : false )
 
-    if date.save
-      render json: { playdate: date, experience: experience, deleteButton: delete_button, formattedExperienceDate: formatted_experience_date, formattedMovieDate: movie.movie_at_formatted, movieDescriptionClipped: movie.description_clipped, movieRatingFormatted: movie.rating_formatted }, status: :ok
+    if date.save!
+      render json: { recipient: recipient, playdate: date, experience: experience, deleteButton: delete_button, experienceData: experience_data, movieData: movie_data }, status: :ok
     else
       render json: { errors: date.errors.full_messages }, status: :unproccessable_entity
     end
