@@ -36,10 +36,6 @@
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
-<row name="parent_id" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default><relation table="parents" row="id" />
-</row>
 <row name="first_name" null="1" autoincrement="0">
 <datatype>CHAR</datatype>
 <default>NULL</default></row>
@@ -100,6 +96,10 @@
 <row name="main_profile_image" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
+<row name="parent_id" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="parents" row="id" />
+</row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
@@ -203,6 +203,9 @@
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
+<row name="body" null="1" autoincrement="0">
+<datatype>CHAR</datatype>
+<default>NULL</default></row>
 <row name="parent_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default><relation table="parents" row="id" />
@@ -273,26 +276,10 @@
 <part>id</part>
 </key>
 </table>
-<table x="1067" y="258" name="playdates">
+<table x="1066" y="260" name="playdates">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
-<row name="initiator_id" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default><relation table="children" row="id" />
-</row>
-<row name="recipient_id" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default><relation table="children" row="id" />
-</row>
-<row name="experience_id" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default><relation table="experiences" row="id" />
-</row>
-<row name="movie_id" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default><relation table="movies" row="id" />
-</row>
 <row name="note" null="1" autoincrement="0">
 <datatype>CHAR</datatype>
 <default>NULL</default></row>
@@ -311,6 +298,22 @@
 <row name="recipient_paid" null="1" autoincrement="0">
 <datatype>BINARY</datatype>
 <default>NULL</default></row>
+<row name="initiator_id" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="children" row="id" />
+</row>
+<row name="recipient_id" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="children" row="id" />
+</row>
+<row name="experience_id" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="experiences" row="id" />
+</row>
+<row name="movie_id" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="movies" row="id" />
+</row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
