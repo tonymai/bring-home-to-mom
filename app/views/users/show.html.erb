@@ -1,5 +1,8 @@
 <div class="dates-dashboard-container container">
   <div class="row">
+    <% if params[:message] == 'paid' %>
+      <div class="flash-paid-message">Payment confirmed! We will send a text message to <%= Playdate.find(params[:date]).initiator.first_name %> and <%= Playdate.find(params[:date]).recipient.first_name %> when both parties have paid.</div>
+    <% end %>
     <div class="page-title-wrapper">
       <h1><%= @user.first_name %>'s Dashboard</h1>
     </div>

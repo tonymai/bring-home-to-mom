@@ -20,14 +20,20 @@
         </div>
 
         <div class="date-design-section-body">
-          <% if (@playdate.status == 'paid') %>
-            <p class="design-date-notification">Everyone has paid - the date is on!</p>
-          <% end %>
+
+        <!-- ******SHOW NOTIFICATION****** -->
+          <p class="design-date-notification">
+            <% if (@playdate.experience.nil?) && (@playdate.movie.nil?) %>
+              No Experience Selected
+            <% elsif (@playdate.status == 'paid') %>
+              Everyone has paid - the date is on!
+            <% end %>
+          </p>
+
 
         <!-- ******SHOW SELECTED EXPERIENCE/MOVIE****** -->
-          <div id="selected-event">
+          <div data-playdate-id="<%= @playdate.id %>" id="selected-experience">
             <% if (@playdate.experience.nil?) && (@playdate.movie.nil?) %>
-              <p class="design-date-notification">No Experience Selected</p>
             <% elsif (@playdate.experience) && (@playdate.movie.nil?) %>
               <%= render partial: "experience_card", locals: {experience: @playdate.experience} %>
             <% elsif (@playdate.movie) && (@playdate.experience.nil?) %>
@@ -45,7 +51,7 @@
           <!-- AcceptEvent Logic -->
           <div class="accept-confirm-pay-wrapper row">
             <% if (current_user.id == @playdate.recipient.parent.id) && (@playdate.status == "pending") %>
-              <a class="accept-confirm-pay-btn" href="/dates/<%= current_user.id %>/accept">Accept Invitation</a>
+              <a id="accept-invitation" class="accept-confirm-pay-btn" href="/dates/<%= @playdate.id %>/accept">Accept Invitation</a>
             <% end %>
 
             <!-- Confirm Event Logic -->
@@ -53,50 +59,43 @@
               <% if (@playdate.you_confirmed?(current_user)) && !(@playdate.other_confirmed?(current_user)) %>
                 <div class="disabled-button desaturate italics">Awaiting confirmation from other parent</div>
               <% elsif (@playdate.you_confirmed?(current_user) == false) %>
-                <a class="accept-confirm-pay-btn" href="/dates/<%= current_user.id %>/confirm">Confirm Date Selection</a>
+                <a id="confirm-invitation" class="accept-confirm-pay-btn" href="/dates/<%= @playdate.id %>/confirm">Confirm Date Selection</a>
               <% else %>
                 <a class="accept-confirm-pay-btn" href="#">Something is wrong</a>
               <% end %>
             <% end %>
 
             <!-- Pay For Date Logic -->
-            <% if (@playdate.event_selected?) && (@playdate.status == 'confirmed') %>
-              <% if (@playdate.you_paid?(current_user)) && !(@playdate.other_paid?(current_user)) %>
-                <div class="disabled-button desaturate italics">Awaiting payment from other parent</div>
-              <% elsif (@playdate.you_paid?(current_user) == false) %>
-                <div class="pay-btn-wrapper row">
-                  <span class="col span_6">Total Cost: $<%= @playdate.total_cost_per_person %>/person</span>
-                  <div class="stripe-btn col span_6"><%= render partial: "charges/new" %></div>
-                </div>
-              <% else %>
-                <a class="accept-confirm-pay-btn" href="#">Something is wrong</a>
-              <% end %>
+            <% if (@playdate.event_selected?) &&
+                  (@playdate.status == 'confirmed') &&
+                  (@playdate.you_paid?(current_user)) &&
+                  !(@playdate.other_paid?(current_user)) %>
+              <div class="disabled-button desaturate italics">Awaiting payment from other parent</div>
             <% end %>
+
+            <div class="pay-btn-wrapper row <%= 'hidden' unless ((@playdate.event_selected?) && (@playdate.status == 'confirmed') && (@playdate.you_paid?(current_user) == false)) %>">
+              <span class="col span_6">Total Cost: $<%= @playdate.total_cost_per_person %>/person</span>
+              <div class="stripe-btn col span_6"><%= render partial: "charges/new" %></div>
+            </div>
+
 
           </div>
 
         </div>
       </div>
 
-      <!-- 'If statement for "hide if confirmed or paid" logic -->
-      <% if (@playdate.status == "confirmed") || (@playdate.status == "paid") %>
-        <div class="hidden">
-      <% end %>
-      <!--   -->
-
-      <div class="date-design-section food-and-drink-container row">
+      <div class="date-design-section food-and-drink-container row <%= 'hidden' if (@playdate.status == "confirmed") || (@playdate.status == "paid") %>">
         <div class="date-design-section-header">
           <h2>Food & Drink</h2>
         </div>
         <div class="date-design-section-body">
-          <%= render partial: "movie_card", locals: {movie: Movie.first} %>
           <% Experience.upcoming_experiences.each do |experience| %>
             <%= render partial: "experience_card", locals: {experience: experience} %>
           <% end %>
         </div>
       </div>
 
-      <div class="date-design-section movie-container row">
+      <div class="date-design-section movie-container row <%= 'hidden' if (@playdate.status == "confirmed") || (@playdate.status == "paid") %>">
         <div class="date-design-section-header">
           <h2>In Theaters</h2>
         </div>
@@ -104,12 +103,6 @@
           <%= render partial: 'movie_row' %>
         </div>
       </div>
-
-      <!-- Closing 'end' statement for "hide if confirmed or paid" logic -->
-      <% if (@playdate.status == "confirmed") || (@playdate.status == "paid") %>
-        </div>
-      <% end %>
-      <!--   -->
 
     </div>
 
@@ -119,5 +112,7 @@
 
   </div>
 </div>
+
+<%= render 'experience_card_template' %>
 
 
