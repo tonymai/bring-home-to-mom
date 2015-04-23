@@ -95,20 +95,18 @@
 .add-child-btn{
   margin: 1.5em 0;
   text-align: center;
-  font-family: 'Questrial', sans-serif;
 }
 
 .add-child-btn a{
-  border: 2px solid darkgray;
+  border: 2px solid #4B6CB7;
   padding: 4px 8px;
-  border-radius: 6px;
-  color: #1ab595;
-  font-size: 1.1em;
+  border-radius: 3px;
+  color: #4B6CB7;
+  font-size: 1em;
 }
 
-.add-child-btn a:hover{
-  color: #fff;
-  border: 2px solid #ff6953;
-  background-color: #1ab595;
+.add-child-btn a:hover {
+  color: white;
+  border: 2px solid #4B6CB7;
+  background-color: #4B6CB7;
 }
-

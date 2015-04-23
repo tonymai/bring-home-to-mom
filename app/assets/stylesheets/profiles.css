@@ -8,7 +8,7 @@
 }
 
 .pf-basic-info-wrapper h1{
-  border-bottom: 1px solid #1ab595;
+  border-bottom: 1px solid #C7C7C7;
   margin: 0.4em 0.45em 0.3em 0.45em;
   font-family: 'Josefin Sans', sans-serif;
   font-size: 2.2em;
@@ -38,22 +38,22 @@
 }
 
 .pf-set-date a{
-  border: 2px solid darkgray;
-  padding: 5px 13px;
-  border-radius: 6px;
-  color: #1ab595;
-  font-size: 1.5em;
+  border: 2px solid #4B6CB7;
+  padding: 4px 8px;
+  border-radius: 3px;
+  color: #4B6CB7;
+  font-size: 1em;
 }
 
 .pf-set-date a:hover{
-  color: #fff;
-  border: 2px solid #ff6953;
-  background-color: #1ab595;
+  color: white;
+  border: 2px solid #4B6CB7;
+  background-color: #4B6CB7;
 }
 
 /*GENERAL PROFILE DETAIL MODAL STYLING*/
 .pf-modal-container {
-  background-image: url('/images/backgrounds/bg-paper.png');
+  background-image: url('symphony.png');
   height: auto;
   width: 100em;
   text-align: center;
@@ -64,8 +64,9 @@
   font-family: 'Arvo', serif;
   margin: 0.5em;
   padding: 0.2em;
-  border-top: 1px solid gray;
-  border-bottom: 1px solid gray;
+  border-top: 1px solid rgb(207, 207, 207);
+  border-bottom: 1px solid rgb(207, 207, 207);
+
 }
 
 .pf-modal-container h3{
@@ -79,7 +80,7 @@
 /*STYLING FOR 'GOOD STUFF' BOXES*/
 .pf-box {
   position: relative;
-  color: #1ab595;
+  color: #4B6CB7;
   height: 200px;
   margin: 0;
   /*background-color: #1ab595;*/
@@ -89,13 +90,13 @@
 .pf-box p{
   font-size: 0.9em;
   text-align: right;
-  color: #d7dadb;
+  color: #4B6CB7;
 }
 
 .pf-box-back{
-  background-color: #1ab595;
+  background-image: url("light-gray-texture.png");
   border-radius: 10px;
-  color: #D7DADB;
+  color: #4B6CB7;
 }
 
 /***************** FLIP ANIMATION *****************/
@@ -203,6 +204,10 @@
 .continue-wrapper a{
   color:gray;
 }
+
+.interest-form-wrapper{
+  margin-top:1em;
+}
 .pf-form-gender{
     width: 6em;
     /* display: flex; */
@@ -293,8 +298,8 @@ figure.effect-dexter {
 }
 
 figure.effect-dexter:hover {
-  background-color: #1ab595;
-  color: #d7dadb;
+  background-image: url("light-gray-texture.png")
+  color: #4B6CB7;
   border-radius: 10px;
 }
 
@@ -305,7 +310,7 @@ figure.effect-dexter figcaption::after {
   left: 30px;
   height: -webkit-calc(50% - 30px);
   height: calc(50% - 30px);
-  border: 7px solid #ff6953;
+  border: 7px solid #4B6CB7;
   content: '';
   -webkit-transition: -webkit-transform 0.35s;
   transition: transform 0.35s;
