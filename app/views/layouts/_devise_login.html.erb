@@ -4,11 +4,11 @@
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <%= devise_error_messages! %>
 
-    <div class="field">
+    <div class="field text-input">
       <%= f.email_field :email, autofocus: true, placeholder: "email" %>
     </div>
 
-    <div class="field">
+    <div class="field text-input">
       <%= f.password_field :password, autocomplete: "off", placeholder: "password" %>
     </div>
 

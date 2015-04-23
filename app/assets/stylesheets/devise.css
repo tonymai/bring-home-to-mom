@@ -1,17 +1,25 @@
 .li-lo-container{
 
-  background: -webkit-linear-gradient(90deg, #DE6262 10%, #FFB88C 90%); /* Chrome 10+, Saf5.1+ */
-  background:    -moz-linear-gradient(90deg, #DE6262 10%, #FFB88C 90%); /* FF3.6+ */
-  background:     -ms-linear-gradient(90deg, #DE6262 10%, #FFB88C 90%); /* IE10 */
-  background:      -o-linear-gradient(90deg, #DE6262 10%, #FFB88C 90%); /* Opera 11.10+ */
-  background:         linear-gradient(90deg, #DE6262 10%, #FFB88C 90%); /* W3C */
+
+
+  background: -webkit-linear-gradient(90deg, #4b6cb7 10%, #182848 90%); /* Chrome 10+, Saf5.1+ */
+  background:    -moz-linear-gradient(90deg, #4b6cb7 10%, #182848 90%); /* FF3.6+ */
+  background:     -ms-linear-gradient(90deg, #4b6cb7 10%, #182848 90%); /* IE10 */
+  background:      -o-linear-gradient(90deg, #4b6cb7 10%, #182848 90%); /* Opera 11.10+ */
+  background:         linear-gradient(90deg, #4b6cb7 10%, #182848 90%); /* W3C */
+
+
   color:white;
   height:100%;
 }
 
 .li-lo-header{
   background-color: rgba(256,256,256,0.5);
+  font-family: 'Lobster', 'cursive';
+}
 
+.text-input input{
+  height:2em;
 }
 
 .devise-container{
@@ -25,6 +33,8 @@
 .devise-container input{
   margin-bottom: 1em;
   color:black;
+  border: none;
+  border-radius: 3px;
 
 }
 
