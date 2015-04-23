@@ -9,8 +9,9 @@
     </figure>
   </div>
   <div class="experience-details col span_7">
+
     <% if (@playdate.experience == experience) && !(@playdate.you_confirmed?(current_user)) %>
-      <i class="close-icon fa fa-times"></i>
+      <a href="/dates/<%= @playdate.id %>" data-experience-id="<%= experience.id %>" class="selected-experience-delete-btn"><i class="close-icon fa fa-times"></i></a>
     <% end %>
 
 
@@ -42,7 +43,9 @@
 
   <% unless @playdate.experience == experience %>
     <div class="select-experience-btn">
-      <a href="/dates/<%= @playdate.id %>/experience/?exp_id=<%= experience.id %>">Choose Experience</a>
+      <a href="/dates/<%= @playdate.id %>" data-experience-id="<%= experience.id %>">Choose Experience</a>
     </div>
   <% end %>
 </div>
+
+<%= render 'experience_card_template' %>

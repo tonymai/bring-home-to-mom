@@ -1,0 +1,43 @@
+<script type="x-handlebars-template" class="date-experience-card-template">
+<div class="date-experience-card row">
+  <div class="experience-image col span_5">
+    <figure class="effect-bubba">
+      <img src="{{experience.image}}" />
+      <figcaption>
+        <h3>{{experience.venue}}</h3>
+        <p>{{experience.desc_summary}}</p>
+      </figcaption>
+    </figure>
+  </div>
+  <div class="experience-details col span_7">
+    {{#ifCond deleteButton true}}
+    	<a href="/dates/{{playdate.id}}" data-experience-id="{{experience.id}}" class="selected-experience-delete-btn"><i class="close-icon fa fa-times"></i></a>
+    {{/ifCond}}
+
+    <div class="exp-detail-item">
+      <i class="fa fa-calendar"></i>
+      <p>{{formattedExperienceDate}}</p>
+    </div>
+    <div class="exp-detail-item">
+      <i class="fa fa-street-view"></i>
+      <p>{{experience.address}}</p>
+    </div>
+    <div class="exp-detail-item">
+      <i class="fa fa-cutlery"></i>
+      <p>{{experience.desc_note_1}}</p>
+    </div>
+    <div class="exp-detail-item">
+      <i class="fa fa-leaf"></i>
+      <p>{{experience.desc_note_2}}</p>
+    </div>
+    <div class="exp-detail-item">
+      <i class="fa fa-smile-o"></i>
+      <p>{{experience.desc_note_3}}</p>
+    </div>
+    <div class="exp-detail-item">
+      <i class="fa fa-money"></i>
+      <p>${{experience.price_per_person}} / person</p>
+    </div>
+  </div>
+</div>
+</script>
