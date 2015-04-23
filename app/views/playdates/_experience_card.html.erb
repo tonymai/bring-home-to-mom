@@ -9,6 +9,18 @@
     </figure>
   </div>
   <div class="experience-details col span_7">
+    <% if (current_user.initiated_date?(@playdate)) && (@playdate.experience == experience) %>
+      <% unless (@playdate.initiator_confirmed) %>
+        <i class="close-icon fa fa-times"></i>
+      <% end %>
+    <% elsif !(current_user.initiated_date?(@playdate)) && (@playdate.experience == experience) %>
+      <% unless (@playdate.recipient_confirmed) %>
+        <i class="close-icon fa fa-times"></i>
+      <% end %>
+    <% else %>
+      <p class="design-date-notification">Something is wrong</p>
+    <% end %>
+
     <div class="exp-detail-item">
       <i class="fa fa-calendar"></i>
       <p><%= experience.experience_at_formatted %></p>
