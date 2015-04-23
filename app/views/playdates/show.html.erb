@@ -24,21 +24,21 @@
             <p class="design-date-notification">Everyone has paid - the date is on!</p>
           <% end %>
 
-          <% if (@playdate.experience.nil?) && (@playdate.movie.nil?) %>
-            <p class="design-date-notification">No Experience Selected</p>
-          <% elsif (@playdate.experience) && (@playdate.movie.nil?) %>
           <div id="selected-event">
-            <%= render partial: "experience_card", locals: {experience: @playdate.experience} %>
+            <% if (@playdate.experience.nil?) && (@playdate.movie.nil?) %>
+              <p class="design-date-notification">No Experience Selected</p>
+            <% elsif (@playdate.experience) && (@playdate.movie.nil?) %>
+              <%= render partial: "experience_card", locals: {experience: @playdate.experience} %>
+            <% elsif (@playdate.movie) && (@playdate.experience.nil?) %>
+              <%= render partial: "movie_card", locals: {movie: @playdate.movie} %>
+            <% elsif (@playdate.movie) && (@playdate.experience) %>
+              <%= render partial: "experience_card", locals: {experience: @playdate.experience} %>
+              <div class="date-comment">with</div>
+              <%= render partial: "movie_card", locals: {movie: @playdate.movie} %>
+            <% else %>
+              <p>Something is wrong!</p>
+            <% end %>
           </div>
-          <% elsif (@playdate.movie) && (@playdate.experience.nil?) %>
-            <%= render partial: "movie_card", locals: {movie: @playdate.movie} %>
-          <% elsif (@playdate.movie) && (@playdate.experience) %>
-            <%= render partial: "experience_card", locals: {experience: @playdate.experience} %>
-            <div class="date-comment">with</div>
-            <%= render partial: "movie_card", locals: {movie: @playdate.movie} %>
-          <% else %>
-            <p>Something is wrong!</p>
-          <% end %>
 
         <!-- ******BUTTON LOGIC****** -->
           <!-- AcceptEvent Logic -->

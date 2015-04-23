@@ -11,13 +11,14 @@ $(document).on('page:change', function() {
 			dataType: 'JSON',
 			data: { experience_id: experienceId }
 		}).done(function(data) {
-			debugger
+			// $('#selected-event').fadeOut(function() {
+				$('#selected-event').empty();
+			// });
 			var source = $('.date-experience-card-template').html();
 			var templatingFunction = Handlebars.compile(source);
 			var context = data;
 			$('.design-date-notification').hide();
-			$('.date-design-section-body').append(templatingFunction(context));
-			// $('.food-and-drink-container').hide();
+			$('#selected-event').append(templatingFunction(context));
 		}).fail(function(errors) {
 
 		});
@@ -30,7 +31,7 @@ $(document).on('page:change', function() {
 		var experienceId = $(this).attr('data-experience-id')
 
 		$.ajax({
-			url: $(this).attr('href'),
+			url: $(this).attr('href'), //need to send to different action
 			type: 'PATCH',
 			dataType: 'JSON',
 			data: { experience_id: experienceId }
