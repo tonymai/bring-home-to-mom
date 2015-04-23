@@ -1,0 +1,51 @@
+<script type="x-handlebars-template" class="date-experience-card-template">
+<div class="date-experience-card row">
+  <div class="experience-image col span_5">
+    <figure class="effect-bubba">
+      <img src="{{experience.image}}" />
+      <figcaption>
+        <h3>{{experience.venue}}</h3>
+        <p>{{experience.desc_summary}}</p>
+      </figcaption>
+    </figure>
+  </div>
+  <div class="experience-details col span_7">
+    // <% if (current_user.initiated_date?(@playdate)) && (@playdate.experience == experience) %>
+    //   <% unless (@playdate.initiator_confirmed) %>
+    //     <i class="close-icon fa fa-times"></i>
+    //   <% end %>
+    // <% elsif !(current_user.initiated_date?(@playdate)) && (@playdate.experience == experience) %>
+    //   <% unless (@playdate.recipient_confirmed) %>
+    //     <i class="close-icon fa fa-times"></i>
+    //   <% end %>
+    // <% else %>
+    //   <p class="design-date-notification">Something is wrong</p>
+    // <% end %>
+
+    <div class="exp-detail-item">
+      <i class="fa fa-calendar"></i>
+      <p>{{experience.experience_at_formatted}}</p>
+    </div>
+    <div class="exp-detail-item">
+      <i class="fa fa-street-view"></i>
+      <p>{{experience.address}}</p>
+    </div>
+    <div class="exp-detail-item">
+      <i class="fa fa-cutlery"></i>
+      <p>{{experience.note_1}}</p>
+    </div>
+    <div class="exp-detail-item">
+      <i class="fa fa-leaf"></i>
+      <p>{{experience.desc_note_2}}</p>
+    </div>
+    <div class="exp-detail-item">
+      <i class="fa fa-smile-o"></i>
+      <p>{{experience.desc_note_3}}</p>
+    </div>
+    <div class="exp-detail-item">
+      <i class="fa fa-money"></i>
+      <p>${{experience.price_per_person}} / person</p>
+    </div>
+  </div>
+</div>
+</script>

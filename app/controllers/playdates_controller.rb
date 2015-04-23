@@ -60,6 +60,20 @@ class PlaydatesController < ApplicationController
 
   end
 
+  def update
+    p params
+    playdate = Playdate.find(params[:id])
+    experience = Experience.find(params[:experience_id])
+
+    playdate.experience_id = experience.id
+
+    if playdate.save
+      render json: { playdate: playdate, experience: experience }, status: :ok
+    else
+      render json: { errors: playdate.errors.full_messages }, status: :unproccessable_entity
+    end
+  end
+
   def accept_invitation
     date = Playdate.find(params[:id])
     if date.recipient.parent.id == current_user.id
