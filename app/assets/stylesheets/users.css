@@ -6,6 +6,12 @@
   color: #333333;
 }
 
+.flash-paid-message{
+  color: gray;
+  font-style: italic;
+  padding-top: 1em;
+}
+
 .dashboard-section-header{
   background-color: #4B6CB7;
   border: 1px solid #4B6CB7;

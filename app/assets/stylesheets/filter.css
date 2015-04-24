@@ -12,7 +12,9 @@
   text-align: center;
 }
 
-
+.child-pf-image-sub{
+  border: 2px solid pink;
+}
 
 .dropdowns-wrapper{
   width: 17em;
@@ -88,7 +90,10 @@
 }
 
 .matches{
+  color: gray;
   margin-top: 1em;
+  padding-left: 1em;
+  font-style: italic;
   background-image: url("/images/backgrounds/light-gray-texture.png")
 }
 .matches .individual-child{
