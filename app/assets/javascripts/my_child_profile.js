@@ -30,11 +30,11 @@ $(document).on('page:change', function(e) {
 
   $('.children-collection').on('click', '.child-card-text a', function(e) {
       e.preventDefault();
-      debugger
+      // debugger
       $.ajax({
         url: $(this).attr('href'),
       }).done(function(data) {
-        debugger
+        // debugger
         var source = $('#my-child-profile-template').html();
         var templatingFunction = Handlebars.compile(source);
         $(templatingFunction(data)).modal(modalSetting);

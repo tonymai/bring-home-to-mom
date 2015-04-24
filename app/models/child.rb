@@ -29,7 +29,7 @@ class Child < ActiveRecord::Base
   has_many :initiators, through: :received_playdates
 
   validates :first_name, :last_name, :city, :state, :phone, :gender, :sexual_preference, :birthdate, :bio, :main_profile_image, presence: true
-  validates :phone, uniqueness: true
+  # validates :phone, uniqueness: true
   validates :phone, format: { with: /\A\(?\d{3}(\)|\s|\.|\-)?\s?\d{3}(\-|\s|\.)?\d{4}\z/, message: 'is not in a valid format'}
   validates :pf_image_1, :pf_image_2, :pf_image_3, :pf_image_4, :pf_image_5, format: { with: /.+\.(jpg|jpeg|png)/, message: "is not a valid image" }, allow_blank: true
   validate :check_age
