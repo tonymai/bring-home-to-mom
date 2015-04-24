@@ -43,6 +43,17 @@
   padding: 0.2em 0 0.2em 0.8em;
 }
 
+/*************** DATE PARTICIPANT IMAGES *****************/
+.date-participants-images{
+  text-align: center;
+}
+
+.date-participant-image img{
+  border-radius: 50%;
+  width: 8em;
+  border: 2px solid #4B6CB7;
+  margin: 0 5em;
+}
 
 /*************** SELECTED DATE EXPERIENCE *****************/
 .status {
