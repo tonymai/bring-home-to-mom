@@ -1,3 +1,5 @@
+### THIS IS THE SEED FILE FOR DEMO DAY ###
+
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 #
@@ -5,10 +7,26 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-interests = ["3D printing", "Acting", "Baton twirling", "Board games", "Calligraphy", "Candle making", "Computer programming", "Cooking", "Coloring", "Cosplaying", "Couponing", "Creative writing", "Crocheting", "Cryptography", "Dance", "Digital arts", "Drama", "Drawing", "Do it yourself", "Electronics", "Embroidery", "Flower arranging", "Foreign language learning", "Gaming", "Gambling", "Genealogy", "Glassblowing", "Homebrewing", "Ice skating", "Jewelry making", "Jigsaw puzzles", "Juggling", "Knapping", "Knitting", "Kabaddi", "Knife making", "Lacemaking", "Lapidary", "Leather crafting", "Lego building", "Machining", "Macrame", "Magic", "Model building", "Listening to music", "Origami", "Painting", "Playing musical instruments", "Pottery", "Puzzles", "Quilting", "Reading", "Scrapbooking", "Sculpting", "Sewing", "Singing", "Sketching", "Soapmaking", "Sports", "Standup comedy", "Sudoku", "Table tennis", "Taxidermy", "Video gaming", "Watching movies", "Web surfing", "Wood carving", "Woodworking", "Worldbuilding", "Writing", "Yoga", "Yo-yoing"]
+
+
+cities = ['San Francisco', 'San Diego', 'Los Angeles']
+
+pet_owner = ['Dog Owner', 'Cat Owner', 'Dog and Cat Owner', 'No Pets']
+
+interests_to_sample = ['Computer Programming', 'Laughing', 'Asking Questions', 'Chocolate', 'Excel', 'Colorful Pants', 'Chess', "Singing", "Drama", "Writing", "Yoga"]
+
+values_to_sample = ["Accountability", "Contentment", "Love", "Positivity", "Obedience", "Teamwork", "Elegance", "Happiness", "Generosity", "Marriage"]
+
+movie_posters = ['http://www.cinemablend.com/images/news/67907/_1414454351.jpg']
+
+interests = ["3D printing", "Acting", "Baton twirling", "Board games", "Calligraphy", "Candle making", "Computer programming", "Cooking", "Coloring", "Cosplaying", "Couponing", "Creative writing", "Crocheting", "Cryptography", "Dance", "Digital arts", "Drama", "Drawing", "Do it yourself", "Electronics", "Embroidery", "Flower arranging", "Foreign language learning", "Gaming", "Gambling", "Genealogy", "Glassblowing", "Homebrewing", "Ice skating", "Jewelry making", "Jigsaw puzzles", "Juggling", "Knitting", "Kabaddi", "Knife making", "Lacemaking", "Lapidary", "Leather crafting", "Lego building", "Machining", "Macrame", "Magic", "Model building", "Listening to music", "Origami", "Painting", "Playing musical instruments", "Pottery", "Puzzles", "Quilting", "Reading", "Scrapbooking", "Sculpting", "Sewing", "Singing", "Sketching", "Soapmaking", "Sports", "Standup comedy", "Sudoku", "Table tennis", "Taxidermy", "Video gaming", "Watching movies", "Web surfing", "Wood carving", "Woodworking", "Worldbuilding", "Writing", "Yoga", "Yo-yoing"]
+
+interests_to_sample.map! do |interest|
+  new_interest = Interest.create(name: interest.titleize)
+end
 
 interests.map! do |interest|
-  new_interest = Interest.create(name: interest.titleize)
+  new_interest = Interest.find_or_create_by(name: interest.titleize)
 end
 
 values = ["Accountability", "Adventurousness", "Altruism", "Ambition", "Assertiveness", "Balance", "Commitment", "Community", "Compassion", "Competitiveness", "Contentment", "Cooperation", "Courtesy", "Creativity", "Curiosity", "Devoutness", "Diligence", "Discipline", "Diversity", "Elegance", "Empathy", "Equality", "Fairness", "Faith", "Family", "Fidelity", "Fitness", "Freedom", "Generosity", "Grace", "Happiness", "Hard Work", "Health", "Holiness", "Honesty", "Honor", "Humility", "Independence", "Intelligence", "Justice", "Leadership", "Love", "Loyalty", "Marriage", "Obedience", "Openness", "Originality", "Patriotism", "Peace", "Perfection", "Piety", "Positivity", "Reliability", "Selflessness", "Self-reliance", "Sensitivity", "Service", "Success", "Support", "Teamwork", "Timeliness", "Tolerance", "Traditionalism", "Truth", "Unity"]
@@ -17,13 +35,11 @@ values.map! do |value|
   new_value = Value.create(name: value.titleize)
 end
 
-cities = ['San Francisco', 'San Diego', 'Los Angeles', 'Santa Barbara', 'Sacramento']
+values_to_sample.map! do |value|
+  new_value = Value.find_or_create_by(name: value.titleize)
+end
 
-pet_owner = ['Dog Owner', 'Cat Owner', 'Dog and Cat Owner', 'No Pets']
-
-experience_photos = ['/images/experience/1.jpg', '/images/experience/2.jpg', '/images/experience/3.jpg', '/images/experience/4.jpg', '/images/experience/5.jpg', '/images/experience/6.jpg', '/images/experience/7.jpg', '/images/experience/8.jpg', '/images/experience/9.jpg', '/images/experience/10.jpg']
-
-movie_posters = ['http://www.cinemablend.com/images/news/67907/_1414454351.jpg']
+experience_photos = ['http://www.seamless.com/finedining/img/vendormenuplustabcontentimages/lg_27331_0.jpg', 'http://25.media.tumblr.com/8de69d887367fa0ea41ba1c628fcad9f/tumblr_myvf7h7dKh1shjq15o1_1280.jpg', 'http://collegetimes.com/wp-content/uploads/2014/09/las.jpg', 'http://www.toastedontheinside.com/wp-content/uploads/2013/11/foodporn-34.jpg', 'http://nolavie.com/wp-content/uploads/2014/02/Pork-sliders-2.jpg', 'http://i.imgur.com/iPjkzUz.jpg', 'http://loreleynyc.com/gallery/photos/Food/beer_tasting_flight.jpg', 'https://img.vimbly.com/images/full_photos/scotch-1.jpg']
 
 dbc_students =
   [ ['Andrew', 'Dye', 'https://secure.gravatar.com/avatar/5abc8c1476e25191a08feba0a23f3829.png?r=PG&amp;d=mm&s=300'],
@@ -35,14 +51,12 @@ dbc_students =
     ['Deb', 'Wolfe', 'https://secure.gravatar.com/avatar/716c42ca68efd84a82e58a624f809b80.png?r=PG&d=mm&s=300'],
     ['Erin', 'Hyejin Kim', 'https://secure.gravatar.com/avatar/bc3161cfe66e944b2b207080149a2df4.png?r=PG&d=mm&s=300'],
     ['Ganesh', 'Balaji', 'https://secure.gravatar.com/avatar/ac871ebaa0628c6a83289e7c564af480.png?r=PG&d=mm&s=300'],
-    ['Iulia', 'Soimaru', 'https://secure.gravatar.com/avatar/3d772ac9d054192808f55fac90a867c7.png?r=PG&d=mm&s=300'],
     ['Jacqueline', 'Hernandez', 'https://secure.gravatar.com/avatar/9e75c8c3c4d507fb24ec1bd0239ed2d7.png?r=PG&d=mm&s=300'],
     ['Janet', 'Brown', 'https://secure.gravatar.com/avatar/13de1fc4c41fb6214c540b2bd3aa256f.png?r=PG&d=mm&s=300'],
     ['Jeremy', 'Gagon', 'https://secure.gravatar.com/avatar/8a6027df29e3339dbe9e9cfa314c90ec.png?r=PG&d=mm&s=300'],
     ['Jonathan', 'Berk', 'https://secure.gravatar.com/avatar/3c962b80bfae0ff8e61b99ba032c89c2.png?r=PG&d=mm&s=300'],
     ['Kailash', 'Duraiswami', 'https://secure.gravatar.com/avatar/d71b25f17864f11928c53639eefa8bc4.png?r=PG&d=mm&s=300'],
     ['Kevin', 'Ceballos', 'https://secure.gravatar.com/avatar/1475db0bc23485196d4cfb94e9c4a104.png?r=PG&d=mm&s=300'],
-    ['Marko', 'Anton Potocnik', 'https://secure.gravatar.com/avatar/793240f33e505ec0af147eaefd94e628.png?r=PG&d=mm&s=300'],
     ['Matt', 'McDole', 'https://secure.gravatar.com/avatar/663dd748230392e54aec7879301dcac8.png?r=PG&d=mm&s=300'],
     ['Matthew', 'Lao', 'https://secure.gravatar.com/avatar/70a39a576cbafe46e62db83814105b3a.png?r=PG&d=mm&s=300'],
     ['Michael', 'Perez', 'https://secure.gravatar.com/avatar/abce251b8018346e771560d66db2b3a3.png?r=PG&d=mm&s=300'],
@@ -171,12 +185,12 @@ i = 0
       city: cities.sample,
       state: 'CA',
       phone: rand.to_s[2..11],
-      gender: ['male', 'female', 'other'].sample,
-      sexual_preference: ['men', 'women', 'no preference'].sample,
+      gender: ['male', 'female'].sample,
+      sexual_preference: ['men', 'women'].sample,
       birthdate: Faker::Date.between(50.years.ago, 18.years.ago),
       bio: Faker::Company.bs,
       pets: pet_owner.sample,
-      religion: ['Christian','Muslim','Buddhist', 'Atheist', 'Rastafarian', 'Pastafarian', 'Hindu', 'Sikh', 'Jewish', 'Shinto', 'Shamanist', 'Scientologist', 'Mormon'].sample,
+      religion: ['Christian','Muslim','Agnostic', 'Hindu', 'Jewish', 'Mormon'].sample,
       smoke: [true, false].sample,
       linkedin_url: Faker::Internet.url,
       facebook_url: Faker::Internet.url,
@@ -188,10 +202,10 @@ i = 0
       pf_image_5: Faker::Avatar.image
       )
     5.times do
-      child.interests << interests.sample
+      child.interests << interests_to_sample.sample
     end
     5.times do
-      child.values << values.sample
+      child.values << values_to_sample.sample
     end
     i += 1
   end
@@ -281,3 +295,85 @@ end
   playdate.save
 
 end
+
+marko = Child.create!(
+      first_name: 'Marko',
+      last_name: 'Potocnik',
+      city: 'San Francisco',
+      state: 'CA',
+      phone: '5182813326',
+      gender: 'male',
+      sexual_preference: 'women',
+      birthdate: Date.new(1985,9,14),
+      bio: "Marko is a passionate Slovenian looking for a good time. He has a deep fondness for extremely colorful pants.",
+      pets: 'Dog Owner',
+      religion: 'Agnostic',
+      smoke: false,
+      linkedin_url: Faker::Internet.url,
+      facebook_url: 'https://www.facebook.com/markoapotocnik',
+      embarrassing_moment: "Marko once accidentially sat in chocolate while wearing his colorful pants and didn't realize it for three days.",
+      pf_image_1: '/images/demo_day/marko_01.jpg',
+      pf_image_2: '/images/demo_day/marko_02.jpg',
+      pf_image_3: '/images/demo_day/marko_03.jpg',
+      pf_image_4: '/images/demo_day/marko_04.jpg',
+      pf_image_5: '/images/demo_day/marko_05.jpg',
+      parent_id: 2
+      )
+
+marko_interests = ['Nickelback', 'Computer Programming', 'Colorful Pants', 'Chocolate', 'Excel', 'Chess']
+
+marko_interests.map! do |interest|
+  new_interest = Interest.find_or_create_by(name: interest.titleize)
+end
+marko.interests << marko_interests
+marko.save!
+
+marko_values = ["Happiness", "Contentment", "Positivity", "Generosity", "Marriage"]
+marko_values.map! do |value|
+  new_value = Value.find_or_create_by(name: value.titleize)
+end
+marko.values << marko_values
+marko.save!
+
+iulia = Child.create(
+      first_name: 'Iulia',
+      last_name: 'Soimaru',
+      city: 'San Francisco',
+      state: 'CA',
+      phone: '6263897771',
+      gender: 'female',
+      sexual_preference: 'men',
+      birthdate: Date.new(1993,4,11),
+      bio: "Iulia is a fun-loving gal from Moldova. She loves Beyonce and secretly has a soft spot for Nickelback. Ask her anything, and she'll be sure to give you three questions and two examples.",
+      pets: 'Cat Owner',
+      religion: 'Agnostic',
+      smoke: false,
+      linkedin_url: 'https://www.linkedin.com/pub/iulia-soimaru/33/44a/646',
+      facebook_url: Faker::Internet.url,
+      embarrassing_moment: 'The first time Iulia saw a normal-sized cat, she mistook it for a ferret.',
+      pf_image_1: '/images/demo_day/iulia_01.jpg',
+      pf_image_2: '/images/demo_day/iulia_02.jpg',
+      pf_image_3: '/images/demo_day/iulia_03.jpg',
+      pf_image_4: '/images/demo_day/iulia_04.jpg',
+      pf_image_5: Faker::Avatar.image,
+      parent_id: 1
+      )
+
+iulia_interests = ['Nickelback', 'Computer Programming', 'Laughing', 'Asking Questions', 'Chocolate']
+iulia_interests.map! do |interest|
+  new_interest = Interest.find_or_create_by(name: interest.titleize)
+end
+iulia.interests << iulia_interests
+iulia.save!
+
+iulia_values = ["Happiness", "Contentment", "Positivity", "Generosity", "Marriage"]
+iulia_values.map! do |value|
+  new_value = Value.find_or_create_by(name: value.titleize)
+end
+iulia.values << iulia_values
+iulia.save!
+
+# Parent.find(1).children << marko
+# Parent.find(1).save!
+# Parent.find(2).children << iulia
+# Parent.find(2).save!

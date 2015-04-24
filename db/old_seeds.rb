@@ -1,83 +1,4 @@
-marko = Child.create(
-      first_name: 'Marko',
-      last_name: 'Potocnik',
-      city: 'San Francisco',
-      state: 'CA',
-      phone: '6263897771',
-      gender: 'male',
-      sexual_preference: 'women',
-      birthdate: Date.new(1985,9,14),
-      bio: '',
-      pets: 'Dog Owner',
-      religion: 'Agnostic',
-      smoke: false,
-      linkedin_url: Faker::Internet.url,
-      facebook_url: 'https://www.facebook.com/markoapotocnik',
-      embarrassing_moment: '',
-      pf_image_1: 'https://scontent.xx.fbcdn.net/hphotos-xat1/v/t1.0-9/11129383_459191087579102_5780021673137400406_n.jpg?oh=b3db76a02b7a63611ac91cc191cc15ff&oe=55CDA90B',
-      pf_image_2: 'https://secure.gravatar.com/avatar/793240f33e505ec0af147eaefd94e628.png?r=PG&d=mm&s=300',
-      pf_image_3: 'https://scontent.xx.fbcdn.net/hphotos-xap1/v/t1.0-9/10342754_328926683938877_7047535912489197358_n.jpg?oh=07ad782dffb938efdd42db9fcb6e1d78&oe=55DC517A',
-      pf_image_4: 'https://dl.dropboxusercontent.com/content_link/1tpGtLFn20MLzFMcWByfsVCysNsLEnnzkA0hhzkNbucGOIUGWCKwPD75JxX38oI9',
-      pf_image_5: 'http://imgur.com/zWpJwoX'
-      )
-
-
-iulia = Child.create(
-      first_name: 'Iulia',
-      last_name: 'Soimaru',
-      city: 'San Francisco',
-      state: 'CA',
-      phone: '6263897771',
-      gender: 'male',
-      sexual_preference: 'women',
-      birthdate: Date.new(1993,4,11),
-      bio: '',
-      pets: 'Cat Owner',
-      religion: 'Agnostic',
-      smoke: false,
-      linkedin_url: 'https://www.linkedin.com/pub/iulia-soimaru/33/44a/646',
-      facebook_url: Faker::Internet.url,
-      embarrassing_moment: '',
-      pf_image_1: 'https://secure.gravatar.com/avatar/3d772ac9d054192808f55fac90a867c7.png?r=PG&d=mm&s=300',
-      pf_image_2: 'https://dl.dropboxusercontent.com/content_link/DQQEt31AGat0XeSbwD2xklFZhgefGu6jluveeDoAM3DaYR3nfdErHCupN8OcDd95',
-      pf_image_3: 'https://photos-1.dropbox.com/t/2/AACl9xeDIgVL-8yUjI9BnL-oMLeg7JGf4BW5FZV7e5droA/12/6547974/jpeg/1024x768/3/1429819200/0/2/2015-02-10%2014.10.33.jpg/CIbUjwMgASACIAMoASgC/H8g7IJCjO7wtjdZ5lSvrIazDRfyp_17-kAH2eypcvVU',
-      pf_image_4: 'https://pbs.twimg.com/profile_images/565958625353408512/04d0_fGK.jpeg',
-      pf_image_5: 'http://imgur.com/IGTCFbv'
-      )
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Osha Thai
-- spring rolls
-
-
-
-experience_photos = {osha_thai: }
-
-
-
-
-pet_owner = ['Dog Owner', 'Cat Owner', 'Dog and Cat Owner', 'No Pets']
+### ORIGINAL SEED FILE - NOT FOR DEMO DAY ###
 
 interests = ["3D printing", "Acting", "Baton twirling", "Board games", "Calligraphy", "Candle making", "Computer programming", "Cooking", "Coloring", "Cosplaying", "Couponing", "Creative writing", "Crocheting", "Cryptography", "Dance", "Digital arts", "Drama", "Drawing", "Do it yourself", "Electronics", "Embroidery", "Flower arranging", "Foreign language learning", "Gaming", "Gambling", "Genealogy", "Glassblowing", "Homebrewing", "Ice skating", "Jewelry making", "Jigsaw puzzles", "Juggling", "Knapping", "Knitting", "Kabaddi", "Knife making", "Lacemaking", "Lapidary", "Leather crafting", "Lego building", "Machining", "Macrame", "Magic", "Model building", "Listening to music", "Origami", "Painting", "Playing musical instruments", "Pottery", "Puzzles", "Quilting", "Reading", "Scrapbooking", "Sculpting", "Sewing", "Singing", "Sketching", "Soapmaking", "Sports", "Standup comedy", "Sudoku", "Table tennis", "Taxidermy", "Video gaming", "Watching movies", "Web surfing", "Wood carving", "Woodworking", "Worldbuilding", "Writing", "Yoga", "Yo-yoing"]
 
@@ -91,7 +12,13 @@ values.map! do |value|
   new_value = Value.create(name: value.titleize)
 end
 
-experience_photos = ['http://www.seamless.com/finedining/img/vendormenuplustabcontentimages/lg_27331_0.jpg', 'http://25.media.tumblr.com/8de69d887367fa0ea41ba1c628fcad9f/tumblr_myvf7h7dKh1shjq15o1_1280.jpg', 'http://collegetimes.com/wp-content/uploads/2014/09/las.jpg', 'http://www.toastedontheinside.com/wp-content/uploads/2013/11/foodporn-34.jpg', 'http://nolavie.com/wp-content/uploads/2014/02/Pork-sliders-2.jpg', 'http://i.imgur.com/iPjkzUz.jpg', 'http://loreleynyc.com/gallery/photos/Food/beer_tasting_flight.jpg', 'https://img.vimbly.com/images/full_photos/scotch-1.jpg']
+cities = ['San Francisco', 'New York', 'Los Angeles', 'Chicago']
+
+pet_owner = ['Dog Owner', 'Cat Owner', 'Dog and Cat Owner', 'No Pets']
+
+experience_photos = ['/images/experience/1.jpg', '/images/experience/2.jpg', '/images/experience/3.jpg', '/images/experience/4.jpg', '/images/experience/5.jpg', '/images/experience/6.jpg', '/images/experience/7.jpg', '/images/experience/8.jpg', '/images/experience/9.jpg', '/images/experience/10.jpg']
+
+movie_posters = ['http://www.cinemablend.com/images/news/67907/_1414454351.jpg']
 
 dbc_students =
   [ ['Andrew', 'Dye', 'https://secure.gravatar.com/avatar/5abc8c1476e25191a08feba0a23f3829.png?r=PG&amp;d=mm&s=300'],
@@ -103,12 +30,14 @@ dbc_students =
     ['Deb', 'Wolfe', 'https://secure.gravatar.com/avatar/716c42ca68efd84a82e58a624f809b80.png?r=PG&d=mm&s=300'],
     ['Erin', 'Hyejin Kim', 'https://secure.gravatar.com/avatar/bc3161cfe66e944b2b207080149a2df4.png?r=PG&d=mm&s=300'],
     ['Ganesh', 'Balaji', 'https://secure.gravatar.com/avatar/ac871ebaa0628c6a83289e7c564af480.png?r=PG&d=mm&s=300'],
+    ['Iulia', 'Soimaru', 'https://secure.gravatar.com/avatar/3d772ac9d054192808f55fac90a867c7.png?r=PG&d=mm&s=300'],
     ['Jacqueline', 'Hernandez', 'https://secure.gravatar.com/avatar/9e75c8c3c4d507fb24ec1bd0239ed2d7.png?r=PG&d=mm&s=300'],
     ['Janet', 'Brown', 'https://secure.gravatar.com/avatar/13de1fc4c41fb6214c540b2bd3aa256f.png?r=PG&d=mm&s=300'],
     ['Jeremy', 'Gagon', 'https://secure.gravatar.com/avatar/8a6027df29e3339dbe9e9cfa314c90ec.png?r=PG&d=mm&s=300'],
     ['Jonathan', 'Berk', 'https://secure.gravatar.com/avatar/3c962b80bfae0ff8e61b99ba032c89c2.png?r=PG&d=mm&s=300'],
     ['Kailash', 'Duraiswami', 'https://secure.gravatar.com/avatar/d71b25f17864f11928c53639eefa8bc4.png?r=PG&d=mm&s=300'],
     ['Kevin', 'Ceballos', 'https://secure.gravatar.com/avatar/1475db0bc23485196d4cfb94e9c4a104.png?r=PG&d=mm&s=300'],
+    ['Marko', 'Anton Potocnik', 'https://secure.gravatar.com/avatar/793240f33e505ec0af147eaefd94e628.png?r=PG&d=mm&s=300'],
     ['Matt', 'McDole', 'https://secure.gravatar.com/avatar/663dd748230392e54aec7879301dcac8.png?r=PG&d=mm&s=300'],
     ['Matthew', 'Lao', 'https://secure.gravatar.com/avatar/70a39a576cbafe46e62db83814105b3a.png?r=PG&d=mm&s=300'],
     ['Michael', 'Perez', 'https://secure.gravatar.com/avatar/abce251b8018346e771560d66db2b3a3.png?r=PG&d=mm&s=300'],
@@ -218,3 +147,132 @@ dbc_students =
     ['Taniya', 'Prabhakar', 'https://secure.gravatar.com/avatar/711d30095c5914e3854e1c62d2474f10e.png?r=PG&d=mm&s=300'],
     ['Timothy', 'Steele', 'https://secure.gravatar.com/avatar/03a4e3966ac3a7510e17f354418f1d25.png?r=PG&d=mm&s=300'],
     ['Tim', 'Powers', 'https://secure.gravatar.com/avatar/12885ac7bd299f48ae9f196a028231c9.png?r=PG&d=mm&s=300'] ]
+
+dbc_students.shuffle!
+i = 0
+
+40.times do
+  parent = Parent.create(
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    email: Faker::Internet.email,
+    password: 'password'
+    )
+  parent.update(email: "user#{parent.id}@gmail.com") #allows us to sign in as seed users
+  3.times do
+    child = parent.children.create(
+      first_name: dbc_students[i] ? dbc_students[i][0] : Faker::Name.first_name,
+      last_name: dbc_students[i] ? dbc_students[i][1] : Faker::Name.last_name,
+      city: cities.sample,
+      state: 'CA',
+      phone: rand.to_s[2..11],
+      gender: ['male', 'female', 'other'].sample,
+      sexual_preference: ['men', 'women', 'no preference'].sample,
+      birthdate: Faker::Date.between(50.years.ago, 18.years.ago),
+      bio: Faker::Company.bs,
+      pets: pet_owner.sample,
+      religion: ['Christian','Muslim','Buddhist', 'Atheist', 'Rastafarian', 'Pastafarian', 'Hindu', 'Sikh', 'Jewish', 'Shinto', 'Shamanist', 'Scientologist', 'Mormon'].sample,
+      smoke: [true, false].sample,
+      linkedin_url: Faker::Internet.url,
+      facebook_url: Faker::Internet.url,
+      embarrassing_moment: Faker::Hacker.say_something_smart,
+      pf_image_1: dbc_students[i] ? dbc_students[i][2] : Faker::Avatar.image,
+      pf_image_2: Faker::Avatar.image,
+      pf_image_3: Faker::Avatar.image,
+      pf_image_4: Faker::Avatar.image,
+      pf_image_5: Faker::Avatar.image
+      )
+    5.times do
+      child.interests << interests.sample
+    end
+    5.times do
+      child.values << values.sample
+    end
+    i += 1
+  end
+end
+
+children = Child.all.shuffle
+15.times do #create pending dates
+  Playdate.create(
+    initiator_id: children.sample.id,
+    recipient_id: children.sample.id,
+    )
+end
+15.times do #create accepted dates
+  playdate = Playdate.create(
+    initiator_id: children.sample.id,
+    recipient_id: children.sample.id,
+    recipient_accepted: true,
+    )
+
+end
+15.times do #create confirmed dates
+  experience_time = Faker::Time.forward(50, :evening)
+  playdate = Playdate.create(
+    initiator_id: children.sample.id,
+    recipient_id: children.sample.id,
+    note: Faker::Lorem.paragraph,
+    recipient_accepted: true,
+    initiator_confirmed: true,
+    recipient_confirmed: true,
+    )
+  playdate.create_experience(
+    venue: Faker::Company.name,
+    address: Faker::Address.street_address + ", " + cities.sample + ", CA",
+    desc_summary: "Dinner for two",
+    desc_note_1: "Intimate experience at their newest location",
+    desc_note_2: "Famous for their gnocchi and fried calamari",
+    desc_note_3: "Vegetarian and gluten-free friendly",
+    price_per_person: rand(30..100),
+    image: experience_photos.sample,
+    experience_at: experience_time,
+    )
+  playdate.create_movie(
+    venue: Faker::Company.name,
+    address: Faker::Address.street_address + ", " + cities.sample + ", CA",
+    title: Faker::Commerce.product_name,
+    description: Faker::Lorem.paragraph,
+    director: Faker::Name.name,
+    rating: rand(40..100),
+    image: Faker::Avatar.image,
+    movie_at: experience_time + 2.hours,
+    )
+  playdate.save
+end
+15.times do #create paid dates
+  experience_time = Faker::Time.forward(20, :evening)
+  playdate = Playdate.create(
+    initiator_id: children.sample.id,
+    recipient_id: children.sample.id,
+    note: Faker::Lorem.paragraph,
+    recipient_accepted: true,
+    initiator_confirmed: true,
+    recipient_confirmed: true,
+    initiator_paid: true,
+    recipient_paid: true,
+    )
+  playdate.create_experience(
+    venue: Faker::Company.name,
+    address: Faker::Address.street_address + ", " + cities.sample + ", CA",
+    desc_summary: "Dinner for two",
+    desc_note_1: "Intimate experience at their newest location",
+    desc_note_2: "Famous for their gnocchi and fried calamari",
+    desc_note_3: "Vegetarian and gluten-free friendly",
+    price_per_person: rand(30..100),
+    image: experience_photos.sample,
+    experience_at: experience_time,
+    )
+  playdate.create_movie(
+    venue: Faker::Company.name,
+    address: Faker::Address.street_address + ", " + cities.sample + ", CA",
+    title: Faker::Commerce.product_name,
+    description: Faker::Lorem.paragraph,
+    director: Faker::Name.name,
+    rating: rand(40..100),
+    image: movie_posters.sample,
+    movie_at: experience_time + 2.hours,
+    )
+  playdate.save
+
+end
