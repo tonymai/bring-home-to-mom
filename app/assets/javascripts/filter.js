@@ -5,7 +5,7 @@ $(document).on('page:change', function() {
 
 
     $('.age-slider').noUiSlider({
-      start: [18,40],
+      start: [18,50],
       step: 1,
       connect: true,
       range:{
