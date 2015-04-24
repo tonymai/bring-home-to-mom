@@ -16,14 +16,15 @@
 }
 
 .bg-vid-wrapper h1 {
-  font-size: 3em;
+  font-size: 4em;
   margin: 0 auto;
   text-align: center;
   position: relative;
   display: block;
-  top: 7em;/* need another way to position*/
+  top: 5.2em;/* need another way to position*/
   color: white;
   z-index: 1;
+  font-family: 'Lobster', cursive;
 }
 
 .how-btn {
@@ -35,10 +36,13 @@
   display: block;
   color: white;
   background: #F857A6;
-  padding: .6em;
+  padding: .9em;
   height: 50px;
   border-radius:3px;
   z-index: 1;
+  border: 1px solid white;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
 }
 
 .how-btn:hover {
@@ -104,11 +108,14 @@
   color: white;
   background: #F857A6;
   border: 2px solid #1AB595;
-  padding: .6em;
+  padding: .9em;
   border-radius: 4px;
   height: 50px;
   z-index: 1;
   border-radius: 3px;
+  border: 1px solid white;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
 }
 
 .get-started-btn:hover {
@@ -151,14 +158,15 @@
 }
 .logout-button:hover{
   color:navy;
-  background-color: rgba(256,256,256,1);
-
 }
+
 .hidden{
   display: none;
 }
 
-
+.login-btn-nav, .signup-btn.nav{
+  font-family: 'Raleway', sans-serif;
+}
 
 
 /*Login-external-form*/

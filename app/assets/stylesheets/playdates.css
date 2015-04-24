@@ -115,10 +115,13 @@
 
 /*General Formatting of page*/
 .page-title-wrapper h1{
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Signika', sans-serif;
 }
 .date-design-section-header h2{
+  font-family: 'Montserrat', sans-serif;
   font-size: 1.3em;
+  border-top: 1px solid lightgray;
+  padding-top: 0.5em;
 }
 /*************** EXPERIENCES (FOOD & DRINK) *****************/
 .date-design-section{
