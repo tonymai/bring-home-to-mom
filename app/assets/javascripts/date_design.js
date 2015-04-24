@@ -144,12 +144,12 @@ $(document).on('page:change', function() {
 	  overlayCss: {backgroundImage: "url('/images/backgrounds/bg-dark_exa.png')"},
 	};
 
-	$('a.initiator-image').on('click', function(e) {
+	$('a.date-participant-image').on('click', function(e) {
 	    e.preventDefault();
 	    $.ajax({
 	      url: $(this).attr('href'),
 	    }).done(function(data) {
-	      var source = $('#initiator-profile-template').html();
+	      var source = $('#date-participant-image-template').html();
 	      var templatingFunction = Handlebars.compile(source);
 	      $(templatingFunction(data)).modal(modalSetting);
 	      $('#gallery-wrap').slick({

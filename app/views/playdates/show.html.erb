@@ -13,9 +13,10 @@
 
   <div class = "status row">
     <div class="experience-wrapper col span_8">
-    <div class="initiator-profile">
-      <a class="initiator-image" data-child-id="<%= @playdate.initiator.id %>" href="/users/<%= current_user.id %>/profiles/<%= @playdate.initiator.id %>"><img src="<%= @playdate.initiator.default_pf %>"></a>
-      <%= render partial: 'initiator_profile_template' %>
+    <div class="date-participants-images">
+      <a class="date-participant-image" data-child-id="<%= @playdate.initiator.id %>" href="/users/<%= current_user.id %>/profiles/<%= @playdate.initiator.id %>"><img src="<%= @playdate.initiator.default_pf %>"></a>
+      <a class="date-participant-image" data-child-id="<%= @playdate.recipient.id %>" href="/users/<%= current_user.id %>/profiles/<%= @playdate.recipient.id %>"><img src="<%= @playdate.recipient.default_pf %>"></a>
+      <%= render partial: 'date_participant_image_template' %>
     </div>
 
       <div class="date-design-section selected-experience-container row">
