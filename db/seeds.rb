@@ -373,7 +373,14 @@ end
 iulia.values << iulia_values
 iulia.save!
 
-# Parent.find(1).children << marko
-# Parent.find(1).save!
-# Parent.find(2).children << iulia
-# Parent.find(2).save!
+
+
+sofie = Parent.find(1)
+sofie.first_name = 'Sofie'
+sofie.email = 'sofie@gmail.com'
+sofie.save
+
+tony = Parent.find(2)
+tony.first_name = 'Tony'
+tony.email = 'tony@gmail.com'
+tony.save
