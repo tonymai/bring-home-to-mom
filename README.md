@@ -1,6 +1,6 @@
 ![1-bring-home-to-mom-splash.png](https://dbc-devconnect-production.s3.amazonaws.com/uploads/1430363567076/1-bring-home-to-mom-splash.png)
 
-Bring Home To Mom is a match-making and date-planning app targeted to parents. Your parents will be the one creating profiles for you, matching you up with other parent's children, and setting you guys and gals up on dates!
+[Bring Home To Mom](http://bringhometomom.herokuapp.com/) is a match-making and date-planning app targeted to parents. Your parents will be the one creating profiles for you, matching you up with other parent's children, and setting you guys and gals up on dates!
 
 Team Members: Jonathan Berk, Sofie Garden, Kevin Ceballos, Tony Mai
 
