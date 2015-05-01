@@ -94,7 +94,7 @@
   margin-top: 1em;
   padding-left: 1em;
   font-style: italic;
-  background-image: url("/images/backgrounds/light-gray-texture.png")
+  background-image: url("/images/backgrounds/light-gray-texture.png");
 }
 .matches .individual-child{
   height:200px;

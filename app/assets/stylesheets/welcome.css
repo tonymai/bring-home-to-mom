@@ -58,7 +58,7 @@
   top: -175px;
   padding: 14em;
   /*background-color: #1AB595;*/
-  background-image: url("green_texture.png");
+  background-image: url("/images/backgrounds/green_texture.png");
 }
 
 .how-step {
@@ -74,7 +74,7 @@
   height: 190px;
   text-align: center;
   border:3px solid #81DDB3;
-  background-image: url("green_texture.png");
+  background-image: url("/images/backgrounds/green_texture.png");
   -moz-border-radius: 95px;
   -webkit-border-radius: 95px;
   border-radius: 50%;
@@ -88,7 +88,7 @@
   width: 140px;
   height: 140px;
   text-align: center;
-  background-image: url("green_texture.png");
+  background-image: url("/images/backgrounds/green_texture.png");
   -moz-border-radius: 70px;
   -webkit-border-radius: 70px;
   border-radius: 75px;
