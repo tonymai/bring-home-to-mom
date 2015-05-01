@@ -184,7 +184,7 @@ i = 0
       last_name: dbc_students[i] ? dbc_students[i][1] : Faker::Name.last_name,
       city: cities.sample,
       state: 'CA',
-      phone: rand.to_s[2..11],
+      phone: '555-555-5555',
       gender: ['male', 'female'].sample,
       sexual_preference: ['men', 'women'].sample,
       birthdate: Faker::Date.between(50.years.ago, 18.years.ago),
