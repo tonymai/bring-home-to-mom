@@ -54,6 +54,8 @@ gem 'stripe'
 # For notifications
 gem 'twilio-ruby', '~> 3.12'
 
+# For seed data
+gem 'faker'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -62,7 +64,6 @@ group :development, :test do
   gem 'hirb'
   gem 'better_errors'
   gem 'binding_of_caller'
-  gem 'faker'
   gem 'rspec-rails'
   gem 'dotenv-rails'
   gem 'capybara'
