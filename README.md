@@ -11,34 +11,34 @@ Personally, I took responsibility for learning and integrating two important fun
 We solidified our knowledge on existing technologies while learning new APIs (Stripe, Twilio, Cloudinary, Rotten Tomatoes, and OMBD).
 
 Some of the technologies/frameworks we used include:
-Ruby on Rails
-PostgreSQL
-Javascript
-JQuery
-AJAX
-handlebars.js
-Faye messaging system
-HTML5
-CSS3
-Responsive Grid System
-Stripe API
-Twilio API
-Cloudinary API
-Rotten Tomatoes API
-OMDB API
+* Ruby on Rails
+* PostgreSQL
+* Javascript
+* JQuery
+* AJAX
+* handlebars.js
+* Faye messaging system
+* HTML5
+* CSS3
+* Responsive Grid System
+* Stripe API
+* Twilio API
+* Cloudinary API
+* Rotten Tomatoes API
+* OMDB API
 
 Some of the features include:
-Create child profiles
-Smart matching system based on filters and interests
-Autocomplete
-Dates dashboard
-Design a date page
-Choose a date experience
-Real-time messaging system
-Pre-fund dates
-Text notifications
-Responsive design
-Asynchronous updates for best user experience and minimal page reloads
+* Create child profiles
+* Smart matching system based on filters and interests
+* Autocomplete
+* Dates dashboard
+* Design a date page
+* Choose a date experience
+* Real-time messaging system
+* Pre-fund dates
+* Text notifications
+* Responsive design
+* Asynchronous updates for best user experience and minimal page reloads
 
 ![2-bring-home-to-mom-how.png](https://dbc-devconnect-production.s3.amazonaws.com/uploads/1430363567042/2-bring-home-to-mom-how.png)
 ![3-bring-home-to-mom-matches.png](https://dbc-devconnect-production.s3.amazonaws.com/uploads/1430363567036/3-bring-home-to-mom-matches.png)
