@@ -22,21 +22,21 @@ movie_posters = ['http://www.cinemablend.com/images/news/67907/_1414454351.jpg']
 interests = ["3D printing", "Acting", "Baton twirling", "Board games", "Calligraphy", "Candle making", "Computer programming", "Cooking", "Coloring", "Cosplaying", "Couponing", "Creative writing", "Crocheting", "Cryptography", "Dance", "Digital arts", "Drama", "Drawing", "Do it yourself", "Electronics", "Embroidery", "Flower arranging", "Foreign language learning", "Gaming", "Gambling", "Genealogy", "Glassblowing", "Homebrewing", "Ice skating", "Jewelry making", "Jigsaw puzzles", "Juggling", "Knitting", "Kabaddi", "Knife making", "Lacemaking", "Lapidary", "Leather crafting", "Lego building", "Machining", "Macrame", "Magic", "Model building", "Listening to music", "Origami", "Painting", "Playing musical instruments", "Pottery", "Puzzles", "Quilting", "Reading", "Scrapbooking", "Sculpting", "Sewing", "Singing", "Sketching", "Soapmaking", "Sports", "Standup comedy", "Sudoku", "Table tennis", "Taxidermy", "Video gaming", "Watching movies", "Web surfing", "Wood carving", "Woodworking", "Worldbuilding", "Writing", "Yoga", "Yo-yoing"]
 
 interests_to_sample.map! do |interest|
-  new_interest = Interest.create(name: interest.titleize)
+  p new_interest = Interest.create(name: interest.titleize)
 end
 
 interests.map! do |interest|
-  new_interest = Interest.find_or_create_by(name: interest.titleize)
+  p new_interest = Interest.find_or_create_by(name: interest.titleize)
 end
 
 values = ["Accountability", "Adventurousness", "Altruism", "Ambition", "Assertiveness", "Balance", "Commitment", "Community", "Compassion", "Competitiveness", "Contentment", "Cooperation", "Courtesy", "Creativity", "Curiosity", "Devoutness", "Diligence", "Discipline", "Diversity", "Elegance", "Empathy", "Equality", "Fairness", "Faith", "Family", "Fidelity", "Fitness", "Freedom", "Generosity", "Grace", "Happiness", "Hard Work", "Health", "Holiness", "Honesty", "Honor", "Humility", "Independence", "Intelligence", "Justice", "Leadership", "Love", "Loyalty", "Marriage", "Obedience", "Openness", "Originality", "Patriotism", "Peace", "Perfection", "Piety", "Positivity", "Reliability", "Selflessness", "Self-reliance", "Sensitivity", "Service", "Success", "Support", "Teamwork", "Timeliness", "Tolerance", "Traditionalism", "Truth", "Unity"]
 
 values.map! do |value|
-  new_value = Value.create(name: value.titleize)
+  p new_value = Value.create(name: value.titleize)
 end
 
 values_to_sample.map! do |value|
-  new_value = Value.find_or_create_by(name: value.titleize)
+  p new_value = Value.find_or_create_by(name: value.titleize)
 end
 
 experience_photos = ['http://www.seamless.com/finedining/img/vendormenuplustabcontentimages/lg_27331_0.jpg', 'http://25.media.tumblr.com/8de69d887367fa0ea41ba1c628fcad9f/tumblr_myvf7h7dKh1shjq15o1_1280.jpg', 'http://collegetimes.com/wp-content/uploads/2014/09/las.jpg', 'http://www.toastedontheinside.com/wp-content/uploads/2013/11/foodporn-34.jpg', 'http://nolavie.com/wp-content/uploads/2014/02/Pork-sliders-2.jpg', 'http://i.imgur.com/iPjkzUz.jpg', 'http://loreleynyc.com/gallery/photos/Food/beer_tasting_flight.jpg', 'https://img.vimbly.com/images/full_photos/scotch-1.jpg']
@@ -179,12 +179,12 @@ i = 0
     )
   parent.update(email: "user#{parent.id}@gmail.com") #allows us to sign in as seed users
   3.times do
-    child = parent.children.create(
+    p child = parent.children.create(
       first_name: dbc_students[i] ? dbc_students[i][0] : Faker::Name.first_name,
       last_name: dbc_students[i] ? dbc_students[i][1] : Faker::Name.last_name,
       city: cities.sample,
       state: 'CA',
-      phone: rand.to_s[2..11],
+      phone: '555-555-5555',
       gender: ['male', 'female'].sample,
       sexual_preference: ['men', 'women'].sample,
       birthdate: Faker::Date.between(50.years.ago, 18.years.ago),
