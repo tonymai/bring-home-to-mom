@@ -1,6 +1,7 @@
 require File.expand_path('../boot', __FILE__)
-#Awesomeprint
 require "rails"
+#Awesomeprint
+require 'awesome_print' if Rails.env == 'development'
 # Pick the frameworks you want:
 require "active_model/railtie"
 require "active_job/railtie"
@@ -33,5 +34,5 @@ module BringHomeToMom
     config.autoload_paths << Rails.root.join('lib')
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
-  end
+end
 end
