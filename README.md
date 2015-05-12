@@ -1,12 +1,10 @@
 ![1-bring-home-to-mom-splash.png](https://dbc-devconnect-production.s3.amazonaws.com/uploads/1430363567076/1-bring-home-to-mom-splash.png)
 
-[Bring Home To Mom](http://bringhometomom.herokuapp.com/) is a match-making and date-planning app targeted to parents. Your parents will be the one creating profiles for you, matching you up with other parent's children, and setting you guys and gals up on dates!
+[Bring Home To Mom](http://bringhometomom.herokuapp.com/) is a match-making and date-planning app targeted to parents. Parents create profiles for their children, browse and filter for potential matches, plan dates while communicating with the other child's parents, and split the cost of the upcoming date so everything is prepaid!  
 
 Team Members: Jonathan Berk, Sofie Garden, Kevin Ceballos, Tony Mai
 
-We utilized the Agile development methodology to deliver a complete, feature-full product under a tight 7-day period. We set up the structure/backbone of our app as a team, pair-programmed on challenging logic, and worked solo to learn and implement new technologies. Individually, we worked on vertical slices (separate features) to ensure minimal Git workflow conflicts, and when conflicts arose, we resolved them systematically.
-
-Personally, I took responsibility for learning and integrating two important functions – cloud image hosting (using Cloudinary) and real-time messaging (using Faye). I navigated a pair-programming partner through AJAX-ifying several logic-heavy pages to create a better user experience.
+We utilized the Agile development methodology to deliver a complete, feature-full product under a tight 7-day period. We set up the structure/backbone of our app as a team, pair-programmed on challenging features, and worked solo to learn and implement new technologies. When working individually, we focused on discrete vertical slices (separate features) to ensure minimal Git workflow conflicts, and when conflicts arose, we resolved them systematically.
 
 We solidified our knowledge on existing technologies while learning new APIs (Stripe, Twilio, Cloudinary, Rotten Tomatoes, and OMBD).
 
