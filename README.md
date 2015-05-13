@@ -46,10 +46,10 @@ Product features include:
 ##### 2) Parent's Dashboard
 * Overview of the children ('offspring') you've added to the service, and consolidated list of all the dates you are planning or have planned for them
   * Dates divided into four phases:
-    1) Pending -- Incoming date requests requiring your attention
-    2) Planning -- Accepted by both parents and in the process of planning; not yet paid
-    3) Upcoming -- Fully paid by both parents; children have been notified
-    4) Past -- Completed dates
+    1. Pending -- Incoming date requests requiring your attention
+    2. Planning -- Accepted by both parents and in the process of planning; not yet paid
+    3. Upcoming -- Fully paid by both parents; children have been notified
+    4. Past -- Completed dates
 ![6-bring-home-to-mom-dashboard.png](https://dbc-devconnect-production.s3.amazonaws.com/uploads/1430363567052/6-bring-home-to-mom-dashboard.png)
 
 ##### 3) Potential Matches
