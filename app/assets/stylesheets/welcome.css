@@ -21,16 +21,25 @@
   text-align: center;
   position: relative;
   display: block;
-  top: 5.2em;/* need another way to position*/
   color: white;
   z-index: 1;
+  padding-top: 1em;
+  padding-bottom: 1em;
   font-family: 'Lobster', cursive;
+}
+
+.bg-content{
+  position: absolute;
+  height: auto;
+  width: 33em;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .how-btn {
   text-align: center;
   position: relative;
-  top: 30em;
   width: 175px;
   margin: auto;
   display: block;
@@ -174,6 +183,94 @@
   background-color: yellow;
 }
 
+@media all and (max-width: 1216px){
+  .fa-5x{
+    font-size: 3em;
+  }
+
+  .how-step h4{
+    font-size: 1em;
+  }
+
+  .circle-inner {
+    top: 26px;
+    left: 39px;
+    width: 40px;
+    height: 40px;
+  }
+
+  .circle-outer {
+    width: 130px;
+    height: 130px;
+
+  }
+
+}
 
 
+
+@media all and (max-width: 965px){
+  .fa-5x{
+    font-size: 2em;
+  }
+
+
+  .circle-inner {
+    top: 22px;
+    left: 28px;
+    width: 40px;
+    height: 40px;
+  }
+
+  .circle-outer {
+    width: 100px;
+    height: 100px;
+
+  }
+
+}
+
+@media all and (max-width: 849px){
+  .fa-5x{
+    font-size: 2em;
+  }
+
+
+  .circle-inner {
+    top: 15px;
+    left: 19px;
+    width: 40px;
+    height: 40px;
+  }
+
+  .circle-outer {
+    width: 80px;
+    height: 80px;
+
+  }
+
+}
+@media all and (max-width: 767px){
+  .fa-5x{
+    font-size: 6em;
+  }
+
+  .how-step h4{
+    font-size: 1.3em;
+  }
+
+  .circle-inner {
+    top: 25px;
+    left: 25px;
+    width: 140px;
+    height: 140px;
+  }
+
+  .circle-outer {
+    width: 190px;
+    height: 190px;
+
+  }
+
+}
 
